@@ -1,0 +1,3 @@
+event_id,date,cost_centre,account,description,rows_affected,baseline_amount,amount_change,final_amount,ebitda_impact,evidence_available,evidence_id
+OPEX-001,2026-08-01,Product & R&D,Contractors,Product & R&D contractor expenditure increased by NOK 1.8m in August due to accelerated prototype and testing activity.,1,1807368.38,1800000,3607368.38,-1800000,True,NOTE-017
+OPEX-002,2026-08-01,Sales,Marketing,Sales marketing expenditure increased by NOK 1.1m in August.,1,2430504.22,1100000,3530504.22,-1100000,False,

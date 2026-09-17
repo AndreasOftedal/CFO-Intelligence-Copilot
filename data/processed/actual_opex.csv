@@ -1,0 +1,929 @@
+date,scenario,cost_centre,account,amount,headcount,average_employee_cost,seasonality_profile
+2024-01-01,Actual,Sales,Payroll,3959113.62,42,94264.61,payroll
+2024-01-01,Actual,Operations,Payroll,2884757.54,34,84845.81,payroll
+2024-01-01,Actual,Product & R&D,Payroll,4772830.28,46,103757.18,payroll
+2024-01-01,Actual,Finance,Payroll,1005217.8,10,100521.78,payroll
+2024-01-01,Actual,People,Payroll,660976.12,7,94425.16,payroll
+2024-01-01,Actual,Technology,Payroll,1498726.65,15,99915.11,payroll
+2024-01-01,Actual,Corporate,Payroll,1003188.88,8,125398.61,payroll
+2024-01-01,Actual,Operations,Contractors,502527.83,0,0.0,flat
+2024-01-01,Actual,Product & R&D,Contractors,1396667.85,0,0.0,project
+2024-01-01,Actual,Technology,Contractors,561493.78,0,0.0,project
+2024-01-01,Actual,Sales,Marketing,2328977.04,0,0.0,commercial
+2024-01-01,Actual,Technology,Software,883576.0,0,0.0,flat
+2024-01-01,Actual,Product & R&D,Software,290928.2,0,0.0,flat
+2024-01-01,Actual,Finance,Software,142600.77,0,0.0,flat
+2024-01-01,Actual,Sales,Travel,484170.43,0,0.0,travel
+2024-01-01,Actual,Operations,Travel,123656.09,0,0.0,travel
+2024-01-01,Actual,Corporate,Travel,84758.8,0,0.0,travel
+2024-01-01,Actual,Corporate,Facilities,1180915.14,0,0.0,flat
+2024-01-01,Actual,Finance,Professional Services,222591.75,0,0.0,year_end
+2024-01-01,Actual,People,Professional Services,191179.0,0,0.0,flat
+2024-01-01,Actual,Corporate,Professional Services,300104.49,0,0.0,year_end
+2024-01-01,Actual,Product & R&D,R&D,1264394.77,0,0.0,project
+2024-01-01,Actual,Sales,Other OPEX,175048.21,0,0.0,flat
+2024-01-01,Actual,Operations,Other OPEX,165683.8,0,0.0,flat
+2024-01-01,Actual,Product & R&D,Other OPEX,148985.8,0,0.0,flat
+2024-01-01,Actual,Finance,Other OPEX,84418.34,0,0.0,flat
+2024-01-01,Actual,People,Other OPEX,66265.36,0,0.0,flat
+2024-01-01,Actual,Technology,Other OPEX,102315.55,0,0.0,flat
+2024-01-01,Actual,Corporate,Other OPEX,111947.33,0,0.0,flat
+2024-02-01,Actual,Sales,Payroll,3976969.08,42,94689.74,payroll
+2024-02-01,Actual,Operations,Payroll,2904510.86,34,85426.79,payroll
+2024-02-01,Actual,Product & R&D,Payroll,4855952.28,46,105564.18,payroll
+2024-02-01,Actual,Finance,Payroll,1002942.4,10,100294.24,payroll
+2024-02-01,Actual,People,Payroll,667813.93,7,95401.99,payroll
+2024-02-01,Actual,Technology,Payroll,1509240.15,15,100616.01,payroll
+2024-02-01,Actual,Corporate,Payroll,997884.32,8,124735.54,payroll
+2024-02-01,Actual,Operations,Contractors,512518.54,0,0.0,flat
+2024-02-01,Actual,Product & R&D,Contractors,1481490.7,0,0.0,project
+2024-02-01,Actual,Technology,Contractors,577742.68,0,0.0,project
+2024-02-01,Actual,Sales,Marketing,2579186.38,0,0.0,commercial
+2024-02-01,Actual,Technology,Software,931812.2,0,0.0,flat
+2024-02-01,Actual,Product & R&D,Software,300094.63,0,0.0,flat
+2024-02-01,Actual,Finance,Software,147650.44,0,0.0,flat
+2024-02-01,Actual,Sales,Travel,535035.14,0,0.0,travel
+2024-02-01,Actual,Operations,Travel,148627.73,0,0.0,travel
+2024-02-01,Actual,Corporate,Travel,94267.52,0,0.0,travel
+2024-02-01,Actual,Corporate,Facilities,1273420.77,0,0.0,flat
+2024-02-01,Actual,Finance,Professional Services,218446.11,0,0.0,year_end
+2024-02-01,Actual,People,Professional Services,184798.16,0,0.0,flat
+2024-02-01,Actual,Corporate,Professional Services,328195.52,0,0.0,year_end
+2024-02-01,Actual,Product & R&D,R&D,1296282.26,0,0.0,project
+2024-02-01,Actual,Sales,Other OPEX,188719.3,0,0.0,flat
+2024-02-01,Actual,Operations,Other OPEX,153106.79,0,0.0,flat
+2024-02-01,Actual,Product & R&D,Other OPEX,137027.07,0,0.0,flat
+2024-02-01,Actual,Finance,Other OPEX,74011.28,0,0.0,flat
+2024-02-01,Actual,People,Other OPEX,69265.53,0,0.0,flat
+2024-02-01,Actual,Technology,Other OPEX,99312.22,0,0.0,flat
+2024-02-01,Actual,Corporate,Other OPEX,125134.71,0,0.0,flat
+2024-03-01,Actual,Sales,Payroll,4126778.8,43,95971.6,payroll
+2024-03-01,Actual,Operations,Payroll,2898746.5,34,85257.25,payroll
+2024-03-01,Actual,Product & R&D,Payroll,4972700.58,47,105802.14,payroll
+2024-03-01,Actual,Finance,Payroll,1004060.2,10,100406.02,payroll
+2024-03-01,Actual,People,Payroll,666739.43,7,95248.49,payroll
+2024-03-01,Actual,Technology,Payroll,1516065.6,15,101071.04,payroll
+2024-03-01,Actual,Corporate,Payroll,1000992.8,8,125124.1,payroll
+2024-03-01,Actual,Operations,Contractors,510056.7,0,0.0,flat
+2024-03-01,Actual,Product & R&D,Contractors,1575411.41,0,0.0,project
+2024-03-01,Actual,Technology,Contractors,629215.25,0,0.0,project
+2024-03-01,Actual,Sales,Marketing,2806610.67,0,0.0,commercial
+2024-03-01,Actual,Technology,Software,892499.6,0,0.0,flat
+2024-03-01,Actual,Product & R&D,Software,300845.34,0,0.0,flat
+2024-03-01,Actual,Finance,Software,152353.36,0,0.0,flat
+2024-03-01,Actual,Sales,Travel,600085.47,0,0.0,travel
+2024-03-01,Actual,Operations,Travel,158901.3,0,0.0,travel
+2024-03-01,Actual,Corporate,Travel,110926.66,0,0.0,travel
+2024-03-01,Actual,Corporate,Facilities,1276735.08,0,0.0,flat
+2024-03-01,Actual,Finance,Professional Services,253041.31,0,0.0,year_end
+2024-03-01,Actual,People,Professional Services,186870.44,0,0.0,flat
+2024-03-01,Actual,Corporate,Professional Services,363988.24,0,0.0,year_end
+2024-03-01,Actual,Product & R&D,R&D,1476606.68,0,0.0,project
+2024-03-01,Actual,Sales,Other OPEX,183108.8,0,0.0,flat
+2024-03-01,Actual,Operations,Other OPEX,166358.57,0,0.0,flat
+2024-03-01,Actual,Product & R&D,Other OPEX,142200.13,0,0.0,flat
+2024-03-01,Actual,Finance,Other OPEX,78683.75,0,0.0,flat
+2024-03-01,Actual,People,Other OPEX,71303.54,0,0.0,flat
+2024-03-01,Actual,Technology,Other OPEX,99413.17,0,0.0,flat
+2024-03-01,Actual,Corporate,Other OPEX,120612.83,0,0.0,flat
+2024-04-01,Actual,Sales,Payroll,4142117.33,43,96328.31,payroll
+2024-04-01,Actual,Operations,Payroll,2914253.22,34,85713.33,payroll
+2024-04-01,Actual,Product & R&D,Payroll,4953005.23,47,105383.09,payroll
+2024-04-01,Actual,Finance,Payroll,1014196.8,10,101419.68,payroll
+2024-04-01,Actual,People,Payroll,678066.55,7,96866.65,payroll
+2024-04-01,Actual,Technology,Payroll,1506913.35,15,100460.89,payroll
+2024-04-01,Actual,Corporate,Payroll,1007369.36,8,125921.17,payroll
+2024-04-01,Actual,Operations,Contractors,549074.51,0,0.0,flat
+2024-04-01,Actual,Product & R&D,Contractors,1687422.54,0,0.0,project
+2024-04-01,Actual,Technology,Contractors,566097.8,0,0.0,project
+2024-04-01,Actual,Sales,Marketing,2931972.76,0,0.0,commercial
+2024-04-01,Actual,Technology,Software,935457.38,0,0.0,flat
+2024-04-01,Actual,Product & R&D,Software,318124.72,0,0.0,flat
+2024-04-01,Actual,Finance,Software,154918.23,0,0.0,flat
+2024-04-01,Actual,Sales,Travel,572933.32,0,0.0,travel
+2024-04-01,Actual,Operations,Travel,163373.83,0,0.0,travel
+2024-04-01,Actual,Corporate,Travel,99938.88,0,0.0,travel
+2024-04-01,Actual,Corporate,Facilities,1281396.69,0,0.0,flat
+2024-04-01,Actual,Finance,Professional Services,239464.45,0,0.0,year_end
+2024-04-01,Actual,People,Professional Services,186294.4,0,0.0,flat
+2024-04-01,Actual,Corporate,Professional Services,325974.6,0,0.0,year_end
+2024-04-01,Actual,Product & R&D,R&D,1504571.64,0,0.0,project
+2024-04-01,Actual,Sales,Other OPEX,183550.79,0,0.0,flat
+2024-04-01,Actual,Operations,Other OPEX,161067.28,0,0.0,flat
+2024-04-01,Actual,Product & R&D,Other OPEX,138863.06,0,0.0,flat
+2024-04-01,Actual,Finance,Other OPEX,82648.78,0,0.0,flat
+2024-04-01,Actual,People,Other OPEX,64987.32,0,0.0,flat
+2024-04-01,Actual,Technology,Other OPEX,98865.16,0,0.0,flat
+2024-04-01,Actual,Corporate,Other OPEX,115728.06,0,0.0,flat
+2024-05-01,Actual,Sales,Payroll,4122598.77,43,95874.39,payroll
+2024-05-01,Actual,Operations,Payroll,3060370.25,35,87439.15,payroll
+2024-05-01,Actual,Product & R&D,Payroll,4990274.82,47,106176.06,payroll
+2024-05-01,Actual,Finance,Payroll,1018394.2,10,101839.42,payroll
+2024-05-01,Actual,People,Payroll,672498.89,7,96071.27,payroll
+2024-05-01,Actual,Technology,Payroll,1522889.25,15,101525.95,payroll
+2024-05-01,Actual,Corporate,Payroll,1019738.4,8,127467.3,payroll
+2024-05-01,Actual,Operations,Contractors,501805.64,0,0.0,flat
+2024-05-01,Actual,Product & R&D,Contractors,1719080.57,0,0.0,project
+2024-05-01,Actual,Technology,Contractors,657392.77,0,0.0,project
+2024-05-01,Actual,Sales,Marketing,2897541.21,0,0.0,commercial
+2024-05-01,Actual,Technology,Software,884621.98,0,0.0,flat
+2024-05-01,Actual,Product & R&D,Software,300140.46,0,0.0,flat
+2024-05-01,Actual,Finance,Software,159160.45,0,0.0,flat
+2024-05-01,Actual,Sales,Travel,604486.79,0,0.0,travel
+2024-05-01,Actual,Operations,Travel,162872.39,0,0.0,travel
+2024-05-01,Actual,Corporate,Travel,108156.62,0,0.0,travel
+2024-05-01,Actual,Corporate,Facilities,1246924.08,0,0.0,flat
+2024-05-01,Actual,Finance,Professional Services,239680.67,0,0.0,year_end
+2024-05-01,Actual,People,Professional Services,184667.25,0,0.0,flat
+2024-05-01,Actual,Corporate,Professional Services,329756.06,0,0.0,year_end
+2024-05-01,Actual,Product & R&D,R&D,1509814.87,0,0.0,project
+2024-05-01,Actual,Sales,Other OPEX,193739.22,0,0.0,flat
+2024-05-01,Actual,Operations,Other OPEX,159149.47,0,0.0,flat
+2024-05-01,Actual,Product & R&D,Other OPEX,142555.03,0,0.0,flat
+2024-05-01,Actual,Finance,Other OPEX,81091.93,0,0.0,flat
+2024-05-01,Actual,People,Other OPEX,71615.83,0,0.0,flat
+2024-05-01,Actual,Technology,Other OPEX,104473.16,0,0.0,flat
+2024-05-01,Actual,Corporate,Other OPEX,119848.72,0,0.0,flat
+2024-06-01,Actual,Sales,Payroll,4188923.69,43,97416.83,payroll
+2024-06-01,Actual,Operations,Payroll,3019546.95,35,86272.77,payroll
+2024-06-01,Actual,Product & R&D,Payroll,5096563.2,48,106178.4,payroll
+2024-06-01,Actual,Finance,Payroll,1024027.2,10,102402.72,payroll
+2024-06-01,Actual,People,Payroll,676919.67,7,96702.81,payroll
+2024-06-01,Actual,Technology,Payroll,1622807.04,16,101425.44,payroll
+2024-06-01,Actual,Corporate,Payroll,1016829.68,8,127103.71,payroll
+2024-06-01,Actual,Operations,Contractors,479877.21,0,0.0,flat
+2024-06-01,Actual,Product & R&D,Contractors,1892167.16,0,0.0,project
+2024-06-01,Actual,Technology,Contractors,642857.07,0,0.0,project
+2024-06-01,Actual,Sales,Marketing,2645504.12,0,0.0,commercial
+2024-06-01,Actual,Technology,Software,917511.42,0,0.0,flat
+2024-06-01,Actual,Product & R&D,Software,284786.28,0,0.0,flat
+2024-06-01,Actual,Finance,Software,152352.94,0,0.0,flat
+2024-06-01,Actual,Sales,Travel,589623.05,0,0.0,travel
+2024-06-01,Actual,Operations,Travel,163950.25,0,0.0,travel
+2024-06-01,Actual,Corporate,Travel,107925.04,0,0.0,travel
+2024-06-01,Actual,Corporate,Facilities,1300675.3,0,0.0,flat
+2024-06-01,Actual,Finance,Professional Services,261966.21,0,0.0,year_end
+2024-06-01,Actual,People,Professional Services,185235.93,0,0.0,flat
+2024-06-01,Actual,Corporate,Professional Services,352235.78,0,0.0,year_end
+2024-06-01,Actual,Product & R&D,R&D,1703346.92,0,0.0,project
+2024-06-01,Actual,Sales,Other OPEX,174081.17,0,0.0,flat
+2024-06-01,Actual,Operations,Other OPEX,160876.76,0,0.0,flat
+2024-06-01,Actual,Product & R&D,Other OPEX,140656.61,0,0.0,flat
+2024-06-01,Actual,Finance,Other OPEX,79005.35,0,0.0,flat
+2024-06-01,Actual,People,Other OPEX,69156.04,0,0.0,flat
+2024-06-01,Actual,Technology,Other OPEX,99367.69,0,0.0,flat
+2024-06-01,Actual,Corporate,Other OPEX,120280.41,0,0.0,flat
+2024-07-01,Actual,Sales,Payroll,4273447.64,44,97123.81,payroll
+2024-07-01,Actual,Operations,Payroll,3023148.45,35,86375.67,payroll
+2024-07-01,Actual,Product & R&D,Payroll,5129477.76,48,106864.12,payroll
+2024-07-01,Actual,Finance,Payroll,1015384.1,10,101538.41,payroll
+2024-07-01,Actual,People,Payroll,679581.21,7,97083.03,payroll
+2024-07-01,Actual,Technology,Payroll,1642844.96,16,102677.81,payroll
+2024-07-01,Actual,Corporate,Payroll,1018431.92,8,127303.99,payroll
+2024-07-01,Actual,Operations,Contractors,520149.63,0,0.0,flat
+2024-07-01,Actual,Product & R&D,Contractors,1567550.13,0,0.0,project
+2024-07-01,Actual,Technology,Contractors,562393.6,0,0.0,project
+2024-07-01,Actual,Sales,Marketing,1715465.57,0,0.0,commercial
+2024-07-01,Actual,Technology,Software,970800.57,0,0.0,flat
+2024-07-01,Actual,Product & R&D,Software,309260.68,0,0.0,flat
+2024-07-01,Actual,Finance,Software,155255.54,0,0.0,flat
+2024-07-01,Actual,Sales,Travel,315431.01,0,0.0,travel
+2024-07-01,Actual,Operations,Travel,79456.31,0,0.0,travel
+2024-07-01,Actual,Corporate,Travel,58782.04,0,0.0,travel
+2024-07-01,Actual,Corporate,Facilities,1293404.65,0,0.0,flat
+2024-07-01,Actual,Finance,Professional Services,230064.07,0,0.0,year_end
+2024-07-01,Actual,People,Professional Services,199384.4,0,0.0,flat
+2024-07-01,Actual,Corporate,Professional Services,323247.64,0,0.0,year_end
+2024-07-01,Actual,Product & R&D,R&D,1325895.98,0,0.0,project
+2024-07-01,Actual,Sales,Other OPEX,181294.83,0,0.0,flat
+2024-07-01,Actual,Operations,Other OPEX,154104.37,0,0.0,flat
+2024-07-01,Actual,Product & R&D,Other OPEX,141883.11,0,0.0,flat
+2024-07-01,Actual,Finance,Other OPEX,81736.03,0,0.0,flat
+2024-07-01,Actual,People,Other OPEX,71506.69,0,0.0,flat
+2024-07-01,Actual,Technology,Other OPEX,102034.55,0,0.0,flat
+2024-07-01,Actual,Corporate,Other OPEX,118645.79,0,0.0,flat
+2024-08-01,Actual,Sales,Payroll,4280393.48,44,97281.67,payroll
+2024-08-01,Actual,Operations,Payroll,3073246.75,35,87807.05,payroll
+2024-08-01,Actual,Product & R&D,Payroll,5280139.55,49,107757.95,payroll
+2024-08-01,Actual,Finance,Payroll,1025917.7,10,102591.77,payroll
+2024-08-01,Actual,People,Payroll,681922.64,7,97417.52,payroll
+2024-08-01,Actual,Technology,Payroll,1640902.88,16,102556.43,payroll
+2024-08-01,Actual,Corporate,Payroll,1025415.52,8,128176.94,payroll
+2024-08-01,Actual,Operations,Contractors,540893.78,0,0.0,flat
+2024-08-01,Actual,Product & R&D,Contractors,1559663.46,0,0.0,project
+2024-08-01,Actual,Technology,Contractors,577431.12,0,0.0,project
+2024-08-01,Actual,Sales,Marketing,2186731.98,0,0.0,commercial
+2024-08-01,Actual,Technology,Software,904613.6,0,0.0,flat
+2024-08-01,Actual,Product & R&D,Software,311506.62,0,0.0,flat
+2024-08-01,Actual,Finance,Software,155600.35,0,0.0,flat
+2024-08-01,Actual,Sales,Travel,406724.03,0,0.0,travel
+2024-08-01,Actual,Operations,Travel,106940.94,0,0.0,travel
+2024-08-01,Actual,Corporate,Travel,70519.54,0,0.0,travel
+2024-08-01,Actual,Corporate,Facilities,1285535.91,0,0.0,flat
+2024-08-01,Actual,Finance,Professional Services,226924.49,0,0.0,year_end
+2024-08-01,Actual,People,Professional Services,172376.81,0,0.0,flat
+2024-08-01,Actual,Corporate,Professional Services,335372.88,0,0.0,year_end
+2024-08-01,Actual,Product & R&D,R&D,1391453.33,0,0.0,project
+2024-08-01,Actual,Sales,Other OPEX,191835.46,0,0.0,flat
+2024-08-01,Actual,Operations,Other OPEX,163693.88,0,0.0,flat
+2024-08-01,Actual,Product & R&D,Other OPEX,151603.22,0,0.0,flat
+2024-08-01,Actual,Finance,Other OPEX,88607.72,0,0.0,flat
+2024-08-01,Actual,People,Other OPEX,69423.41,0,0.0,flat
+2024-08-01,Actual,Technology,Other OPEX,104899.93,0,0.0,flat
+2024-08-01,Actual,Corporate,Other OPEX,118218.89,0,0.0,flat
+2024-09-01,Actual,Sales,Payroll,4307777.32,44,97904.03,payroll
+2024-09-01,Actual,Operations,Payroll,3052455.0,35,87213.0,payroll
+2024-09-01,Actual,Product & R&D,Payroll,5295622.57,49,108073.93,payroll
+2024-09-01,Actual,Finance,Payroll,1034772.2,10,103477.22,payroll
+2024-09-01,Actual,People,Payroll,688578.38,7,98368.34,payroll
+2024-09-01,Actual,Technology,Payroll,1652388.32,16,103274.27,payroll
+2024-09-01,Actual,Corporate,Payroll,1029582.56,8,128697.82,payroll
+2024-09-01,Actual,Operations,Contractors,535226.47,0,0.0,flat
+2024-09-01,Actual,Product & R&D,Contractors,1875136.44,0,0.0,project
+2024-09-01,Actual,Technology,Contractors,658507.48,0,0.0,project
+2024-09-01,Actual,Sales,Marketing,3265574.27,0,0.0,commercial
+2024-09-01,Actual,Technology,Software,936686.13,0,0.0,flat
+2024-09-01,Actual,Product & R&D,Software,332675.99,0,0.0,flat
+2024-09-01,Actual,Finance,Software,150843.5,0,0.0,flat
+2024-09-01,Actual,Sales,Travel,676725.22,0,0.0,travel
+2024-09-01,Actual,Operations,Travel,187399.62,0,0.0,travel
+2024-09-01,Actual,Corporate,Travel,116568.29,0,0.0,travel
+2024-09-01,Actual,Corporate,Facilities,1258895.01,0,0.0,flat
+2024-09-01,Actual,Finance,Professional Services,250909.63,0,0.0,year_end
+2024-09-01,Actual,People,Professional Services,180915.26,0,0.0,flat
+2024-09-01,Actual,Corporate,Professional Services,364223.37,0,0.0,year_end
+2024-09-01,Actual,Product & R&D,R&D,1510089.77,0,0.0,project
+2024-09-01,Actual,Sales,Other OPEX,184066.43,0,0.0,flat
+2024-09-01,Actual,Operations,Other OPEX,160904.15,0,0.0,flat
+2024-09-01,Actual,Product & R&D,Other OPEX,133423.4,0,0.0,flat
+2024-09-01,Actual,Finance,Other OPEX,78446.08,0,0.0,flat
+2024-09-01,Actual,People,Other OPEX,70228.66,0,0.0,flat
+2024-09-01,Actual,Technology,Other OPEX,106936.4,0,0.0,flat
+2024-09-01,Actual,Corporate,Other OPEX,117822.89,0,0.0,flat
+2024-10-01,Actual,Sales,Payroll,4319533.24,44,98171.21,payroll
+2024-10-01,Actual,Operations,Payroll,3054604.7,35,87274.42,payroll
+2024-10-01,Actual,Product & R&D,Payroll,5308964.78,49,108346.22,payroll
+2024-10-01,Actual,Finance,Payroll,1038048.1,10,103804.81,payroll
+2024-10-01,Actual,People,Payroll,688456.3,7,98350.9,payroll
+2024-10-01,Actual,Technology,Payroll,1655050.08,16,103440.63,payroll
+2024-10-01,Actual,Corporate,Payroll,1031347.92,8,128918.49,payroll
+2024-10-01,Actual,Operations,Contractors,532324.26,0,0.0,flat
+2024-10-01,Actual,Product & R&D,Contractors,1877609.4,0,0.0,project
+2024-10-01,Actual,Technology,Contractors,666522.07,0,0.0,project
+2024-10-01,Actual,Sales,Marketing,3246208.71,0,0.0,commercial
+2024-10-01,Actual,Technology,Software,949128.53,0,0.0,flat
+2024-10-01,Actual,Product & R&D,Software,309128.81,0,0.0,flat
+2024-10-01,Actual,Finance,Software,163653.37,0,0.0,flat
+2024-10-01,Actual,Sales,Travel,632803.63,0,0.0,travel
+2024-10-01,Actual,Operations,Travel,176545.89,0,0.0,travel
+2024-10-01,Actual,Corporate,Travel,120745.16,0,0.0,travel
+2024-10-01,Actual,Corporate,Facilities,1319182.74,0,0.0,flat
+2024-10-01,Actual,Finance,Professional Services,281374.84,0,0.0,year_end
+2024-10-01,Actual,People,Professional Services,191373.78,0,0.0,flat
+2024-10-01,Actual,Corporate,Professional Services,406364.45,0,0.0,year_end
+2024-10-01,Actual,Product & R&D,R&D,1712648.89,0,0.0,project
+2024-10-01,Actual,Sales,Other OPEX,190124.67,0,0.0,flat
+2024-10-01,Actual,Operations,Other OPEX,167410.47,0,0.0,flat
+2024-10-01,Actual,Product & R&D,Other OPEX,150928.71,0,0.0,flat
+2024-10-01,Actual,Finance,Other OPEX,79719.08,0,0.0,flat
+2024-10-01,Actual,People,Other OPEX,69137.87,0,0.0,flat
+2024-10-01,Actual,Technology,Other OPEX,101228.06,0,0.0,flat
+2024-10-01,Actual,Corporate,Other OPEX,128225.66,0,0.0,flat
+2024-11-01,Actual,Sales,Payroll,4435315.2,45,98562.56,payroll
+2024-11-01,Actual,Operations,Payroll,3102689.45,35,88648.27,payroll
+2024-11-01,Actual,Product & R&D,Payroll,5438992.0,50,108779.84,payroll
+2024-11-01,Actual,Finance,Payroll,1028193.8,10,102819.38,payroll
+2024-11-01,Actual,People,Payroll,688854.74,7,98407.82,payroll
+2024-11-01,Actual,Technology,Payroll,1663348.16,16,103959.26,payroll
+2024-11-01,Actual,Corporate,Payroll,1033296.0,8,129162.0,payroll
+2024-11-01,Actual,Operations,Contractors,503750.68,0,0.0,flat
+2024-11-01,Actual,Product & R&D,Contractors,1871258.15,0,0.0,project
+2024-11-01,Actual,Technology,Contractors,607305.05,0,0.0,project
+2024-11-01,Actual,Sales,Marketing,2826348.47,0,0.0,commercial
+2024-11-01,Actual,Technology,Software,923482.94,0,0.0,flat
+2024-11-01,Actual,Product & R&D,Software,322272.33,0,0.0,flat
+2024-11-01,Actual,Finance,Software,155875.52,0,0.0,flat
+2024-11-01,Actual,Sales,Travel,627792.1,0,0.0,travel
+2024-11-01,Actual,Operations,Travel,184652.76,0,0.0,travel
+2024-11-01,Actual,Corporate,Travel,110435.07,0,0.0,travel
+2024-11-01,Actual,Corporate,Facilities,1267508.81,0,0.0,flat
+2024-11-01,Actual,Finance,Professional Services,307394.98,0,0.0,year_end
+2024-11-01,Actual,People,Professional Services,197341.09,0,0.0,flat
+2024-11-01,Actual,Corporate,Professional Services,452644.29,0,0.0,year_end
+2024-11-01,Actual,Product & R&D,R&D,1635863.29,0,0.0,project
+2024-11-01,Actual,Sales,Other OPEX,189657.56,0,0.0,flat
+2024-11-01,Actual,Operations,Other OPEX,172414.85,0,0.0,flat
+2024-11-01,Actual,Product & R&D,Other OPEX,146410.4,0,0.0,flat
+2024-11-01,Actual,Finance,Other OPEX,82090.81,0,0.0,flat
+2024-11-01,Actual,People,Other OPEX,71952.95,0,0.0,flat
+2024-11-01,Actual,Technology,Other OPEX,105595.97,0,0.0,flat
+2024-11-01,Actual,Corporate,Other OPEX,119725.58,0,0.0,flat
+2024-12-01,Actual,Sales,Payroll,4455580.5,45,99012.9,payroll
+2024-12-01,Actual,Operations,Payroll,3196430.28,36,88789.73,payroll
+2024-12-01,Actual,Product & R&D,Payroll,5462437.0,50,109248.74,payroll
+2024-12-01,Actual,Finance,Payroll,1035298.5,10,103529.85,payroll
+2024-12-01,Actual,People,Payroll,697961.67,7,99708.81,payroll
+2024-12-01,Actual,Technology,Payroll,1677153.92,16,104822.12,payroll
+2024-12-01,Actual,Corporate,Payroll,1044325.52,8,130540.69,payroll
+2024-12-01,Actual,Operations,Contractors,511954.53,0,0.0,flat
+2024-12-01,Actual,Product & R&D,Contractors,1536097.01,0,0.0,project
+2024-12-01,Actual,Technology,Contractors,570215.2,0,0.0,project
+2024-12-01,Actual,Sales,Marketing,2853376.41,0,0.0,commercial
+2024-12-01,Actual,Technology,Software,982323.5,0,0.0,flat
+2024-12-01,Actual,Product & R&D,Software,330527.47,0,0.0,flat
+2024-12-01,Actual,Finance,Software,155592.49,0,0.0,flat
+2024-12-01,Actual,Sales,Travel,374421.53,0,0.0,travel
+2024-12-01,Actual,Operations,Travel,112228.34,0,0.0,travel
+2024-12-01,Actual,Corporate,Travel,71526.01,0,0.0,travel
+2024-12-01,Actual,Corporate,Facilities,1245818.09,0,0.0,flat
+2024-12-01,Actual,Finance,Professional Services,362337.24,0,0.0,year_end
+2024-12-01,Actual,People,Professional Services,193495.75,0,0.0,flat
+2024-12-01,Actual,Corporate,Professional Services,476257.88,0,0.0,year_end
+2024-12-01,Actual,Product & R&D,R&D,1343069.83,0,0.0,project
+2024-12-01,Actual,Sales,Other OPEX,189288.11,0,0.0,flat
+2024-12-01,Actual,Operations,Other OPEX,167069.12,0,0.0,flat
+2024-12-01,Actual,Product & R&D,Other OPEX,141708.04,0,0.0,flat
+2024-12-01,Actual,Finance,Other OPEX,77556.34,0,0.0,flat
+2024-12-01,Actual,People,Other OPEX,69782.05,0,0.0,flat
+2024-12-01,Actual,Technology,Other OPEX,101587.82,0,0.0,flat
+2024-12-01,Actual,Corporate,Other OPEX,121583.59,0,0.0,flat
+2025-01-01,Actual,Sales,Payroll,4482344.25,45,99607.65,payroll
+2025-01-01,Actual,Operations,Payroll,3201543.36,36,88931.76,payroll
+2025-01-01,Actual,Product & R&D,Payroll,5601885.9,51,109840.9,payroll
+2025-01-01,Actual,Finance,Payroll,1047275.1,10,104727.51,payroll
+2025-01-01,Actual,People,Payroll,692127.1,7,98875.3,payroll
+2025-01-01,Actual,Technology,Payroll,1674584.16,16,104661.51,payroll
+2025-01-01,Actual,Corporate,Payroll,1054591.68,8,131823.96,payroll
+2025-01-01,Actual,Operations,Contractors,486508.58,0,0.0,flat
+2025-01-01,Actual,Product & R&D,Contractors,1579198.52,0,0.0,project
+2025-01-01,Actual,Technology,Contractors,612534.75,0,0.0,project
+2025-01-01,Actual,Sales,Marketing,2360408.72,0,0.0,commercial
+2025-01-01,Actual,Technology,Software,976131.52,0,0.0,flat
+2025-01-01,Actual,Product & R&D,Software,338657.48,0,0.0,flat
+2025-01-01,Actual,Finance,Software,159022.98,0,0.0,flat
+2025-01-01,Actual,Sales,Travel,497901.28,0,0.0,travel
+2025-01-01,Actual,Operations,Travel,134590.76,0,0.0,travel
+2025-01-01,Actual,Corporate,Travel,85803.67,0,0.0,travel
+2025-01-01,Actual,Corporate,Facilities,1272601.35,0,0.0,flat
+2025-01-01,Actual,Finance,Professional Services,229096.99,0,0.0,year_end
+2025-01-01,Actual,People,Professional Services,185334.67,0,0.0,flat
+2025-01-01,Actual,Corporate,Professional Services,321986.45,0,0.0,year_end
+2025-01-01,Actual,Product & R&D,R&D,1379257.82,0,0.0,project
+2025-01-01,Actual,Sales,Other OPEX,190736.21,0,0.0,flat
+2025-01-01,Actual,Operations,Other OPEX,176080.53,0,0.0,flat
+2025-01-01,Actual,Product & R&D,Other OPEX,145561.87,0,0.0,flat
+2025-01-01,Actual,Finance,Other OPEX,81754.23,0,0.0,flat
+2025-01-01,Actual,People,Other OPEX,74930.82,0,0.0,flat
+2025-01-01,Actual,Technology,Other OPEX,103069.14,0,0.0,flat
+2025-01-01,Actual,Corporate,Other OPEX,127257.76,0,0.0,flat
+2025-02-01,Actual,Sales,Payroll,4597513.7,46,99945.95,payroll
+2025-02-01,Actual,Operations,Payroll,3207924.0,36,89109.0,payroll
+2025-02-01,Actual,Product & R&D,Payroll,5614815.42,51,110094.42,payroll
+2025-02-01,Actual,Finance,Payroll,1044544.7,10,104454.47,payroll
+2025-02-01,Actual,People,Payroll,699596.73,7,99942.39,payroll
+2025-02-01,Actual,Technology,Payroll,1675977.76,16,104748.61,payroll
+2025-02-01,Actual,Corporate,Payroll,1048288.24,8,131036.03,payroll
+2025-02-01,Actual,Operations,Contractors,517942.74,0,0.0,flat
+2025-02-01,Actual,Product & R&D,Contractors,1689164.77,0,0.0,project
+2025-02-01,Actual,Technology,Contractors,583338.14,0,0.0,project
+2025-02-01,Actual,Sales,Marketing,2627210.28,0,0.0,commercial
+2025-02-01,Actual,Technology,Software,1014593.68,0,0.0,flat
+2025-02-01,Actual,Product & R&D,Software,297907.87,0,0.0,flat
+2025-02-01,Actual,Finance,Software,155019.9,0,0.0,flat
+2025-02-01,Actual,Sales,Travel,534913.24,0,0.0,travel
+2025-02-01,Actual,Operations,Travel,145757.95,0,0.0,travel
+2025-02-01,Actual,Corporate,Travel,102072.56,0,0.0,travel
+2025-02-01,Actual,Corporate,Facilities,1255550.85,0,0.0,flat
+2025-02-01,Actual,Finance,Professional Services,230745.27,0,0.0,year_end
+2025-02-01,Actual,People,Professional Services,184381.98,0,0.0,flat
+2025-02-01,Actual,Corporate,Professional Services,332159.65,0,0.0,year_end
+2025-02-01,Actual,Product & R&D,R&D,1401997.96,0,0.0,project
+2025-02-01,Actual,Sales,Other OPEX,175540.03,0,0.0,flat
+2025-02-01,Actual,Operations,Other OPEX,167969.17,0,0.0,flat
+2025-02-01,Actual,Product & R&D,Other OPEX,142638.66,0,0.0,flat
+2025-02-01,Actual,Finance,Other OPEX,85461.5,0,0.0,flat
+2025-02-01,Actual,People,Other OPEX,76920.56,0,0.0,flat
+2025-02-01,Actual,Technology,Other OPEX,106264.89,0,0.0,flat
+2025-02-01,Actual,Corporate,Other OPEX,122064.43,0,0.0,flat
+2025-03-01,Actual,Sales,Payroll,4556032.74,46,99044.19,payroll
+2025-03-01,Actual,Operations,Payroll,3230313.84,36,89730.94,payroll
+2025-03-01,Actual,Product & R&D,Payroll,5658707.04,51,110955.04,payroll
+2025-03-01,Actual,Finance,Payroll,1058267.3,10,105826.73,payroll
+2025-03-01,Actual,People,Payroll,692080.06,7,98868.58,payroll
+2025-03-01,Actual,Technology,Payroll,1807064.47,17,106297.91,payroll
+2025-03-01,Actual,Corporate,Payroll,1050953.36,8,131369.17,payroll
+2025-03-01,Actual,Operations,Contractors,550270.27,0,0.0,flat
+2025-03-01,Actual,Product & R&D,Contractors,1808729.39,0,0.0,project
+2025-03-01,Actual,Technology,Contractors,606137.53,0,0.0,project
+2025-03-01,Actual,Sales,Marketing,2881740.0,0,0.0,commercial
+2025-03-01,Actual,Technology,Software,950303.5,0,0.0,flat
+2025-03-01,Actual,Product & R&D,Software,318810.22,0,0.0,flat
+2025-03-01,Actual,Finance,Software,161814.33,0,0.0,flat
+2025-03-01,Actual,Sales,Travel,615240.24,0,0.0,travel
+2025-03-01,Actual,Operations,Travel,162292.9,0,0.0,travel
+2025-03-01,Actual,Corporate,Travel,108578.5,0,0.0,travel
+2025-03-01,Actual,Corporate,Facilities,1345251.43,0,0.0,flat
+2025-03-01,Actual,Finance,Professional Services,247466.75,0,0.0,year_end
+2025-03-01,Actual,People,Professional Services,191630.69,0,0.0,flat
+2025-03-01,Actual,Corporate,Professional Services,358618.79,0,0.0,year_end
+2025-03-01,Actual,Product & R&D,R&D,1573712.52,0,0.0,project
+2025-03-01,Actual,Sales,Other OPEX,195487.62,0,0.0,flat
+2025-03-01,Actual,Operations,Other OPEX,172327.21,0,0.0,flat
+2025-03-01,Actual,Product & R&D,Other OPEX,150519.83,0,0.0,flat
+2025-03-01,Actual,Finance,Other OPEX,79676.48,0,0.0,flat
+2025-03-01,Actual,People,Other OPEX,73657.58,0,0.0,flat
+2025-03-01,Actual,Technology,Other OPEX,99983.7,0,0.0,flat
+2025-03-01,Actual,Corporate,Other OPEX,127342.3,0,0.0,flat
+2025-04-01,Actual,Sales,Payroll,4590290.78,46,99788.93,payroll
+2025-04-01,Actual,Operations,Payroll,3243220.92,36,90089.47,payroll
+2025-04-01,Actual,Product & R&D,Payroll,5722490.8,52,110047.9,payroll
+2025-04-01,Actual,Finance,Payroll,1173603.97,11,106691.27,payroll
+2025-04-01,Actual,People,Payroll,798698.08,8,99837.26,payroll
+2025-04-01,Actual,Technology,Payroll,1804095.59,17,106123.27,payroll
+2025-04-01,Actual,Corporate,Payroll,1053966.4,8,131745.8,payroll
+2025-04-01,Actual,Operations,Contractors,529546.83,0,0.0,flat
+2025-04-01,Actual,Product & R&D,Contractors,1809009.74,0,0.0,project
+2025-04-01,Actual,Technology,Contractors,683230.44,0,0.0,project
+2025-04-01,Actual,Sales,Marketing,3000653.09,0,0.0,commercial
+2025-04-01,Actual,Technology,Software,1008160.08,0,0.0,flat
+2025-04-01,Actual,Product & R&D,Software,335583.81,0,0.0,flat
+2025-04-01,Actual,Finance,Software,151503.94,0,0.0,flat
+2025-04-01,Actual,Sales,Travel,628276.75,0,0.0,travel
+2025-04-01,Actual,Operations,Travel,168231.52,0,0.0,travel
+2025-04-01,Actual,Corporate,Travel,108617.59,0,0.0,travel
+2025-04-01,Actual,Corporate,Facilities,1309905.93,0,0.0,flat
+2025-04-01,Actual,Finance,Professional Services,236502.43,0,0.0,year_end
+2025-04-01,Actual,People,Professional Services,188144.15,0,0.0,flat
+2025-04-01,Actual,Corporate,Professional Services,338633.38,0,0.0,year_end
+2025-04-01,Actual,Product & R&D,R&D,1635351.95,0,0.0,project
+2025-04-01,Actual,Sales,Other OPEX,209347.61,0,0.0,flat
+2025-04-01,Actual,Operations,Other OPEX,166183.1,0,0.0,flat
+2025-04-01,Actual,Product & R&D,Other OPEX,154575.65,0,0.0,flat
+2025-04-01,Actual,Finance,Other OPEX,86952.82,0,0.0,flat
+2025-04-01,Actual,People,Other OPEX,71338.33,0,0.0,flat
+2025-04-01,Actual,Technology,Other OPEX,109711.43,0,0.0,flat
+2025-04-01,Actual,Corporate,Other OPEX,124582.25,0,0.0,flat
+2025-05-01,Actual,Sales,Payroll,4709113.3,47,100193.9,payroll
+2025-05-01,Actual,Operations,Payroll,3264086.88,36,90669.08,payroll
+2025-05-01,Actual,Product & R&D,Payroll,5830511.96,52,112125.23,payroll
+2025-05-01,Actual,Finance,Payroll,1168240.59,11,106203.69,payroll
+2025-05-01,Actual,People,Payroll,810642.24,8,101330.28,payroll
+2025-05-01,Actual,Technology,Payroll,1809523.35,17,106442.55,payroll
+2025-05-01,Actual,Corporate,Payroll,1062633.68,8,132829.21,payroll
+2025-05-01,Actual,Operations,Contractors,511042.21,0,0.0,flat
+2025-05-01,Actual,Product & R&D,Contractors,1888019.64,0,0.0,project
+2025-05-01,Actual,Technology,Contractors,669595.46,0,0.0,project
+2025-05-01,Actual,Sales,Marketing,3103602.13,0,0.0,commercial
+2025-05-01,Actual,Technology,Software,1050859.82,0,0.0,flat
+2025-05-01,Actual,Product & R&D,Software,317300.16,0,0.0,flat
+2025-05-01,Actual,Finance,Software,149251.84,0,0.0,flat
+2025-05-01,Actual,Sales,Travel,633173.65,0,0.0,travel
+2025-05-01,Actual,Operations,Travel,164202.09,0,0.0,travel
+2025-05-01,Actual,Corporate,Travel,111654.56,0,0.0,travel
+2025-05-01,Actual,Corporate,Facilities,1397764.85,0,0.0,flat
+2025-05-01,Actual,Finance,Professional Services,263124.25,0,0.0,year_end
+2025-05-01,Actual,People,Professional Services,191167.25,0,0.0,flat
+2025-05-01,Actual,Corporate,Professional Services,359879.05,0,0.0,year_end
+2025-05-01,Actual,Product & R&D,R&D,1668394.63,0,0.0,project
+2025-05-01,Actual,Sales,Other OPEX,187995.8,0,0.0,flat
+2025-05-01,Actual,Operations,Other OPEX,174371.96,0,0.0,flat
+2025-05-01,Actual,Product & R&D,Other OPEX,157180.02,0,0.0,flat
+2025-05-01,Actual,Finance,Other OPEX,85684.21,0,0.0,flat
+2025-05-01,Actual,People,Other OPEX,70727.08,0,0.0,flat
+2025-05-01,Actual,Technology,Other OPEX,101366.93,0,0.0,flat
+2025-05-01,Actual,Corporate,Other OPEX,120216.07,0,0.0,flat
+2025-06-01,Actual,Sales,Payroll,4775896.07,47,101614.81,payroll
+2025-06-01,Actual,Operations,Payroll,3267372.96,36,90760.36,payroll
+2025-06-01,Actual,Product & R&D,Payroll,5919618.76,53,111690.92,payroll
+2025-06-01,Actual,Finance,Payroll,1157194.72,11,105199.52,payroll
+2025-06-01,Actual,People,Payroll,810724.08,8,101340.51,payroll
+2025-06-01,Actual,Technology,Payroll,1812774.09,17,106633.77,payroll
+2025-06-01,Actual,Corporate,Payroll,1064190.32,8,133023.79,payroll
+2025-06-01,Actual,Operations,Contractors,528110.44,0,0.0,flat
+2025-06-01,Actual,Product & R&D,Contractors,1906144.62,0,0.0,project
+2025-06-01,Actual,Technology,Contractors,774608.13,0,0.0,project
+2025-06-01,Actual,Sales,Marketing,2818472.97,0,0.0,commercial
+2025-06-01,Actual,Technology,Software,1092088.89,0,0.0,flat
+2025-06-01,Actual,Product & R&D,Software,361905.65,0,0.0,flat
+2025-06-01,Actual,Finance,Software,147859.0,0,0.0,flat
+2025-06-01,Actual,Sales,Travel,601738.27,0,0.0,travel
+2025-06-01,Actual,Operations,Travel,162345.04,0,0.0,travel
+2025-06-01,Actual,Corporate,Travel,114685.65,0,0.0,travel
+2025-06-01,Actual,Corporate,Facilities,1234503.3,0,0.0,flat
+2025-06-01,Actual,Finance,Professional Services,259344.47,0,0.0,year_end
+2025-06-01,Actual,People,Professional Services,201188.1,0,0.0,flat
+2025-06-01,Actual,Corporate,Professional Services,381531.3,0,0.0,year_end
+2025-06-01,Actual,Product & R&D,R&D,1748322.61,0,0.0,project
+2025-06-01,Actual,Sales,Other OPEX,192939.61,0,0.0,flat
+2025-06-01,Actual,Operations,Other OPEX,155382.89,0,0.0,flat
+2025-06-01,Actual,Product & R&D,Other OPEX,151748.2,0,0.0,flat
+2025-06-01,Actual,Finance,Other OPEX,78738.69,0,0.0,flat
+2025-06-01,Actual,People,Other OPEX,77050.78,0,0.0,flat
+2025-06-01,Actual,Technology,Other OPEX,100372.14,0,0.0,flat
+2025-06-01,Actual,Corporate,Other OPEX,121893.76,0,0.0,flat
+2025-07-01,Actual,Sales,Payroll,4732185.13,47,100684.79,payroll
+2025-07-01,Actual,Operations,Payroll,3348981.37,37,90513.01,payroll
+2025-07-01,Actual,Product & R&D,Payroll,5915891.27,53,111620.59,payroll
+2025-07-01,Actual,Finance,Payroll,1178907.29,11,107173.39,payroll
+2025-07-01,Actual,People,Payroll,813574.56,8,101696.82,payroll
+2025-07-01,Actual,Technology,Payroll,1819617.27,17,107036.31,payroll
+2025-07-01,Actual,Corporate,Payroll,1069686.48,8,133710.81,payroll
+2025-07-01,Actual,Operations,Contractors,522245.88,0,0.0,flat
+2025-07-01,Actual,Product & R&D,Contractors,1626928.89,0,0.0,project
+2025-07-01,Actual,Technology,Contractors,578880.08,0,0.0,project
+2025-07-01,Actual,Sales,Marketing,1764933.55,0,0.0,commercial
+2025-07-01,Actual,Technology,Software,1025652.92,0,0.0,flat
+2025-07-01,Actual,Product & R&D,Software,324881.69,0,0.0,flat
+2025-07-01,Actual,Finance,Software,160759.58,0,0.0,flat
+2025-07-01,Actual,Sales,Travel,327557.0,0,0.0,travel
+2025-07-01,Actual,Operations,Travel,84826.48,0,0.0,travel
+2025-07-01,Actual,Corporate,Travel,58466.34,0,0.0,travel
+2025-07-01,Actual,Corporate,Facilities,1256078.05,0,0.0,flat
+2025-07-01,Actual,Finance,Professional Services,232657.17,0,0.0,year_end
+2025-07-01,Actual,People,Professional Services,183494.38,0,0.0,flat
+2025-07-01,Actual,Corporate,Professional Services,321892.58,0,0.0,year_end
+2025-07-01,Actual,Product & R&D,R&D,1409678.77,0,0.0,project
+2025-07-01,Actual,Sales,Other OPEX,190774.64,0,0.0,flat
+2025-07-01,Actual,Operations,Other OPEX,172215.92,0,0.0,flat
+2025-07-01,Actual,Product & R&D,Other OPEX,139542.39,0,0.0,flat
+2025-07-01,Actual,Finance,Other OPEX,83012.8,0,0.0,flat
+2025-07-01,Actual,People,Other OPEX,74074.62,0,0.0,flat
+2025-07-01,Actual,Technology,Other OPEX,103269.5,0,0.0,flat
+2025-07-01,Actual,Corporate,Other OPEX,121541.02,0,0.0,flat
+2025-08-01,Actual,Sales,Payroll,4806243.5,47,102260.5,payroll
+2025-08-01,Actual,Operations,Payroll,3390851.31,37,91644.63,payroll
+2025-08-01,Actual,Product & R&D,Payroll,6011588.6,53,113426.2,payroll
+2025-08-01,Actual,Finance,Payroll,1183213.35,11,107564.85,payroll
+2025-08-01,Actual,People,Payroll,808784.48,8,101098.06,payroll
+2025-08-01,Actual,Technology,Payroll,1829898.87,17,107641.11,payroll
+2025-08-01,Actual,Corporate,Payroll,1073768.32,8,134221.04,payroll
+2025-08-01,Actual,Operations,Contractors,553272.84,0,0.0,flat
+2025-08-01,Actual,Product & R&D,Contractors,1724955.37,0,0.0,project
+2025-08-01,Actual,Technology,Contractors,646709.33,0,0.0,project
+2025-08-01,Actual,Sales,Marketing,2303495.68,0,0.0,commercial
+2025-08-01,Actual,Technology,Software,951919.92,0,0.0,flat
+2025-08-01,Actual,Product & R&D,Software,320806.62,0,0.0,flat
+2025-08-01,Actual,Finance,Software,153472.59,0,0.0,flat
+2025-08-01,Actual,Sales,Travel,357503.87,0,0.0,travel
+2025-08-01,Actual,Operations,Travel,108210.92,0,0.0,travel
+2025-08-01,Actual,Corporate,Travel,74999.28,0,0.0,travel
+2025-08-01,Actual,Corporate,Facilities,1304690.79,0,0.0,flat
+2025-08-01,Actual,Finance,Professional Services,228636.49,0,0.0,year_end
+2025-08-01,Actual,People,Professional Services,192503.37,0,0.0,flat
+2025-08-01,Actual,Corporate,Professional Services,335895.35,0,0.0,year_end
+2025-08-01,Actual,Product & R&D,R&D,1527680.21,0,0.0,project
+2025-08-01,Actual,Sales,Other OPEX,193040.07,0,0.0,flat
+2025-08-01,Actual,Operations,Other OPEX,164888.83,0,0.0,flat
+2025-08-01,Actual,Product & R&D,Other OPEX,155393.95,0,0.0,flat
+2025-08-01,Actual,Finance,Other OPEX,82695.82,0,0.0,flat
+2025-08-01,Actual,People,Other OPEX,71328.97,0,0.0,flat
+2025-08-01,Actual,Technology,Other OPEX,107595.47,0,0.0,flat
+2025-08-01,Actual,Corporate,Other OPEX,125076.06,0,0.0,flat
+2025-09-01,Actual,Sales,Payroll,4881572.64,48,101699.43,payroll
+2025-09-01,Actual,Operations,Payroll,3370683.35,37,91099.55,payroll
+2025-09-01,Actual,Product & R&D,Payroll,6098482.44,54,112934.86,payroll
+2025-09-01,Actual,Finance,Payroll,1178055.89,11,107095.99,payroll
+2025-09-01,Actual,People,Payroll,818885.28,8,102360.66,payroll
+2025-09-01,Actual,Technology,Payroll,1820998.18,17,107117.54,payroll
+2025-09-01,Actual,Corporate,Payroll,1064646.0,8,133080.75,payroll
+2025-09-01,Actual,Operations,Contractors,534202.19,0,0.0,flat
+2025-09-01,Actual,Product & R&D,Contractors,1987005.36,0,0.0,project
+2025-09-01,Actual,Technology,Contractors,691170.27,0,0.0,project
+2025-09-01,Actual,Sales,Marketing,2891082.13,0,0.0,commercial
+2025-09-01,Actual,Technology,Software,1087170.07,0,0.0,flat
+2025-09-01,Actual,Product & R&D,Software,346943.71,0,0.0,flat
+2025-09-01,Actual,Finance,Software,158265.46,0,0.0,flat
+2025-09-01,Actual,Sales,Travel,698642.54,0,0.0,travel
+2025-09-01,Actual,Operations,Travel,184084.32,0,0.0,travel
+2025-09-01,Actual,Corporate,Travel,123037.55,0,0.0,travel
+2025-09-01,Actual,Corporate,Facilities,1260867.74,0,0.0,flat
+2025-09-01,Actual,Finance,Professional Services,258851.84,0,0.0,year_end
+2025-09-01,Actual,People,Professional Services,201978.88,0,0.0,flat
+2025-09-01,Actual,Corporate,Professional Services,377568.63,0,0.0,year_end
+2025-09-01,Actual,Product & R&D,R&D,1692908.45,0,0.0,project
+2025-09-01,Actual,Sales,Other OPEX,195321.95,0,0.0,flat
+2025-09-01,Actual,Operations,Other OPEX,179492.46,0,0.0,flat
+2025-09-01,Actual,Product & R&D,Other OPEX,145175.61,0,0.0,flat
+2025-09-01,Actual,Finance,Other OPEX,79900.67,0,0.0,flat
+2025-09-01,Actual,People,Other OPEX,74427.98,0,0.0,flat
+2025-09-01,Actual,Technology,Other OPEX,109091.93,0,0.0,flat
+2025-09-01,Actual,Corporate,Other OPEX,127254.74,0,0.0,flat
+2025-10-01,Actual,Sales,Payroll,4911748.32,48,102328.09,payroll
+2025-10-01,Actual,Operations,Payroll,3402288.38,37,91953.74,payroll
+2025-10-01,Actual,Product & R&D,Payroll,6075820.26,54,112515.19,payroll
+2025-10-01,Actual,Finance,Payroll,1175735.88,11,106885.08,payroll
+2025-10-01,Actual,People,Payroll,821275.92,8,102659.49,payroll
+2025-10-01,Actual,Technology,Payroll,1862329.6,17,109548.8,payroll
+2025-10-01,Actual,Corporate,Payroll,1075508.16,8,134438.52,payroll
+2025-10-01,Actual,Operations,Contractors,550220.09,0,0.0,flat
+2025-10-01,Actual,Product & R&D,Contractors,1896717.38,0,0.0,project
+2025-10-01,Actual,Technology,Contractors,749646.77,0,0.0,project
+2025-10-01,Actual,Sales,Marketing,3343924.58,0,0.0,commercial
+2025-10-01,Actual,Technology,Software,943497.69,0,0.0,flat
+2025-10-01,Actual,Product & R&D,Software,321679.68,0,0.0,flat
+2025-10-01,Actual,Finance,Software,161863.37,0,0.0,flat
+2025-10-01,Actual,Sales,Travel,699450.04,0,0.0,travel
+2025-10-01,Actual,Operations,Travel,183069.85,0,0.0,travel
+2025-10-01,Actual,Corporate,Travel,119201.33,0,0.0,travel
+2025-10-01,Actual,Corporate,Facilities,1309183.17,0,0.0,flat
+2025-10-01,Actual,Finance,Professional Services,286891.72,0,0.0,year_end
+2025-10-01,Actual,People,Professional Services,198851.01,0,0.0,flat
+2025-10-01,Actual,Corporate,Professional Services,424522.49,0,0.0,year_end
+2025-10-01,Actual,Product & R&D,R&D,1789095.85,0,0.0,project
+2025-10-01,Actual,Sales,Other OPEX,187652.34,0,0.0,flat
+2025-10-01,Actual,Operations,Other OPEX,171389.88,0,0.0,flat
+2025-10-01,Actual,Product & R&D,Other OPEX,154283.4,0,0.0,flat
+2025-10-01,Actual,Finance,Other OPEX,82880.95,0,0.0,flat
+2025-10-01,Actual,People,Other OPEX,73510.59,0,0.0,flat
+2025-10-01,Actual,Technology,Other OPEX,109120.2,0,0.0,flat
+2025-10-01,Actual,Corporate,Other OPEX,128733.57,0,0.0,flat
+2025-11-01,Actual,Sales,Payroll,4957399.2,48,103279.15,payroll
+2025-11-01,Actual,Operations,Payroll,3365835.61,37,90968.53,payroll
+2025-11-01,Actual,Product & R&D,Payroll,6256994.15,55,113763.53,payroll
+2025-11-01,Actual,Finance,Payroll,1186540.41,11,107867.31,payroll
+2025-11-01,Actual,People,Payroll,820556.08,8,102569.51,payroll
+2025-11-01,Actual,Technology,Payroll,1932170.58,18,107342.81,payroll
+2025-11-01,Actual,Corporate,Payroll,1083569.92,8,135446.24,payroll
+2025-11-01,Actual,Operations,Contractors,512554.03,0,0.0,flat
+2025-11-01,Actual,Product & R&D,Contractors,1895889.14,0,0.0,project
+2025-11-01,Actual,Technology,Contractors,678523.07,0,0.0,project
+2025-11-01,Actual,Sales,Marketing,3284833.61,0,0.0,commercial
+2025-11-01,Actual,Technology,Software,1057392.52,0,0.0,flat
+2025-11-01,Actual,Product & R&D,Software,335437.98,0,0.0,flat
+2025-11-01,Actual,Finance,Software,162888.34,0,0.0,flat
+2025-11-01,Actual,Sales,Travel,690611.06,0,0.0,travel
+2025-11-01,Actual,Operations,Travel,177963.42,0,0.0,travel
+2025-11-01,Actual,Corporate,Travel,114114.92,0,0.0,travel
+2025-11-01,Actual,Corporate,Facilities,1442280.55,0,0.0,flat
+2025-11-01,Actual,Finance,Professional Services,318166.79,0,0.0,year_end
+2025-11-01,Actual,People,Professional Services,186149.23,0,0.0,flat
+2025-11-01,Actual,Corporate,Professional Services,454213.36,0,0.0,year_end
+2025-11-01,Actual,Product & R&D,R&D,1721561.15,0,0.0,project
+2025-11-01,Actual,Sales,Other OPEX,189032.3,0,0.0,flat
+2025-11-01,Actual,Operations,Other OPEX,162059.26,0,0.0,flat
+2025-11-01,Actual,Product & R&D,Other OPEX,153211.87,0,0.0,flat
+2025-11-01,Actual,Finance,Other OPEX,85453.92,0,0.0,flat
+2025-11-01,Actual,People,Other OPEX,72824.28,0,0.0,flat
+2025-11-01,Actual,Technology,Other OPEX,107553.38,0,0.0,flat
+2025-11-01,Actual,Corporate,Other OPEX,127025.86,0,0.0,flat
+2025-12-01,Actual,Sales,Payroll,5062078.28,49,103307.72,payroll
+2025-12-01,Actual,Operations,Payroll,3449581.78,37,93231.94,payroll
+2025-12-01,Actual,Product & R&D,Payroll,6243689.1,55,113521.62,payroll
+2025-12-01,Actual,Finance,Payroll,1190766.5,11,108251.5,payroll
+2025-12-01,Actual,People,Payroll,831063.76,8,103882.97,payroll
+2025-12-01,Actual,Technology,Payroll,1950782.58,18,108376.81,payroll
+2025-12-01,Actual,Corporate,Payroll,1083121.28,8,135390.16,payroll
+2025-12-01,Actual,Operations,Contractors,521476.52,0,0.0,flat
+2025-12-01,Actual,Product & R&D,Contractors,1594549.49,0,0.0,project
+2025-12-01,Actual,Technology,Contractors,583166.78,0,0.0,project
+2025-12-01,Actual,Sales,Marketing,3061428.58,0,0.0,commercial
+2025-12-01,Actual,Technology,Software,1031463.05,0,0.0,flat
+2025-12-01,Actual,Product & R&D,Software,347300.08,0,0.0,flat
+2025-12-01,Actual,Finance,Software,162884.72,0,0.0,flat
+2025-12-01,Actual,Sales,Travel,419005.29,0,0.0,travel
+2025-12-01,Actual,Operations,Travel,121367.25,0,0.0,travel
+2025-12-01,Actual,Corporate,Travel,78544.07,0,0.0,travel
+2025-12-01,Actual,Corporate,Facilities,1319785.41,0,0.0,flat
+2025-12-01,Actual,Finance,Professional Services,365103.71,0,0.0,year_end
+2025-12-01,Actual,People,Professional Services,194082.27,0,0.0,flat
+2025-12-01,Actual,Corporate,Professional Services,510632.94,0,0.0,year_end
+2025-12-01,Actual,Product & R&D,R&D,1423764.28,0,0.0,project
+2025-12-01,Actual,Sales,Other OPEX,199257.91,0,0.0,flat
+2025-12-01,Actual,Operations,Other OPEX,157984.98,0,0.0,flat
+2025-12-01,Actual,Product & R&D,Other OPEX,154298.12,0,0.0,flat
+2025-12-01,Actual,Finance,Other OPEX,81121.84,0,0.0,flat
+2025-12-01,Actual,People,Other OPEX,76307.09,0,0.0,flat
+2025-12-01,Actual,Technology,Other OPEX,108267.04,0,0.0,flat
+2025-12-01,Actual,Corporate,Other OPEX,127211.71,0,0.0,flat
+2026-01-01,Actual,Sales,Payroll,5070510.2,49,103479.8,payroll
+2026-01-01,Actual,Operations,Payroll,3407975.65,37,92107.45,payroll
+2026-01-01,Actual,Product & R&D,Payroll,6420434.16,56,114650.61,payroll
+2026-01-01,Actual,Finance,Payroll,1198076.55,11,108916.05,payroll
+2026-01-01,Actual,People,Payroll,833380.88,8,104172.61,payroll
+2026-01-01,Actual,Technology,Payroll,1975849.74,18,109769.43,payroll
+2026-01-01,Actual,Corporate,Payroll,1096874.0,8,137109.25,payroll
+2026-01-01,Actual,Operations,Contractors,523831.64,0,0.0,flat
+2026-01-01,Actual,Product & R&D,Contractors,1581898.47,0,0.0,project
+2026-01-01,Actual,Technology,Contractors,616842.21,0,0.0,project
+2026-01-01,Actual,Sales,Marketing,2577740.32,0,0.0,commercial
+2026-01-01,Actual,Technology,Software,1019144.87,0,0.0,flat
+2026-01-01,Actual,Product & R&D,Software,359132.19,0,0.0,flat
+2026-01-01,Actual,Finance,Software,169223.58,0,0.0,flat
+2026-01-01,Actual,Sales,Travel,522034.64,0,0.0,travel
+2026-01-01,Actual,Operations,Travel,140925.13,0,0.0,travel
+2026-01-01,Actual,Corporate,Travel,91116.72,0,0.0,travel
+2026-01-01,Actual,Corporate,Facilities,1369421.41,0,0.0,flat
+2026-01-01,Actual,Finance,Professional Services,255446.88,0,0.0,year_end
+2026-01-01,Actual,People,Professional Services,176456.2,0,0.0,flat
+2026-01-01,Actual,Corporate,Professional Services,359908.36,0,0.0,year_end
+2026-01-01,Actual,Product & R&D,R&D,1519771.68,0,0.0,project
+2026-01-01,Actual,Sales,Other OPEX,206202.06,0,0.0,flat
+2026-01-01,Actual,Operations,Other OPEX,179273.56,0,0.0,flat
+2026-01-01,Actual,Product & R&D,Other OPEX,150208.17,0,0.0,flat
+2026-01-01,Actual,Finance,Other OPEX,85355.26,0,0.0,flat
+2026-01-01,Actual,People,Other OPEX,74787.81,0,0.0,flat
+2026-01-01,Actual,Technology,Other OPEX,115104.75,0,0.0,flat
+2026-01-01,Actual,Corporate,Other OPEX,125229.62,0,0.0,flat
+2026-02-01,Actual,Sales,Payroll,5080493.95,49,103683.55,payroll
+2026-02-01,Actual,Operations,Payroll,3538889.46,38,93128.67,payroll
+2026-02-01,Actual,Product & R&D,Payroll,6431706.96,56,114851.91,payroll
+2026-02-01,Actual,Finance,Payroll,1197651.51,11,108877.41,payroll
+2026-02-01,Actual,People,Payroll,822808.32,8,102851.04,payroll
+2026-02-01,Actual,Technology,Payroll,1952856.36,18,108492.02,payroll
+2026-02-01,Actual,Corporate,Payroll,1236861.63,9,137429.07,payroll
+2026-02-01,Actual,Operations,Contractors,570544.18,0,0.0,flat
+2026-02-01,Actual,Product & R&D,Contractors,1744168.77,0,0.0,project
+2026-02-01,Actual,Technology,Contractors,644720.08,0,0.0,project
+2026-02-01,Actual,Sales,Marketing,2678976.43,0,0.0,commercial
+2026-02-01,Actual,Technology,Software,1070246.23,0,0.0,flat
+2026-02-01,Actual,Product & R&D,Software,353199.25,0,0.0,flat
+2026-02-01,Actual,Finance,Software,154658.97,0,0.0,flat
+2026-02-01,Actual,Sales,Travel,578190.01,0,0.0,travel
+2026-02-01,Actual,Operations,Travel,145845.54,0,0.0,travel
+2026-02-01,Actual,Corporate,Travel,103382.45,0,0.0,travel
+2026-02-01,Actual,Corporate,Facilities,1379348.93,0,0.0,flat
+2026-02-01,Actual,Finance,Professional Services,252403.74,0,0.0,year_end
+2026-02-01,Actual,People,Professional Services,191875.96,0,0.0,flat
+2026-02-01,Actual,Corporate,Professional Services,350603.23,0,0.0,year_end
+2026-02-01,Actual,Product & R&D,R&D,1599449.2,0,0.0,project
+2026-02-01,Actual,Sales,Other OPEX,205583.04,0,0.0,flat
+2026-02-01,Actual,Operations,Other OPEX,168526.4,0,0.0,flat
+2026-02-01,Actual,Product & R&D,Other OPEX,148714.41,0,0.0,flat
+2026-02-01,Actual,Finance,Other OPEX,83372.56,0,0.0,flat
+2026-02-01,Actual,People,Other OPEX,77389.54,0,0.0,flat
+2026-02-01,Actual,Technology,Other OPEX,117522.92,0,0.0,flat
+2026-02-01,Actual,Corporate,Other OPEX,122546.7,0,0.0,flat
+2026-03-01,Actual,Sales,Payroll,5216940.0,50,104338.8,payroll
+2026-03-01,Actual,Operations,Payroll,3549153.26,38,93398.77,payroll
+2026-03-01,Actual,Product & R&D,Payroll,6587707.17,57,115573.81,payroll
+2026-03-01,Actual,Finance,Payroll,1213595.57,11,110326.87,payroll
+2026-03-01,Actual,People,Payroll,836178.56,8,104522.32,payroll
+2026-03-01,Actual,Technology,Payroll,1983594.6,18,110199.7,payroll
+2026-03-01,Actual,Corporate,Payroll,1239207.39,9,137689.71,payroll
+2026-03-01,Actual,Operations,Contractors,493893.16,0,0.0,flat
+2026-03-01,Actual,Product & R&D,Contractors,1810005.18,0,0.0,project
+2026-03-01,Actual,Technology,Contractors,721832.32,0,0.0,project
+2026-03-01,Actual,Sales,Marketing,3433172.43,0,0.0,commercial
+2026-03-01,Actual,Technology,Software,1079101.17,0,0.0,flat
+2026-03-01,Actual,Product & R&D,Software,371697.31,0,0.0,flat
+2026-03-01,Actual,Finance,Software,162588.3,0,0.0,flat
+2026-03-01,Actual,Sales,Travel,678570.82,0,0.0,travel
+2026-03-01,Actual,Operations,Travel,168498.83,0,0.0,travel
+2026-03-01,Actual,Corporate,Travel,116459.14,0,0.0,travel
+2026-03-01,Actual,Corporate,Facilities,1275531.1,0,0.0,flat
+2026-03-01,Actual,Finance,Professional Services,291049.79,0,0.0,year_end
+2026-03-01,Actual,People,Professional Services,194800.87,0,0.0,flat
+2026-03-01,Actual,Corporate,Professional Services,382278.31,0,0.0,year_end
+2026-03-01,Actual,Product & R&D,R&D,1700973.19,0,0.0,project
+2026-03-01,Actual,Sales,Other OPEX,188593.43,0,0.0,flat
+2026-03-01,Actual,Operations,Other OPEX,177649.96,0,0.0,flat
+2026-03-01,Actual,Product & R&D,Other OPEX,149620.04,0,0.0,flat
+2026-03-01,Actual,Finance,Other OPEX,86680.75,0,0.0,flat
+2026-03-01,Actual,People,Other OPEX,75799.2,0,0.0,flat
+2026-03-01,Actual,Technology,Other OPEX,119313.97,0,0.0,flat
+2026-03-01,Actual,Corporate,Other OPEX,124370.08,0,0.0,flat
+2026-04-01,Actual,Sales,Payroll,5256426.0,50,105128.52,payroll
+2026-04-01,Actual,Operations,Payroll,3557467.66,38,93617.57,payroll
+2026-04-01,Actual,Product & R&D,Payroll,6635914.35,57,116419.55,payroll
+2026-04-01,Actual,Finance,Payroll,1213481.94,11,110316.54,payroll
+2026-04-01,Actual,People,Payroll,843687.28,8,105460.91,payroll
+2026-04-01,Actual,Technology,Payroll,1994443.56,18,110802.42,payroll
+2026-04-01,Actual,Corporate,Payroll,1240454.79,9,137828.31,payroll
+2026-04-01,Actual,Operations,Contractors,531194.4,0,0.0,flat
+2026-04-01,Actual,Product & R&D,Contractors,1931735.49,0,0.0,project
+2026-04-01,Actual,Technology,Contractors,722004.73,0,0.0,project
+2026-04-01,Actual,Sales,Marketing,3137962.33,0,0.0,commercial
+2026-04-01,Actual,Technology,Software,1158566.2,0,0.0,flat
+2026-04-01,Actual,Product & R&D,Software,366726.15,0,0.0,flat
+2026-04-01,Actual,Finance,Software,167647.51,0,0.0,flat
+2026-04-01,Actual,Sales,Travel,670986.64,0,0.0,travel
+2026-04-01,Actual,Operations,Travel,173244.73,0,0.0,travel
+2026-04-01,Actual,Corporate,Travel,113975.93,0,0.0,travel
+2026-04-01,Actual,Corporate,Facilities,1291925.97,0,0.0,flat
+2026-04-01,Actual,Finance,Professional Services,250691.79,0,0.0,year_end
+2026-04-01,Actual,People,Professional Services,201944.73,0,0.0,flat
+2026-04-01,Actual,Corporate,Professional Services,357899.47,0,0.0,year_end
+2026-04-01,Actual,Product & R&D,R&D,1776913.91,0,0.0,project
+2026-04-01,Actual,Sales,Other OPEX,200994.96,0,0.0,flat
+2026-04-01,Actual,Operations,Other OPEX,163877.29,0,0.0,flat
+2026-04-01,Actual,Product & R&D,Other OPEX,148453.0,0,0.0,flat
+2026-04-01,Actual,Finance,Other OPEX,87483.64,0,0.0,flat
+2026-04-01,Actual,People,Other OPEX,73455.59,0,0.0,flat
+2026-04-01,Actual,Technology,Other OPEX,109147.77,0,0.0,flat
+2026-04-01,Actual,Corporate,Other OPEX,125283.21,0,0.0,flat
+2026-05-01,Actual,Sales,Payroll,5277188.0,50,105543.76,payroll
+2026-05-01,Actual,Operations,Payroll,3573550.02,38,94040.79,payroll
+2026-05-01,Actual,Product & R&D,Payroll,6680088.21,57,117194.53,payroll
+2026-05-01,Actual,Finance,Payroll,1217741.91,11,110703.81,payroll
+2026-05-01,Actual,People,Payroll,840866.0,8,105108.25,payroll
+2026-05-01,Actual,Technology,Payroll,2001190.32,18,111177.24,payroll
+2026-05-01,Actual,Corporate,Payroll,1244137.05,9,138237.45,payroll
+2026-05-01,Actual,Operations,Contractors,569360.23,0,0.0,flat
+2026-05-01,Actual,Product & R&D,Contractors,1856325.38,0,0.0,project
+2026-05-01,Actual,Technology,Contractors,703301.75,0,0.0,project
+2026-05-01,Actual,Sales,Marketing,3226708.53,0,0.0,commercial
+2026-05-01,Actual,Technology,Software,1107078.75,0,0.0,flat
+2026-05-01,Actual,Product & R&D,Software,344484.65,0,0.0,flat
+2026-05-01,Actual,Finance,Software,173271.7,0,0.0,flat
+2026-05-01,Actual,Sales,Travel,647131.0,0,0.0,travel
+2026-05-01,Actual,Operations,Travel,175295.14,0,0.0,travel
+2026-05-01,Actual,Corporate,Travel,120203.04,0,0.0,travel
+2026-05-01,Actual,Corporate,Facilities,1264579.57,0,0.0,flat
+2026-05-01,Actual,Finance,Professional Services,260161.87,0,0.0,year_end
+2026-05-01,Actual,People,Professional Services,207960.17,0,0.0,flat
+2026-05-01,Actual,Corporate,Professional Services,389349.43,0,0.0,year_end
+2026-05-01,Actual,Product & R&D,R&D,1857290.15,0,0.0,project
+2026-05-01,Actual,Sales,Other OPEX,201506.88,0,0.0,flat
+2026-05-01,Actual,Operations,Other OPEX,172608.23,0,0.0,flat
+2026-05-01,Actual,Product & R&D,Other OPEX,162819.51,0,0.0,flat
+2026-05-01,Actual,Finance,Other OPEX,82145.52,0,0.0,flat
+2026-05-01,Actual,People,Other OPEX,76803.13,0,0.0,flat
+2026-05-01,Actual,Technology,Other OPEX,109523.47,0,0.0,flat
+2026-05-01,Actual,Corporate,Other OPEX,128573.46,0,0.0,flat
+2026-06-01,Actual,Sales,Payroll,5394738.69,51,105779.19,payroll
+2026-06-01,Actual,Operations,Payroll,3601893.84,38,94786.68,payroll
+2026-06-01,Actual,Product & R&D,Payroll,6722679.08,58,115908.26,payroll
+2026-06-01,Actual,Finance,Payroll,1227855.86,11,111623.26,payroll
+2026-06-01,Actual,People,Payroll,843331.76,8,105416.47,payroll
+2026-06-01,Actual,Technology,Payroll,2009858.22,18,111658.79,payroll
+2026-06-01,Actual,Corporate,Payroll,1247773.41,9,138641.49,payroll
+2026-06-01,Actual,Operations,Contractors,537921.72,0,0.0,flat
+2026-06-01,Actual,Product & R&D,Contractors,2041651.0,0,0.0,project
+2026-06-01,Actual,Technology,Contractors,726742.8,0,0.0,project
+2026-06-01,Actual,Sales,Marketing,2704115.18,0,0.0,commercial
+2026-06-01,Actual,Technology,Software,1038406.92,0,0.0,flat
+2026-06-01,Actual,Product & R&D,Software,346961.7,0,0.0,flat
+2026-06-01,Actual,Finance,Software,168089.27,0,0.0,flat
+2026-06-01,Actual,Sales,Travel,654470.1,0,0.0,travel
+2026-06-01,Actual,Operations,Travel,171959.99,0,0.0,travel
+2026-06-01,Actual,Corporate,Travel,110023.72,0,0.0,travel
+2026-06-01,Actual,Corporate,Facilities,1239574.9,0,0.0,flat
+2026-06-01,Actual,Finance,Professional Services,247133.18,0,0.0,year_end
+2026-06-01,Actual,People,Professional Services,185947.77,0,0.0,flat
+2026-06-01,Actual,Corporate,Professional Services,393409.76,0,0.0,year_end
+2026-06-01,Actual,Product & R&D,R&D,1822780.65,0,0.0,project
+2026-06-01,Actual,Sales,Other OPEX,192138.73,0,0.0,flat
+2026-06-01,Actual,Operations,Other OPEX,185136.89,0,0.0,flat
+2026-06-01,Actual,Product & R&D,Other OPEX,158540.21,0,0.0,flat
+2026-06-01,Actual,Finance,Other OPEX,88460.09,0,0.0,flat
+2026-06-01,Actual,People,Other OPEX,74551.67,0,0.0,flat
+2026-06-01,Actual,Technology,Other OPEX,111475.45,0,0.0,flat
+2026-06-01,Actual,Corporate,Other OPEX,127592.94,0,0.0,flat
+2026-07-01,Actual,Sales,Payroll,5422426.08,51,106322.08,payroll
+2026-07-01,Actual,Operations,Payroll,3608238.32,38,94953.64,payroll
+2026-07-01,Actual,Product & R&D,Payroll,6774944.04,58,116809.38,payroll
+2026-07-01,Actual,Finance,Payroll,1233116.39,11,112101.49,payroll
+2026-07-01,Actual,People,Payroll,850543.44,8,106317.93,payroll
+2026-07-01,Actual,Technology,Payroll,2117985.1,19,111472.9,payroll
+2026-07-01,Actual,Corporate,Payroll,1258196.58,9,139799.62,payroll
+2026-07-01,Actual,Operations,Contractors,558471.83,0,0.0,flat
+2026-07-01,Actual,Product & R&D,Contractors,1719625.21,0,0.0,project
+2026-07-01,Actual,Technology,Contractors,624594.34,0,0.0,project
+2026-07-01,Actual,Sales,Marketing,1942190.05,0,0.0,commercial
+2026-07-01,Actual,Technology,Software,1120343.1,0,0.0,flat
+2026-07-01,Actual,Product & R&D,Software,346769.33,0,0.0,flat
+2026-07-01,Actual,Finance,Software,155177.54,0,0.0,flat
+2026-07-01,Actual,Sales,Travel,350665.46,0,0.0,travel
+2026-07-01,Actual,Operations,Travel,89773.66,0,0.0,travel
+2026-07-01,Actual,Corporate,Travel,61198.71,0,0.0,travel
+2026-07-01,Actual,Corporate,Facilities,1371384.68,0,0.0,flat
+2026-07-01,Actual,Finance,Professional Services,227291.12,0,0.0,year_end
+2026-07-01,Actual,People,Professional Services,195568.79,0,0.0,flat
+2026-07-01,Actual,Corporate,Professional Services,333716.95,0,0.0,year_end
+2026-07-01,Actual,Product & R&D,R&D,1459671.04,0,0.0,project
+2026-07-01,Actual,Sales,Other OPEX,194745.08,0,0.0,flat
+2026-07-01,Actual,Operations,Other OPEX,179740.36,0,0.0,flat
+2026-07-01,Actual,Product & R&D,Other OPEX,154132.24,0,0.0,flat
+2026-07-01,Actual,Finance,Other OPEX,88374.51,0,0.0,flat
+2026-07-01,Actual,People,Other OPEX,71777.12,0,0.0,flat
+2026-07-01,Actual,Technology,Other OPEX,102529.09,0,0.0,flat
+2026-07-01,Actual,Corporate,Other OPEX,129726.14,0,0.0,flat
+2026-08-01,Actual,Sales,Payroll,5404968.27,51,105979.77,payroll
+2026-08-01,Actual,Operations,Payroll,3715818.21,39,95277.39,payroll
+2026-08-01,Actual,Product & R&D,Payroll,6942960.11,59,117677.29,payroll
+2026-08-01,Actual,Finance,Payroll,1237053.84,11,112459.44,payroll
+2026-08-01,Actual,People,Payroll,852833.12,8,106604.14,payroll
+2026-08-01,Actual,Technology,Payroll,2133857.13,19,112308.27,payroll
+2026-08-01,Actual,Corporate,Payroll,1267487.01,9,140831.89,payroll
+2026-08-01,Actual,Operations,Contractors,549088.31,0,0.0,flat
+2026-08-01,Actual,Product & R&D,Contractors,3607368.38,0,0.0,project
+2026-08-01,Actual,Technology,Contractors,673087.13,0,0.0,project
+2026-08-01,Actual,Sales,Marketing,3530504.22,0,0.0,commercial
+2026-08-01,Actual,Technology,Software,1121225.97,0,0.0,flat
+2026-08-01,Actual,Product & R&D,Software,371813.57,0,0.0,flat
+2026-08-01,Actual,Finance,Software,166152.46,0,0.0,flat
+2026-08-01,Actual,Sales,Travel,438322.8,0,0.0,travel
+2026-08-01,Actual,Operations,Travel,114267.62,0,0.0,travel
+2026-08-01,Actual,Corporate,Travel,75494.56,0,0.0,travel
+2026-08-01,Actual,Corporate,Facilities,1357674.87,0,0.0,flat
+2026-08-01,Actual,Finance,Professional Services,256833.23,0,0.0,year_end
+2026-08-01,Actual,People,Professional Services,206796.93,0,0.0,flat
+2026-08-01,Actual,Corporate,Professional Services,355958.56,0,0.0,year_end
+2026-08-01,Actual,Product & R&D,R&D,1622206.85,0,0.0,project
+2026-08-01,Actual,Sales,Other OPEX,183704.42,0,0.0,flat
+2026-08-01,Actual,Operations,Other OPEX,175184.88,0,0.0,flat
+2026-08-01,Actual,Product & R&D,Other OPEX,160390.32,0,0.0,flat
+2026-08-01,Actual,Finance,Other OPEX,83581.57,0,0.0,flat
+2026-08-01,Actual,People,Other OPEX,72600.56,0,0.0,flat
+2026-08-01,Actual,Technology,Other OPEX,109954.33,0,0.0,flat
+2026-08-01,Actual,Corporate,Other OPEX,134588.8,0,0.0,flat

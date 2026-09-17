@@ -1,0 +1,349 @@
+date,scenario,cost_centre,account,amount,headcount,average_employee_cost,seasonality_profile
+2026-01-01,Latest Forecast,Corporate,Facilities,1369421.41,0,0.0,flat
+2026-01-01,Latest Forecast,Corporate,Other OPEX,125229.62,0,0.0,flat
+2026-01-01,Latest Forecast,Corporate,Payroll,1096874.0,8,137109.25,payroll
+2026-01-01,Latest Forecast,Corporate,Professional Services,359908.36,0,0.0,year_end
+2026-01-01,Latest Forecast,Corporate,Travel,91116.72,0,0.0,travel
+2026-01-01,Latest Forecast,Finance,Other OPEX,85355.26,0,0.0,flat
+2026-01-01,Latest Forecast,Finance,Payroll,1198076.55,11,108916.05,payroll
+2026-01-01,Latest Forecast,Finance,Professional Services,255446.88,0,0.0,year_end
+2026-01-01,Latest Forecast,Finance,Software,169223.58,0,0.0,flat
+2026-01-01,Latest Forecast,Operations,Contractors,523831.64,0,0.0,flat
+2026-01-01,Latest Forecast,Operations,Other OPEX,179273.56,0,0.0,flat
+2026-01-01,Latest Forecast,Operations,Payroll,3407975.65,37,92107.45,payroll
+2026-01-01,Latest Forecast,Operations,Travel,140925.13,0,0.0,travel
+2026-01-01,Latest Forecast,People,Other OPEX,74787.81,0,0.0,flat
+2026-01-01,Latest Forecast,People,Payroll,833380.88,8,104172.61,payroll
+2026-01-01,Latest Forecast,People,Professional Services,176456.2,0,0.0,flat
+2026-01-01,Latest Forecast,Product & R&D,Contractors,1581898.47,0,0.0,project
+2026-01-01,Latest Forecast,Product & R&D,Other OPEX,150208.17,0,0.0,flat
+2026-01-01,Latest Forecast,Product & R&D,Payroll,6420434.16,56,114650.61,payroll
+2026-01-01,Latest Forecast,Product & R&D,R&D,1519771.68,0,0.0,project
+2026-01-01,Latest Forecast,Product & R&D,Software,359132.19,0,0.0,flat
+2026-01-01,Latest Forecast,Sales,Marketing,2577740.32,0,0.0,commercial
+2026-01-01,Latest Forecast,Sales,Other OPEX,206202.06,0,0.0,flat
+2026-01-01,Latest Forecast,Sales,Payroll,5070510.2,49,103479.8,payroll
+2026-01-01,Latest Forecast,Sales,Travel,522034.64,0,0.0,travel
+2026-01-01,Latest Forecast,Technology,Contractors,616842.21,0,0.0,project
+2026-01-01,Latest Forecast,Technology,Other OPEX,115104.75,0,0.0,flat
+2026-01-01,Latest Forecast,Technology,Payroll,1975849.74,18,109769.43,payroll
+2026-01-01,Latest Forecast,Technology,Software,1019144.87,0,0.0,flat
+2026-02-01,Latest Forecast,Corporate,Facilities,1379348.93,0,0.0,flat
+2026-02-01,Latest Forecast,Corporate,Other OPEX,122546.7,0,0.0,flat
+2026-02-01,Latest Forecast,Corporate,Payroll,1236861.63,9,137429.07,payroll
+2026-02-01,Latest Forecast,Corporate,Professional Services,350603.23,0,0.0,year_end
+2026-02-01,Latest Forecast,Corporate,Travel,103382.45,0,0.0,travel
+2026-02-01,Latest Forecast,Finance,Other OPEX,83372.56,0,0.0,flat
+2026-02-01,Latest Forecast,Finance,Payroll,1197651.51,11,108877.41,payroll
+2026-02-01,Latest Forecast,Finance,Professional Services,252403.74,0,0.0,year_end
+2026-02-01,Latest Forecast,Finance,Software,154658.97,0,0.0,flat
+2026-02-01,Latest Forecast,Operations,Contractors,570544.18,0,0.0,flat
+2026-02-01,Latest Forecast,Operations,Other OPEX,168526.4,0,0.0,flat
+2026-02-01,Latest Forecast,Operations,Payroll,3538889.46,38,93128.67,payroll
+2026-02-01,Latest Forecast,Operations,Travel,145845.54,0,0.0,travel
+2026-02-01,Latest Forecast,People,Other OPEX,77389.54,0,0.0,flat
+2026-02-01,Latest Forecast,People,Payroll,822808.32,8,102851.04,payroll
+2026-02-01,Latest Forecast,People,Professional Services,191875.96,0,0.0,flat
+2026-02-01,Latest Forecast,Product & R&D,Contractors,1744168.77,0,0.0,project
+2026-02-01,Latest Forecast,Product & R&D,Other OPEX,148714.41,0,0.0,flat
+2026-02-01,Latest Forecast,Product & R&D,Payroll,6431706.96,56,114851.91,payroll
+2026-02-01,Latest Forecast,Product & R&D,R&D,1599449.2,0,0.0,project
+2026-02-01,Latest Forecast,Product & R&D,Software,353199.25,0,0.0,flat
+2026-02-01,Latest Forecast,Sales,Marketing,2678976.43,0,0.0,commercial
+2026-02-01,Latest Forecast,Sales,Other OPEX,205583.04,0,0.0,flat
+2026-02-01,Latest Forecast,Sales,Payroll,5080493.95,49,103683.55,payroll
+2026-02-01,Latest Forecast,Sales,Travel,578190.01,0,0.0,travel
+2026-02-01,Latest Forecast,Technology,Contractors,644720.08,0,0.0,project
+2026-02-01,Latest Forecast,Technology,Other OPEX,117522.92,0,0.0,flat
+2026-02-01,Latest Forecast,Technology,Payroll,1952856.36,18,108492.02,payroll
+2026-02-01,Latest Forecast,Technology,Software,1070246.23,0,0.0,flat
+2026-03-01,Latest Forecast,Corporate,Facilities,1275531.1,0,0.0,flat
+2026-03-01,Latest Forecast,Corporate,Other OPEX,124370.08,0,0.0,flat
+2026-03-01,Latest Forecast,Corporate,Payroll,1239207.39,9,137689.71,payroll
+2026-03-01,Latest Forecast,Corporate,Professional Services,382278.31,0,0.0,year_end
+2026-03-01,Latest Forecast,Corporate,Travel,116459.14,0,0.0,travel
+2026-03-01,Latest Forecast,Finance,Other OPEX,86680.75,0,0.0,flat
+2026-03-01,Latest Forecast,Finance,Payroll,1213595.57,11,110326.87,payroll
+2026-03-01,Latest Forecast,Finance,Professional Services,291049.79,0,0.0,year_end
+2026-03-01,Latest Forecast,Finance,Software,162588.3,0,0.0,flat
+2026-03-01,Latest Forecast,Operations,Contractors,493893.16,0,0.0,flat
+2026-03-01,Latest Forecast,Operations,Other OPEX,177649.96,0,0.0,flat
+2026-03-01,Latest Forecast,Operations,Payroll,3549153.26,38,93398.77,payroll
+2026-03-01,Latest Forecast,Operations,Travel,168498.83,0,0.0,travel
+2026-03-01,Latest Forecast,People,Other OPEX,75799.2,0,0.0,flat
+2026-03-01,Latest Forecast,People,Payroll,836178.56,8,104522.32,payroll
+2026-03-01,Latest Forecast,People,Professional Services,194800.87,0,0.0,flat
+2026-03-01,Latest Forecast,Product & R&D,Contractors,1810005.18,0,0.0,project
+2026-03-01,Latest Forecast,Product & R&D,Other OPEX,149620.04,0,0.0,flat
+2026-03-01,Latest Forecast,Product & R&D,Payroll,6587707.17,57,115573.81,payroll
+2026-03-01,Latest Forecast,Product & R&D,R&D,1700973.19,0,0.0,project
+2026-03-01,Latest Forecast,Product & R&D,Software,371697.31,0,0.0,flat
+2026-03-01,Latest Forecast,Sales,Marketing,3433172.43,0,0.0,commercial
+2026-03-01,Latest Forecast,Sales,Other OPEX,188593.43,0,0.0,flat
+2026-03-01,Latest Forecast,Sales,Payroll,5216940.0,50,104338.8,payroll
+2026-03-01,Latest Forecast,Sales,Travel,678570.82,0,0.0,travel
+2026-03-01,Latest Forecast,Technology,Contractors,721832.32,0,0.0,project
+2026-03-01,Latest Forecast,Technology,Other OPEX,119313.97,0,0.0,flat
+2026-03-01,Latest Forecast,Technology,Payroll,1983594.6,18,110199.7,payroll
+2026-03-01,Latest Forecast,Technology,Software,1079101.17,0,0.0,flat
+2026-04-01,Latest Forecast,Corporate,Facilities,1291925.97,0,0.0,flat
+2026-04-01,Latest Forecast,Corporate,Other OPEX,125283.21,0,0.0,flat
+2026-04-01,Latest Forecast,Corporate,Payroll,1240454.79,9,137828.31,payroll
+2026-04-01,Latest Forecast,Corporate,Professional Services,357899.47,0,0.0,year_end
+2026-04-01,Latest Forecast,Corporate,Travel,113975.93,0,0.0,travel
+2026-04-01,Latest Forecast,Finance,Other OPEX,87483.64,0,0.0,flat
+2026-04-01,Latest Forecast,Finance,Payroll,1213481.94,11,110316.54,payroll
+2026-04-01,Latest Forecast,Finance,Professional Services,250691.79,0,0.0,year_end
+2026-04-01,Latest Forecast,Finance,Software,167647.51,0,0.0,flat
+2026-04-01,Latest Forecast,Operations,Contractors,531194.4,0,0.0,flat
+2026-04-01,Latest Forecast,Operations,Other OPEX,163877.29,0,0.0,flat
+2026-04-01,Latest Forecast,Operations,Payroll,3557467.66,38,93617.57,payroll
+2026-04-01,Latest Forecast,Operations,Travel,173244.73,0,0.0,travel
+2026-04-01,Latest Forecast,People,Other OPEX,73455.59,0,0.0,flat
+2026-04-01,Latest Forecast,People,Payroll,843687.28,8,105460.91,payroll
+2026-04-01,Latest Forecast,People,Professional Services,201944.73,0,0.0,flat
+2026-04-01,Latest Forecast,Product & R&D,Contractors,1931735.49,0,0.0,project
+2026-04-01,Latest Forecast,Product & R&D,Other OPEX,148453.0,0,0.0,flat
+2026-04-01,Latest Forecast,Product & R&D,Payroll,6635914.35,57,116419.55,payroll
+2026-04-01,Latest Forecast,Product & R&D,R&D,1776913.91,0,0.0,project
+2026-04-01,Latest Forecast,Product & R&D,Software,366726.15,0,0.0,flat
+2026-04-01,Latest Forecast,Sales,Marketing,3137962.33,0,0.0,commercial
+2026-04-01,Latest Forecast,Sales,Other OPEX,200994.96,0,0.0,flat
+2026-04-01,Latest Forecast,Sales,Payroll,5256426.0,50,105128.52,payroll
+2026-04-01,Latest Forecast,Sales,Travel,670986.64,0,0.0,travel
+2026-04-01,Latest Forecast,Technology,Contractors,722004.73,0,0.0,project
+2026-04-01,Latest Forecast,Technology,Other OPEX,109147.77,0,0.0,flat
+2026-04-01,Latest Forecast,Technology,Payroll,1994443.56,18,110802.42,payroll
+2026-04-01,Latest Forecast,Technology,Software,1158566.2,0,0.0,flat
+2026-05-01,Latest Forecast,Corporate,Facilities,1264579.57,0,0.0,flat
+2026-05-01,Latest Forecast,Corporate,Other OPEX,128573.46,0,0.0,flat
+2026-05-01,Latest Forecast,Corporate,Payroll,1244137.05,9,138237.45,payroll
+2026-05-01,Latest Forecast,Corporate,Professional Services,389349.43,0,0.0,year_end
+2026-05-01,Latest Forecast,Corporate,Travel,120203.04,0,0.0,travel
+2026-05-01,Latest Forecast,Finance,Other OPEX,82145.52,0,0.0,flat
+2026-05-01,Latest Forecast,Finance,Payroll,1217741.91,11,110703.81,payroll
+2026-05-01,Latest Forecast,Finance,Professional Services,260161.87,0,0.0,year_end
+2026-05-01,Latest Forecast,Finance,Software,173271.7,0,0.0,flat
+2026-05-01,Latest Forecast,Operations,Contractors,569360.23,0,0.0,flat
+2026-05-01,Latest Forecast,Operations,Other OPEX,172608.23,0,0.0,flat
+2026-05-01,Latest Forecast,Operations,Payroll,3573550.02,38,94040.79,payroll
+2026-05-01,Latest Forecast,Operations,Travel,175295.14,0,0.0,travel
+2026-05-01,Latest Forecast,People,Other OPEX,76803.13,0,0.0,flat
+2026-05-01,Latest Forecast,People,Payroll,840866.0,8,105108.25,payroll
+2026-05-01,Latest Forecast,People,Professional Services,207960.17,0,0.0,flat
+2026-05-01,Latest Forecast,Product & R&D,Contractors,1856325.38,0,0.0,project
+2026-05-01,Latest Forecast,Product & R&D,Other OPEX,162819.51,0,0.0,flat
+2026-05-01,Latest Forecast,Product & R&D,Payroll,6680088.21,57,117194.53,payroll
+2026-05-01,Latest Forecast,Product & R&D,R&D,1857290.15,0,0.0,project
+2026-05-01,Latest Forecast,Product & R&D,Software,344484.65,0,0.0,flat
+2026-05-01,Latest Forecast,Sales,Marketing,3226708.53,0,0.0,commercial
+2026-05-01,Latest Forecast,Sales,Other OPEX,201506.88,0,0.0,flat
+2026-05-01,Latest Forecast,Sales,Payroll,5277188.0,50,105543.76,payroll
+2026-05-01,Latest Forecast,Sales,Travel,647131.0,0,0.0,travel
+2026-05-01,Latest Forecast,Technology,Contractors,703301.75,0,0.0,project
+2026-05-01,Latest Forecast,Technology,Other OPEX,109523.47,0,0.0,flat
+2026-05-01,Latest Forecast,Technology,Payroll,2001190.32,18,111177.24,payroll
+2026-05-01,Latest Forecast,Technology,Software,1107078.75,0,0.0,flat
+2026-06-01,Latest Forecast,Corporate,Facilities,1239574.9,0,0.0,flat
+2026-06-01,Latest Forecast,Corporate,Other OPEX,127592.94,0,0.0,flat
+2026-06-01,Latest Forecast,Corporate,Payroll,1247773.41,9,138641.49,payroll
+2026-06-01,Latest Forecast,Corporate,Professional Services,393409.76,0,0.0,year_end
+2026-06-01,Latest Forecast,Corporate,Travel,110023.72,0,0.0,travel
+2026-06-01,Latest Forecast,Finance,Other OPEX,88460.09,0,0.0,flat
+2026-06-01,Latest Forecast,Finance,Payroll,1227855.86,11,111623.26,payroll
+2026-06-01,Latest Forecast,Finance,Professional Services,247133.18,0,0.0,year_end
+2026-06-01,Latest Forecast,Finance,Software,168089.27,0,0.0,flat
+2026-06-01,Latest Forecast,Operations,Contractors,537921.72,0,0.0,flat
+2026-06-01,Latest Forecast,Operations,Other OPEX,185136.89,0,0.0,flat
+2026-06-01,Latest Forecast,Operations,Payroll,3601893.84,38,94786.68,payroll
+2026-06-01,Latest Forecast,Operations,Travel,171959.99,0,0.0,travel
+2026-06-01,Latest Forecast,People,Other OPEX,74551.67,0,0.0,flat
+2026-06-01,Latest Forecast,People,Payroll,843331.76,8,105416.47,payroll
+2026-06-01,Latest Forecast,People,Professional Services,185947.77,0,0.0,flat
+2026-06-01,Latest Forecast,Product & R&D,Contractors,2041651.0,0,0.0,project
+2026-06-01,Latest Forecast,Product & R&D,Other OPEX,158540.21,0,0.0,flat
+2026-06-01,Latest Forecast,Product & R&D,Payroll,6722679.08,58,115908.26,payroll
+2026-06-01,Latest Forecast,Product & R&D,R&D,1822780.65,0,0.0,project
+2026-06-01,Latest Forecast,Product & R&D,Software,346961.7,0,0.0,flat
+2026-06-01,Latest Forecast,Sales,Marketing,2704115.18,0,0.0,commercial
+2026-06-01,Latest Forecast,Sales,Other OPEX,192138.73,0,0.0,flat
+2026-06-01,Latest Forecast,Sales,Payroll,5394738.69,51,105779.19,payroll
+2026-06-01,Latest Forecast,Sales,Travel,654470.1,0,0.0,travel
+2026-06-01,Latest Forecast,Technology,Contractors,726742.8,0,0.0,project
+2026-06-01,Latest Forecast,Technology,Other OPEX,111475.45,0,0.0,flat
+2026-06-01,Latest Forecast,Technology,Payroll,2009858.22,18,111658.79,payroll
+2026-06-01,Latest Forecast,Technology,Software,1038406.92,0,0.0,flat
+2026-07-01,Latest Forecast,Corporate,Facilities,1371384.68,0,0.0,flat
+2026-07-01,Latest Forecast,Corporate,Other OPEX,129726.14,0,0.0,flat
+2026-07-01,Latest Forecast,Corporate,Payroll,1258196.58,9,139799.62,payroll
+2026-07-01,Latest Forecast,Corporate,Professional Services,333716.95,0,0.0,year_end
+2026-07-01,Latest Forecast,Corporate,Travel,61198.71,0,0.0,travel
+2026-07-01,Latest Forecast,Finance,Other OPEX,88374.51,0,0.0,flat
+2026-07-01,Latest Forecast,Finance,Payroll,1233116.39,11,112101.49,payroll
+2026-07-01,Latest Forecast,Finance,Professional Services,227291.12,0,0.0,year_end
+2026-07-01,Latest Forecast,Finance,Software,155177.54,0,0.0,flat
+2026-07-01,Latest Forecast,Operations,Contractors,558471.83,0,0.0,flat
+2026-07-01,Latest Forecast,Operations,Other OPEX,179740.36,0,0.0,flat
+2026-07-01,Latest Forecast,Operations,Payroll,3608238.32,38,94953.64,payroll
+2026-07-01,Latest Forecast,Operations,Travel,89773.66,0,0.0,travel
+2026-07-01,Latest Forecast,People,Other OPEX,71777.12,0,0.0,flat
+2026-07-01,Latest Forecast,People,Payroll,850543.44,8,106317.93,payroll
+2026-07-01,Latest Forecast,People,Professional Services,195568.79,0,0.0,flat
+2026-07-01,Latest Forecast,Product & R&D,Contractors,1719625.21,0,0.0,project
+2026-07-01,Latest Forecast,Product & R&D,Other OPEX,154132.24,0,0.0,flat
+2026-07-01,Latest Forecast,Product & R&D,Payroll,6774944.04,58,116809.38,payroll
+2026-07-01,Latest Forecast,Product & R&D,R&D,1459671.04,0,0.0,project
+2026-07-01,Latest Forecast,Product & R&D,Software,346769.33,0,0.0,flat
+2026-07-01,Latest Forecast,Sales,Marketing,1942190.05,0,0.0,commercial
+2026-07-01,Latest Forecast,Sales,Other OPEX,194745.08,0,0.0,flat
+2026-07-01,Latest Forecast,Sales,Payroll,5422426.08,51,106322.08,payroll
+2026-07-01,Latest Forecast,Sales,Travel,350665.46,0,0.0,travel
+2026-07-01,Latest Forecast,Technology,Contractors,624594.34,0,0.0,project
+2026-07-01,Latest Forecast,Technology,Other OPEX,102529.09,0,0.0,flat
+2026-07-01,Latest Forecast,Technology,Payroll,2117985.1,19,111472.9,payroll
+2026-07-01,Latest Forecast,Technology,Software,1120343.1,0,0.0,flat
+2026-08-01,Latest Forecast,Corporate,Facilities,1357674.87,0,0.0,flat
+2026-08-01,Latest Forecast,Corporate,Other OPEX,134588.8,0,0.0,flat
+2026-08-01,Latest Forecast,Corporate,Payroll,1267487.01,9,140831.89,payroll
+2026-08-01,Latest Forecast,Corporate,Professional Services,355958.56,0,0.0,year_end
+2026-08-01,Latest Forecast,Corporate,Travel,75494.56,0,0.0,travel
+2026-08-01,Latest Forecast,Finance,Other OPEX,83581.57,0,0.0,flat
+2026-08-01,Latest Forecast,Finance,Payroll,1237053.84,11,112459.44,payroll
+2026-08-01,Latest Forecast,Finance,Professional Services,256833.23,0,0.0,year_end
+2026-08-01,Latest Forecast,Finance,Software,166152.46,0,0.0,flat
+2026-08-01,Latest Forecast,Operations,Contractors,549088.31,0,0.0,flat
+2026-08-01,Latest Forecast,Operations,Other OPEX,175184.88,0,0.0,flat
+2026-08-01,Latest Forecast,Operations,Payroll,3715818.21,39,95277.39,payroll
+2026-08-01,Latest Forecast,Operations,Travel,114267.62,0,0.0,travel
+2026-08-01,Latest Forecast,People,Other OPEX,72600.56,0,0.0,flat
+2026-08-01,Latest Forecast,People,Payroll,852833.12,8,106604.14,payroll
+2026-08-01,Latest Forecast,People,Professional Services,206796.93,0,0.0,flat
+2026-08-01,Latest Forecast,Product & R&D,Contractors,3607368.38,0,0.0,project
+2026-08-01,Latest Forecast,Product & R&D,Other OPEX,160390.32,0,0.0,flat
+2026-08-01,Latest Forecast,Product & R&D,Payroll,6942960.11,59,117677.29,payroll
+2026-08-01,Latest Forecast,Product & R&D,R&D,1622206.85,0,0.0,project
+2026-08-01,Latest Forecast,Product & R&D,Software,371813.57,0,0.0,flat
+2026-08-01,Latest Forecast,Sales,Marketing,3530504.22,0,0.0,commercial
+2026-08-01,Latest Forecast,Sales,Other OPEX,183704.42,0,0.0,flat
+2026-08-01,Latest Forecast,Sales,Payroll,5404968.27,51,105979.77,payroll
+2026-08-01,Latest Forecast,Sales,Travel,438322.8,0,0.0,travel
+2026-08-01,Latest Forecast,Technology,Contractors,673087.13,0,0.0,project
+2026-08-01,Latest Forecast,Technology,Other OPEX,109954.33,0,0.0,flat
+2026-08-01,Latest Forecast,Technology,Payroll,2133857.13,19,112308.27,payroll
+2026-08-01,Latest Forecast,Technology,Software,1121225.97,0,0.0,flat
+2026-09-01,Latest Forecast,Corporate,Facilities,1311523.1,0,0.0,flat
+2026-09-01,Latest Forecast,Corporate,Other OPEX,132344.93,0,0.0,flat
+2026-09-01,Latest Forecast,Corporate,Payroll,1118117.84,8,139764.73,payroll
+2026-09-01,Latest Forecast,Corporate,Professional Services,400524.81,0,0.0,year_end
+2026-09-01,Latest Forecast,Corporate,Travel,124021.85,0,0.0,travel
+2026-09-01,Latest Forecast,Finance,Other OPEX,83096.7,0,0.0,flat
+2026-09-01,Latest Forecast,Finance,Payroll,1237223.79,11,112474.89,payroll
+2026-09-01,Latest Forecast,Finance,Professional Services,274590.03,0,0.0,year_end
+2026-09-01,Latest Forecast,Finance,Software,175199.87,0,0.0,flat
+2026-09-01,Latest Forecast,Operations,Contractors,600229.58,0,0.0,flat
+2026-09-01,Latest Forecast,Operations,Other OPEX,186672.16,0,0.0,flat
+2026-09-01,Latest Forecast,Operations,Payroll,3635651.14,38,95675.03,payroll
+2026-09-01,Latest Forecast,Operations,Travel,185557.0,0,0.0,travel
+2026-09-01,Latest Forecast,People,Other OPEX,77405.1,0,0.0,flat
+2026-09-01,Latest Forecast,People,Payroll,860013.76,8,107501.72,payroll
+2026-09-01,Latest Forecast,People,Professional Services,214259.2,0,0.0,flat
+2026-09-01,Latest Forecast,Product & R&D,Contractors,3132599.22,0,0.0,project
+2026-09-01,Latest Forecast,Product & R&D,Other OPEX,150982.63,0,0.0,flat
+2026-09-01,Latest Forecast,Product & R&D,Payroll,7116420.6,60,118607.01,payroll
+2026-09-01,Latest Forecast,Product & R&D,R&D,1883868.52,0,0.0,project
+2026-09-01,Latest Forecast,Product & R&D,Software,384066.69,0,0.0,flat
+2026-09-01,Latest Forecast,Sales,Marketing,3096348.96,0,0.0,commercial
+2026-09-01,Latest Forecast,Sales,Other OPEX,203134.83,0,0.0,flat
+2026-09-01,Latest Forecast,Sales,Payroll,5233556.72,49,106807.28,payroll
+2026-09-01,Latest Forecast,Sales,Travel,704231.68,0,0.0,travel
+2026-09-01,Latest Forecast,Technology,Contractors,776598.92,0,0.0,project
+2026-09-01,Latest Forecast,Technology,Other OPEX,113455.61,0,0.0,flat
+2026-09-01,Latest Forecast,Technology,Payroll,2024955.36,18,112497.52,payroll
+2026-09-01,Latest Forecast,Technology,Software,1203497.27,0,0.0,flat
+2026-10-01,Latest Forecast,Corporate,Facilities,1361779.6,0,0.0,flat
+2026-10-01,Latest Forecast,Corporate,Other OPEX,133882.91,0,0.0,flat
+2026-10-01,Latest Forecast,Corporate,Payroll,1129525.52,8,141190.69,payroll
+2026-10-01,Latest Forecast,Corporate,Professional Services,450333.46,0,0.0,year_end
+2026-10-01,Latest Forecast,Corporate,Travel,120154.94,0,0.0,travel
+2026-10-01,Latest Forecast,Finance,Other OPEX,86196.19,0,0.0,flat
+2026-10-01,Latest Forecast,Finance,Payroll,1234787.18,11,112253.38,payroll
+2026-10-01,Latest Forecast,Finance,Professional Services,304334.74,0,0.0,year_end
+2026-10-01,Latest Forecast,Finance,Software,179182.75,0,0.0,flat
+2026-10-01,Latest Forecast,Operations,Contractors,618227.3,0,0.0,flat
+2026-10-01,Latest Forecast,Operations,Other OPEX,178245.48,0,0.0,flat
+2026-10-01,Latest Forecast,Operations,Payroll,3669740.56,38,96572.12,payroll
+2026-10-01,Latest Forecast,Operations,Travel,184534.41,0,0.0,travel
+2026-10-01,Latest Forecast,People,Other OPEX,76451.01,0,0.0,flat
+2026-10-01,Latest Forecast,People,Payroll,862524.56,8,107815.57,payroll
+2026-10-01,Latest Forecast,People,Professional Services,210941.15,0,0.0,flat
+2026-10-01,Latest Forecast,Product & R&D,Contractors,2131151.65,0,0.0,project
+2026-10-01,Latest Forecast,Product & R&D,Other OPEX,160454.74,0,0.0,flat
+2026-10-01,Latest Forecast,Product & R&D,Payroll,7089975.6,60,118166.26,payroll
+2026-10-01,Latest Forecast,Product & R&D,R&D,1990905.86,0,0.0,project
+2026-10-01,Latest Forecast,Product & R&D,Software,356099.4,0,0.0,flat
+2026-10-01,Latest Forecast,Sales,Marketing,3581343.23,0,0.0,commercial
+2026-10-01,Latest Forecast,Sales,Other OPEX,195158.43,0,0.0,flat
+2026-10-01,Latest Forecast,Sales,Payroll,5265907.99,49,107467.51,payroll
+2026-10-01,Latest Forecast,Sales,Travel,705045.64,0,0.0,travel
+2026-10-01,Latest Forecast,Technology,Contractors,842303.11,0,0.0,project
+2026-10-01,Latest Forecast,Technology,Other OPEX,113485.01,0,0.0,flat
+2026-10-01,Latest Forecast,Technology,Payroll,2070916.02,18,115050.89,payroll
+2026-10-01,Latest Forecast,Technology,Software,1044451.95,0,0.0,flat
+2026-11-01,Latest Forecast,Corporate,Facilities,1500224.17,0,0.0,flat
+2026-11-01,Latest Forecast,Corporate,Other OPEX,132106.89,0,0.0,flat
+2026-11-01,Latest Forecast,Corporate,Payroll,1137992.24,8,142249.03,payroll
+2026-11-01,Latest Forecast,Corporate,Professional Services,481829.53,0,0.0,year_end
+2026-11-01,Latest Forecast,Corporate,Travel,115027.84,0,0.0,travel
+2026-11-01,Latest Forecast,Finance,Other OPEX,88872.08,0,0.0,flat
+2026-11-01,Latest Forecast,Finance,Payroll,1246134.45,11,113284.95,payroll
+2026-11-01,Latest Forecast,Finance,Professional Services,337511.33,0,0.0,year_end
+2026-11-01,Latest Forecast,Finance,Software,180317.4,0,0.0,flat
+2026-11-01,Latest Forecast,Operations,Contractors,575905.71,0,0.0,flat
+2026-11-01,Latest Forecast,Operations,Other OPEX,168541.63,0,0.0,flat
+2026-11-01,Latest Forecast,Operations,Payroll,3630421.96,38,95537.42,payroll
+2026-11-01,Latest Forecast,Operations,Travel,179387.13,0,0.0,travel
+2026-11-01,Latest Forecast,People,Other OPEX,75737.25,0,0.0,flat
+2026-11-01,Latest Forecast,People,Payroll,861768.56,8,107721.07,payroll
+2026-11-01,Latest Forecast,People,Professional Services,197467.1,0,0.0,flat
+2026-11-01,Latest Forecast,Product & R&D,Contractors,2130221.04,0,0.0,project
+2026-11-01,Latest Forecast,Product & R&D,Other OPEX,159340.34,0,0.0,flat
+2026-11-01,Latest Forecast,Product & R&D,Payroll,7288115.3,61,119477.3,payroll
+2026-11-01,Latest Forecast,Product & R&D,R&D,1915753.25,0,0.0,project
+2026-11-01,Latest Forecast,Product & R&D,Software,371329.85,0,0.0,flat
+2026-11-01,Latest Forecast,Sales,Marketing,3518056.8,0,0.0,commercial
+2026-11-01,Latest Forecast,Sales,Other OPEX,196593.59,0,0.0,flat
+2026-11-01,Latest Forecast,Sales,Payroll,5314850.66,49,108466.34,payroll
+2026-11-01,Latest Forecast,Sales,Travel,696135.95,0,0.0,travel
+2026-11-01,Latest Forecast,Technology,Contractors,762388.52,0,0.0,project
+2026-11-01,Latest Forecast,Technology,Other OPEX,111855.52,0,0.0,flat
+2026-11-01,Latest Forecast,Technology,Payroll,2141948.09,19,112734.11,payroll
+2026-11-01,Latest Forecast,Technology,Software,1170533.52,0,0.0,flat
+2026-12-01,Latest Forecast,Corporate,Facilities,1372807.79,0,0.0,flat
+2026-12-01,Latest Forecast,Corporate,Other OPEX,132300.18,0,0.0,flat
+2026-12-01,Latest Forecast,Corporate,Payroll,1137521.04,8,142190.13,payroll
+2026-12-01,Latest Forecast,Corporate,Professional Services,541679.43,0,0.0,year_end
+2026-12-01,Latest Forecast,Corporate,Travel,79172.42,0,0.0,travel
+2026-12-01,Latest Forecast,Finance,Other OPEX,84366.71,0,0.0,flat
+2026-12-01,Latest Forecast,Finance,Payroll,1250572.73,11,113688.43,payroll
+2026-12-01,Latest Forecast,Finance,Professional Services,387302.02,0,0.0,year_end
+2026-12-01,Latest Forecast,Finance,Software,180313.39,0,0.0,flat
+2026-12-01,Latest Forecast,Operations,Contractors,585931.02,0,0.0,flat
+2026-12-01,Latest Forecast,Operations,Other OPEX,164304.38,0,0.0,flat
+2026-12-01,Latest Forecast,Operations,Payroll,3720751.76,38,97914.52,payroll
+2026-12-01,Latest Forecast,Operations,Travel,122338.19,0,0.0,travel
+2026-12-01,Latest Forecast,People,Other OPEX,79359.37,0,0.0,flat
+2026-12-01,Latest Forecast,People,Payroll,872803.92,8,109100.49,payroll
+2026-12-01,Latest Forecast,People,Professional Services,205882.47,0,0.0,flat
+2026-12-01,Latest Forecast,Product & R&D,Contractors,1791635.81,0,0.0,project
+2026-12-01,Latest Forecast,Product & R&D,Other OPEX,160470.04,0,0.0,flat
+2026-12-01,Latest Forecast,Product & R&D,Payroll,7272617.64,61,119223.24,payroll
+2026-12-01,Latest Forecast,Product & R&D,R&D,1584364.89,0,0.0,project
+2026-12-01,Latest Forecast,Product & R&D,Software,384461.19,0,0.0,flat
+2026-12-01,Latest Forecast,Sales,Marketing,3278790.01,0,0.0,commercial
+2026-12-01,Latest Forecast,Sales,Other OPEX,207228.23,0,0.0,flat
+2026-12-01,Latest Forecast,Sales,Payroll,5424817.5,50,108496.35,payroll
+2026-12-01,Latest Forecast,Sales,Travel,422357.33,0,0.0,travel
+2026-12-01,Latest Forecast,Technology,Contractors,655246.2,0,0.0,project
+2026-12-01,Latest Forecast,Technology,Other OPEX,112597.72,0,0.0,flat
+2026-12-01,Latest Forecast,Technology,Payroll,2162580.76,19,113820.04,payroll
+2026-12-01,Latest Forecast,Technology,Software,1141829.59,0,0.0,flat
