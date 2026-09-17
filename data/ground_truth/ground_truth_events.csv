@@ -1,0 +1,5 @@
+event_id,date,country,product,segment,driver,operation,magnitude,description,rows_affected,units_change,revenue_impact,cogs_impact,gross_profit_impact,evidence_available,evidence_id
+EVT-001,2026-08-01,Germany,EdgeHub Pro,,unit_cost,multiply,1.08,Temporary 8% supplier surcharge increased EdgeHub Pro unit cost in Germany during August.,4,0,0.0,329855.19,-329855.19,True,NOTE-014
+EVT-002,2026-08-01,Germany,,Distributor,discount_rate,add,0.03,Distributor discount rates in Germany increased by 3 percentage points during August.,8,0,-355606.5,0.0,-355606.5,False,
+EVT-003,2026-08-01,United Kingdom,Sensor X,Distributor,units,multiply,0.78,UK Sensor X distributor volume fell by 22% during August due to a delayed customer rollout.,1,-17,-121863.52,-59734.94,-62128.58,True,NOTE-015
+EVT-004,2026-08-01,Norway,Sensor X Pro,Enterprise,units,multiply,1.25,Norway Sensor X Pro enterprise volume increased by 25% in August following an accelerated customer rollout.,1,22,254878.01,124299.78,130578.23,True,NOTE-016
