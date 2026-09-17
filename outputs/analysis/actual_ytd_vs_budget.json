@@ -1,0 +1,311 @@
+{
+  "metadata": {
+    "comparison": "actual_ytd_vs_budget",
+    "base_scenario": "Budget YTD",
+    "comparison_scenario": "Actual YTD",
+    "finance_engine": "deterministic"
+  },
+  "summary": {
+    "base_revenue_nok": 861521469.39,
+    "comparison_revenue_nok": 853203887.9200001,
+    "revenue_variance_nok": -8317581.469999909,
+    "base_gross_profit_nok": 411127456.67999995,
+    "comparison_gross_profit_nok": 402864590.45000005,
+    "gross_profit_variance_nok": -8262866.2299999,
+    "base_opex_nok": 266779604.66,
+    "comparison_opex_nok": 272868693.26,
+    "opex_variance_nok": 6089088.599999994,
+    "base_ebitda_nok": 144347852.01999995,
+    "comparison_ebitda_nok": 129995897.19000006,
+    "ebitda_variance_nok": -14351954.829999894,
+    "base_ebitda_margin": 0.16754991854376583,
+    "comparison_ebitda_margin": 0.15236205440520567,
+    "ebitda_margin_variance_pp": -1.5187864138560159
+  },
+  "materiality": {
+    "absolute_threshold_nok": 1000000.0,
+    "ebitda_share_threshold": 0.05,
+    "effective_threshold_nok": 1000000.0
+  },
+  "commercial_bridge": {
+    "revenue": {
+      "volume_mix": -2452601.8000000003,
+      "list_price": -4318938.460000001,
+      "discount": -1546041.1599999988
+    },
+    "gross_profit": {
+      "volume_mix": -1404419.430000001,
+      "list_price": -4318938.460000001,
+      "discount": -1546041.1600000001,
+      "unit_cost": -993467.1299999988
+    },
+    "revenue_reconciliation_residual_nok": -0.04999990947544575,
+    "gross_profit_reconciliation_residual_nok": -0.04999989923089743
+  },
+  "opex_bridge": {
+    "headcount": {
+      "opex_variance_nok": 3484138.6500000013,
+      "ebitda_impact_nok": -3484138.6500000013
+    },
+    "employee_cost": {
+      "opex_variance_nok": -124281.43000000028,
+      "ebitda_impact_nok": 124281.43000000028
+    },
+    "non_payroll": {
+      "opex_variance_nok": 2729231.379999999,
+      "ebitda_impact_nok": -2729231.379999999
+    }
+  },
+  "ebitda_bridge": [
+    {
+      "driver": "list_price",
+      "category": "commercial",
+      "impact_nok": -4318938.460000001,
+      "material": true
+    },
+    {
+      "driver": "headcount",
+      "category": "opex",
+      "impact_nok": -3484138.6500000013,
+      "material": true
+    },
+    {
+      "driver": "non_payroll",
+      "category": "opex",
+      "impact_nok": -2729231.379999999,
+      "material": true
+    },
+    {
+      "driver": "discount",
+      "category": "commercial",
+      "impact_nok": -1546041.1600000001,
+      "material": true
+    },
+    {
+      "driver": "volume_mix",
+      "category": "commercial",
+      "impact_nok": -1404419.430000001,
+      "material": true
+    },
+    {
+      "driver": "unit_cost",
+      "category": "commercial",
+      "impact_nok": -993467.1299999988,
+      "material": false
+    },
+    {
+      "driver": "employee_cost",
+      "category": "opex",
+      "impact_nok": 124281.43000000028,
+      "material": false
+    }
+  ],
+  "top_ebitda_drivers": [
+    {
+      "driver": "list_price",
+      "category": "commercial",
+      "impact_nok": -4318938.460000001,
+      "material": true
+    },
+    {
+      "driver": "headcount",
+      "category": "opex",
+      "impact_nok": -3484138.6500000013,
+      "material": true
+    },
+    {
+      "driver": "non_payroll",
+      "category": "opex",
+      "impact_nok": -2729231.379999999,
+      "material": true
+    },
+    {
+      "driver": "discount",
+      "category": "commercial",
+      "impact_nok": -1546041.1600000001,
+      "material": true
+    },
+    {
+      "driver": "volume_mix",
+      "category": "commercial",
+      "impact_nok": -1404419.430000001,
+      "material": true
+    }
+  ],
+  "rankings": {
+    "countries": [
+      {
+        "country": "Germany",
+        "revenue_variance_nok": -3182080.9200000167,
+        "gross_profit_variance_nok": -3432591.9099999964,
+        "largest_gp_driver": "list_price",
+        "largest_gp_driver_impact_nok": -1268889.5800000005,
+        "material": true
+      },
+      {
+        "country": "Norway",
+        "revenue_variance_nok": -2085836.9399999976,
+        "gross_profit_variance_nok": -1484689.1799999923,
+        "largest_gp_driver": "list_price",
+        "largest_gp_driver_impact_nok": -754564.9799999997,
+        "material": true
+      },
+      {
+        "country": "Sweden",
+        "revenue_variance_nok": -1285487.5,
+        "gross_profit_variance_nok": -1399626.8300000057,
+        "largest_gp_driver": "list_price",
+        "largest_gp_driver_impact_nok": -674916.2499999997,
+        "material": true
+      },
+      {
+        "country": "United Kingdom",
+        "revenue_variance_nok": -770496.6400000155,
+        "gross_profit_variance_nok": -1085180.7299999893,
+        "largest_gp_driver": "list_price",
+        "largest_gp_driver_impact_nok": -692570.1600000004,
+        "material": true
+      },
+      {
+        "country": "Denmark",
+        "revenue_variance_nok": -548321.2200000137,
+        "gross_profit_variance_nok": -550191.4400000051,
+        "largest_gp_driver": "list_price",
+        "largest_gp_driver_impact_nok": -392388.6899999998,
+        "material": false
+      }
+    ],
+    "products": [
+      {
+        "product": "EdgeHub Core",
+        "revenue_variance_nok": -3285271.4399999976,
+        "gross_profit_variance_nok": -2378863.7100000083,
+        "largest_gp_driver": "list_price",
+        "largest_gp_driver_impact_nok": -901704.8000000003,
+        "material": true
+      },
+      {
+        "product": "EdgeHub Pro",
+        "revenue_variance_nok": -1618057.949999988,
+        "gross_profit_variance_nok": -1951167.599999994,
+        "largest_gp_driver": "list_price",
+        "largest_gp_driver_impact_nok": -867203.4199999999,
+        "material": true
+      },
+      {
+        "product": "Service Kit",
+        "revenue_variance_nok": -1260703.4199999943,
+        "gross_profit_variance_nok": -1007361.1000000089,
+        "largest_gp_driver": "volume_mix",
+        "largest_gp_driver_impact_nok": -603538.9299999995,
+        "material": true
+      },
+      {
+        "product": "Sensor X",
+        "revenue_variance_nok": -1171899.649999991,
+        "gross_profit_variance_nok": -916611.5300000012,
+        "largest_gp_driver": "list_price",
+        "largest_gp_driver_impact_nok": -627638.7199999996,
+        "material": false
+      },
+      {
+        "product": "Connectivity Pack",
+        "revenue_variance_nok": -914857.2300000042,
+        "gross_profit_variance_nok": -868913.5600000024,
+        "largest_gp_driver": "list_price",
+        "largest_gp_driver_impact_nok": -356219.78999999986,
+        "material": false
+      }
+    ],
+    "opex_accounts": [
+      {
+        "account": "Payroll",
+        "base_opex_nok": 162976084.29,
+        "comparison_opex_nok": 166335941.51,
+        "opex_variance_nok": 3359857.219999999,
+        "ebitda_impact_nok": -3359857.219999999,
+        "material": true
+      },
+      {
+        "account": "Marketing",
+        "base_opex_nok": 21903542.240000002,
+        "comparison_opex_nok": 23231369.490000002,
+        "opex_variance_nok": 1327827.25,
+        "ebitda_impact_nok": -1327827.25,
+        "material": true
+      },
+      {
+        "account": "Contractors",
+        "base_opex_nok": 24789292.06,
+        "comparison_opex_nok": 26060208.71,
+        "opex_variance_nok": 1270916.6500000022,
+        "ebitda_impact_nok": -1270916.6500000022,
+        "material": true
+      },
+      {
+        "account": "Facilities",
+        "base_opex_nok": 10739518.69,
+        "comparison_opex_nok": 10549441.43,
+        "opex_variance_nok": -190077.25999999978,
+        "ebitda_impact_nok": 190077.25999999978,
+        "material": false
+      },
+      {
+        "account": "R&D",
+        "base_opex_nok": 13208504.22,
+        "comparison_opex_nok": 13359056.67,
+        "opex_variance_nok": 150552.44999999925,
+        "ebitda_impact_nok": -150552.44999999925,
+        "material": false
+      }
+    ],
+    "cost_centres": [
+      {
+        "cost_centre": "Sales",
+        "base_opex_nok": 69350656.67,
+        "comparison_opex_nok": 71468900.75,
+        "opex_variance_nok": 2118244.079999998,
+        "ebitda_impact_nok": -2118244.079999998,
+        "material": true
+      },
+      {
+        "cost_centre": "Product & R&D",
+        "base_opex_nok": 85159872.86,
+        "comparison_opex_nok": 86941930.68,
+        "opex_variance_nok": 1782057.8200000077,
+        "ebitda_impact_nok": -1782057.8200000077,
+        "material": true
+      },
+      {
+        "cost_centre": "Corporate",
+        "base_opex_nok": 24292425.74,
+        "comparison_opex_nok": 25113322.58,
+        "opex_variance_nok": 820896.8399999999,
+        "ebitda_impact_nok": -820896.8399999999,
+        "material": false
+      },
+      {
+        "cost_centre": "Technology",
+        "base_opex_nok": 30806382.68,
+        "comparison_opex_nok": 31211445.35,
+        "opex_variance_nok": 405062.6700000018,
+        "ebitda_impact_nok": -405062.6700000018,
+        "material": false
+      },
+      {
+        "cost_centre": "Operations",
+        "base_opex_nok": 35126404.76,
+        "comparison_opex_nok": 35469100.1,
+        "opex_variance_nok": 342695.3400000036,
+        "ebitda_impact_nok": -342695.3400000036,
+        "material": false
+      }
+    ]
+  },
+  "reconciliation": {
+    "ebitda_bridge_total_nok": -14351954.780000001,
+    "reported_ebitda_variance_nok": -14351954.829999894,
+    "residual_nok": -0.049999892711639404,
+    "passed": true
+  }
+}
