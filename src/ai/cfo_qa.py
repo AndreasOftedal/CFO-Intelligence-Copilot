@@ -844,12 +844,11 @@ def _record_to_payload(
 def build_model_payload(
     question: str,
     selected_context: dict[str, Any],
+    analysis_period: str = "Latest Forecast vs Budget",
 ) -> dict[str, Any]:
     return {
         "question": question.strip(),
-        "analysis_period": (
-            "Latest Forecast vs Budget"
-        ),
+        "analysis_period": analysis_period.strip(),
         "deterministic_facts": [
             _record_to_payload(record)
             for record in selected_context[
@@ -1134,6 +1133,7 @@ def ask_cfo(
     commentary: dict[str, Any],
     ai_metadata: dict[str, Any],
     *,
+    analysis_period: str = "Latest Forecast vs Budget",
     api_key: str | None = None,
     model: str = DEFAULT_MODEL,
     dry_run: bool = False,
@@ -1154,10 +1154,12 @@ def ask_cfo(
     payload = build_model_payload(
         question=question,
         selected_context=selected,
+        analysis_period=analysis_period,
     )
 
     diagnostics = {
         "model": model,
+        "analysis_period": analysis_period,
         "selected_fact_count": len(
             selected["facts"]
         ),

@@ -22,21 +22,43 @@ from src.ai.cfo_qa import (
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 
-GROUNDED_ANALYSIS_PATH = (
-    PROJECT_ROOT
-    / "outputs"
-    / "grounding"
-    / "latest_forecast_vs_budget_grounded.json"
-)
+ANALYSIS_PERIODS = {
+    "Latest Forecast vs Budget": {
+        "comparison": "latest_forecast_vs_budget",
+        "grounded_path": (
+            PROJECT_ROOT
+            / "outputs"
+            / "grounding"
+            / "latest_forecast_vs_budget_grounded.json"
+        ),
+        "commentary_path": (
+            PROJECT_ROOT
+            / "outputs"
+            / "ai"
+            / "latest_forecast_vs_budget_commentary.json"
+        ),
+    },
+    "Actual YTD vs Budget": {
+        "comparison": "actual_ytd_vs_budget",
+        "grounded_path": (
+            PROJECT_ROOT
+            / "outputs"
+            / "grounding"
+            / "actual_ytd_vs_budget_grounded.json"
+        ),
+        "commentary_path": (
+            PROJECT_ROOT
+            / "outputs"
+            / "ai"
+            / "actual_ytd_vs_budget_commentary.json"
+        ),
+    },
+}
 
-AI_COMMENTARY_PATH = (
-    PROJECT_ROOT
-    / "outputs"
-    / "ai"
-    / "latest_forecast_vs_budget_commentary.json"
-)
+DEFAULT_ANALYSIS_PERIOD = "Latest Forecast vs Budget"
+REFERENCE_EVALUATION_PERIOD = "Latest Forecast vs Budget"
 
-EVALUATION_PATH = (
+REFERENCE_EVALUATION_PATH = (
     PROJECT_ROOT
     / "outputs"
     / "evaluation"
@@ -693,6 +715,7 @@ def render_qa_result(
         )
 
         st.caption(
+            f"Analysis period: {diagnostics.get('analysis_period', 'N/A')} · "
             "Ground truth access: blocked · "
             "Model-visible causal evidence for this question: "
             f"{', '.join(diagnostics.get('selected_evidence_ids', [])) or 'none'}"
@@ -701,19 +724,58 @@ def render_qa_result(
 
 
 # ---------------------------------------------------------------------
+# Analysis period selector
+# ---------------------------------------------------------------------
+
+with st.sidebar:
+    st.markdown(
+        "### CFO Intelligence Copilot"
+    )
+
+    st.caption(
+        "Northstar Systems AS"
+    )
+
+    st.divider()
+
+    selected_period = st.selectbox(
+        "Analysis period",
+        options=list(
+            ANALYSIS_PERIODS.keys()
+        ),
+        index=list(
+            ANALYSIS_PERIODS.keys()
+        ).index(
+            DEFAULT_ANALYSIS_PERIOD
+        ),
+        key="analysis_period_selector",
+    )
+
+
+# ---------------------------------------------------------------------
 # Load project outputs
 # ---------------------------------------------------------------------
 
+period_config = ANALYSIS_PERIODS[
+    selected_period
+]
+
 grounded = load_json(
-    GROUNDED_ANALYSIS_PATH
+    period_config[
+        "grounded_path"
+    ]
 )
 
 ai_output = load_json(
-    AI_COMMENTARY_PATH
+    period_config[
+        "commentary_path"
+    ]
 )
 
+# Evaluation remains a separate reference benchmark until the
+# expanded evaluation suite is built in the next project phase.
 evaluation = load_json(
-    EVALUATION_PATH
+    REFERENCE_EVALUATION_PATH
 )
 
 finance = grounded[
@@ -736,30 +798,41 @@ security = evaluation[
     "security_isolation"
 ]
 
+expected_comparison = period_config[
+    "comparison"
+]
+
+grounded_comparison = (
+    grounded.get(
+        "metadata",
+        {},
+    ).get(
+        "comparison"
+    )
+)
+
+ai_comparison = ai_metadata.get(
+    "comparison"
+)
+
+if (
+    grounded_comparison
+    != expected_comparison
+    or ai_comparison
+    != expected_comparison
+):
+    st.error(
+        "Selected analysis period does not match the loaded "
+        "grounding/commentary outputs."
+    )
+    st.stop()
+
 
 # ---------------------------------------------------------------------
 # Sidebar
 # ---------------------------------------------------------------------
 
 with st.sidebar:
-    st.markdown(
-        "### CFO Intelligence Copilot"
-    )
-
-    st.caption(
-        "Northstar Systems AS"
-    )
-
-    st.divider()
-
-    st.markdown(
-        "**Analysis period**"
-    )
-
-    st.write(
-        "Latest Forecast vs Budget"
-    )
-
     st.markdown(
         "**Architecture**"
     )
@@ -810,7 +883,7 @@ with st.sidebar:
     )
 
     st.markdown(
-        '<span class="status-pass">62 / 62 passing</span>',
+        '<span class="status-pass">64 / 64 passing</span>',
         unsafe_allow_html=True,
     )
 
@@ -869,8 +942,8 @@ overview_tab, ask_tab, evidence_tab, evaluation_tab, data_tab = (
 with overview_tab:
     st.markdown(
         '<div class="section-kicker">'
-        "Latest Forecast vs Budget"
-        "</div>",
+        + clean_text(selected_period)
+        + "</div>",
         unsafe_allow_html=True,
     )
 
@@ -1190,7 +1263,7 @@ with ask_tab:
     )
 
     st.caption(
-        "Ask management questions about the current Latest Forecast vs Budget "
+        f"Ask management questions about the current {selected_period} "
         "analysis. The assistant can use deterministic finance findings and "
         "evidence that already passed the grounding and directional controls."
     )
@@ -1244,6 +1317,25 @@ with ask_tab:
     )
 
     st.divider()
+
+    if (
+        st.session_state.get(
+            "cfo_qa_active_period"
+        )
+        != selected_period
+    ):
+        st.session_state[
+            "cfo_qa_active_period"
+        ] = selected_period
+        st.session_state[
+            "cfo_qa_history"
+        ] = []
+        st.session_state[
+            "cfo_question_input"
+        ] = ""
+        st.session_state[
+            "cfo_clear_question_input"
+        ] = False
 
     if (
         "cfo_qa_history"
@@ -1388,6 +1480,7 @@ with ask_tab:
                         question=clean_question,
                         commentary=commentary,
                         ai_metadata=ai_metadata,
+                        analysis_period=selected_period,
                         api_key=api_key,
                         model=str(
                             ai_metadata.get(
@@ -1772,6 +1865,18 @@ with evaluation_tab:
         "A separate offline evaluator compares pipeline behavior "
         "with the controlled synthetic events after generation."
     )
+
+    if (
+        selected_period
+        != REFERENCE_EVALUATION_PERIOD
+    ):
+        st.info(
+            "This tab currently shows the reference hidden-ground-truth "
+            f"benchmark for {REFERENCE_EVALUATION_PERIOD}. "
+            "The selected YTD analysis is not yet included in the "
+            "offline benchmark; that expansion belongs to the dedicated "
+            "evaluation-suite phase."
+        )
 
     if evaluation_summary.get(
         "overall_passed"
