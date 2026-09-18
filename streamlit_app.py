@@ -2,11 +2,18 @@ from __future__ import annotations
 
 import html
 import json
+import os
 from pathlib import Path
 from typing import Any
 
 import pandas as pd
 import streamlit as st
+
+from src.ai.cfo_qa import (
+    CFOQAError,
+    ask_cfo,
+    build_approved_context,
+)
 
 
 # ---------------------------------------------------------------------
@@ -56,6 +63,17 @@ SALES_DATASETS = {
         / "latest_forecast_sales.csv"
     ),
 }
+
+
+QA_SESSION_LIMIT = 5
+QA_MAX_QUESTION_CHARS = 400
+
+QA_SUGGESTED_QUESTIONS = [
+    "Why is EBITDA below budget?",
+    "What explains the UK shortfall?",
+    "What do we know about Product & R&D OPEX?",
+    "Can the Norway revenue shortfall be explained?",
+]
 
 
 # ---------------------------------------------------------------------
@@ -245,6 +263,34 @@ CUSTOM_CSS = """
         color: #b45309;
         font-weight: 700;
         font-size: 0.84rem;
+    }
+
+    .status-info {
+        display: inline-block;
+        padding: 0.28rem 0.65rem;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.10);
+        color: #1d4ed8;
+        font-weight: 700;
+        font-size: 0.84rem;
+    }
+
+    .qa-answer-card {
+        border: 1px solid rgba(128, 128, 128, 0.20);
+        border-radius: 14px;
+        padding: 1.05rem 1.15rem;
+        margin: 0.45rem 0 0.85rem 0;
+        line-height: 1.58;
+        background: rgba(128, 128, 128, 0.025);
+    }
+
+    .qa-question-card {
+        border-left: 4px solid #2563eb;
+        padding: 0.72rem 0.95rem;
+        margin: 0.8rem 0 0.35rem 0;
+        background: rgba(37, 99, 235, 0.045);
+        border-radius: 0 10px 10px 0;
+        line-height: 1.45;
     }
 
     div[data-testid="stExpander"] {
@@ -485,6 +531,175 @@ def render_unresolved_card(
     )
 
 
+
+def resolve_openai_api_key() -> str | None:
+    env_key = os.getenv(
+        "OPENAI_API_KEY"
+    )
+
+    if env_key:
+        return env_key.strip()
+
+    try:
+        secret_key = st.secrets.get(
+            "OPENAI_API_KEY"
+        )
+    except Exception:
+        secret_key = None
+
+    if secret_key:
+        return str(
+            secret_key
+        ).strip()
+
+    return None
+
+
+def qa_status_markup(
+    answer_type: str,
+) -> str:
+    if answer_type == "supported_explanation":
+        return (
+            '<span class="status-pass">'
+            "Evidence-supported explanation"
+            "</span>"
+        )
+
+    if answer_type == "calculated_fact":
+        return (
+            '<span class="status-info">'
+            "Calculated fact"
+            "</span>"
+        )
+
+    return (
+        '<span class="status-warning">'
+        "Insufficient evidence"
+        "</span>"
+    )
+
+
+def render_qa_result(
+    question: str,
+    result: dict[str, Any],
+) -> None:
+    answer = result.get(
+        "answer",
+        {},
+    )
+
+    answer_type = str(
+        answer.get(
+            "answer_type",
+            "insufficient_evidence",
+        )
+    )
+
+    st.markdown(
+        f"""
+        <div class="qa-question-card">
+            <strong>Question</strong><br>
+            {clean_text(question)}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        qa_status_markup(
+            answer_type
+        ),
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        f"""
+        <div class="qa-answer-card">
+            {clean_text(
+                answer.get(
+                    "answer",
+                    "No answer available.",
+                )
+            )}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    finding_ids = answer.get(
+        "finding_ids",
+        [],
+    )
+
+    evidence_ids = answer.get(
+        "evidence_ids",
+        [],
+    )
+
+    limitations = answer.get(
+        "limitations",
+        [],
+    )
+
+    with st.expander(
+        "Traceability",
+        expanded=False,
+    ):
+        if finding_ids:
+            st.markdown(
+                "**Calculated findings used**"
+            )
+            for finding_id in finding_ids:
+                st.write(
+                    "• "
+                    + short_finding_id(
+                        str(finding_id)
+                    )
+                )
+        else:
+            st.caption(
+                "No calculated finding IDs were cited."
+            )
+
+        st.markdown(
+            "**Approved evidence used**"
+        )
+
+        if evidence_ids:
+            for evidence_id in evidence_ids:
+                st.success(
+                    f"{evidence_id} · approved"
+                )
+        else:
+            st.caption(
+                "No causal evidence was cited."
+            )
+
+        if limitations:
+            st.markdown(
+                "**Limitations**"
+            )
+            for limitation in limitations:
+                st.write(
+                    "• "
+                    + str(
+                        limitation
+                    )
+                )
+
+        diagnostics = result.get(
+            "diagnostics",
+            {},
+        )
+
+        st.caption(
+            "Ground truth access: blocked · "
+            "Model-visible causal evidence for this question: "
+            f"{', '.join(diagnostics.get('selected_evidence_ids', [])) or 'none'}"
+        )
+
+
+
 # ---------------------------------------------------------------------
 # Load project outputs
 # ---------------------------------------------------------------------
@@ -595,7 +810,7 @@ with st.sidebar:
     )
 
     st.markdown(
-        '<span class="status-pass">51 / 51 passing</span>',
+        '<span class="status-pass">62 / 62 passing</span>',
         unsafe_allow_html=True,
     )
 
@@ -634,10 +849,11 @@ st.markdown(
 )
 
 
-overview_tab, evidence_tab, evaluation_tab, data_tab = (
+overview_tab, ask_tab, evidence_tab, evaluation_tab, data_tab = (
     st.tabs(
         [
             "Executive Overview",
+            "Ask the CFO",
             "Evidence & Guardrails",
             "Evaluation & Safety",
             "Data Explorer",
@@ -962,6 +1178,300 @@ with overview_tab:
                 """,
                 unsafe_allow_html=True,
             )
+
+
+# ---------------------------------------------------------------------
+# Ask the CFO
+# ---------------------------------------------------------------------
+
+with ask_tab:
+    st.subheader(
+        "Ask the CFO Copilot"
+    )
+
+    st.caption(
+        "Ask management questions about the current Latest Forecast vs Budget "
+        "analysis. The assistant can use deterministic finance findings and "
+        "evidence that already passed the grounding and directional controls."
+    )
+
+    st.info(
+        "The interactive assistant cannot access hidden ground truth and is "
+        "not allowed to invent explanations. When approved evidence is "
+        "insufficient, the answer must remain unresolved."
+    )
+
+    approved_context = build_approved_context(
+        commentary=commentary,
+        ai_metadata=ai_metadata,
+    )
+
+    q1, q2, q3, q4 = st.columns(
+        4
+    )
+
+    q1.metric(
+        "Calculated Facts",
+        len(
+            approved_context[
+                "facts"
+            ]
+        ),
+    )
+    q2.metric(
+        "Approved Explanations",
+        len(
+            approved_context[
+                "supported"
+            ]
+        ),
+    )
+    q3.metric(
+        "Approved Evidence IDs",
+        len(
+            approved_context[
+                "approved_evidence_ids"
+            ]
+        ),
+    )
+    q4.metric(
+        "Blocked Evidence IDs",
+        len(
+            approved_context[
+                "withheld_evidence_ids"
+            ]
+        ),
+    )
+
+    st.divider()
+
+    if (
+        "cfo_qa_history"
+        not in st.session_state
+    ):
+        st.session_state[
+            "cfo_qa_history"
+        ] = []
+
+    if (
+        "cfo_qa_request_count"
+        not in st.session_state
+    ):
+        st.session_state[
+            "cfo_qa_request_count"
+        ] = 0
+
+    if (
+        "cfo_question_input"
+        not in st.session_state
+    ):
+        st.session_state[
+            "cfo_question_input"
+        ] = ""
+
+    if (
+        "cfo_clear_question_input"
+        not in st.session_state
+    ):
+        st.session_state[
+            "cfo_clear_question_input"
+        ] = False
+
+    # Clear the previous question only after a successful response.
+    # This happens before the text-area widget is instantiated, which
+    # avoids Streamlit session-state conflicts.
+    if st.session_state[
+        "cfo_clear_question_input"
+    ]:
+        st.session_state[
+            "cfo_question_input"
+        ] = ""
+        st.session_state[
+            "cfo_clear_question_input"
+        ] = False
+
+    def set_cfo_question(
+        question_text: str,
+    ) -> None:
+        st.session_state[
+            "cfo_question_input"
+        ] = question_text
+
+    st.markdown(
+        "#### Example questions"
+    )
+
+    suggestion_columns = st.columns(
+        4
+    )
+
+    for index, suggested_question in enumerate(
+        QA_SUGGESTED_QUESTIONS
+    ):
+        with suggestion_columns[index]:
+            st.button(
+                suggested_question,
+                key=f"qa_suggestion_{index}",
+                use_container_width=True,
+                on_click=set_cfo_question,
+                args=(suggested_question,),
+            )
+
+    api_key = resolve_openai_api_key()
+
+    remaining_questions = max(
+        0,
+        QA_SESSION_LIMIT
+        - int(
+            st.session_state[
+                "cfo_qa_request_count"
+            ]
+        ),
+    )
+
+    st.caption(
+        f"Live demo limit: {QA_SESSION_LIMIT} successful questions per session · "
+        f"{remaining_questions} remaining"
+    )
+
+    if not api_key:
+        st.warning(
+            "Live CFO Q&A is not configured in this environment yet. "
+            "Add OPENAI_API_KEY as a local environment variable or "
+            "Streamlit secret to enable interactive questions."
+        )
+
+    # A normal container is used instead of clear_on_submit=True.
+    # Streamlit's form reset could clear a question inserted by an
+    # example-button before the submit handler reads it.
+    with st.container(
+        border=True,
+    ):
+        question = st.text_area(
+            "Management question",
+            key="cfo_question_input",
+            placeholder=(
+                "Example: What explains the UK shortfall?"
+            ),
+            height=95,
+            max_chars=QA_MAX_QUESTION_CHARS,
+        )
+
+        submit_question = st.button(
+            "Ask CFO Copilot",
+            key="cfo_submit_question",
+            type="primary",
+            use_container_width=False,
+            disabled=(
+                not api_key
+                or remaining_questions <= 0
+            ),
+        )
+
+    if submit_question:
+        clean_question = question.strip()
+
+        if not clean_question:
+            st.warning(
+                "Enter a management question first."
+            )
+        elif remaining_questions <= 0:
+            st.warning(
+                "The live question limit for this session has been reached."
+            )
+        else:
+            with st.spinner(
+                "Checking calculated findings and approved evidence..."
+            ):
+                try:
+                    result = ask_cfo(
+                        question=clean_question,
+                        commentary=commentary,
+                        ai_metadata=ai_metadata,
+                        api_key=api_key,
+                        model=str(
+                            ai_metadata.get(
+                                "model",
+                                "gpt-5.6-luna",
+                            )
+                        ),
+                    )
+                except CFOQAError as exc:
+                    st.error(
+                        f"CFO Q&A control blocked the response: {exc}"
+                    )
+                except Exception as exc:
+                    st.error(
+                        "The live model request failed. "
+                        f"Technical detail: {exc}"
+                    )
+                else:
+                    st.session_state[
+                        "cfo_qa_request_count"
+                    ] += 1
+
+                    st.session_state[
+                        "cfo_qa_history"
+                    ].append(
+                        {
+                            "question": clean_question,
+                            "result": result,
+                        }
+                    )
+
+                    st.session_state[
+                        "cfo_clear_question_input"
+                    ] = True
+
+                    st.rerun()
+
+    history = st.session_state[
+        "cfo_qa_history"
+    ]
+
+    if history:
+        st.divider()
+
+        history_header, clear_header = (
+            st.columns(
+                [5, 1]
+            )
+        )
+
+        with history_header:
+            st.markdown(
+                "#### Conversation"
+            )
+
+        with clear_header:
+            if st.button(
+                "Clear view",
+                use_container_width=True,
+            ):
+                st.session_state[
+                    "cfo_qa_history"
+                ] = []
+                st.rerun()
+
+        for item in reversed(
+            history
+        ):
+            render_qa_result(
+                question=item[
+                    "question"
+                ],
+                result=item[
+                    "result"
+                ],
+            )
+    else:
+        st.divider()
+
+        st.caption(
+            "No questions asked in this session yet. "
+            "Try one of the example questions above."
+        )
+
 
 
 # ---------------------------------------------------------------------
