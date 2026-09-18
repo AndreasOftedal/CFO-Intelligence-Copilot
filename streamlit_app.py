@@ -14,6 +14,12 @@ from src.ai.cfo_qa import (
     ask_cfo,
     build_approved_context,
 )
+from src.scenario.scenario_engine import (
+    SCENARIO_DRIVER_LABELS,
+    ScenarioInputs,
+    run_latest_forecast_scenario,
+    run_latest_forecast_sensitivity,
+)
 
 
 # ---------------------------------------------------------------------
@@ -403,6 +409,57 @@ def load_sales_data(
         )
 
     return frame
+
+
+@st.cache_data(show_spinner=False)
+def calculate_scenario_result(
+    volume_pct: float,
+    price_pct: float,
+    unit_cost_pct: float,
+    headcount_pct: float,
+    non_payroll_opex_pct: float,
+) -> dict[str, Any]:
+    """Run one deterministic management scenario against Latest Forecast."""
+
+    inputs = ScenarioInputs(
+        volume_pct=volume_pct,
+        price_pct=price_pct,
+        unit_cost_pct=unit_cost_pct,
+        headcount_pct=headcount_pct,
+        non_payroll_opex_pct=non_payroll_opex_pct,
+    )
+
+    return run_latest_forecast_scenario(
+        inputs=inputs,
+        scenario_label="Management Scenario",
+    )
+
+
+@st.cache_data(show_spinner=False)
+def calculate_sensitivity_result(
+    driver: str,
+    values: tuple[float, ...],
+    volume_pct: float,
+    price_pct: float,
+    unit_cost_pct: float,
+    headcount_pct: float,
+    non_payroll_opex_pct: float,
+) -> list[dict[str, Any]]:
+    """Run one-way deterministic sensitivity around the current scenario."""
+
+    base_inputs = ScenarioInputs(
+        volume_pct=volume_pct,
+        price_pct=price_pct,
+        unit_cost_pct=unit_cost_pct,
+        headcount_pct=headcount_pct,
+        non_payroll_opex_pct=non_payroll_opex_pct,
+    )
+
+    return run_latest_forecast_sensitivity(
+        driver=driver,
+        values=values,
+        base_inputs=base_inputs,
+    )
 
 
 def money_value(
@@ -939,8 +996,8 @@ with st.sidebar:
 
     st.caption(
         "Deterministic finance engine → "
-        "evidence grounding → directional "
-        "guardrails → AI commentary → "
+        "scenario simulation + evidence grounding → "
+        "directional guardrails → AI commentary → "
         "offline evaluation"
     )
 
@@ -983,7 +1040,7 @@ with st.sidebar:
     )
 
     st.markdown(
-        '<span class="status-pass">106 / 106 passing</span>',
+        '<span class="status-pass">118 / 118 passing</span>',
         unsafe_allow_html=True,
     )
 
@@ -1022,16 +1079,22 @@ st.markdown(
 )
 
 
-overview_tab, ask_tab, evidence_tab, evaluation_tab, data_tab = (
-    st.tabs(
-        [
-            "Executive Overview",
-            "Ask the CFO",
-            "Evidence & Guardrails",
-            "Evaluation & Safety",
-            "Data Explorer",
-        ]
-    )
+(
+    overview_tab,
+    ask_tab,
+    scenario_tab,
+    evidence_tab,
+    evaluation_tab,
+    data_tab,
+) = st.tabs(
+    [
+        "Executive Overview",
+        "Ask the CFO",
+        "Scenario & Sensitivity",
+        "Evidence & Guardrails",
+        "Evaluation & Safety",
+        "Data Explorer",
+    ]
 )
 
 
@@ -1664,6 +1727,626 @@ with ask_tab:
             "No questions asked in this session yet. "
             "Try one of the example questions above."
         )
+
+
+
+# ---------------------------------------------------------------------
+# Scenario & Sensitivity
+# ---------------------------------------------------------------------
+
+with scenario_tab:
+    st.subheader(
+        "Scenario & Sensitivity Lab"
+    )
+
+    st.caption(
+        "Model full-year management scenarios against the 2026 Latest Forecast. "
+        "Every output is recalculated by the same deterministic finance engine "
+        "used in the core FP&A analysis."
+    )
+
+    st.info(
+        "This is a deterministic what-if model, not an AI forecast. "
+        "Latest Forecast is the fixed baseline for this lab."
+    )
+
+    st.markdown(
+        "#### Scenario Assumptions"
+    )
+
+    assumption_row_1 = st.columns(
+        3
+    )
+
+    with assumption_row_1[0]:
+        scenario_volume_pct = st.slider(
+            "Volume",
+            min_value=-20.0,
+            max_value=20.0,
+            value=0.0,
+            step=1.0,
+            format="%.1f%%",
+            key="scenario_volume_pct",
+            help=(
+                "Applies the same relative unit-volume change across "
+                "the detailed Latest Forecast sales grain."
+            ),
+        )
+
+    with assumption_row_1[1]:
+        scenario_price_pct = st.slider(
+            "List price",
+            min_value=-10.0,
+            max_value=10.0,
+            value=0.0,
+            step=0.5,
+            format="%.1f%%",
+            key="scenario_price_pct",
+            help=(
+                "Changes list price before the existing forecast "
+                "discount rate is applied."
+            ),
+        )
+
+    with assumption_row_1[2]:
+        scenario_unit_cost_pct = st.slider(
+            "Unit cost",
+            min_value=-15.0,
+            max_value=15.0,
+            value=0.0,
+            step=0.5,
+            format="%.1f%%",
+            key="scenario_unit_cost_pct",
+            help=(
+                "Changes unit cost while preserving the detailed "
+                "forecast product and market mix."
+            ),
+        )
+
+    assumption_row_2 = st.columns(
+        2
+    )
+
+    with assumption_row_2[0]:
+        scenario_headcount_pct = st.slider(
+            "Headcount",
+            min_value=-20.0,
+            max_value=20.0,
+            value=0.0,
+            step=1.0,
+            format="%.1f%%",
+            key="scenario_headcount_pct",
+            help=(
+                "Scales payroll headcount. Payroll expense is recalculated "
+                "using the existing average employee cost."
+            ),
+        )
+
+    with assumption_row_2[1]:
+        scenario_non_payroll_pct = st.slider(
+            "Non-payroll OPEX",
+            min_value=-20.0,
+            max_value=20.0,
+            value=0.0,
+            step=1.0,
+            format="%.1f%%",
+            key="scenario_non_payroll_pct",
+            help=(
+                "Scales all non-payroll operating expense accounts."
+            ),
+        )
+
+    scenario_inputs_decimal = {
+        "volume_pct": scenario_volume_pct / 100,
+        "price_pct": scenario_price_pct / 100,
+        "unit_cost_pct": scenario_unit_cost_pct / 100,
+        "headcount_pct": scenario_headcount_pct / 100,
+        "non_payroll_opex_pct": scenario_non_payroll_pct / 100,
+    }
+
+    scenario_result = calculate_scenario_result(
+        volume_pct=scenario_inputs_decimal["volume_pct"],
+        price_pct=scenario_inputs_decimal["price_pct"],
+        unit_cost_pct=scenario_inputs_decimal["unit_cost_pct"],
+        headcount_pct=scenario_inputs_decimal["headcount_pct"],
+        non_payroll_opex_pct=scenario_inputs_decimal["non_payroll_opex_pct"],
+    )
+
+    scenario_summary = scenario_result[
+        "summary"
+    ]
+
+    st.divider()
+
+    st.markdown(
+        "#### Scenario Outcome"
+    )
+
+    st.caption(
+        "Values show the recalculated scenario. "
+        "Deltas are versus the 2026 Latest Forecast baseline."
+    )
+
+    scenario_kpis = st.columns(
+        5
+    )
+
+    with scenario_kpis[0]:
+        st.metric(
+            "Revenue",
+            money_value(
+                scenario_summary[
+                    "scenario_revenue_nok"
+                ]
+            ),
+            delta=money_delta(
+                scenario_summary[
+                    "revenue_change_nok"
+                ]
+            ),
+        )
+
+    with scenario_kpis[1]:
+        st.metric(
+            "Gross Profit",
+            money_value(
+                scenario_summary[
+                    "scenario_gross_profit_nok"
+                ]
+            ),
+            delta=money_delta(
+                scenario_summary[
+                    "gross_profit_change_nok"
+                ]
+            ),
+        )
+
+    with scenario_kpis[2]:
+        st.metric(
+            "OPEX",
+            money_value(
+                scenario_summary[
+                    "scenario_opex_nok"
+                ]
+            ),
+            delta=money_delta(
+                scenario_summary[
+                    "opex_change_nok"
+                ]
+            ),
+            delta_color="inverse",
+        )
+
+    with scenario_kpis[3]:
+        st.metric(
+            "EBITDA",
+            money_value(
+                scenario_summary[
+                    "scenario_ebitda_nok"
+                ]
+            ),
+            delta=money_delta(
+                scenario_summary[
+                    "ebitda_change_nok"
+                ]
+            ),
+        )
+
+    with scenario_kpis[4]:
+        st.metric(
+            "EBITDA Margin",
+            pct(
+                scenario_summary[
+                    "scenario_ebitda_margin"
+                ]
+            ),
+            delta=percentage_point_delta(
+                scenario_summary[
+                    "ebitda_margin_change_pp"
+                ]
+            ),
+        )
+
+    reconciliation = scenario_result[
+        "reconciliation"
+    ]
+
+    reconciliation_residual = float(
+        reconciliation.get(
+            "residual_nok",
+            0.0,
+        )
+    )
+
+    if reconciliation.get(
+        "passed"
+    ):
+        st.success(
+            "Scenario bridge reconciled to calculated EBITDA · "
+            f"residual NOK {reconciliation_residual:,.2f}"
+        )
+    else:
+        st.error(
+            "Scenario bridge failed reconciliation."
+        )
+
+    st.divider()
+
+    bridge_left, bridge_right = st.columns(
+        [1.05, 0.95]
+    )
+
+    bridge_labels = {
+        "volume_mix": "Volume & mix",
+        "list_price": "List price",
+        "discount": "Discount",
+        "unit_cost": "Unit cost",
+        "headcount": "Headcount",
+        "employee_cost": "Employee cost",
+        "non_payroll": "Non-payroll OPEX",
+    }
+
+    bridge_rows = []
+
+    for item in scenario_result.get(
+        "ebitda_bridge",
+        [],
+    ):
+        impact_nok = float(
+            item.get(
+                "impact_nok",
+                0.0,
+            )
+        )
+
+        bridge_rows.append(
+            {
+                "Driver": bridge_labels.get(
+                    item.get(
+                        "driver",
+                        "",
+                    ),
+                    str(
+                        item.get(
+                            "driver",
+                            "",
+                        )
+                    ).replace(
+                        "_",
+                        " ",
+                    ).title(),
+                ),
+                "Category": str(
+                    item.get(
+                        "category",
+                        "",
+                    )
+                ).title(),
+                "EBITDA impact (NOK m)": impact_nok / 1_000_000,
+                "Material": (
+                    "Yes"
+                    if item.get(
+                        "material"
+                    )
+                    else "No"
+                ),
+            }
+        )
+
+    bridge_frame = pd.DataFrame(
+        bridge_rows
+    )
+
+    with bridge_left:
+        st.markdown(
+            "#### EBITDA Driver Bridge"
+        )
+
+        st.caption(
+            "Sequential deterministic decomposition of the scenario's "
+            "EBITDA change versus Latest Forecast."
+        )
+
+        st.dataframe(
+            bridge_frame,
+            width="stretch",
+            hide_index=True,
+            column_config={
+                "EBITDA impact (NOK m)": (
+                    st.column_config.NumberColumn(
+                        format="%.2f",
+                    )
+                ),
+            },
+        )
+
+        if not bridge_frame.empty:
+            largest_driver_index = (
+                bridge_frame[
+                    "EBITDA impact (NOK m)"
+                ]
+                .abs()
+                .idxmax()
+            )
+
+            largest_driver_row = bridge_frame.loc[
+                largest_driver_index
+            ]
+
+            st.caption(
+                "Largest absolute EBITDA driver: "
+                f"{largest_driver_row['Driver']} · "
+                f"NOK "
+                f"{largest_driver_row['EBITDA impact (NOK m)']:+.2f}m"
+            )
+
+    with bridge_right:
+        st.markdown(
+            "#### EBITDA Impact by Driver"
+        )
+
+        if not bridge_frame.empty:
+            chart_frame = (
+                bridge_frame[
+                    [
+                        "Driver",
+                        "EBITDA impact (NOK m)",
+                    ]
+                ]
+                .set_index(
+                    "Driver"
+                )
+            )
+
+            st.bar_chart(
+                chart_frame,
+                height=330,
+            )
+        else:
+            st.info(
+                "No bridge drivers available."
+            )
+
+    st.divider()
+
+    st.markdown(
+        "#### One-Way Sensitivity"
+    )
+
+    st.caption(
+        "Stress one driver around the current scenario assumption while "
+        "holding the other four assumptions constant."
+    )
+
+    sensitivity_controls = st.columns(
+        [1, 1]
+    )
+
+    sensitivity_driver_options = list(
+        SCENARIO_DRIVER_LABELS.keys()
+    )
+
+    with sensitivity_controls[0]:
+        sensitivity_driver = st.selectbox(
+            "Sensitivity driver",
+            options=sensitivity_driver_options,
+            format_func=lambda key: (
+                SCENARIO_DRIVER_LABELS[
+                    key
+                ]
+            ),
+            key="scenario_sensitivity_driver",
+        )
+
+    with sensitivity_controls[1]:
+        sensitivity_span_pp = st.slider(
+            "Sensitivity span",
+            min_value=2.0,
+            max_value=20.0,
+            value=10.0,
+            step=1.0,
+            format="± %.1f pp",
+            key="scenario_sensitivity_span",
+            help=(
+                "Creates five sensitivity points centered on the "
+                "current assumption for the selected driver."
+            ),
+        )
+
+    driver_current_values = {
+        "volume": scenario_inputs_decimal[
+            "volume_pct"
+        ],
+        "price": scenario_inputs_decimal[
+            "price_pct"
+        ],
+        "unit_cost": scenario_inputs_decimal[
+            "unit_cost_pct"
+        ],
+        "headcount": scenario_inputs_decimal[
+            "headcount_pct"
+        ],
+        "non_payroll_opex": scenario_inputs_decimal[
+            "non_payroll_opex_pct"
+        ],
+    }
+
+    sensitivity_center_pp = (
+        driver_current_values[
+            sensitivity_driver
+        ]
+        * 100
+    )
+
+    sensitivity_points_pp = (
+        sensitivity_center_pp
+        - sensitivity_span_pp,
+        sensitivity_center_pp
+        - sensitivity_span_pp / 2,
+        sensitivity_center_pp,
+        sensitivity_center_pp
+        + sensitivity_span_pp / 2,
+        sensitivity_center_pp
+        + sensitivity_span_pp,
+    )
+
+    sensitivity_values = tuple(
+        round(
+            value / 100,
+            6,
+        )
+        for value
+        in sensitivity_points_pp
+    )
+
+    sensitivity_records = calculate_sensitivity_result(
+        driver=sensitivity_driver,
+        values=sensitivity_values,
+        volume_pct=scenario_inputs_decimal["volume_pct"],
+        price_pct=scenario_inputs_decimal["price_pct"],
+        unit_cost_pct=scenario_inputs_decimal["unit_cost_pct"],
+        headcount_pct=scenario_inputs_decimal["headcount_pct"],
+        non_payroll_opex_pct=scenario_inputs_decimal["non_payroll_opex_pct"],
+    )
+
+    sensitivity_rows = []
+
+    for record in sensitivity_records:
+        sensitivity_rows.append(
+            {
+                "Input change (%)": float(
+                    record[
+                        "input_change_pct"
+                    ]
+                ),
+                "Revenue change (NOK m)": (
+                    float(
+                        record[
+                            "revenue_change_nok"
+                        ]
+                    )
+                    / 1_000_000
+                ),
+                "Gross Profit change (NOK m)": (
+                    float(
+                        record[
+                            "gross_profit_change_nok"
+                        ]
+                    )
+                    / 1_000_000
+                ),
+                "OPEX change (NOK m)": (
+                    float(
+                        record[
+                            "opex_change_nok"
+                        ]
+                    )
+                    / 1_000_000
+                ),
+                "EBITDA change (NOK m)": (
+                    float(
+                        record[
+                            "ebitda_change_nok"
+                        ]
+                    )
+                    / 1_000_000
+                ),
+                "EBITDA Margin (%)": (
+                    float(
+                        record[
+                            "scenario_ebitda_margin"
+                        ]
+                    )
+                    * 100
+                ),
+                "Margin change (pp)": float(
+                    record[
+                        "ebitda_margin_change_pp"
+                    ]
+                ),
+            }
+        )
+
+    sensitivity_frame = pd.DataFrame(
+        sensitivity_rows
+    )
+
+    sensitivity_left, sensitivity_right = st.columns(
+        [1.15, 0.85]
+    )
+
+    with sensitivity_left:
+        st.dataframe(
+            sensitivity_frame,
+            width="stretch",
+            hide_index=True,
+            column_config={
+                "Input change (%)": (
+                    st.column_config.NumberColumn(
+                        format="%.1f%%",
+                    )
+                ),
+                "Revenue change (NOK m)": (
+                    st.column_config.NumberColumn(
+                        format="%.2f",
+                    )
+                ),
+                "Gross Profit change (NOK m)": (
+                    st.column_config.NumberColumn(
+                        format="%.2f",
+                    )
+                ),
+                "OPEX change (NOK m)": (
+                    st.column_config.NumberColumn(
+                        format="%.2f",
+                    )
+                ),
+                "EBITDA change (NOK m)": (
+                    st.column_config.NumberColumn(
+                        format="%.2f",
+                    )
+                ),
+                "EBITDA Margin (%)": (
+                    st.column_config.NumberColumn(
+                        format="%.2f%%",
+                    )
+                ),
+                "Margin change (pp)": (
+                    st.column_config.NumberColumn(
+                        format="%+.2f",
+                    )
+                ),
+            },
+        )
+
+    with sensitivity_right:
+        st.markdown(
+            "##### EBITDA Sensitivity"
+        )
+
+        if not sensitivity_frame.empty:
+            sensitivity_chart = (
+                sensitivity_frame[
+                    [
+                        "Input change (%)",
+                        "EBITDA change (NOK m)",
+                    ]
+                ]
+                .set_index(
+                    "Input change (%)"
+                )
+            )
+
+            st.line_chart(
+                sensitivity_chart,
+                height=320,
+            )
+
+    st.caption(
+        "Sensitivity results are deterministic what-if calculations, not "
+        "forecasts or probability estimates. They show the mechanical "
+        "financial impact of the selected assumptions."
+    )
 
 
 
@@ -3319,7 +4002,8 @@ st.divider()
 
 st.caption(
     "CFO Intelligence Copilot · Synthetic portfolio project · "
-    "Deterministic finance calculations · Evidence grounding · "
+    "Deterministic finance calculations · Scenario & sensitivity analysis · "
+    "Evidence grounding · "
     "Directional guardrails · Structured AI commentary · "
     "Adversarial safety benchmarking · Hidden-ground-truth evaluation"
 )
