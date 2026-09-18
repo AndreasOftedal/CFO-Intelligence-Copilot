@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "index_version": "1.0",
+    "source_directory": "data/documents",
+    "ground_truth_access": false,
+    "evidence_count": 4
+  },
+  "evidence": [
+    {
+      "evidence_id": "NOTE-014",
+      "title": "Germany EdgeHub Pro procurement surcharge",
+      "source_file": "monthly_management_notes_2026-08.md",
+      "source_type": "management_note",
+      "text": "A temporary supplier surcharge remained in effect for EdgeHub Pro units sold in Germany during August. Procurement used secondary sourcing capacity to protect customer delivery commitments. The surcharge increased unit purchase cost by approximately 8%. Management expects sourcing conditions to normalize from September.",
+      "character_count": 321,
+      "content_sha256": "c6797275248cdd2e411216c2b5797e20517751024925bb5cb6a3cc6551fdb09a"
+    },
+    {
+      "evidence_id": "NOTE-015",
+      "title": "UK Sensor X distributor shipment delay",
+      "source_file": "monthly_management_notes_2026-08.md",
+      "source_type": "management_note",
+      "text": "Sensor X shipments through the UK distributor channel were lower than expected in August. A major end-customer implementation was moved from August into September, delaying part of the planned distributor demand.",
+      "character_count": 212,
+      "content_sha256": "db6db9ea5495a64321d9ad57a3662696490aeca660efab80d15718fdb9610dc3"
+    },
+    {
+      "evidence_id": "NOTE-016",
+      "title": "Norway Sensor X Pro shipment acceleration",
+      "source_file": "monthly_management_notes_2026-08.md",
+      "source_type": "management_note",
+      "text": "Enterprise shipments of Sensor X Pro in Norway were accelerated into August after customer acceptance occurred earlier than planned. Management expects part of the increase to represent demand pulled forward from September.",
+      "character_count": 223,
+      "content_sha256": "276c784ea053311da40ca4661f26904ea64a407733855edd50fe9b39d39d0305"
+    },
+    {
+      "evidence_id": "NOTE-017",
+      "title": "Product & R&D contractor acceleration",
+      "source_file": "opex_management_notes_2026-08.md",
+      "source_type": "management_note",
+      "text": "External engineering and testing resources were increased during August to accelerate prototype validation for the next-generation control platform. The additional contractor spend was approximately NOK 1.8m above the normal monthly run-rate. Management expects the elevated activity to continue at a lower level through September before normalizing.",
+      "character_count": 350,
+      "content_sha256": "4a8947e179e86e6519fa3dccd667931da389cf2b912f4e40a313adb9ff803ff0"
+    }
+  ]
+}

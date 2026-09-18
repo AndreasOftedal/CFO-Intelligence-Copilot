@@ -1,0 +1,525 @@
+{
+  "metadata": {
+    "comparison": "actual_ytd_vs_budget",
+    "grounding_engine": "deterministic",
+    "grounding_version": "1.1",
+    "ground_truth_access": false
+  },
+  "finance_summary": {
+    "base_revenue_nok": 861521469.39,
+    "comparison_revenue_nok": 853203887.9200001,
+    "revenue_variance_nok": -8317581.469999909,
+    "base_gross_profit_nok": 411127456.67999995,
+    "comparison_gross_profit_nok": 402864590.45000005,
+    "gross_profit_variance_nok": -8262866.2299999,
+    "base_opex_nok": 266779604.66,
+    "comparison_opex_nok": 272868693.26,
+    "opex_variance_nok": 6089088.599999994,
+    "base_ebitda_nok": 144347852.01999995,
+    "comparison_ebitda_nok": 129995897.19000006,
+    "ebitda_variance_nok": -14351954.829999894,
+    "base_ebitda_margin": 0.16754991854376583,
+    "comparison_ebitda_margin": 0.15236205440520567,
+    "ebitda_margin_variance_pp": -1.5187864138560159
+  },
+  "grounding_summary": {
+    "finding_count": 20,
+    "evidence_available_count": 2,
+    "insufficient_evidence_count": 18
+  },
+  "findings": [
+    {
+      "finding_id": "country::Germany",
+      "finding_type": "country",
+      "entity": "Germany",
+      "calculated_fact": {
+        "revenue_variance_nok": -3182080.9200000167,
+        "gross_profit_variance_nok": -3432591.9099999964,
+        "primary_driver": "list_price",
+        "primary_driver_impact_nok": -1268889.5800000005
+      },
+      "material": true,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [
+          {
+            "evidence_id": "NOTE-014",
+            "title": "Germany EdgeHub Pro procurement surcharge",
+            "source_file": "monthly_management_notes_2026-08.md",
+            "support_status": "related_not_explanatory",
+            "primary_evidence_driver": "unit_cost",
+            "evidence_entities": {
+              "countries": [
+                "Germany"
+              ],
+              "products": [
+                "EdgeHub Pro"
+              ],
+              "cost_centres": [],
+              "accounts": [],
+              "segments": []
+            }
+          }
+        ],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "country::Norway",
+      "finding_type": "country",
+      "entity": "Norway",
+      "calculated_fact": {
+        "revenue_variance_nok": -2085836.9399999976,
+        "gross_profit_variance_nok": -1484689.1799999923,
+        "primary_driver": "list_price",
+        "primary_driver_impact_nok": -754564.9799999997
+      },
+      "material": true,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [
+          {
+            "evidence_id": "NOTE-016",
+            "title": "Norway Sensor X Pro shipment acceleration",
+            "source_file": "monthly_management_notes_2026-08.md",
+            "support_status": "related_not_explanatory",
+            "primary_evidence_driver": "volume_mix",
+            "evidence_entities": {
+              "countries": [
+                "Norway"
+              ],
+              "products": [
+                "Sensor X Pro"
+              ],
+              "cost_centres": [],
+              "accounts": [],
+              "segments": [
+                "Enterprise"
+              ]
+            }
+          }
+        ],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "country::Sweden",
+      "finding_type": "country",
+      "entity": "Sweden",
+      "calculated_fact": {
+        "revenue_variance_nok": -1285487.5,
+        "gross_profit_variance_nok": -1399626.8300000057,
+        "primary_driver": "list_price",
+        "primary_driver_impact_nok": -674916.2499999997
+      },
+      "material": true,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "country::United Kingdom",
+      "finding_type": "country",
+      "entity": "United Kingdom",
+      "calculated_fact": {
+        "revenue_variance_nok": -770496.6400000155,
+        "gross_profit_variance_nok": -1085180.7299999893,
+        "primary_driver": "list_price",
+        "primary_driver_impact_nok": -692570.1600000004
+      },
+      "material": true,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [
+          {
+            "evidence_id": "NOTE-015",
+            "title": "UK Sensor X distributor shipment delay",
+            "source_file": "monthly_management_notes_2026-08.md",
+            "support_status": "related_not_explanatory",
+            "primary_evidence_driver": "volume_mix",
+            "evidence_entities": {
+              "countries": [
+                "United Kingdom"
+              ],
+              "products": [
+                "Sensor X"
+              ],
+              "cost_centres": [],
+              "accounts": [],
+              "segments": [
+                "Distributor"
+              ]
+            }
+          }
+        ],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "country::Denmark",
+      "finding_type": "country",
+      "entity": "Denmark",
+      "calculated_fact": {
+        "revenue_variance_nok": -548321.2200000137,
+        "gross_profit_variance_nok": -550191.4400000051,
+        "primary_driver": "list_price",
+        "primary_driver_impact_nok": -392388.6899999998
+      },
+      "material": false,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "product::EdgeHub Core",
+      "finding_type": "product",
+      "entity": "EdgeHub Core",
+      "calculated_fact": {
+        "revenue_variance_nok": -3285271.4399999976,
+        "gross_profit_variance_nok": -2378863.7100000083,
+        "primary_driver": "list_price",
+        "primary_driver_impact_nok": -901704.8000000003
+      },
+      "material": true,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "product::EdgeHub Pro",
+      "finding_type": "product",
+      "entity": "EdgeHub Pro",
+      "calculated_fact": {
+        "revenue_variance_nok": -1618057.949999988,
+        "gross_profit_variance_nok": -1951167.599999994,
+        "primary_driver": "list_price",
+        "primary_driver_impact_nok": -867203.4199999999
+      },
+      "material": true,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [
+          {
+            "evidence_id": "NOTE-014",
+            "title": "Germany EdgeHub Pro procurement surcharge",
+            "source_file": "monthly_management_notes_2026-08.md",
+            "support_status": "related_not_explanatory",
+            "primary_evidence_driver": "unit_cost",
+            "evidence_entities": {
+              "countries": [
+                "Germany"
+              ],
+              "products": [
+                "EdgeHub Pro"
+              ],
+              "cost_centres": [],
+              "accounts": [],
+              "segments": []
+            }
+          }
+        ],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "product::Service Kit",
+      "finding_type": "product",
+      "entity": "Service Kit",
+      "calculated_fact": {
+        "revenue_variance_nok": -1260703.4199999943,
+        "gross_profit_variance_nok": -1007361.1000000089,
+        "primary_driver": "volume_mix",
+        "primary_driver_impact_nok": -603538.9299999995
+      },
+      "material": true,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "product::Sensor X",
+      "finding_type": "product",
+      "entity": "Sensor X",
+      "calculated_fact": {
+        "revenue_variance_nok": -1171899.649999991,
+        "gross_profit_variance_nok": -916611.5300000012,
+        "primary_driver": "list_price",
+        "primary_driver_impact_nok": -627638.7199999996
+      },
+      "material": false,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [
+          {
+            "evidence_id": "NOTE-015",
+            "title": "UK Sensor X distributor shipment delay",
+            "source_file": "monthly_management_notes_2026-08.md",
+            "support_status": "related_not_explanatory",
+            "primary_evidence_driver": "volume_mix",
+            "evidence_entities": {
+              "countries": [
+                "United Kingdom"
+              ],
+              "products": [
+                "Sensor X"
+              ],
+              "cost_centres": [],
+              "accounts": [],
+              "segments": [
+                "Distributor"
+              ]
+            }
+          }
+        ],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "product::Connectivity Pack",
+      "finding_type": "product",
+      "entity": "Connectivity Pack",
+      "calculated_fact": {
+        "revenue_variance_nok": -914857.2300000042,
+        "gross_profit_variance_nok": -868913.5600000024,
+        "primary_driver": "list_price",
+        "primary_driver_impact_nok": -356219.78999999986
+      },
+      "material": false,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "opex_account::Payroll",
+      "finding_type": "opex_account",
+      "entity": "Payroll",
+      "calculated_fact": {
+        "opex_variance_nok": 3359857.219999999,
+        "ebitda_impact_nok": -3359857.219999999,
+        "primary_driver": "payroll"
+      },
+      "material": true,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "opex_account::Marketing",
+      "finding_type": "opex_account",
+      "entity": "Marketing",
+      "calculated_fact": {
+        "opex_variance_nok": 1327827.25,
+        "ebitda_impact_nok": -1327827.25,
+        "primary_driver": "non_payroll"
+      },
+      "material": true,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "opex_account::Contractors",
+      "finding_type": "opex_account",
+      "entity": "Contractors",
+      "calculated_fact": {
+        "opex_variance_nok": 1270916.6500000022,
+        "ebitda_impact_nok": -1270916.6500000022,
+        "primary_driver": "non_payroll"
+      },
+      "material": true,
+      "grounding": {
+        "explanation_status": "evidence_available",
+        "usable_evidence_ids": [
+          "NOTE-017"
+        ],
+        "evidence_candidates": [
+          {
+            "evidence_id": "NOTE-017",
+            "title": "Product & R&D contractor acceleration",
+            "source_file": "opex_management_notes_2026-08.md",
+            "support_status": "partial_support",
+            "primary_evidence_driver": "non_payroll",
+            "evidence_entities": {
+              "countries": [],
+              "products": [],
+              "cost_centres": [
+                "Product & R&D"
+              ],
+              "accounts": [
+                "Contractors"
+              ],
+              "segments": []
+            }
+          }
+        ],
+        "allowed_ai_behavior": "Use only supported or partial-support evidence. Do not generalize evidence beyond its documented entity and driver scope."
+      }
+    },
+    {
+      "finding_id": "opex_account::Facilities",
+      "finding_type": "opex_account",
+      "entity": "Facilities",
+      "calculated_fact": {
+        "opex_variance_nok": -190077.25999999978,
+        "ebitda_impact_nok": 190077.25999999978,
+        "primary_driver": "non_payroll"
+      },
+      "material": false,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "opex_account::R&D",
+      "finding_type": "opex_account",
+      "entity": "R&D",
+      "calculated_fact": {
+        "opex_variance_nok": 150552.44999999925,
+        "ebitda_impact_nok": -150552.44999999925,
+        "primary_driver": "non_payroll"
+      },
+      "material": false,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "cost_centre::Sales",
+      "finding_type": "cost_centre",
+      "entity": "Sales",
+      "calculated_fact": {
+        "opex_variance_nok": 2118244.079999998,
+        "ebitda_impact_nok": -2118244.079999998,
+        "primary_driver": null
+      },
+      "material": true,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "cost_centre::Product & R&D",
+      "finding_type": "cost_centre",
+      "entity": "Product & R&D",
+      "calculated_fact": {
+        "opex_variance_nok": 1782057.8200000077,
+        "ebitda_impact_nok": -1782057.8200000077,
+        "primary_driver": null
+      },
+      "material": true,
+      "grounding": {
+        "explanation_status": "evidence_available",
+        "usable_evidence_ids": [
+          "NOTE-017"
+        ],
+        "evidence_candidates": [
+          {
+            "evidence_id": "NOTE-017",
+            "title": "Product & R&D contractor acceleration",
+            "source_file": "opex_management_notes_2026-08.md",
+            "support_status": "partial_support",
+            "primary_evidence_driver": "non_payroll",
+            "evidence_entities": {
+              "countries": [],
+              "products": [],
+              "cost_centres": [
+                "Product & R&D"
+              ],
+              "accounts": [
+                "Contractors"
+              ],
+              "segments": []
+            }
+          }
+        ],
+        "allowed_ai_behavior": "Use only supported or partial-support evidence. Do not generalize evidence beyond its documented entity and driver scope."
+      }
+    },
+    {
+      "finding_id": "cost_centre::Corporate",
+      "finding_type": "cost_centre",
+      "entity": "Corporate",
+      "calculated_fact": {
+        "opex_variance_nok": 820896.8399999999,
+        "ebitda_impact_nok": -820896.8399999999,
+        "primary_driver": null
+      },
+      "material": false,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "cost_centre::Technology",
+      "finding_type": "cost_centre",
+      "entity": "Technology",
+      "calculated_fact": {
+        "opex_variance_nok": 405062.6700000018,
+        "ebitda_impact_nok": -405062.6700000018,
+        "primary_driver": null
+      },
+      "material": false,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    },
+    {
+      "finding_id": "cost_centre::Operations",
+      "finding_type": "cost_centre",
+      "entity": "Operations",
+      "calculated_fact": {
+        "opex_variance_nok": 342695.3400000036,
+        "ebitda_impact_nok": -342695.3400000036,
+        "primary_driver": null
+      },
+      "material": false,
+      "grounding": {
+        "explanation_status": "insufficient_evidence",
+        "usable_evidence_ids": [],
+        "evidence_candidates": [],
+        "allowed_ai_behavior": "State that available evidence is insufficient to determine the underlying cause. Do not infer or invent a cause."
+      }
+    }
+  ]
+}
