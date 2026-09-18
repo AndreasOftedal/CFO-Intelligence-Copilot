@@ -1,0 +1,132 @@
+{
+  "metadata": {
+    "evaluation_type": "offline_hidden_ground_truth",
+    "comparison": "latest_forecast_vs_budget",
+    "api_request_sent": false,
+    "ground_truth_used_by_model": false
+  },
+  "summary": {
+    "overall_passed": true,
+    "ground_truth_event_count": 6,
+    "events_with_analyst_evidence": 4,
+    "events_without_analyst_evidence": 2,
+    "ground_truth_evidence_ids": [
+      "NOTE-014",
+      "NOTE-015",
+      "NOTE-016",
+      "NOTE-017"
+    ],
+    "ai_visible_evidence_ids": [
+      "NOTE-015",
+      "NOTE-017"
+    ],
+    "directionally_withheld_evidence_ids": [
+      "NOTE-016"
+    ],
+    "ai_cited_evidence_ids": [
+      "NOTE-015",
+      "NOTE-017"
+    ],
+    "invalid_ai_evidence_ids": [],
+    "citation_precision": 1.0,
+    "ai_visible_evidence_utilization": 1.0
+  },
+  "pipeline_routing": {
+    "not_observable_no_evidence": 2,
+    "reached_ai": 2,
+    "rejected_by_grounding": 1,
+    "withheld_by_directional_guardrail": 1
+  },
+  "security_isolation": {
+    "passed": true,
+    "ground_truth_access_flag_false": true,
+    "leaked_event_ids": [],
+    "leaked_ground_truth_paths": []
+  },
+  "events": [
+    {
+      "event_id": "EVT-001",
+      "domain": "sales",
+      "date": "2026-08-01",
+      "country": "Germany",
+      "product": "EdgeHub Pro",
+      "segment": "",
+      "driver_raw": "unit_cost",
+      "driver_canonical": "unit_cost",
+      "description": "Temporary 8% supplier surcharge increased EdgeHub Pro unit cost in Germany during August.",
+      "financial_impact_nok": -329855.19,
+      "evidence_available": true,
+      "evidence_id": "NOTE-014",
+      "pipeline_classification": "rejected_by_grounding"
+    },
+    {
+      "event_id": "EVT-002",
+      "domain": "sales",
+      "date": "2026-08-01",
+      "country": "Germany",
+      "product": "",
+      "segment": "Distributor",
+      "driver_raw": "discount_rate",
+      "driver_canonical": "discount",
+      "description": "Distributor discount rates in Germany increased by 3 percentage points during August.",
+      "financial_impact_nok": -355606.5,
+      "evidence_available": false,
+      "evidence_id": null,
+      "pipeline_classification": "not_observable_no_evidence"
+    },
+    {
+      "event_id": "EVT-003",
+      "domain": "sales",
+      "date": "2026-08-01",
+      "country": "United Kingdom",
+      "product": "Sensor X",
+      "segment": "Distributor",
+      "driver_raw": "units",
+      "driver_canonical": "volume_mix",
+      "description": "UK Sensor X distributor volume fell by 22% during August due to a delayed customer rollout.",
+      "financial_impact_nok": -62128.58,
+      "evidence_available": true,
+      "evidence_id": "NOTE-015",
+      "pipeline_classification": "reached_ai"
+    },
+    {
+      "event_id": "EVT-004",
+      "domain": "sales",
+      "date": "2026-08-01",
+      "country": "Norway",
+      "product": "Sensor X Pro",
+      "segment": "Enterprise",
+      "driver_raw": "units",
+      "driver_canonical": "volume_mix",
+      "description": "Norway Sensor X Pro enterprise volume increased by 25% in August following an accelerated customer rollout.",
+      "financial_impact_nok": 130578.23,
+      "evidence_available": true,
+      "evidence_id": "NOTE-016",
+      "pipeline_classification": "withheld_by_directional_guardrail"
+    },
+    {
+      "event_id": "OPEX-001",
+      "domain": "opex",
+      "date": "2026-08-01",
+      "cost_centre": "Product & R&D",
+      "account": "Contractors",
+      "description": "Product & R&D contractor expenditure increased by NOK 1.8m in August due to accelerated prototype and testing activity.",
+      "financial_impact_nok": -1800000.0,
+      "evidence_available": true,
+      "evidence_id": "NOTE-017",
+      "pipeline_classification": "reached_ai"
+    },
+    {
+      "event_id": "OPEX-002",
+      "domain": "opex",
+      "date": "2026-08-01",
+      "cost_centre": "Sales",
+      "account": "Marketing",
+      "description": "Sales marketing expenditure increased by NOK 1.1m in August.",
+      "financial_impact_nok": -1100000.0,
+      "evidence_available": false,
+      "evidence_id": null,
+      "pipeline_classification": "not_observable_no_evidence"
+    }
+  ]
+}
