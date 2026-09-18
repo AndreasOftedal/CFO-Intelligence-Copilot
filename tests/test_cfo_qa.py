@@ -4,7 +4,9 @@ import pytest
 
 from src.ai.cfo_qa import (
     CFOQAError,
+    ask_cfo,
     build_approved_context,
+    build_model_payload,
     select_relevant_context,
     validate_answer,
 )
@@ -387,3 +389,51 @@ def test_ebitda_question_surfaces_multiple_approved_driver_evidence(
         "NOTE-015",
         "NOTE-017",
     }
+
+
+def test_model_payload_uses_requested_analysis_period(
+    commentary: dict,
+    metadata: dict,
+) -> None:
+    selected = select_relevant_context(
+        "Why is EBITDA below budget?",
+        commentary,
+        metadata,
+    )
+
+    payload = build_model_payload(
+        question="Why is EBITDA below budget?",
+        selected_context=selected,
+        analysis_period="Actual YTD vs Budget",
+    )
+
+    assert (
+        payload["analysis_period"]
+        == "Actual YTD vs Budget"
+    )
+
+
+def test_ask_cfo_dry_run_propagates_analysis_period(
+    commentary: dict,
+    metadata: dict,
+) -> None:
+    result = ask_cfo(
+        question="Why is EBITDA below budget?",
+        commentary=commentary,
+        ai_metadata=metadata,
+        analysis_period="Actual YTD vs Budget",
+        dry_run=True,
+    )
+
+    assert (
+        result["model_payload"]["analysis_period"]
+        == "Actual YTD vs Budget"
+    )
+    assert (
+        result["diagnostics"]["analysis_period"]
+        == "Actual YTD vs Budget"
+    )
+    assert (
+        result["diagnostics"]["api_request_sent"]
+        is False
+    )

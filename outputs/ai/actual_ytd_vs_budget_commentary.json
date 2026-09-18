@@ -1,0 +1,255 @@
+{
+  "metadata": {
+    "comparison": "actual_ytd_vs_budget",
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "low",
+    "response_id": "resp_0bb9da18bd6a3c7c016aad7b24765887d29c8292f73e122f02",
+    "response_status": "completed",
+    "store_response": false,
+    "usage": {
+      "input_tokens": 3322,
+      "input_tokens_details": {
+        "cache_write_tokens": 3319,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1651,
+      "output_tokens_details": {
+        "reasoning_tokens": 75
+      },
+      "total_tokens": 4973
+    },
+    "validated_against_grounding": true,
+    "directional_guardrail_applied": true,
+    "directional_guardrail_summary": {
+      "assessment_count": 2,
+      "directionally_consistent_count": 2,
+      "offsetting_count": 0,
+      "direction_unknown_count": 0,
+      "withheld_evidence_ids": []
+    },
+    "ground_truth_access": false,
+    "source_headline_fact_ids": [
+      "summary::revenue",
+      "summary::gross_profit",
+      "summary::opex",
+      "summary::ebitda",
+      "summary::ebitda_margin"
+    ],
+    "source_material_finding_ids": [
+      "country::Germany",
+      "country::Norway",
+      "country::Sweden",
+      "country::United Kingdom",
+      "product::EdgeHub Core",
+      "product::EdgeHub Pro",
+      "product::Service Kit",
+      "opex_account::Payroll",
+      "opex_account::Marketing",
+      "opex_account::Contractors",
+      "cost_centre::Sales",
+      "cost_centre::Product & R&D"
+    ],
+    "source_usable_evidence_ids": [
+      "NOTE-017"
+    ]
+  },
+  "commentary": {
+    "executive_summary": "Actual YTD EBITDA is NOK 14.35m below budget at NOK 130.00m, with EBITDA margin 1.52 percentage points below budget. Revenue and gross profit are also below budget, while OPEX is NOK 6.09m above budget. Approved evidence links contractor acceleration to the Product & R&D cost centre and Contractors account; the underlying causes of the other material variances remain unresolved from the available evidence.",
+    "observations": [
+      {
+        "finding_id": "summary::revenue",
+        "statement": "Actual YTD revenue is NOK 861.52m, NOK 8.32m below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "summary::gross_profit",
+        "statement": "Actual YTD gross profit is NOK 411.13m, NOK 8.26m below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "summary::opex",
+        "statement": "Actual YTD OPEX is NOK 266.78m, NOK 6.09m above budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "summary::ebitda",
+        "statement": "Actual YTD EBITDA is NOK 130.00m, NOK 14.35m below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "summary::ebitda_margin",
+        "statement": "Actual YTD EBITDA margin is 15.24%, 1.52 percentage points below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "country::Germany",
+        "statement": "Germany revenue is NOK 3.18m below budget and gross profit is NOK 3.43m below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "country::Norway",
+        "statement": "Norway revenue is NOK 2.09m below budget and gross profit is NOK 1.48m below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "country::Sweden",
+        "statement": "Sweden revenue is NOK 1.29m below budget and gross profit is NOK 1.40m below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "country::United Kingdom",
+        "statement": "United Kingdom revenue is NOK 0.77m below budget and gross profit is NOK 1.09m below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "product::EdgeHub Core",
+        "statement": "EdgeHub Core revenue is NOK 3.29m below budget and gross profit is NOK 2.38m below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "product::EdgeHub Pro",
+        "statement": "EdgeHub Pro revenue is NOK 1.62m below budget and gross profit is NOK 1.95m below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "product::Service Kit",
+        "statement": "Service Kit revenue is NOK 1.26m below budget and gross profit is NOK 1.01m below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "opex_account::Payroll",
+        "statement": "Payroll OPEX is NOK 3.36m above budget, with a corresponding EBITDA impact of NOK 3.36m below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "opex_account::Marketing",
+        "statement": "Marketing OPEX is NOK 1.33m above budget, with a corresponding EBITDA impact of NOK 1.33m below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "opex_account::Contractors",
+        "statement": "Contractors OPEX is NOK 1.27m above budget, with a corresponding EBITDA impact of NOK 1.27m below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "cost_centre::Sales",
+        "statement": "Sales OPEX is NOK 2.12m above budget, with a corresponding EBITDA impact of NOK 2.12m below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "cost_centre::Product & R&D",
+        "statement": "Product & R&D OPEX is NOK 1.78m above budget, with a corresponding EBITDA impact of NOK 1.78m below budget.",
+        "source_type": "calculated_fact"
+      }
+    ],
+    "supported_explanations": [
+      {
+        "finding_id": "opex_account::Contractors",
+        "explanation": "Approved evidence identifies contractor acceleration within the Product & R&D cost centre as relevant to the Contractors variance. This evidence is limited to that cost-centre and account scope.",
+        "evidence_ids": [
+          "NOTE-017"
+        ],
+        "source_type": "evidence_supported"
+      },
+      {
+        "finding_id": "cost_centre::Product & R&D",
+        "explanation": "Approved evidence identifies contractor acceleration as relevant within the Product & R&D cost centre. The evidence does not establish explanations for other Product & R&D OPEX components.",
+        "evidence_ids": [
+          "NOTE-017"
+        ],
+        "source_type": "evidence_supported"
+      }
+    ],
+    "unresolved_findings": [
+      {
+        "finding_id": "country::Germany",
+        "statement": "The underlying cause of Germany’s revenue and gross profit shortfalls cannot be determined from the available evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "country::Norway",
+        "statement": "The underlying cause of Norway’s revenue and gross profit shortfalls cannot be determined from the available evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "country::Sweden",
+        "statement": "The underlying cause of Sweden’s revenue and gross profit shortfalls cannot be determined from the available evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "country::United Kingdom",
+        "statement": "The underlying cause of the United Kingdom’s revenue and gross profit shortfalls cannot be determined from the available evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "product::EdgeHub Core",
+        "statement": "The underlying cause of EdgeHub Core’s revenue and gross profit shortfalls cannot be determined from the available evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "product::EdgeHub Pro",
+        "statement": "The underlying cause of EdgeHub Pro’s revenue and gross profit shortfalls cannot be determined from the available evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "product::Service Kit",
+        "statement": "The underlying cause of Service Kit’s revenue and gross profit shortfalls cannot be determined from the available evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "opex_account::Payroll",
+        "statement": "The underlying cause of the Payroll OPEX overrun cannot be determined from the available evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "opex_account::Marketing",
+        "statement": "The underlying cause of the Marketing OPEX overrun cannot be determined from the available evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "cost_centre::Sales",
+        "statement": "The underlying cause of the Sales OPEX overrun cannot be determined from the available evidence.",
+        "reason": "insufficient_evidence"
+      }
+    ],
+    "management_questions": [
+      {
+        "related_finding_ids": [
+          "country::Germany",
+          "country::Norway",
+          "country::Sweden",
+          "country::United Kingdom"
+        ],
+        "question": "What approved country-level evidence explains the revenue and gross profit variances in Germany, Norway, Sweden, and the United Kingdom?"
+      },
+      {
+        "related_finding_ids": [
+          "product::EdgeHub Core",
+          "product::EdgeHub Pro",
+          "product::Service Kit"
+        ],
+        "question": "What approved product-level evidence explains the revenue and gross profit variances for EdgeHub Core, EdgeHub Pro, and Service Kit?"
+      },
+      {
+        "related_finding_ids": [
+          "opex_account::Payroll",
+          "opex_account::Marketing"
+        ],
+        "question": "What approved account-level evidence explains the Payroll and Marketing OPEX overruns?"
+      },
+      {
+        "related_finding_ids": [
+          "cost_centre::Sales"
+        ],
+        "question": "What approved evidence explains the Sales cost-centre OPEX overrun?"
+      },
+      {
+        "related_finding_ids": [
+          "opex_account::Contractors",
+          "cost_centre::Product & R&D"
+        ],
+        "question": "Can management provide additional approved evidence quantifying the contractor acceleration within Product & R&D and clarifying its timing and scope?"
+      }
+    ]
+  }
+}
