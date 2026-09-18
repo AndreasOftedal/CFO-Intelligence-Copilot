@@ -1,5 +1,7 @@
 # CFO Intelligence Copilot
 
+**Live demo:** https://cfo-intelligence-copilot.streamlit.app
+
 An evidence-grounded financial analysis system that combines deterministic finance calculations with controlled AI-generated management commentary.
 
 The project is built around a simple principle:
@@ -27,7 +29,7 @@ The system compares financial performance against budget and produces:
 - Explicit unresolved findings when evidence is insufficient
 - Management questions for further investigation
 
-The AI model is not responsible for calculating the financial results.
+The AI model is **not responsible for calculating the financial results**.
 
 All core financial calculations are produced deterministically in Python before information reaches the AI layer.
 
