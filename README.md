@@ -32,6 +32,7 @@ It demonstrates how a finance workflow can combine:
 - Hidden-ground-truth offline evaluation
 - Adversarial evidence-control testing
 - Guarded-vs-prompt-only LLM benchmarking
+- Management-oriented Streamlit UX with traceability and controlled AI states
 - Streamlit deployment
 - Automated regression testing in GitHub Actions
 
@@ -45,17 +46,18 @@ The public Streamlit app currently contains six main sections.
 
 ### 1. Executive Overview
 
-Management-level summary of the selected analysis period, including:
+Management-level summary of the selected analysis period, designed to surface the financial story before the supporting detail.
 
-- Revenue
-- Gross Profit
-- OPEX
-- EBITDA
-- EBITDA Margin
-- AI-generated executive commentary
+The page includes:
+
+- Revenue, Gross Profit, OPEX, EBITDA and EBITDA Margin
+- A concise **Management Snapshot**
 - Evidence-supported explanations
-- Unresolved findings
-- Management questions
+- Unresolved findings that deliberately remain unexplained
+- Entity- and driver-level calculated observations
+- Prioritized management follow-up questions
+- Full AI-generated executive commentary available on demand
+- Visible trust signals for evidence access, hidden-ground-truth isolation and regression status
 
 The analysis period can be switched between:
 
@@ -66,15 +68,18 @@ The analysis period can be switched between:
 
 ### 2. Ask the CFO
 
-Interactive management Q&A built on top of the existing calculated findings and approved evidence.
+Interactive management Q&A built on top of deterministic financial findings and already-approved evidence.
 
 The assistant can:
 
 - Answer questions using deterministic financial findings
 - Use only evidence already approved by the control layer
-- Cite the finding IDs and evidence IDs used
+- Cite the calculated findings and approved evidence used
 - Surface limitations when evidence is insufficient
-- Keep unsupported causes unresolved
+- Keep unsupported causes unresolved rather than inventing explanations
+- Expose a compact **Traceability & Controls** view for every answer
+
+The UI also makes the available context explicit: calculated findings, supported explanations, model-visible evidence sources and blocked evidence.
 
 The interactive assistant cannot access hidden ground truth.
 
@@ -109,12 +114,14 @@ It also produces:
 - Materiality flags
 - One-way sensitivity tables
 - Selectable sensitivity curves for Revenue, Gross Profit, OPEX, EBITDA and margin
+- A clear baseline / active-scenario state
+- One-click reset to the Latest Forecast baseline
 
 All scenario calculations reuse the same deterministic finance logic as the core analysis engine.
 
 An optional **AI Scenario Brief** can then interpret the calculated scenario. The AI receives only deterministic scenario assumptions, calculated financial outcomes and the reconciled EBITDA bridge. It cannot access management evidence or hidden ground truth, cannot calculate new financial values, and is validated before its narrative is displayed.
 
-The Scenario Brief is reset automatically when scenario assumptions change so commentary generated for an earlier scenario cannot remain visible against a new set of inputs.
+The Scenario Brief is disabled at baseline and reset automatically when assumptions change, preventing stale commentary from remaining visible against a new scenario.
 
 ---
 
@@ -131,6 +138,8 @@ Evidence must pass:
 This prevents evidence that merely sounds relevant from being used as a causal explanation when it does not support the calculated financial finding.
 
 When approved evidence does not exist, the system explicitly returns an unresolved finding instead of inventing a cause.
+
+The Streamlit view makes this control flow inspectable: calculated finding → candidate evidence → entity/driver match → directional check → model-visible or withheld. It also separates **approved explanations**, **unresolved findings**, **model-visible evidence sources** and **withheld evidence sources**.
 
 ---
 
@@ -176,6 +185,7 @@ In one controlled 32-case synthetic benchmark run:
 - Unsupported explanation rate: **14.8% → 0.0%**
 - Citation precision: **73.3% → 100.0%**
 - Supported explanation recall: **100.0% in both conditions**
+- Forbidden evidence uses: **4 → 0**
 
 These benchmark results describe this controlled synthetic evaluation only; they are not intended as universal claims about model performance.
 
@@ -206,10 +216,24 @@ The explorer provides:
 - Gross profit
 - Gross margin
 - Business-dimension breakdowns
-- Filtered row-level records
-- CSV export
+- A curated sales-record preview focused on the most useful business fields
+- Full filtered CSV export with the complete record schema
 
 Hidden ground-truth data is not exposed through the Data Explorer.
+
+---
+
+## Suggested Demo Path
+
+A short walkthrough that demonstrates the core design in a few minutes:
+
+1. **Executive Overview** — inspect the Management Snapshot and see which findings are supported versus unresolved.
+2. **Ask the CFO** — ask `What explains the UK shortfall?` to see a supported answer with traceability.
+3. **Ask the CFO** — ask `Can the Norway revenue shortfall be explained?` to see controlled abstention when causal evidence is insufficient.
+4. **Scenario & Sensitivity** — increase Discount by `+2.0 pp`, inspect the deterministic EBITDA bridge, and generate an AI Scenario Brief.
+5. **Evidence & Guardrails** — inspect why `NOTE-016` is relevant but withheld from causal use because it points in the opposite financial direction.
+6. **Evaluation & Safety** — compare the guarded pipeline with the prompt-only baseline and inspect the controlled failure cases.
+7. **Data Explorer** — drill into the analyst-visible sales data and export the full filtered dataset.
 
 ---
 
@@ -520,5 +544,6 @@ This is a **synthetic portfolio project** built to demonstrate the combination o
 - Automated testing
 - CI / reproducibility
 - Interactive analytics
+- Management-oriented product UX
 
 It is not based on confidential company data and should not be interpreted as production financial advice or a production risk-control framework.

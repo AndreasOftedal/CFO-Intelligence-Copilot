@@ -209,6 +209,51 @@ CUSTOM_CSS = """
         line-height: 1.62;
     }
 
+    .overview-headline-card {
+        border: 1px solid rgba(37, 99, 235, 0.18);
+        border-left: 5px solid #2563eb;
+        border-radius: 0 14px 14px 0;
+        padding: 1rem 1.15rem;
+        margin: 0.35rem 0 0.85rem 0;
+        background: rgba(37, 99, 235, 0.035);
+    }
+
+    .overview-headline {
+        font-size: 1.18rem;
+        font-weight: 700;
+        line-height: 1.35;
+        margin-bottom: 0.35rem;
+    }
+
+    .overview-supporting-text {
+        font-size: 0.92rem;
+        line-height: 1.5;
+        opacity: 0.72;
+    }
+
+    .overview-mini-card {
+        border: 1px solid rgba(128, 128, 128, 0.18);
+        border-radius: 12px;
+        padding: 0.8rem 0.9rem;
+        min-height: 104px;
+        background: rgba(128, 128, 128, 0.018);
+    }
+
+    .overview-mini-label {
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        opacity: 0.58;
+        margin-bottom: 0.32rem;
+    }
+
+    .overview-mini-value {
+        font-size: 0.94rem;
+        line-height: 1.42;
+        font-weight: 600;
+    }
+
     .fact-card {
         border: 1px solid rgba(128, 128, 128, 0.20);
         border-radius: 12px;
@@ -337,9 +382,74 @@ CUSTOM_CSS = """
         border: 1px solid rgba(128, 128, 128, 0.20);
         border-radius: 14px;
         padding: 1.05rem 1.15rem;
-        margin: 0.45rem 0 0.85rem 0;
+        margin: 0.45rem 0 0.65rem 0;
         line-height: 1.58;
         background: rgba(128, 128, 128, 0.025);
+    }
+
+    .qa-answer-supported {
+        border-left: 5px solid #16a34a;
+        background: rgba(22, 163, 74, 0.035);
+    }
+
+    .qa-answer-calculated {
+        border-left: 5px solid #2563eb;
+        background: rgba(37, 99, 235, 0.035);
+    }
+
+    .qa-answer-insufficient {
+        border-left: 5px solid #d97706;
+        background: rgba(217, 119, 6, 0.035);
+    }
+
+    .qa-control-banner {
+        border: 1px solid rgba(37, 99, 235, 0.18);
+        border-left: 5px solid #2563eb;
+        border-radius: 0 12px 12px 0;
+        padding: 0.8rem 1rem;
+        margin: 0.65rem 0 1rem 0;
+        background: rgba(37, 99, 235, 0.035);
+        line-height: 1.45;
+    }
+
+    .qa-control-title {
+        font-size: 0.92rem;
+        font-weight: 700;
+        margin-bottom: 0.18rem;
+    }
+
+    .qa-control-text {
+        font-size: 0.88rem;
+        opacity: 0.72;
+    }
+
+    .qa-context-card {
+        border: 1px solid rgba(128, 128, 128, 0.16);
+        border-radius: 12px;
+        padding: 0.72rem 0.85rem;
+        background: rgba(128, 128, 128, 0.018);
+        min-height: 90px;
+    }
+
+    .qa-context-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        opacity: 0.58;
+        margin-bottom: 0.28rem;
+    }
+
+    .qa-context-value {
+        font-size: 1.35rem;
+        font-weight: 650;
+        line-height: 1.2;
+    }
+
+    .qa-context-note {
+        font-size: 0.77rem;
+        opacity: 0.62;
+        margin-top: 0.15rem;
     }
 
     .qa-question-card {
@@ -354,6 +464,119 @@ CUSTOM_CSS = """
     div[data-testid="stExpander"] {
         border-radius: 10px;
     }
+
+    .scenario-state-card {
+        border: 1px solid rgba(128, 128, 128, 0.18);
+        border-radius: 12px;
+        padding: 0.78rem 0.95rem;
+        margin: 0.75rem 0 0.15rem 0;
+        line-height: 1.45;
+    }
+
+    .scenario-state-baseline {
+        border-left: 5px solid #2563eb;
+        background: rgba(37, 99, 235, 0.035);
+    }
+
+    .scenario-state-active {
+        border-left: 5px solid #d97706;
+        background: rgba(217, 119, 6, 0.035);
+    }
+
+    .scenario-state-title {
+        font-size: 0.92rem;
+        font-weight: 700;
+        margin-bottom: 0.15rem;
+    }
+
+    .scenario-state-text {
+        font-size: 0.86rem;
+        opacity: 0.72;
+    }
+
+
+    .evidence-access-card {
+        border: 1px solid rgba(128, 128, 128, 0.16);
+        border-radius: 12px;
+        padding: 0.85rem 0.95rem;
+        min-height: 118px;
+        background: rgba(128, 128, 128, 0.018);
+    }
+
+    .evidence-access-title {
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        opacity: 0.60;
+        margin-bottom: 0.35rem;
+    }
+
+    .evidence-access-count {
+        font-size: 1.35rem;
+        font-weight: 650;
+        line-height: 1.15;
+        margin-bottom: 0.35rem;
+    }
+
+    .evidence-access-text {
+        font-size: 0.86rem;
+        line-height: 1.45;
+        opacity: 0.72;
+    }
+
+
+    .eval-hero-card {
+        border: 1px solid rgba(22, 163, 74, 0.20);
+        border-left: 5px solid #16a34a;
+        border-radius: 0 12px 12px 0;
+        padding: 0.95rem 1.05rem;
+        margin: 0.7rem 0 1.05rem 0;
+        background: rgba(22, 163, 74, 0.035);
+        line-height: 1.48;
+    }
+
+    .eval-hero-title {
+        font-size: 0.98rem;
+        font-weight: 700;
+        margin-bottom: 0.18rem;
+    }
+
+    .eval-hero-text {
+        font-size: 0.88rem;
+        opacity: 0.76;
+    }
+
+    .eval-compare-card {
+        border: 1px solid rgba(128, 128, 128, 0.16);
+        border-radius: 12px;
+        padding: 0.82rem 0.9rem;
+        min-height: 125px;
+        background: rgba(128, 128, 128, 0.018);
+    }
+
+    .eval-compare-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        opacity: 0.58;
+        margin-bottom: 0.34rem;
+    }
+
+    .eval-compare-value {
+        font-size: 1.38rem;
+        font-weight: 650;
+        line-height: 1.15;
+        margin-bottom: 0.22rem;
+    }
+
+    .eval-compare-baseline {
+        font-size: 0.79rem;
+        opacity: 0.66;
+        line-height: 1.35;
+    }
+
 </style>
 """
 
@@ -720,6 +943,36 @@ def render_qa_result(
         )
     )
 
+    finding_ids = answer.get(
+        "finding_ids",
+        [],
+    )
+
+    evidence_ids = answer.get(
+        "evidence_ids",
+        [],
+    )
+
+    limitations = answer.get(
+        "limitations",
+        [],
+    )
+
+    answer_class = {
+        "supported_explanation": (
+            "qa-answer-supported"
+        ),
+        "calculated_fact": (
+            "qa-answer-calculated"
+        ),
+        "insufficient_evidence": (
+            "qa-answer-insufficient"
+        ),
+    }.get(
+        answer_type,
+        "qa-answer-insufficient",
+    )
+
     st.markdown(
         f"""
         <div class="qa-question-card">
@@ -739,7 +992,7 @@ def render_qa_result(
 
     st.markdown(
         f"""
-        <div class="qa-answer-card">
+        <div class="qa-answer-card {answer_class}">
             {clean_text(
                 answer.get(
                     "answer",
@@ -751,23 +1004,42 @@ def render_qa_result(
         unsafe_allow_html=True,
     )
 
-    finding_ids = answer.get(
-        "finding_ids",
-        [],
+    finding_count = len(
+        finding_ids
+    )
+    evidence_count = len(
+        evidence_ids
     )
 
-    evidence_ids = answer.get(
-        "evidence_ids",
-        [],
+    finding_label = (
+        "calculated finding"
+        if finding_count == 1
+        else "calculated findings"
     )
 
-    limitations = answer.get(
-        "limitations",
-        [],
+    evidence_label = (
+        "approved evidence source"
+        if evidence_count == 1
+        else "approved evidence sources"
+    )
+
+    if evidence_count:
+        evidence_summary = (
+            f"{evidence_count} "
+            f"{evidence_label}"
+        )
+    else:
+        evidence_summary = (
+            "no approved causal evidence"
+        )
+
+    st.caption(
+        f"Answer basis: {finding_count} {finding_label} · "
+        f"{evidence_summary} · hidden ground truth blocked"
     )
 
     with st.expander(
-        "Traceability",
+        "Traceability & controls",
         expanded=False,
     ):
         if finding_ids:
@@ -783,7 +1055,7 @@ def render_qa_result(
                 )
         else:
             st.caption(
-                "No calculated finding IDs were cited."
+                "No calculated findings were cited."
             )
 
         st.markdown(
@@ -792,9 +1064,18 @@ def render_qa_result(
 
         if evidence_ids:
             for evidence_id in evidence_ids:
-                st.success(
-                    f"{evidence_id} · approved"
+                st.markdown(
+                    '<span class="status-pass">'
+                    + clean_text(
+                        str(
+                            evidence_id
+                        )
+                    )
+                    + " · approved"
+                    + "</span>",
+                    unsafe_allow_html=True,
                 )
+                st.write("")
         else:
             st.caption(
                 "No causal evidence was cited."
@@ -818,9 +1099,10 @@ def render_qa_result(
         )
 
         st.caption(
-            f"Analysis period: {diagnostics.get('analysis_period', 'N/A')} · "
-            "Ground truth access: blocked · "
-            "Model-visible causal evidence for this question: "
+            f"Control record · Analysis period: "
+            f"{diagnostics.get('analysis_period', 'N/A')} · "
+            "Ground truth: blocked · "
+            "Model-visible causal evidence: "
             f"{', '.join(diagnostics.get('selected_evidence_ids', [])) or 'none'}"
         )
 
@@ -1000,20 +1282,11 @@ if (
 
 with st.sidebar:
     st.markdown(
-        "**Architecture**"
+        "**Trust & controls**"
     )
 
     st.caption(
-        "Deterministic finance engine → "
-        "scenario simulation + evidence grounding → "
-        "directional guardrails → AI commentary → "
-        "offline evaluation"
-    )
-
-    st.divider()
-
-    st.markdown(
-        "**AI model**"
+        "AI model"
     )
 
     st.write(
@@ -1023,8 +1296,8 @@ with st.sidebar:
         )
     )
 
-    st.markdown(
-        "**Ground truth access**"
+    st.caption(
+        "Ground truth access"
     )
 
     if (
@@ -1044,14 +1317,27 @@ with st.sidebar:
 
     st.write("")
 
-    st.markdown(
-        "**Regression suite**"
+    st.caption(
+        "Regression suite"
     )
 
     st.markdown(
         '<span class="status-pass">135 / 135 passing</span>',
         unsafe_allow_html=True,
     )
+
+    st.write("")
+
+    with st.expander(
+        "How the system works",
+        expanded=False,
+    ):
+        st.caption(
+            "Deterministic finance engine → "
+            "scenario simulation + evidence grounding → "
+            "directional guardrails → AI commentary → "
+            "offline evaluation"
+        )
 
     st.divider()
 
@@ -1199,26 +1485,6 @@ with overview_tab:
             ),
         )
 
-    st.divider()
-
-    st.subheader(
-        "Executive Summary"
-    )
-
-    st.markdown(
-        f"""
-        <div class="summary-card">
-            {clean_text(
-                commentary.get(
-                    "executive_summary",
-                    "No summary available.",
-                )
-            )}
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
     supported = commentary.get(
         "supported_explanations",
         [],
@@ -1229,8 +1495,251 @@ with overview_tab:
         [],
     )
 
+    observations = commentary.get(
+        "observations",
+        [],
+    )
+
+    questions = commentary.get(
+        "management_questions",
+        [],
+    )
+
+    ebitda_variance_nok = float(
+        finance.get(
+            "ebitda_variance_nok",
+            0.0,
+        )
+        or 0.0
+    )
+    revenue_variance_nok = float(
+        finance.get(
+            "revenue_variance_nok",
+            0.0,
+        )
+        or 0.0
+    )
+    opex_variance_nok = float(
+        finance.get(
+            "opex_variance_nok",
+            0.0,
+        )
+        or 0.0
+    )
+
+    if ebitda_variance_nok < 0:
+        headline_direction = "below"
+    elif ebitda_variance_nok > 0:
+        headline_direction = "above"
+    else:
+        headline_direction = "in line with"
+
+    headline_amount = (
+        ""
+        if ebitda_variance_nok == 0
+        else money_value(
+            abs(
+                ebitda_variance_nok
+            )
+        )
+        + " "
+    )
+
+    performance_parts = []
+
+    if revenue_variance_nok < 0:
+        performance_parts.append(
+            "revenue is below budget"
+        )
+    elif revenue_variance_nok > 0:
+        performance_parts.append(
+            "revenue is above budget"
+        )
+    else:
+        performance_parts.append(
+            "revenue is on budget"
+        )
+
+    if opex_variance_nok > 0:
+        performance_parts.append(
+            "OPEX is above budget"
+        )
+    elif opex_variance_nok < 0:
+        performance_parts.append(
+            "OPEX is below budget"
+        )
+    else:
+        performance_parts.append(
+            "OPEX is on budget"
+        )
+
+    st.divider()
+
+    st.markdown(
+        "### Management Snapshot"
+    )
+
+    supported_label = (
+        "evidence-supported explanation"
+        if len(supported) == 1
+        else "evidence-supported explanations"
+    )
+
+    unresolved_label = (
+        "material finding remains unresolved"
+        if len(unresolved) == 1
+        else "material findings remain unresolved"
+    )
+
+    st.markdown(
+        f"""
+        <div class="overview-headline-card">
+            <div class="overview-headline">
+                Forecast EBITDA is {clean_text(headline_amount)}
+                {clean_text(headline_direction)} budget
+            </div>
+            <div class="overview-supporting-text">
+                {clean_text(performance_parts[0].capitalize())}
+                and {clean_text(performance_parts[1])}.
+                The control layer currently supports
+                {len(supported)} {clean_text(supported_label)}, while
+                {len(unresolved)} {clean_text(unresolved_label)}.
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    snapshot1, snapshot2, snapshot3 = st.columns(
+        3
+    )
+
+    if revenue_variance_nok < 0:
+        revenue_snapshot = (
+            "Revenue: "
+            + money_value(
+                abs(
+                    revenue_variance_nok
+                )
+            )
+            + " below budget"
+        )
+    elif revenue_variance_nok > 0:
+        revenue_snapshot = (
+            "Revenue: "
+            + money_value(
+                abs(
+                    revenue_variance_nok
+                )
+            )
+            + " above budget"
+        )
+    else:
+        revenue_snapshot = "Revenue: on budget"
+
+    if opex_variance_nok > 0:
+        opex_snapshot = (
+            "OPEX: "
+            + money_value(
+                abs(
+                    opex_variance_nok
+                )
+            )
+            + " above budget"
+        )
+    elif opex_variance_nok < 0:
+        opex_snapshot = (
+            "OPEX: "
+            + money_value(
+                abs(
+                    opex_variance_nok
+                )
+            )
+            + " below budget"
+        )
+    else:
+        opex_snapshot = "OPEX: on budget"
+
+    with snapshot1:
+        st.markdown(
+            f"""
+            <div class="overview-mini-card">
+                <div class="overview-mini-label">
+                    Performance
+                </div>
+                <div class="overview-mini-value">
+                    {clean_text(revenue_snapshot)}
+                    <br>
+                    {clean_text(opex_snapshot)}
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    with snapshot2:
+        st.markdown(
+            f"""
+            <div class="overview-mini-card">
+                <div class="overview-mini-label">
+                    Evidence
+                </div>
+                <div class="overview-mini-value">
+                    {len(supported)} {clean_text(supported_label)}
+                    passed the deterministic grounding controls.
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    with snapshot3:
+        st.markdown(
+            f"""
+            <div class="overview-mini-card">
+                <div class="overview-mini-label">
+                    Control
+                </div>
+                <div class="overview-mini-value">
+                    {len(unresolved)} {clean_text(unresolved_label)} rather
+                    than receiving an unsupported causal explanation.
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    st.write("")
+
+    st.markdown(
+        '<span class="status-info">'
+        "AI commentary · approved evidence only"
+        "</span>",
+        unsafe_allow_html=True,
+    )
+
+    with st.expander(
+        "Read full executive commentary",
+        expanded=False,
+    ):
+        st.markdown(
+            f"""
+            <div class="summary-card">
+                {clean_text(
+                    commentary.get(
+                        "executive_summary",
+                        "No summary available.",
+                    )
+                )}
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    st.divider()
+
     left, right = st.columns(
-        [1.15, 0.85]
+        [1.2, 0.8]
     )
 
     with left:
@@ -1238,8 +1747,13 @@ with overview_tab:
             "Evidence-Supported Drivers"
         )
 
+        st.caption(
+            "Only explanations that passed entity, driver and "
+            "directional controls are shown here."
+        )
+
         if supported:
-            for explanation in supported[:4]:
+            for explanation in supported[:3]:
                 render_evidence_card(
                     explanation.get(
                         "finding_id",
@@ -1254,6 +1768,38 @@ with overview_tab:
                         [],
                     ),
                 )
+
+            if len(supported) > 3:
+                remaining_supported = (
+                    len(supported) - 3
+                )
+
+                remaining_supported_label = (
+                    "supported explanation"
+                    if remaining_supported == 1
+                    else "supported explanations"
+                )
+
+                with st.expander(
+                    f"View {remaining_supported} more "
+                    f"{remaining_supported_label}",
+                    expanded=False,
+                ):
+                    for explanation in supported[3:]:
+                        render_evidence_card(
+                            explanation.get(
+                                "finding_id",
+                                "",
+                            ),
+                            explanation.get(
+                                "explanation",
+                                "",
+                            ),
+                            explanation.get(
+                                "evidence_ids",
+                                [],
+                            ),
+                        )
         else:
             st.info(
                 "No evidence-supported drivers available."
@@ -1274,7 +1820,7 @@ with overview_tab:
         )
 
         status1.metric(
-            "Approved Evidence",
+            "Evidence Sources",
             len(
                 ai_metadata.get(
                     "source_usable_evidence_ids",
@@ -1284,7 +1830,7 @@ with overview_tab:
         )
 
         status2.metric(
-            "Unresolved",
+            "Unresolved Findings",
             len(
                 unresolved
             ),
@@ -1330,13 +1876,26 @@ with overview_tab:
         "Key Calculated Observations"
     )
 
-    observations = commentary.get(
-        "observations",
-        [],
+    st.caption(
+        "Summary KPIs are already shown above. This section highlights "
+        "entity- and driver-level deterministic facts."
     )
 
+    diagnostic_observations = [
+        observation
+        for observation in observations
+        if not short_finding_id(
+            observation.get(
+                "finding_id",
+                "",
+            )
+        ).lower().startswith(
+            "summary:"
+        )
+    ]
+
     visible_observations = (
-        observations[:8]
+        diagnostic_observations[:4]
     )
 
     obs_col1, obs_col2 = st.columns(
@@ -1364,15 +1923,29 @@ with overview_tab:
                 ),
             )
 
-    if len(observations) > len(
-        visible_observations
-    ):
+    remaining_observations = (
+        diagnostic_observations[
+            len(visible_observations):
+        ]
+    )
+
+    if remaining_observations:
+        remaining_observation_count = len(
+            remaining_observations
+        )
+
+        remaining_observation_label = (
+            "calculated observation"
+            if remaining_observation_count == 1
+            else "calculated observations"
+        )
+
         with st.expander(
-            "Show remaining calculated observations"
+            f"View {remaining_observation_count} more "
+            f"{remaining_observation_label}",
+            expanded=False,
         ):
-            for observation in observations[
-                len(visible_observations):
-            ]:
+            for observation in remaining_observations:
                 st.markdown(
                     f"**{short_finding_id(observation.get('finding_id', ''))}**"
                 )
@@ -1383,46 +1956,137 @@ with overview_tab:
                     )
                 )
 
-    questions = commentary.get(
-        "management_questions",
-        [],
-    )
-
     st.divider()
 
-    with st.expander(
-        f"Management Questions ({len(questions)})",
-        expanded=False,
-    ):
+    st.subheader(
+        "Next Management Questions"
+    )
+
+    st.caption(
+        "Priority follow-up questions generated from the unresolved "
+        "and evidence-supported findings."
+    )
+
+    priority_questions = []
+    selected_question_scopes = set()
+
+    for question in questions:
+        related_ids = question.get(
+            "related_finding_ids",
+            [],
+        )
+
+        scope_label = "General"
+
+        if related_ids:
+            related_label = short_finding_id(
+                related_ids[0]
+            )
+
+            scope_label = (
+                related_label.split(
+                    ":",
+                    1,
+                )[0]
+                .strip()
+                .lower()
+            )
+
+        if scope_label in selected_question_scopes:
+            continue
+
+        priority_questions.append(
+            question
+        )
+        selected_question_scopes.add(
+            scope_label
+        )
+
+        if len(priority_questions) == 3:
+            break
+
+    if len(priority_questions) < 3:
         for question in questions:
-            related_ids = question.get(
-                "related_finding_ids",
-                [],
+            if question in priority_questions:
+                continue
+
+            priority_questions.append(
+                question
             )
 
-            related_text = ", ".join(
-                short_finding_id(
-                    finding_id
+            if len(priority_questions) == 3:
+                break
+
+    for question in priority_questions:
+        related_ids = question.get(
+            "related_finding_ids",
+            [],
+        )
+
+        related_text = ", ".join(
+            short_finding_id(
+                finding_id
+            )
+            for finding_id
+            in related_ids
+        )
+
+        st.markdown(
+            f"""
+            <div class="question-card">
+                <strong>
+                    {clean_text(question.get("question", ""))}
+                </strong>
+                <br>
+                <span class="small-muted">
+                    Related findings:
+                    {clean_text(related_text)}
+                </span>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    remaining_questions = [
+        question
+        for question in questions
+        if question not in priority_questions
+    ]
+
+    if remaining_questions:
+        with st.expander(
+            f"View all management questions ({len(questions)})",
+            expanded=False,
+        ):
+            for question in remaining_questions:
+                related_ids = question.get(
+                    "related_finding_ids",
+                    [],
                 )
-                for finding_id
-                in related_ids
-            )
 
-            st.markdown(
-                f"""
-                <div class="question-card">
-                    <strong>
-                        {clean_text(question.get("question", ""))}
-                    </strong>
-                    <br>
-                    <span class="small-muted">
-                        Related findings:
-                        {clean_text(related_text)}
-                    </span>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
+                related_text = ", ".join(
+                    short_finding_id(
+                        finding_id
+                    )
+                    for finding_id
+                    in related_ids
+                )
+
+                st.markdown(
+                    f"""
+                    <div class="question-card">
+                        <strong>
+                            {clean_text(question.get("question", ""))}
+                        </strong>
+                        <br>
+                        <span class="small-muted">
+                            Related findings:
+                            {clean_text(related_text)}
+                        </span>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
 
 
 # ---------------------------------------------------------------------
@@ -1436,14 +2100,24 @@ with ask_tab:
 
     st.caption(
         f"Ask management questions about the current {selected_period} "
-        "analysis. The assistant can use deterministic finance findings and "
-        "evidence that already passed the grounding and directional controls."
+        "analysis. Answers are grounded in deterministic finance findings "
+        "and evidence that already passed the control layer."
     )
 
-    st.info(
-        "The interactive assistant cannot access hidden ground truth and is "
-        "not allowed to invent explanations. When approved evidence is "
-        "insufficient, the answer must remain unresolved."
+    st.markdown(
+        """
+        <div class="qa-control-banner">
+            <div class="qa-control-title">
+                Evidence-grounded answers only
+            </div>
+            <div class="qa-control-text">
+                The copilot can explain a variance only when approved
+                evidence supports it. If causal evidence is insufficient,
+                it must say so. Hidden ground truth is never model-visible.
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
 
     approved_context = build_approved_context(
@@ -1451,42 +2125,82 @@ with ask_tab:
         ai_metadata=ai_metadata,
     )
 
-    q1, q2, q3, q4 = st.columns(
-        4
+    st.markdown(
+        "#### Context available to the copilot"
     )
 
-    q1.metric(
-        "Calculated Facts",
-        len(
-            approved_context[
-                "facts"
-            ]
-        ),
+    context1, context2, context3, context4 = (
+        st.columns(
+            4
+        )
     )
-    q2.metric(
-        "Approved Explanations",
-        len(
-            approved_context[
-                "supported"
-            ]
+
+    context_cards = [
+        (
+            context1,
+            "Calculated findings",
+            len(
+                approved_context[
+                    "facts"
+                ]
+            ),
+            "Deterministic facts",
         ),
-    )
-    q3.metric(
-        "Approved Evidence IDs",
-        len(
-            approved_context[
-                "approved_evidence_ids"
-            ]
+        (
+            context2,
+            "Supported explanations",
+            len(
+                approved_context[
+                    "supported"
+                ]
+            ),
+            "Passed grounding controls",
         ),
-    )
-    q4.metric(
-        "Blocked Evidence IDs",
-        len(
-            approved_context[
-                "withheld_evidence_ids"
-            ]
+        (
+            context3,
+            "Evidence sources",
+            len(
+                approved_context[
+                    "approved_evidence_ids"
+                ]
+            ),
+            "Model-visible causal evidence",
         ),
-    )
+        (
+            context4,
+            "Blocked evidence",
+            len(
+                approved_context[
+                    "withheld_evidence_ids"
+                ]
+            ),
+            "Withheld from causal use",
+        ),
+    ]
+
+    for (
+        context_column,
+        context_label,
+        context_value,
+        context_note,
+    ) in context_cards:
+        with context_column:
+            st.markdown(
+                f"""
+                <div class="qa-context-card">
+                    <div class="qa-context-label">
+                        {clean_text(context_label)}
+                    </div>
+                    <div class="qa-context-value">
+                        {context_value}
+                    </div>
+                    <div class="qa-context-note">
+                        {clean_text(context_note)}
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
 
     st.divider()
 
@@ -1541,9 +2255,6 @@ with ask_tab:
             "cfo_clear_question_input"
         ] = False
 
-    # Clear the previous question only after a successful response.
-    # This happens before the text-area widget is instantiated, which
-    # avoids Streamlit session-state conflicts.
     if st.session_state[
         "cfo_clear_question_input"
     ]:
@@ -1562,24 +2273,45 @@ with ask_tab:
         ] = question_text
 
     st.markdown(
-        "#### Example questions"
+        "#### Try an example"
     )
 
-    suggestion_columns = st.columns(
-        4
+    st.caption(
+        "Choose a supported case or a question where the correct "
+        "behavior is to remain unresolved."
     )
 
-    for index, suggested_question in enumerate(
-        QA_SUGGESTED_QUESTIONS
-    ):
-        with suggestion_columns[index]:
-            st.button(
-                suggested_question,
-                key=f"qa_suggestion_{index}",
-                use_container_width=True,
-                on_click=set_cfo_question,
-                args=(suggested_question,),
-            )
+    suggestion_rows = [
+        QA_SUGGESTED_QUESTIONS[:2],
+        QA_SUGGESTED_QUESTIONS[2:],
+    ]
+
+    suggestion_index = 0
+
+    for suggestion_row in suggestion_rows:
+        row_columns = st.columns(
+            2
+        )
+
+        for row_column, suggested_question in zip(
+            row_columns,
+            suggestion_row,
+        ):
+            with row_column:
+                st.button(
+                    suggested_question,
+                    key=(
+                        f"qa_suggestion_"
+                        f"{suggestion_index}"
+                    ),
+                    width="stretch",
+                    on_click=set_cfo_question,
+                    args=(
+                        suggested_question,
+                    ),
+                )
+
+            suggestion_index += 1
 
     api_key = resolve_openai_api_key()
 
@@ -1594,8 +2326,8 @@ with ask_tab:
     )
 
     st.caption(
-        f"Live demo limit: {QA_SESSION_LIMIT} successful questions per session · "
-        f"{remaining_questions} remaining"
+        f"Live demo · {remaining_questions} of "
+        f"{QA_SESSION_LIMIT} questions remaining this session"
     )
 
     if not api_key:
@@ -1605,9 +2337,6 @@ with ask_tab:
             "Streamlit secret to enable interactive questions."
         )
 
-    # A normal container is used instead of clear_on_submit=True.
-    # Streamlit's form reset could clear a question inserted by an
-    # example-button before the submit handler reads it.
     with st.container(
         border=True,
     ):
@@ -1625,7 +2354,7 @@ with ask_tab:
             "Ask CFO Copilot",
             key="cfo_submit_question",
             type="primary",
-            use_container_width=False,
+            width="content",
             disabled=(
                 not api_key
                 or remaining_questions <= 0
@@ -1707,11 +2436,15 @@ with ask_tab:
             st.markdown(
                 "#### Conversation"
             )
+            st.caption(
+                "Newest answer first. Open traceability to inspect "
+                "the exact findings and approved evidence used."
+            )
 
         with clear_header:
             if st.button(
                 "Clear view",
-                use_container_width=True,
+                width="stretch",
             ):
                 st.session_state[
                     "cfo_qa_history"
@@ -1732,11 +2465,21 @@ with ask_tab:
     else:
         st.divider()
 
-        st.caption(
-            "No questions asked in this session yet. "
-            "Try one of the example questions above."
+        st.markdown(
+            """
+            <div class="qa-control-banner">
+                <div class="qa-control-title">
+                    No questions asked yet
+                </div>
+                <div class="qa-control-text">
+                    Try an example above or ask your own management
+                    question to see evidence-grounded answering,
+                    traceability and controlled abstention.
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
         )
-
 
 
 # ---------------------------------------------------------------------
@@ -1750,18 +2493,75 @@ with scenario_tab:
 
     st.caption(
         "Model full-year management scenarios against the 2026 Latest Forecast. "
-        "Every output is recalculated by the same deterministic finance engine "
-        "used in the core FP&A analysis."
-    )
-
-    st.info(
-        "This is a deterministic what-if model, not an AI forecast. "
-        "Latest Forecast is the fixed baseline for this lab."
+        "Every financial output is recalculated by the deterministic finance "
+        "engine before any AI interpretation is allowed."
     )
 
     st.markdown(
-        "#### Scenario Assumptions"
+        """
+        <div class="qa-control-banner">
+            <div class="qa-control-title">
+                Deterministic what-if model
+            </div>
+            <div class="qa-control-text">
+                Latest Forecast is the fixed baseline. Scenario calculations
+                are deterministic; AI is used only to interpret an already
+                calculated result.
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
+
+    scenario_widget_keys = (
+        "scenario_volume_pct",
+        "scenario_price_pct",
+        "scenario_discount_delta_pp",
+        "scenario_unit_cost_pct",
+        "scenario_headcount_pct",
+        "scenario_non_payroll_pct",
+    )
+
+    def reset_scenario_assumptions() -> None:
+        for widget_key in scenario_widget_keys:
+            st.session_state[
+                widget_key
+            ] = 0.0
+
+        st.session_state[
+            "scenario_brief_result"
+        ] = None
+
+    scenario_state_has_changes = any(
+        abs(
+            float(
+                st.session_state.get(
+                    widget_key,
+                    0.0,
+                )
+            )
+        )
+        > 1e-9
+        for widget_key in scenario_widget_keys
+    )
+
+    assumptions_header, reset_column = st.columns(
+        [4, 1]
+    )
+
+    with assumptions_header:
+        st.markdown(
+            "#### Scenario Assumptions"
+        )
+
+    with reset_column:
+        st.button(
+            "Reset to baseline",
+            key="scenario_reset_to_baseline",
+            width="stretch",
+            disabled=not scenario_state_has_changes,
+            on_click=reset_scenario_assumptions,
+        )
 
     latest_forecast_sales = load_sales_data(
         SALES_DATASETS[
@@ -1922,6 +2722,86 @@ with scenario_tab:
         "non_payroll_opex_pct": scenario_non_payroll_pct / 100,
     }
 
+    active_assumptions = []
+
+    for assumption_label, assumption_value, assumption_unit in (
+        ("Volume", scenario_volume_pct, "%"),
+        ("List price", scenario_price_pct, "%"),
+        ("Discount", scenario_discount_delta_pp, " pp"),
+        ("Unit cost", scenario_unit_cost_pct, "%"),
+        ("Headcount", scenario_headcount_pct, "%"),
+        ("Non-payroll OPEX", scenario_non_payroll_pct, "%"),
+    ):
+        if abs(
+            float(
+                assumption_value
+            )
+        ) <= 1e-9:
+            continue
+
+        if assumption_unit == " pp":
+            assumption_text = (
+                f"{assumption_label} "
+                f"{float(assumption_value):+.1f} pp"
+            )
+        else:
+            assumption_text = (
+                f"{assumption_label} "
+                f"{float(assumption_value):+.1f}%"
+            )
+
+        active_assumptions.append(
+            assumption_text
+        )
+
+    scenario_is_baseline = (
+        len(
+            active_assumptions
+        )
+        == 0
+    )
+
+    if scenario_is_baseline:
+        st.markdown(
+            """
+            <div class="scenario-state-card scenario-state-baseline">
+                <div class="scenario-state-title">
+                    Baseline scenario
+                </div>
+                <div class="scenario-state-text">
+                    No assumptions are changed. The calculated outcome
+                    therefore matches the 2026 Latest Forecast.
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    else:
+        active_assumption_count = len(
+            active_assumptions
+        )
+
+        assumption_count_label = (
+            "assumption"
+            if active_assumption_count == 1
+            else "assumptions"
+        )
+
+        st.markdown(
+            f"""
+            <div class="scenario-state-card scenario-state-active">
+                <div class="scenario-state-title">
+                    Active scenario · {active_assumption_count}
+                    {clean_text(assumption_count_label)} changed
+                </div>
+                <div class="scenario-state-text">
+                    {clean_text(" · ".join(active_assumptions))}
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
     scenario_result = calculate_scenario_result(
         volume_pct=scenario_inputs_decimal["volume_pct"],
         price_pct=scenario_inputs_decimal["price_pct"],
@@ -1948,6 +2828,44 @@ with scenario_tab:
         "Deltas are versus the 2026 Latest Forecast baseline."
     )
 
+    def scenario_money_delta(
+        value: float | int | None,
+    ) -> str | None:
+        if value is None:
+            return None
+
+        numeric_value = float(
+            value
+        )
+
+        if abs(
+            numeric_value
+        ) < 5_000:
+            return None
+
+        return money_delta(
+            numeric_value
+        )
+
+    def scenario_margin_delta(
+        value: float | int | None,
+    ) -> str | None:
+        if value is None:
+            return None
+
+        numeric_value = float(
+            value
+        )
+
+        if abs(
+            numeric_value
+        ) < 0.005:
+            return None
+
+        return percentage_point_delta(
+            numeric_value
+        )
+
     scenario_kpis = st.columns(
         5
     )
@@ -1960,7 +2878,7 @@ with scenario_tab:
                     "scenario_revenue_nok"
                 ]
             ),
-            delta=money_delta(
+            delta=scenario_money_delta(
                 scenario_summary[
                     "revenue_change_nok"
                 ]
@@ -1975,7 +2893,7 @@ with scenario_tab:
                     "scenario_gross_profit_nok"
                 ]
             ),
-            delta=money_delta(
+            delta=scenario_money_delta(
                 scenario_summary[
                     "gross_profit_change_nok"
                 ]
@@ -1990,7 +2908,7 @@ with scenario_tab:
                     "scenario_opex_nok"
                 ]
             ),
-            delta=money_delta(
+            delta=scenario_money_delta(
                 scenario_summary[
                     "opex_change_nok"
                 ]
@@ -2006,7 +2924,7 @@ with scenario_tab:
                     "scenario_ebitda_nok"
                 ]
             ),
-            delta=money_delta(
+            delta=scenario_money_delta(
                 scenario_summary[
                     "ebitda_change_nok"
                 ]
@@ -2021,7 +2939,7 @@ with scenario_tab:
                     "scenario_ebitda_margin"
                 ]
             ),
-            delta=percentage_point_delta(
+            delta=scenario_margin_delta(
                 scenario_summary[
                     "ebitda_margin_change_pp"
                 ]
@@ -2042,20 +2960,25 @@ with scenario_tab:
     if reconciliation.get(
         "passed"
     ):
-        st.success(
-            "Scenario bridge reconciled to calculated EBITDA · "
-            f"residual NOK {reconciliation_residual:,.2f}"
-        )
+        if scenario_is_baseline:
+            st.caption(
+                "Baseline confirmed · scenario outcome matches Latest "
+                "Forecast and the EBITDA bridge reconciles."
+            )
+        else:
+            st.success(
+                "Scenario bridge reconciled to calculated EBITDA."
+            )
+            st.caption(
+                "Reconciliation residual: "
+                f"NOK {reconciliation_residual:,.2f}"
+            )
     else:
         st.error(
             "Scenario bridge failed reconciliation."
         )
 
     st.divider()
-
-    bridge_left, bridge_right = st.columns(
-        [1.05, 0.95]
-    )
 
     bridge_labels = {
         "volume_mix": "Volume & mix",
@@ -2118,75 +3041,99 @@ with scenario_tab:
         bridge_rows
     )
 
-    with bridge_left:
+    if scenario_is_baseline:
         st.markdown(
             "#### EBITDA Driver Bridge"
         )
 
-        st.caption(
-            "Sequential deterministic decomposition of the scenario's "
-            "EBITDA change versus Latest Forecast."
+        st.info(
+            "No active EBITDA drivers because the scenario currently "
+            "matches the Latest Forecast baseline. Change an assumption "
+            "to activate the bridge."
+        )
+    else:
+        bridge_left, bridge_right = st.columns(
+            [1.05, 0.95]
         )
 
-        st.dataframe(
-            bridge_frame,
-            width="stretch",
-            hide_index=True,
-            column_config={
-                "EBITDA impact (NOK m)": (
-                    st.column_config.NumberColumn(
-                        format="%.2f",
-                    )
-                ),
-            },
-        )
-
-        if not bridge_frame.empty:
-            largest_driver_index = (
-                bridge_frame[
-                    "EBITDA impact (NOK m)"
-                ]
-                .abs()
-                .idxmax()
+        with bridge_left:
+            st.markdown(
+                "#### EBITDA Driver Bridge"
             )
-
-            largest_driver_row = bridge_frame.loc[
-                largest_driver_index
-            ]
 
             st.caption(
-                "Largest absolute EBITDA driver: "
-                f"{largest_driver_row['Driver']} · "
-                f"NOK "
-                f"{largest_driver_row['EBITDA impact (NOK m)']:+.2f}m"
+                "Sequential deterministic decomposition of the scenario's "
+                "EBITDA change versus Latest Forecast."
             )
 
-    with bridge_right:
-        st.markdown(
-            "#### EBITDA Impact by Driver"
-        )
+            st.dataframe(
+                bridge_frame,
+                width="stretch",
+                hide_index=True,
+                column_config={
+                    "EBITDA impact (NOK m)": (
+                        st.column_config.NumberColumn(
+                            format="%.2f",
+                        )
+                    ),
+                },
+            )
 
-        if not bridge_frame.empty:
-            chart_frame = (
+            nonzero_bridge_frame = bridge_frame[
                 bridge_frame[
-                    [
-                        "Driver",
-                        "EBITDA impact (NOK m)",
+                    "EBITDA impact (NOK m)"
+                ].abs()
+                >= 0.005
+            ].copy()
+
+            if not nonzero_bridge_frame.empty:
+                largest_driver_index = (
+                    nonzero_bridge_frame[
+                        "EBITDA impact (NOK m)"
                     ]
-                ]
-                .set_index(
-                    "Driver"
+                    .abs()
+                    .idxmax()
                 )
+
+                largest_driver_row = (
+                    nonzero_bridge_frame.loc[
+                        largest_driver_index
+                    ]
+                )
+
+                st.caption(
+                    "Largest absolute EBITDA driver: "
+                    f"{largest_driver_row['Driver']} · "
+                    f"NOK "
+                    f"{largest_driver_row['EBITDA impact (NOK m)']:+.2f}m"
+                )
+
+        with bridge_right:
+            st.markdown(
+                "#### EBITDA Impact by Driver"
             )
 
-            st.bar_chart(
-                chart_frame,
-                height=330,
-            )
-        else:
-            st.info(
-                "No bridge drivers available."
-            )
+            if not nonzero_bridge_frame.empty:
+                chart_frame = (
+                    nonzero_bridge_frame[
+                        [
+                            "Driver",
+                            "EBITDA impact (NOK m)",
+                        ]
+                    ]
+                    .set_index(
+                        "Driver"
+                    )
+                )
+
+                st.bar_chart(
+                    chart_frame,
+                    height=330,
+                )
+            else:
+                st.info(
+                    "No material bridge drivers available."
+                )
 
     st.divider()
 
@@ -2195,11 +3142,9 @@ with scenario_tab:
     )
 
     st.caption(
-        "Generate a concise management interpretation of the deterministic "
-        "scenario result. The AI receives only calculated scenario assumptions, "
-        "financial outcomes and the reconciled EBITDA bridge. It cannot access "
-        "management evidence or hidden ground truth, and it is not allowed to "
-        "calculate new financial values or invent business causes."
+        "Interpret the already-calculated scenario for management. "
+        "The AI cannot recalculate financial values, access management "
+        "evidence or hidden ground truth, or invent business causes."
     )
 
     scenario_brief_signature = tuple(
@@ -2279,14 +3224,14 @@ with scenario_tab:
             disabled=(
                 not scenario_brief_api_key
                 or scenario_brief_remaining <= 0
+                or scenario_is_baseline
             ),
         )
 
     with brief_control_right:
         st.caption(
-            f"Live demo limit: "
-            f"{SCENARIO_BRIEF_SESSION_LIMIT} successful briefs per session · "
-            f"{scenario_brief_remaining} remaining"
+            f"Live demo · {scenario_brief_remaining} of "
+            f"{SCENARIO_BRIEF_SESSION_LIMIT} briefs remaining this session"
         )
 
     if not scenario_brief_api_key:
@@ -2294,6 +3239,12 @@ with scenario_tab:
             "AI Scenario Brief is not configured in this environment yet. "
             "Add OPENAI_API_KEY as a local environment variable or "
             "Streamlit secret to enable it."
+        )
+
+    if scenario_is_baseline:
+        st.caption(
+            "Change at least one scenario assumption to generate an "
+            "AI Scenario Brief."
         )
 
     if generate_brief:
@@ -2399,22 +3350,24 @@ with scenario_tab:
             )
 
             if brief_driver_ids:
-                for driver_id in brief_driver_ids:
-                    driver_label = (
-                        bridge_labels.get(
-                            driver_id,
-                            str(
-                                driver_id
-                            ).replace(
-                                "_",
-                                " ",
-                            ).title(),
-                        )
+                brief_driver_labels = [
+                    bridge_labels.get(
+                        driver_id,
+                        str(
+                            driver_id
+                        ).replace(
+                            "_",
+                            " ",
+                        ).title(),
                     )
+                    for driver_id in brief_driver_ids
+                ]
 
-                    st.write(
-                        f"• {driver_label}"
+                st.write(
+                    " · ".join(
+                        brief_driver_labels
                     )
+                )
             else:
                 st.caption(
                     "No active EBITDA driver was required."
@@ -2493,11 +3446,18 @@ with scenario_tab:
                 )
             )
     else:
-        st.info(
-            "No AI Scenario Brief has been generated for the current "
-            "assumptions yet. The deterministic scenario calculations above "
-            "are available independently of the AI layer."
-        )
+        if scenario_is_baseline:
+            st.info(
+                "Scenario is at baseline. Deterministic calculations are "
+                "already available above; change an assumption to enable "
+                "AI interpretation."
+            )
+        else:
+            st.info(
+                "No AI Scenario Brief has been generated for the current "
+                "assumptions yet. The deterministic calculations above "
+                "remain available independently of the AI layer."
+            )
 
     st.divider()
 
@@ -2619,6 +3579,24 @@ with scenario_tab:
                     "current assumption for the selected driver."
                 ),
             )
+
+    sensitivity_driver_label = (
+        SCENARIO_DRIVER_LABELS[
+            sensitivity_driver
+        ]
+    )
+
+    sensitivity_center_unit = (
+        "pp"
+        if sensitivity_driver == "discount"
+        else "%"
+    )
+
+    st.caption(
+        f"Centered on the current {sensitivity_driver_label} assumption: "
+        f"{sensitivity_center_pp:+.1f} {sensitivity_center_unit}. "
+        "The other five scenario assumptions remain fixed."
+    )
 
     sensitivity_points_pp = (
         sensitivity_center_pp
@@ -2844,13 +3822,28 @@ with scenario_tab:
 
 with evidence_tab:
     st.subheader(
-        "Evidence Control Layer"
+        "Evidence & Guardrails"
     )
 
     st.caption(
-        "The AI cannot freely select explanations. "
-        "Evidence must pass entity, driver and directional "
-        "compatibility checks before it becomes model-visible."
+        "The AI cannot freely select explanations. Candidate evidence must "
+        "match the entity and driver and then pass a directional compatibility "
+        "check before it can be used as causal evidence."
+    )
+
+    st.markdown(
+        """
+        <div class="qa-control-banner">
+            <div class="qa-control-title">
+                Evidence control path
+            </div>
+            <div class="qa-control-text">
+                Calculated finding → candidate evidence → entity and driver
+                match → directional check → model-visible or withheld.
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
 
     directional = ai_metadata.get(
@@ -2863,43 +3856,79 @@ with evidence_tab:
         [],
     )
 
+    visible_evidence = ai_metadata.get(
+        "source_usable_evidence_ids",
+        [],
+    )
+
+    assessment_count = int(
+        directional.get(
+            "assessment_count",
+            0,
+        )
+        or 0
+    )
+
+    consistent_count = int(
+        directional.get(
+            "directionally_consistent_count",
+            0,
+        )
+        or 0
+    )
+
+    offsetting_count = int(
+        directional.get(
+            "offsetting_count",
+            0,
+        )
+        or 0
+    )
+
+    unknown_count = int(
+        directional.get(
+            "direction_unknown_count",
+            0,
+        )
+        or 0
+    )
+
     d1, d2, d3, d4 = st.columns(
         4
     )
 
     d1.metric(
-        "Evidence Assessments",
-        directional.get(
-            "assessment_count",
-            0,
-        ),
+        "Directional Assessments",
+        assessment_count,
     )
 
     d2.metric(
-        "Directionally Consistent",
-        directional.get(
-            "directionally_consistent_count",
-            0,
-        ),
+        "Passed Directional Check",
+        consistent_count,
     )
 
     d3.metric(
-        "Offsetting",
-        directional.get(
-            "offsetting_count",
-            0,
-        ),
+        "Withheld as Offsetting",
+        offsetting_count,
     )
 
     d4.metric(
         "Unknown Direction",
-        directional.get(
-            "direction_unknown_count",
-            0,
-        ),
+        unknown_count,
     )
 
+    if assessment_count:
+        st.caption(
+            f"{consistent_count} of {assessment_count} directional "
+            "assessments passed. Evidence that points in the opposite "
+            "financial direction is not allowed to become a causal explanation."
+        )
+
     if "NOTE-016" in withheld:
+        st.markdown(
+            "#### Why relevant evidence can still be blocked"
+        )
+
         st.markdown(
             """
             <div class="guardrail-card">
@@ -2909,8 +3938,8 @@ with evidence_tab:
                 Norway has a negative calculated revenue and gross-profit
                 variance. NOTE-016 documents a Sensor X Pro shipment
                 acceleration, which points in the opposite financial
-                direction. The evidence is therefore retained as relevant
-                context but blocked from being used as a causal explanation.
+                direction. The note remains relevant context, but it is
+                withheld from causal use.
             </div>
             """,
             unsafe_allow_html=True,
@@ -2925,7 +3954,7 @@ with evidence_tab:
                 """
                 <div class="guardrail-step">
                     <div class="guardrail-step-title">
-                        Calculated finding
+                        1 · Calculated finding
                     </div>
                     <strong>Country: Norway</strong><br>
                     Revenue and gross profit are below budget.<br>
@@ -2942,7 +3971,7 @@ with evidence_tab:
                 """
                 <div class="guardrail-step">
                     <div class="guardrail-step-title">
-                        Candidate evidence
+                        2 · Candidate evidence
                     </div>
                     <strong>NOTE-016</strong><br>
                     Sensor X Pro shipment acceleration in Norway.<br>
@@ -2959,13 +3988,13 @@ with evidence_tab:
                 """
                 <div class="guardrail-step">
                     <div class="guardrail-step-title">
-                        Control decision
+                        3 · Control decision
                     </div>
                     <strong>Withheld from AI explanation</strong><br>
                     Relevant evidence, but not valid as the cause of the
                     negative variance.<br>
                     <span class="small-muted">
-                        Hallucination risk reduced
+                        Unsupported causal attribution prevented
                     </span>
                 </div>
                 """,
@@ -2983,143 +4012,261 @@ with evidence_tab:
             "Approved Explanations"
         )
 
+        supported_count = len(
+            supported
+        )
+
+        supported_label = (
+            "finding has"
+            if supported_count == 1
+            else "findings have"
+        )
+
         st.caption(
-            f"{len(supported)} material findings have evidence "
-            "that passed the grounding and directional controls."
+            f"{supported_count} material {supported_label} evidence that "
+            "passed the grounding and directional controls."
         )
 
         if not supported:
             st.info(
                 "No approved explanations."
             )
+        else:
+            supported_preview = supported[:3]
 
-        for explanation in supported:
-            render_evidence_card(
-                explanation.get(
-                    "finding_id",
-                    "",
-                ),
-                explanation.get(
-                    "explanation",
-                    "",
-                ),
-                explanation.get(
-                    "evidence_ids",
-                    [],
-                ),
-            )
+            for explanation in supported_preview:
+                render_evidence_card(
+                    explanation.get(
+                        "finding_id",
+                        "",
+                    ),
+                    explanation.get(
+                        "explanation",
+                        "",
+                    ),
+                    explanation.get(
+                        "evidence_ids",
+                        [],
+                    ),
+                )
+
+            remaining_supported = supported[
+                len(supported_preview):
+            ]
+
+            if remaining_supported:
+                remaining_supported_count = len(
+                    remaining_supported
+                )
+
+                remaining_supported_label = (
+                    "approved explanation"
+                    if remaining_supported_count == 1
+                    else "approved explanations"
+                )
+
+                with st.expander(
+                    f"View {remaining_supported_count} more "
+                    f"{remaining_supported_label}",
+                    expanded=False,
+                ):
+                    for explanation in remaining_supported:
+                        render_evidence_card(
+                            explanation.get(
+                                "finding_id",
+                                "",
+                            ),
+                            explanation.get(
+                                "explanation",
+                                "",
+                            ),
+                            explanation.get(
+                                "evidence_ids",
+                                [],
+                            ),
+                        )
 
     with right:
         st.subheader(
             "Unresolved Findings"
         )
 
+        unresolved_count = len(
+            unresolved
+        )
+
+        unresolved_label = (
+            "finding remains"
+            if unresolved_count == 1
+            else "findings remain"
+        )
+
         st.caption(
-            f"{len(unresolved)} material findings remain unresolved "
-            "rather than being assigned an unsupported explanation."
+            f"{unresolved_count} material {unresolved_label} unresolved "
+            "rather than receiving an unsupported explanation."
         )
 
         if not unresolved:
             st.success(
                 "No unresolved material findings."
             )
+        else:
+            unresolved_preview = unresolved[:3]
 
-        unresolved_preview = unresolved[:4]
+            for finding in unresolved_preview:
+                render_unresolved_card(
+                    finding.get(
+                        "finding_id",
+                        "",
+                    ),
+                    finding.get(
+                        "statement",
+                        "",
+                    ),
+                )
 
-        for finding in unresolved_preview:
-            render_unresolved_card(
-                finding.get(
-                    "finding_id",
-                    "",
-                ),
-                finding.get(
-                    "statement",
-                    "",
-                ),
-            )
+            remaining_unresolved = unresolved[
+                len(unresolved_preview):
+            ]
 
-        remaining_unresolved = unresolved[
-            len(unresolved_preview):
-        ]
+            if remaining_unresolved:
+                remaining_unresolved_count = len(
+                    remaining_unresolved
+                )
 
-        if remaining_unresolved:
-            with st.expander(
-                "Show "
-                f"{len(remaining_unresolved)} additional "
-                "unresolved findings",
-                expanded=False,
-            ):
-                for finding in remaining_unresolved:
-                    render_unresolved_card(
-                        finding.get(
-                            "finding_id",
-                            "",
-                        ),
-                        finding.get(
-                            "statement",
-                            "",
-                        ),
-                    )
+                remaining_unresolved_label = (
+                    "unresolved finding"
+                    if remaining_unresolved_count == 1
+                    else "unresolved findings"
+                )
+
+                with st.expander(
+                    f"View {remaining_unresolved_count} more "
+                    f"{remaining_unresolved_label}",
+                    expanded=False,
+                ):
+                    for finding in remaining_unresolved:
+                        render_unresolved_card(
+                            finding.get(
+                                "finding_id",
+                                "",
+                            ),
+                            finding.get(
+                                "statement",
+                                "",
+                            ),
+                        )
 
     st.divider()
 
-    control_left, control_right = (
-        st.columns(
-            2
-        )
+    st.subheader(
+        "Evidence Access"
     )
 
-    with control_left:
+    st.caption(
+        "This is the final evidence boundary seen by the AI commentary layer."
+    )
+
+    access_left, access_right = st.columns(
+        2
+    )
+
+    with access_left:
+        visible_count = len(
+            visible_evidence
+        )
+
         st.markdown(
-            "#### Model-Visible Evidence"
+            f"""
+            <div class="evidence-access-card">
+                <div class="evidence-access-title">
+                    Model-visible evidence sources
+                </div>
+                <div class="evidence-access-count">
+                    {visible_count}
+                </div>
+                <div class="evidence-access-text">
+                    Only evidence that passed all grounding and directional
+                    controls can be used for causal commentary.
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
         )
 
-        visible_evidence = (
-            ai_metadata.get(
-                "source_usable_evidence_ids",
-                [],
-            )
-        )
-
-        st.caption(
-            "Only these approved evidence IDs were available "
-            "to the AI commentary layer."
-        )
+        st.write("")
 
         if visible_evidence:
             for evidence_id in visible_evidence:
-                st.success(
-                    f"{evidence_id} · approved"
+                st.markdown(
+                    '<span class="status-pass">'
+                    + clean_text(
+                        str(
+                            evidence_id
+                        )
+                    )
+                    + " · approved"
+                    + "</span>",
+                    unsafe_allow_html=True,
                 )
+                st.write("")
         else:
             st.info(
-                "No evidence IDs reached the AI layer."
+                "No evidence sources reached the AI layer."
             )
 
-    with control_right:
-        st.markdown(
-            "#### Withheld Evidence"
+    with access_right:
+        withheld_count = len(
+            withheld
         )
 
-        st.caption(
-            "Relevant evidence is withheld when it fails the "
-            "directional compatibility check."
+        st.markdown(
+            f"""
+            <div class="evidence-access-card">
+                <div class="evidence-access-title">
+                    Withheld evidence sources
+                </div>
+                <div class="evidence-access-count">
+                    {withheld_count}
+                </div>
+                <div class="evidence-access-text">
+                    Relevant evidence can still be blocked when it is not
+                    directionally compatible with the observed variance.
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
         )
+
+        st.write("")
 
         if withheld:
             for evidence_id in withheld:
-                st.warning(
-                    f"{evidence_id} · blocked by directional guardrail"
+                st.markdown(
+                    '<span class="status-warning">'
+                    + clean_text(
+                        str(
+                            evidence_id
+                        )
+                    )
+                    + " · directional guardrail"
+                    + "</span>",
+                    unsafe_allow_html=True,
                 )
+                st.write("")
         else:
-            st.success(
-                "No evidence withheld."
+            st.markdown(
+                '<span class="status-pass">'
+                "No evidence withheld"
+                "</span>",
+                unsafe_allow_html=True,
             )
 
-        st.caption(
-            "Evidence can be relevant to an entity without "
-            "being valid as an explanation for the observed variance."
-        )
+    st.caption(
+        "Relevant does not automatically mean causal. The control layer "
+        "separates useful context from evidence that is valid for explaining "
+        "the direction of a financial variance."
+    )
 
 
 # ---------------------------------------------------------------------
@@ -3128,48 +4275,121 @@ with evidence_tab:
 
 with evaluation_tab:
     st.subheader(
-        "Adversarial Safety Benchmark"
+        "Evaluation & Safety"
     )
 
     st.caption(
-        "A controlled 32-case synthetic benchmark stress-tests the "
-        "evidence-control pipeline across supported evidence, no-evidence "
-        "cases, wrong entities, wrong drivers, directional conflicts, "
-        "ambiguous evidence and multi-event situations."
+        "Controlled offline evaluation tests whether the pipeline routes "
+        "evidence correctly, abstains when support is missing, blocks "
+        "unauthorized evidence and keeps hidden ground truth isolated."
+    )
+
+    adversarial_case_count = int(
+        adversarial_summary.get(
+            "case_count",
+            0,
+        )
+        or 0
+    )
+
+    adversarial_cases_passed = int(
+        adversarial_summary.get(
+            "cases_passed",
+            0,
+        )
+        or 0
+    )
+
+    guarded_unsupported = benchmark_pct(
+        guarded_benchmark_summary.get(
+            "unsupported_explanation_rate"
+        )
+    )
+
+    naive_unsupported = benchmark_pct(
+        naive_benchmark_summary.get(
+            "unsupported_explanation_rate"
+        )
+    )
+
+    guarded_citation = benchmark_pct(
+        guarded_benchmark_summary.get(
+            "citation_precision"
+        )
+    )
+
+    naive_citation = benchmark_pct(
+        naive_benchmark_summary.get(
+            "citation_precision"
+        )
+    )
+
+    guarded_abstention = benchmark_pct(
+        guarded_benchmark_summary.get(
+            "correct_abstention_rate"
+        )
+    )
+
+    naive_abstention = benchmark_pct(
+        naive_benchmark_summary.get(
+            "correct_abstention_rate"
+        )
+    )
+
+    guarded_forbidden = int(
+        guarded_benchmark_summary.get(
+            "forbidden_evidence_use_count",
+            0,
+        )
+        or 0
+    )
+
+    naive_forbidden = int(
+        naive_benchmark_summary.get(
+            "forbidden_evidence_use_count",
+            0,
+        )
+        or 0
     )
 
     if adversarial_summary.get(
         "overall_passed"
     ):
         st.markdown(
-            '<span class="status-pass">'
-            "Adversarial benchmark PASSED"
-            "</span>",
+            f"""
+            <div class="eval-hero-card">
+                <div class="eval-hero-title">
+                    Controlled safety benchmark passed
+                </div>
+                <div class="eval-hero-text">
+                    {adversarial_cases_passed} of {adversarial_case_count}
+                    adversarial cases passed. In the guarded LLM comparison,
+                    unsupported explanations fell from {naive_unsupported}
+                    to {guarded_unsupported}, while supported-explanation
+                    recall remained fully preserved.
+                </div>
+            </div>
+            """,
             unsafe_allow_html=True,
         )
     else:
         st.error(
-            "Adversarial benchmark failed."
+            "The controlled adversarial benchmark did not pass."
         )
 
-    st.write("")
+    st.markdown(
+        "#### Adversarial benchmark"
+    )
+
+    st.caption(
+        "A deterministic 32-case synthetic suite covers supported evidence, "
+        "no evidence, wrong entities, wrong drivers, directional conflicts, "
+        "ambiguous evidence and multi-event cases. This layer evaluates "
+        "routing and evidence authorization before model generation."
+    )
 
     a1, a2, a3, a4 = st.columns(
         4
-    )
-
-    adversarial_case_count = (
-        adversarial_summary.get(
-            "case_count",
-            0,
-        )
-    )
-
-    adversarial_cases_passed = (
-        adversarial_summary.get(
-            "cases_passed",
-            0,
-        )
     )
 
     a1.metric(
@@ -3230,19 +4450,15 @@ with evaluation_tab:
 
     category_rows = []
 
-    for category, metrics in (
-        category_summary.items()
-    ):
+    for category, metrics in category_summary.items():
         category_rows.append(
             {
-                "Case type": (
-                    category_labels.get(
-                        category,
-                        category.replace(
-                            "_",
-                            " ",
-                        ).title(),
-                    )
+                "Case type": category_labels.get(
+                    category,
+                    category.replace(
+                        "_",
+                        " ",
+                    ).title(),
                 ),
                 "Passed": (
                     f"{metrics.get('passed', 0)}/"
@@ -3258,29 +4474,24 @@ with evaluation_tab:
         )
 
     if category_rows:
-        st.dataframe(
-            category_rows,
-            width="stretch",
-            hide_index=True,
-        )
+        with st.expander(
+            "View benchmark coverage by case type",
+            expanded=False,
+        ):
+            st.dataframe(
+                category_rows,
+                width="stretch",
+                hide_index=True,
+            )
 
-    st.caption(
-        "This deterministic benchmark evaluates routing and evidence "
-        "authorization before model generation. It does not make API calls."
-    )
+            st.caption(
+                "This deterministic benchmark does not make API calls."
+            )
 
     st.divider()
 
-    st.subheader(
-        "Guarded vs Prompt-Only LLM"
-    )
-
-    st.caption(
-        "The same model, prompt structure, structured-output schema and "
-        "financial findings are evaluated under two evidence conditions. "
-        "The guarded condition receives only evidence approved by the "
-        "deterministic controls; the prompt-only baseline receives all raw "
-        "management evidence available in each benchmark case and must rely "
+    st.markdown(
+        "#### Guarded vs Prompt-Only LLM"
     )
 
     model_name = llm_benchmark_metadata.get(
@@ -3288,18 +4499,28 @@ with evaluation_tab:
         "N/A",
     )
 
-    benchmark_case_count = (
+    benchmark_case_count = int(
         llm_benchmark_metadata.get(
             "case_count",
             0,
         )
+        or 0
     )
 
-    benchmark_finding_count = (
+    benchmark_finding_count = int(
         llm_benchmark_metadata.get(
             "finding_count",
             0,
         )
+        or 0
+    )
+
+    st.caption(
+        "The same model and structured-output setup are evaluated under two "
+        "evidence conditions. The guarded condition receives only evidence "
+        "authorized by deterministic controls; the prompt-only baseline "
+        "receives the raw management evidence and must rely on instructions "
+        "alone to reject unsupported explanations."
     )
 
     st.markdown(
@@ -3311,13 +4532,74 @@ with evaluation_tab:
 
     st.caption(
         f"{benchmark_case_count} controlled cases · "
-        f"{benchmark_finding_count} financial findings · "
-        "the prompt-only baseline relies on model instructions alone to "
-        "reject unsupported explanations. Benchmark expectations and ground "
-        "truth were not sent to the model."
+        f"{benchmark_finding_count} evaluated financial findings · "
+        "benchmark expectations and hidden ground truth were not sent "
+        "to the model."
     )
 
-    st.write("")
+    b1, b2, b3, b4 = st.columns(
+        4
+    )
+
+    comparison_cards = [
+        (
+            b1,
+            "Unsupported explanations",
+            guarded_unsupported,
+            f"Prompt-only: {naive_unsupported}",
+        ),
+        (
+            b2,
+            "Citation precision",
+            guarded_citation,
+            f"Prompt-only: {naive_citation}",
+        ),
+        (
+            b3,
+            "Correct abstention",
+            guarded_abstention,
+            f"Prompt-only: {naive_abstention}",
+        ),
+        (
+            b4,
+            "Forbidden evidence uses",
+            str(
+                guarded_forbidden
+            ),
+            f"Prompt-only: {naive_forbidden}",
+        ),
+    ]
+
+    for (
+        comparison_column,
+        comparison_label,
+        comparison_value,
+        comparison_baseline,
+    ) in comparison_cards:
+        with comparison_column:
+            st.markdown(
+                f"""
+                <div class="eval-compare-card">
+                    <div class="eval-compare-label">
+                        {clean_text(comparison_label)}
+                    </div>
+                    <div class="eval-compare-value">
+                        {clean_text(comparison_value)}
+                    </div>
+                    <div class="eval-compare-baseline">
+                        {clean_text(comparison_baseline)}
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+    st.success(
+        "In this controlled benchmark run, deterministic evidence guardrails "
+        "reduced unsupported explanations and unauthorized evidence use while "
+        "preserving all supported explanations identified by the prompt-only "
+        "baseline."
+    )
 
     comparison_metric_rows = [
         {
@@ -3348,29 +4630,13 @@ with evaluation_tab:
         },
         {
             "Metric": "Correct abstention rate",
-            "Guarded": benchmark_pct(
-                guarded_benchmark_summary.get(
-                    "correct_abstention_rate"
-                )
-            ),
-            "Prompt-only baseline": benchmark_pct(
-                naive_benchmark_summary.get(
-                    "correct_abstention_rate"
-                )
-            ),
+            "Guarded": guarded_abstention,
+            "Prompt-only baseline": naive_abstention,
         },
         {
             "Metric": "Unsupported explanation rate",
-            "Guarded": benchmark_pct(
-                guarded_benchmark_summary.get(
-                    "unsupported_explanation_rate"
-                )
-            ),
-            "Prompt-only baseline": benchmark_pct(
-                naive_benchmark_summary.get(
-                    "unsupported_explanation_rate"
-                )
-            ),
+            "Guarded": guarded_unsupported,
+            "Prompt-only baseline": naive_unsupported,
         },
         {
             "Metric": "Supported explanation recall",
@@ -3387,111 +4653,14 @@ with evaluation_tab:
         },
         {
             "Metric": "Citation precision",
-            "Guarded": benchmark_pct(
-                guarded_benchmark_summary.get(
-                    "citation_precision"
-                )
-            ),
-            "Prompt-only baseline": benchmark_pct(
-                naive_benchmark_summary.get(
-                    "citation_precision"
-                )
-            ),
+            "Guarded": guarded_citation,
+            "Prompt-only baseline": naive_citation,
         },
     ]
 
-    st.dataframe(
-        comparison_metric_rows,
-        width="stretch",
-        hide_index=True,
-    )
-
-    b1, b2, b3, b4 = st.columns(
-        4
-    )
-
-    with b1:
-        st.metric(
-            "Unsupported Explanations",
-            benchmark_pct(
-                guarded_benchmark_summary.get(
-                    "unsupported_explanation_rate"
-                )
-            ),
-        )
-        st.caption(
-            "Prompt-only baseline: "
-            + benchmark_pct(
-                naive_benchmark_summary.get(
-                    "unsupported_explanation_rate"
-                )
-            )
-        )
-
-    with b2:
-        st.metric(
-            "Citation Precision",
-            benchmark_pct(
-                guarded_benchmark_summary.get(
-                    "citation_precision"
-                )
-            ),
-        )
-        st.caption(
-            "Prompt-only baseline: "
-            + benchmark_pct(
-                naive_benchmark_summary.get(
-                    "citation_precision"
-                )
-            )
-        )
-
-    with b3:
-        st.metric(
-            "Supported Recall",
-            benchmark_pct(
-                guarded_benchmark_summary.get(
-                    "supported_explanation_recall"
-                )
-            ),
-        )
-        st.caption(
-            "Prompt-only baseline: "
-            + benchmark_pct(
-                naive_benchmark_summary.get(
-                    "supported_explanation_recall"
-                )
-            )
-        )
-
-    with b4:
-        st.metric(
-            "Forbidden Evidence Uses",
-            guarded_benchmark_summary.get(
-                "forbidden_evidence_use_count",
-                0,
-            ),
-        )
-        st.caption(
-            "Prompt-only baseline: "
-            + str(
-                naive_benchmark_summary.get(
-                    "forbidden_evidence_use_count",
-                    0,
-                )
-            )
-        )
-
-    st.success(
-        "In this controlled benchmark run, deterministic evidence guardrails reduced "
-        "unsupported explanations while preserving all supported "
-        "explanations identified by the prompt-only baseline."
-    )
-
     naive_failures = [
         decision
-        for decision
-        in naive_benchmark.get(
+        for decision in naive_benchmark.get(
             "decisions",
             [],
         )
@@ -3500,32 +4669,36 @@ with evaluation_tab:
         )
     ]
 
-    if naive_failures:
-        st.markdown(
-            "#### Prompt-Only Baseline Failure Cases"
+    with st.expander(
+        "View full LLM benchmark details",
+        expanded=False,
+    ):
+        st.dataframe(
+            comparison_metric_rows,
+            width="stretch",
+            hide_index=True,
         )
 
-        st.caption(
-            "These are the findings where the prompt-only baseline used "
-            "evidence that sounded relevant but failed the benchmark's "
-            "driver or directional requirements."
-        )
+        if naive_failures:
+            st.markdown(
+                "**Prompt-only baseline failure cases**"
+            )
 
-        failure_rows = []
+            st.caption(
+                "Cases where evidence sounded relevant but failed the "
+                "benchmark's entity, driver or directional requirements."
+            )
 
-        for decision in naive_failures:
-            failure_rows.append(
-                {
-                    "Case": decision.get(
-                        "case_id",
-                        "",
-                    ),
-                    "Type": category_labels.get(
-                        decision.get(
-                            "case_type",
+            failure_rows = []
+
+            for decision in naive_failures:
+                failure_rows.append(
+                    {
+                        "Case": decision.get(
+                            "case_id",
                             "",
                         ),
-                        str(
+                        "Type": str(
                             decision.get(
                                 "case_type",
                                 "",
@@ -3534,100 +4707,100 @@ with evaluation_tab:
                             "_",
                             " ",
                         ).title(),
-                    ),
-                    "Finding": short_finding_id(
-                        str(
-                            decision.get(
-                                "finding_id",
-                                "",
+                        "Finding": short_finding_id(
+                            str(
+                                decision.get(
+                                    "finding_id",
+                                    "",
+                                )
                             )
-                        )
-                    ),
-                    "Forbidden evidence used": (
-                        ", ".join(
-                            decision.get(
-                                "forbidden_evidence_used",
-                                [],
+                        ),
+                        "Forbidden evidence used": (
+                            ", ".join(
+                                decision.get(
+                                    "forbidden_evidence_used",
+                                    [],
+                                )
                             )
-                        )
-                        or "None"
-                    ),
-                    "Prompt-only explanation": (
-                        decision.get(
+                            or "None"
+                        ),
+                        "Prompt-only explanation": decision.get(
                             "explanation",
                             "",
-                        )
-                    ),
-                }
-            )
+                        ),
+                    }
+                )
 
-        st.dataframe(
-            failure_rows,
-            width="stretch",
-            hide_index=True,
+            for failure in failure_rows:
+                st.markdown(
+                    f"""
+                    <div class="qa-card">
+                        <div style="font-weight: 700; margin-bottom: 0.32rem;">
+                            {clean_text(failure["Case"])} ·
+                            {clean_text(failure["Type"])} ·
+                            {clean_text(failure["Finding"])}
+                        </div>
+                        <div style="font-size: 0.82rem; opacity: 0.66; margin-bottom: 0.48rem;">
+                            Forbidden evidence used:
+                            <strong>{clean_text(failure["Forbidden evidence used"])}</strong>
+                        </div>
+                        <div style="line-height: 1.5;">
+                            {clean_text(failure["Prompt-only explanation"])}
+                        </div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+
+        st.caption(
+            "Results describe one controlled synthetic benchmark run with "
+            "the configured model. They demonstrate this pipeline's behavior "
+            "and are not universal model-performance statistics."
         )
-
-    st.caption(
-        "Results describe one controlled synthetic 32-case benchmark run "
-        "with the configured model. They demonstrate this pipeline's "
-        "behavior and should not be interpreted as universal model-performance "
-        "statistics."
-    )
 
     st.divider()
 
-    st.subheader(
-        "Cross-Period Evaluation Suite"
+    st.markdown(
+        "#### Cross-period evaluation"
     )
 
     st.caption(
-        "The offline benchmark evaluates the same controlled hidden "
-        "ground-truth events across both configured analysis periods. "
-        "Ground truth is used only after generation and is never exposed "
-        "to the production AI."
+        "The same hidden-ground-truth events are evaluated across both "
+        "configured analysis periods. Ground truth is used only after "
+        "generation for offline scoring and is never exposed to production AI."
     )
 
-    if suite_summary.get(
-        "overall_passed"
-    ):
-        st.markdown(
-            '<span class="status-pass">'
-            "Cross-period suite PASSED"
-            "</span>",
-            unsafe_allow_html=True,
+    case_count = int(
+        suite_summary.get(
+            "case_count",
+            0,
         )
-    else:
-        st.error(
-            "Cross-period evaluation suite failed."
+        or 0
+    )
+
+    cases_passed = int(
+        suite_summary.get(
+            "cases_passed",
+            0,
         )
-
-    st.write("")
-
-    s1, s2, s3, s4 = st.columns(
-        4
-    )
-
-    case_count = suite_summary.get(
-        "case_count",
-        0,
-    )
-
-    cases_passed = suite_summary.get(
-        "cases_passed",
-        0,
+        or 0
     )
 
     case_pass_rate = suite_summary.get(
         "case_pass_rate"
     )
 
+    s1, s2, s3, s4 = st.columns(
+        4
+    )
+
     s1.metric(
-        "Cases Passed",
+        "Periods Passed",
         f"{cases_passed}/{case_count}",
     )
 
     s2.metric(
-        "Case Pass Rate",
+        "Pass Rate",
         (
             f"{case_pass_rate * 100:.0f}%"
             if case_pass_rate is not None
@@ -3655,12 +4828,6 @@ with evaluation_tab:
             )
             else "Failed"
         ),
-    )
-
-    st.divider()
-
-    st.subheader(
-        "Cross-Period Comparison"
     )
 
     comparison_rows = []
@@ -3729,23 +4896,26 @@ with evaluation_tab:
             }
         )
 
-    st.dataframe(
-        comparison_rows,
-        width="stretch",
-        hide_index=True,
-    )
+    with st.expander(
+        "View cross-period comparison",
+        expanded=False,
+    ):
+        st.dataframe(
+            comparison_rows,
+            width="stretch",
+            hide_index=True,
+        )
 
-    st.caption(
-        "Different routing across periods is expected. "
-        "The same controlled events can be accepted, rejected or withheld "
-        "differently because each analysis period produces different "
-        "financial findings and directional context."
-    )
+        st.caption(
+            "Different routing across periods is expected because each "
+            "period produces different financial findings and directional "
+            "context."
+        )
 
     st.divider()
 
-    st.subheader(
-        f"Selected Period · {selected_period}"
+    st.markdown(
+        f"#### Selected-period controls · {selected_period}"
     )
 
     if evaluation_summary.get(
@@ -3753,7 +4923,7 @@ with evaluation_tab:
     ):
         st.markdown(
             '<span class="status-pass">'
-            "Period evaluation PASSED"
+            "Selected-period evaluation PASSED"
             "</span>",
             unsafe_allow_html=True,
         )
@@ -3762,50 +4932,42 @@ with evaluation_tab:
             "Selected-period evaluation failed."
         )
 
-    st.write("")
+    citation_precision = evaluation_summary.get(
+        "citation_precision"
+    )
+
+    citation_precision_text = (
+        f"{citation_precision * 100:.0f}%"
+        if citation_precision is not None
+        else "N/A"
+    )
+
+    evidence_utilization = evaluation_summary.get(
+        "ai_visible_evidence_utilization"
+    )
+
+    evidence_utilization_text = (
+        f"{evidence_utilization * 100:.0f}%"
+        if evidence_utilization is not None
+        else "N/A"
+    )
 
     e1, e2, e3, e4 = st.columns(
         4
     )
 
     e1.metric(
-        "Ground-Truth Events",
+        "Controlled Events",
         evaluation_summary.get(
             "ground_truth_event_count",
             0,
         ),
     )
 
-    citation_precision = (
-        evaluation_summary.get(
-            "citation_precision"
-        )
-    )
-
-    if citation_precision is None:
-        citation_precision_text = "N/A"
-    else:
-        citation_precision_text = (
-            f"{citation_precision * 100:.0f}%"
-        )
-
     e2.metric(
         "Citation Precision",
         citation_precision_text,
     )
-
-    evidence_utilization = (
-        evaluation_summary.get(
-            "ai_visible_evidence_utilization"
-        )
-    )
-
-    if evidence_utilization is None:
-        evidence_utilization_text = "N/A"
-    else:
-        evidence_utilization_text = (
-            f"{evidence_utilization * 100:.0f}%"
-        )
 
     e3.metric(
         "Evidence Utilization",
@@ -3822,158 +4984,51 @@ with evaluation_tab:
         ),
     )
 
-    st.divider()
-
-    left, right = st.columns(
-        [1, 1]
+    routing = evaluation.get(
+        "pipeline_routing",
+        {},
     )
 
-    with left:
-        st.subheader(
-            "Pipeline Routing"
-        )
-
-        routing = evaluation.get(
-            "pipeline_routing",
-            {},
-        )
-
-        routing_labels = {
-            "reached_ai": (
-                "Reached AI"
-            ),
-            "rejected_by_grounding": (
-                "Rejected by grounding"
-            ),
-            "withheld_by_directional_guardrail": (
-                "Withheld by directional guardrail"
-            ),
-            "not_observable_no_evidence": (
-                "Not observable — no evidence"
-            ),
-            "not_approved_by_grounding": (
-                "Not approved by grounding"
-            ),
-            "not_connected_to_material_finding": (
-                "Not connected to material finding"
-            ),
-        }
-
-        routing_rows = []
-
-        for key, value in routing.items():
-            routing_rows.append(
-                {
-                    "Pipeline outcome": (
-                        routing_labels.get(
-                            key,
-                            key,
-                        )
-                    ),
-                    "Events": value,
-                }
-            )
-
-        st.dataframe(
-            routing_rows,
-            width="stretch",
-            hide_index=True,
-        )
-
-    with right:
-        st.subheader(
-            "Security Isolation"
-        )
-
-        if security.get(
-            "passed"
-        ):
-            st.success(
-                "Hidden ground truth remained isolated "
-                "from the model."
-            )
-        else:
-            st.error(
-                "Security isolation check failed."
-            )
-
-        leaked_event_ids = (
-            security.get(
-                "leaked_event_ids",
-                [],
-            )
-        )
-
-        leaked_paths = (
-            security.get(
-                "leaked_ground_truth_paths",
-                [],
-            )
-        )
-
-        st.write(
-            "**Leaked event IDs:** "
-            + (
-                ", ".join(
-                    leaked_event_ids
-                )
-                if leaked_event_ids
-                else "None"
-            )
-        )
-
-        st.write(
-            "**Leaked file paths:** "
-            + (
-                ", ".join(
-                    leaked_paths
-                )
-                if leaked_paths
-                else "None"
-            )
-        )
-
-        st.write(
-            "**Ground truth access:** "
-            + (
-                "Blocked"
-                if security.get(
-                    "ground_truth_access_flag_false"
-                )
-                else "Invalid"
-            )
-        )
-
-        st.write(
-            "**API request during evaluation:** No"
-        )
-
-    st.divider()
-
-    st.subheader(
-        "Controlled Event Outcomes"
-    )
-
-    event_rows = []
-
-    event_labels = {
+    routing_labels = {
         "reached_ai": "Reached AI",
-        "rejected_by_grounding": (
-            "Rejected by grounding"
-        ),
+        "rejected_by_grounding": "Rejected by grounding",
         "withheld_by_directional_guardrail": (
             "Withheld by directional guardrail"
         ),
-        "not_observable_no_evidence": (
-            "No analyst-visible evidence"
-        ),
-        "not_approved_by_grounding": (
-            "Not approved by grounding"
-        ),
+        "not_observable_no_evidence": "Not observable — no evidence",
+        "not_approved_by_grounding": "Not approved by grounding",
         "not_connected_to_material_finding": (
             "Not connected to material finding"
         ),
     }
+
+    routing_rows = []
+
+    for key, value in routing.items():
+        routing_rows.append(
+            {
+                "Pipeline outcome": routing_labels.get(
+                    key,
+                    key,
+                ),
+                "Events": value,
+            }
+        )
+
+    event_labels = {
+        "reached_ai": "Reached AI",
+        "rejected_by_grounding": "Rejected by grounding",
+        "withheld_by_directional_guardrail": (
+            "Withheld by directional guardrail"
+        ),
+        "not_observable_no_evidence": "No analyst-visible evidence",
+        "not_approved_by_grounding": "Not approved by grounding",
+        "not_connected_to_material_finding": (
+            "Not connected to material finding"
+        ),
+    }
+
+    event_rows = []
 
     for event in evaluation.get(
         "events",
@@ -3984,9 +5039,11 @@ with evaluation_tab:
                 "Event": event.get(
                     "event_id"
                 ),
-                "Domain": event.get(
-                    "domain",
-                    "",
+                "Domain": str(
+                    event.get(
+                        "domain",
+                        "",
+                    )
                 ).title(),
                 "Evidence": (
                     event.get(
@@ -3994,32 +5051,116 @@ with evaluation_tab:
                     )
                     or "None"
                 ),
-                "Pipeline outcome": (
-                    event_labels.get(
-                        event.get(
-                            "pipeline_classification",
-                            "",
-                        ),
-                        event.get(
-                            "pipeline_classification",
-                            "",
-                        ),
-                    )
+                "Pipeline outcome": event_labels.get(
+                    event.get(
+                        "pipeline_classification",
+                        "",
+                    ),
+                    event.get(
+                        "pipeline_classification",
+                        "",
+                    ),
                 ),
             }
         )
 
-    st.dataframe(
-        event_rows,
-        width="stretch",
-        hide_index=True,
-    )
+    with st.expander(
+        "View selected-period technical details",
+        expanded=False,
+    ):
+        detail_left, detail_right = st.columns(
+            2
+        )
 
-    st.caption(
-        "The selected-period event evaluation is based on a controlled "
-        "synthetic six-event environment. The broader adversarial benchmark "
-        "above contains 32 controlled cases and 38 evaluated findings."
-    )
+        with detail_left:
+            st.markdown(
+                "**Pipeline routing**"
+            )
+
+            st.dataframe(
+                routing_rows,
+                width="stretch",
+                hide_index=True,
+            )
+
+        with detail_right:
+            st.markdown(
+                "**Security isolation**"
+            )
+
+            if security.get(
+                "passed"
+            ):
+                st.success(
+                    "Hidden ground truth remained isolated from the model."
+                )
+            else:
+                st.error(
+                    "Security isolation check failed."
+                )
+
+            leaked_event_ids = security.get(
+                "leaked_event_ids",
+                [],
+            )
+
+            leaked_paths = security.get(
+                "leaked_ground_truth_paths",
+                [],
+            )
+
+            st.write(
+                "**Leaked event IDs:** "
+                + (
+                    ", ".join(
+                        leaked_event_ids
+                    )
+                    if leaked_event_ids
+                    else "None"
+                )
+            )
+
+            st.write(
+                "**Leaked file paths:** "
+                + (
+                    ", ".join(
+                        leaked_paths
+                    )
+                    if leaked_paths
+                    else "None"
+                )
+            )
+
+            st.write(
+                "**Ground truth access:** "
+                + (
+                    "Blocked"
+                    if security.get(
+                        "ground_truth_access_flag_false"
+                    )
+                    else "Invalid"
+                )
+            )
+
+            st.write(
+                "**API request during evaluation:** No"
+            )
+
+        st.markdown(
+            "**Controlled event outcomes**"
+        )
+
+        st.dataframe(
+            event_rows,
+            width="stretch",
+            hide_index=True,
+        )
+
+        st.caption(
+            "The selected-period evaluation uses a controlled synthetic "
+            "six-event environment. The broader adversarial benchmark above "
+            "contains 32 controlled cases and 38 evaluated findings."
+        )
 
 
 # ---------------------------------------------------------------------
@@ -4319,36 +5460,12 @@ with data_tab:
 
     st.divider()
 
-    st.subheader(
-        "Filtered Sales Records"
+    preview_title_col, preview_download_col = st.columns(
+        [3, 1],
+        vertical_alignment="bottom",
     )
 
-    display_columns = [
-        "date",
-        "scenario",
-        "country",
-        "product_family",
-        "product",
-        "segment",
-        "units",
-        "list_price",
-        "discount_rate",
-        "gross_sales",
-        "discount_value",
-        "net_revenue",
-        "unit_cost",
-        "cogs",
-        "gross_profit",
-        "gross_margin_pct",
-    ]
-
-    available_display_columns = [
-        column
-        for column in display_columns
-        if column in filtered.columns
-    ]
-
-    sort_columns = [
+    full_sort_columns = [
         column
         for column in [
             "date",
@@ -4356,15 +5473,66 @@ with data_tab:
             "product",
             "segment",
         ]
-        if column in available_display_columns
+        if column in filtered.columns
     ]
 
-    table_data = filtered[
-        available_display_columns
-    ].sort_values(
-        sort_columns,
-        ascending=True,
+    if full_sort_columns:
+        table_data = filtered.sort_values(
+            full_sort_columns,
+            ascending=True,
+        ).copy()
+    else:
+        table_data = filtered.copy()
+
+    csv_bytes = table_data.to_csv(
+        index=False
+    ).encode(
+        "utf-8"
     )
+
+    safe_dataset_name = selected_dataset.lower().replace(
+        " ",
+        "_",
+    )
+
+    with preview_title_col:
+        st.subheader(
+            "Sales Record Preview"
+        )
+        st.caption(
+            "A focused set of business columns is shown for readability. "
+            "The CSV download contains every filtered row and the full processed record schema."
+        )
+
+    with preview_download_col:
+        st.download_button(
+            "Download full filtered CSV",
+            data=csv_bytes,
+            file_name=(
+                f"{safe_dataset_name}_filtered_sales.csv"
+            ),
+            mime="text/csv",
+            width="stretch",
+            disabled=(row_count == 0),
+        )
+
+    preview_columns = [
+        "date",
+        "country",
+        "product_family",
+        "product",
+        "segment",
+        "units",
+        "net_revenue",
+        "gross_profit",
+        "gross_margin_pct",
+    ]
+
+    available_preview_columns = [
+        column
+        for column in preview_columns
+        if column in table_data.columns
+    ]
 
     preview_limit = 150
     preview_rows = min(
@@ -4378,17 +5546,17 @@ with data_tab:
         )
     elif row_count <= preview_limit:
         st.caption(
-            f"Showing all {row_count:,} filtered rows from {selected_dataset}. "
-            "The CSV download below contains the same filtered dataset."
+            f"Showing all {row_count:,} filtered rows from {selected_dataset}."
         )
     else:
         st.caption(
             f"Showing the first {preview_rows:,} of {row_count:,} filtered rows "
-            f"from {selected_dataset}. The preview is limited for readability; "
-            f"the CSV download contains all {row_count:,} filtered rows."
+            f"from {selected_dataset}. Download the CSV for the complete filtered dataset."
         )
 
-    preview_data = table_data.head(
+    preview_data = table_data[
+        available_preview_columns
+    ].head(
         preview_limit
     ).copy()
 
@@ -4408,12 +5576,7 @@ with data_tab:
             )
 
         for money_column in [
-            "list_price",
-            "gross_sales",
-            "discount_value",
             "net_revenue",
-            "unit_cost",
-            "cogs",
             "gross_profit",
         ]:
             if money_column in preview_data.columns:
@@ -4426,17 +5589,6 @@ with data_tab:
                         else f"NOK {float(value):,.2f}"
                     )
                 )
-
-        if "discount_rate" in preview_data.columns:
-            preview_data["discount_rate"] = preview_data[
-                "discount_rate"
-            ].map(
-                lambda value: (
-                    ""
-                    if pd.isna(value)
-                    else f"{float(value) * 100:.2f}%"
-                )
-            )
 
         if "gross_margin_pct" in preview_data.columns:
             preview_data["gross_margin_pct"] = preview_data[
@@ -4453,33 +5605,40 @@ with data_tab:
                 )
             )
 
+        preview_data = preview_data.rename(
+            columns={
+                "date": "Date",
+                "country": "Country",
+                "product_family": "Product Family",
+                "product": "Product",
+                "segment": "Customer Segment",
+                "units": "Units",
+                "net_revenue": "Net Revenue",
+                "gross_profit": "Gross Profit",
+                "gross_margin_pct": "Gross Margin",
+            }
+        )
+
     st.dataframe(
         preview_data,
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
         height=460,
     )
 
-    csv_bytes = table_data.to_csv(
-        index=False
-    ).encode(
-        "utf-8"
-    )
-
-    safe_dataset_name = selected_dataset.lower().replace(
-        " ",
-        "_",
-    )
-
-    st.download_button(
-        "Download all filtered rows as CSV",
-        data=csv_bytes,
-        file_name=(
-            f"{safe_dataset_name}_filtered_sales.csv"
-        ),
-        mime="text/csv",
-        use_container_width=False,
-    )
+    with st.expander(
+        "View columns included in the CSV",
+        expanded=False,
+    ):
+        st.caption(
+            "The download preserves the full processed schema for the filtered dataset."
+        )
+        st.write(
+            " · ".join(
+                str(column)
+                for column in table_data.columns
+            )
+        )
 
 
 # ---------------------------------------------------------------------
