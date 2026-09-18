@@ -1,0 +1,77 @@
+{
+  "metadata": {
+    "evaluation_type": "offline_hidden_ground_truth_suite",
+    "api_request_sent": false,
+    "ground_truth_used_by_model": false,
+    "case_keys": [
+      "latest_forecast_vs_budget",
+      "actual_ytd_vs_budget"
+    ]
+  },
+  "summary": {
+    "overall_passed": true,
+    "case_count": 2,
+    "cases_passed": 2,
+    "cases_failed": 0,
+    "case_pass_rate": 1.0,
+    "all_security_isolation_passed": true,
+    "all_citations_authorized": true
+  },
+  "aggregate_pipeline_routing": {
+    "not_observable_no_evidence": 4,
+    "reached_ai": 3,
+    "rejected_by_grounding": 4,
+    "withheld_by_directional_guardrail": 1
+  },
+  "cases": {
+    "latest_forecast_vs_budget": {
+      "label": "Latest Forecast vs Budget",
+      "overall_passed": true,
+      "ground_truth_event_count": 6,
+      "ai_visible_evidence_ids": [
+        "NOTE-015",
+        "NOTE-017"
+      ],
+      "directionally_withheld_evidence_ids": [
+        "NOTE-016"
+      ],
+      "ai_cited_evidence_ids": [
+        "NOTE-015",
+        "NOTE-017"
+      ],
+      "invalid_ai_evidence_ids": [],
+      "citations_authorized": true,
+      "citation_precision": 1.0,
+      "ai_visible_evidence_utilization": 1.0,
+      "security_isolation_passed": true,
+      "pipeline_routing": {
+        "not_observable_no_evidence": 2,
+        "reached_ai": 2,
+        "rejected_by_grounding": 1,
+        "withheld_by_directional_guardrail": 1
+      }
+    },
+    "actual_ytd_vs_budget": {
+      "label": "Actual YTD vs Budget",
+      "overall_passed": true,
+      "ground_truth_event_count": 6,
+      "ai_visible_evidence_ids": [
+        "NOTE-017"
+      ],
+      "directionally_withheld_evidence_ids": [],
+      "ai_cited_evidence_ids": [
+        "NOTE-017"
+      ],
+      "invalid_ai_evidence_ids": [],
+      "citations_authorized": true,
+      "citation_precision": 1.0,
+      "ai_visible_evidence_utilization": 1.0,
+      "security_isolation_passed": true,
+      "pipeline_routing": {
+        "not_observable_no_evidence": 2,
+        "reached_ai": 1,
+        "rejected_by_grounding": 3
+      }
+    }
+  }
+}
