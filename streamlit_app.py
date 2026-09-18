@@ -37,6 +37,12 @@ ANALYSIS_PERIODS = {
             / "ai"
             / "latest_forecast_vs_budget_commentary.json"
         ),
+        "evaluation_path": (
+            PROJECT_ROOT
+            / "outputs"
+            / "evaluation"
+            / "latest_forecast_vs_budget_evaluation.json"
+        ),
     },
     "Actual YTD vs Budget": {
         "comparison": "actual_ytd_vs_budget",
@@ -52,17 +58,22 @@ ANALYSIS_PERIODS = {
             / "ai"
             / "actual_ytd_vs_budget_commentary.json"
         ),
+        "evaluation_path": (
+            PROJECT_ROOT
+            / "outputs"
+            / "evaluation"
+            / "actual_ytd_vs_budget_evaluation.json"
+        ),
     },
 }
 
 DEFAULT_ANALYSIS_PERIOD = "Latest Forecast vs Budget"
-REFERENCE_EVALUATION_PERIOD = "Latest Forecast vs Budget"
 
-REFERENCE_EVALUATION_PATH = (
+EVALUATION_SUITE_PATH = (
     PROJECT_ROOT
     / "outputs"
     / "evaluation"
-    / "latest_forecast_vs_budget_evaluation.json"
+    / "evaluation_suite.json"
 )
 
 SALES_DATASETS = {
@@ -772,10 +783,14 @@ ai_output = load_json(
     ]
 )
 
-# Evaluation remains a separate reference benchmark until the
-# expanded evaluation suite is built in the next project phase.
 evaluation = load_json(
-    REFERENCE_EVALUATION_PATH
+    period_config[
+        "evaluation_path"
+    ]
+)
+
+evaluation_suite = load_json(
+    EVALUATION_SUITE_PATH
 )
 
 finance = grounded[
@@ -797,6 +812,15 @@ evaluation_summary = evaluation[
 security = evaluation[
     "security_isolation"
 ]
+
+suite_summary = evaluation_suite[
+    "summary"
+]
+
+suite_cases = evaluation_suite.get(
+    "cases",
+    {},
+)
 
 expected_comparison = period_config[
     "comparison"
@@ -883,7 +907,7 @@ with st.sidebar:
     )
 
     st.markdown(
-        '<span class="status-pass">64 / 64 passing</span>',
+        '<span class="status-pass">75 / 75 passing</span>',
         unsafe_allow_html=True,
     )
 
@@ -1857,39 +1881,189 @@ with evidence_tab:
 
 with evaluation_tab:
     st.subheader(
-        "Offline Hidden-Ground-Truth Evaluation"
+        "Cross-Period Evaluation Suite"
     )
 
     st.caption(
-        "The production AI never receives hidden ground truth. "
-        "A separate offline evaluator compares pipeline behavior "
-        "with the controlled synthetic events after generation."
+        "The offline benchmark evaluates the same controlled hidden "
+        "ground-truth events across both configured analysis periods. "
+        "Ground truth is used only after generation and is never exposed "
+        "to the production AI."
     )
 
-    if (
-        selected_period
-        != REFERENCE_EVALUATION_PERIOD
+    if suite_summary.get(
+        "overall_passed"
     ):
-        st.info(
-            "This tab currently shows the reference hidden-ground-truth "
-            f"benchmark for {REFERENCE_EVALUATION_PERIOD}. "
-            "The selected YTD analysis is not yet included in the "
-            "offline benchmark; that expansion belongs to the dedicated "
-            "evaluation-suite phase."
+        st.markdown(
+            '<span class="status-pass">'
+            "Cross-period suite PASSED"
+            "</span>",
+            unsafe_allow_html=True,
         )
+    else:
+        st.error(
+            "Cross-period evaluation suite failed."
+        )
+
+    st.write("")
+
+    s1, s2, s3, s4 = st.columns(
+        4
+    )
+
+    case_count = suite_summary.get(
+        "case_count",
+        0,
+    )
+
+    cases_passed = suite_summary.get(
+        "cases_passed",
+        0,
+    )
+
+    case_pass_rate = suite_summary.get(
+        "case_pass_rate"
+    )
+
+    s1.metric(
+        "Cases Passed",
+        f"{cases_passed}/{case_count}",
+    )
+
+    s2.metric(
+        "Case Pass Rate",
+        (
+            f"{case_pass_rate * 100:.0f}%"
+            if case_pass_rate is not None
+            else "N/A"
+        ),
+    )
+
+    s3.metric(
+        "Security Isolation",
+        (
+            "Passed"
+            if suite_summary.get(
+                "all_security_isolation_passed"
+            )
+            else "Failed"
+        ),
+    )
+
+    s4.metric(
+        "Citation Authorization",
+        (
+            "Passed"
+            if suite_summary.get(
+                "all_citations_authorized"
+            )
+            else "Failed"
+        ),
+    )
+
+    st.divider()
+
+    st.subheader(
+        "Cross-Period Comparison"
+    )
+
+    comparison_rows = []
+
+    for case in suite_cases.values():
+        precision = case.get(
+            "citation_precision"
+        )
+
+        utilization = case.get(
+            "ai_visible_evidence_utilization"
+        )
+
+        comparison_rows.append(
+            {
+                "Analysis period": case.get(
+                    "label",
+                    "",
+                ),
+                "Status": (
+                    "Passed"
+                    if case.get(
+                        "overall_passed"
+                    )
+                    else "Failed"
+                ),
+                "Events": case.get(
+                    "ground_truth_event_count",
+                    0,
+                ),
+                "AI-visible evidence": (
+                    ", ".join(
+                        case.get(
+                            "ai_visible_evidence_ids",
+                            [],
+                        )
+                    )
+                    or "None"
+                ),
+                "Withheld evidence": (
+                    ", ".join(
+                        case.get(
+                            "directionally_withheld_evidence_ids",
+                            [],
+                        )
+                    )
+                    or "None"
+                ),
+                "Citation precision": (
+                    f"{precision * 100:.0f}%"
+                    if precision is not None
+                    else "N/A"
+                ),
+                "Evidence utilization": (
+                    f"{utilization * 100:.0f}%"
+                    if utilization is not None
+                    else "N/A"
+                ),
+                "Security": (
+                    "Passed"
+                    if case.get(
+                        "security_isolation_passed"
+                    )
+                    else "Failed"
+                ),
+            }
+        )
+
+    st.dataframe(
+        comparison_rows,
+        width="stretch",
+        hide_index=True,
+    )
+
+    st.caption(
+        "Different routing across periods is expected. "
+        "The same controlled events can be accepted, rejected or withheld "
+        "differently because each analysis period produces different "
+        "financial findings and directional context."
+    )
+
+    st.divider()
+
+    st.subheader(
+        f"Selected Period · {selected_period}"
+    )
 
     if evaluation_summary.get(
         "overall_passed"
     ):
         st.markdown(
             '<span class="status-pass">'
-            "Evaluation PASSED"
+            "Period evaluation PASSED"
             "</span>",
             unsafe_allow_html=True,
         )
     else:
         st.error(
-            "Evaluation failed."
+            "Selected-period evaluation failed."
         )
 
     st.write("")
@@ -1981,6 +2155,12 @@ with evaluation_tab:
             "not_observable_no_evidence": (
                 "Not observable — no evidence"
             ),
+            "not_approved_by_grounding": (
+                "Not approved by grounding"
+            ),
+            "not_connected_to_material_finding": (
+                "Not connected to material finding"
+            ),
         }
 
         routing_rows = []
@@ -2000,7 +2180,7 @@ with evaluation_tab:
 
         st.dataframe(
             routing_rows,
-            use_container_width=True,
+            width="stretch",
             hide_index=True,
         )
 
@@ -2091,6 +2271,12 @@ with evaluation_tab:
         "not_observable_no_evidence": (
             "No analyst-visible evidence"
         ),
+        "not_approved_by_grounding": (
+            "Not approved by grounding"
+        ),
+        "not_connected_to_material_finding": (
+            "Not connected to material finding"
+        ),
     }
 
     for event in evaluation.get(
@@ -2129,15 +2315,15 @@ with evaluation_tab:
 
     st.dataframe(
         event_rows,
-        use_container_width=True,
+        width="stretch",
         hide_index=True,
     )
 
     st.caption(
-        "Evaluation results are based on a controlled "
-        "synthetic six-event environment. They demonstrate "
-        "the behavior of this pipeline and should not be "
-        "interpreted as general model-performance metrics."
+        "Evaluation results are based on a controlled synthetic "
+        "six-event environment across two analysis periods. "
+        "They demonstrate the behavior of this pipeline and should "
+        "not be interpreted as general model-performance metrics."
     )
 
 
@@ -2152,8 +2338,8 @@ with data_tab:
 
     st.caption(
         "Inspect the processed sales datasets that feed the finance analysis. "
-        "The current executive analysis compares Latest Forecast with Budget; "
-        "Actual is included for additional transparency and reference."
+        "Use the dataset selector independently of the executive analysis "
+        "period to inspect Actual, Budget or Latest Forecast sales records."
     )
 
     st.info(

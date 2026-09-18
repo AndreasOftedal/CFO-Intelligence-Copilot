@@ -1,10 +1,10 @@
 {
   "metadata": {
     "evaluation_type": "offline_hidden_ground_truth",
-    "evaluation_case": "latest_forecast_vs_budget",
-    "analysis_period": "Latest Forecast vs Budget",
-    "comparison": "latest_forecast_vs_budget",
-    "ground_truth_cutoff_date": null,
+    "evaluation_case": "actual_ytd_vs_budget",
+    "analysis_period": "Actual YTD vs Budget",
+    "comparison": "actual_ytd_vs_budget",
+    "ground_truth_cutoff_date": "2026-08-31",
     "api_request_sent": false,
     "ground_truth_used_by_model": false
   },
@@ -20,14 +20,10 @@
       "NOTE-017"
     ],
     "ai_visible_evidence_ids": [
-      "NOTE-015",
       "NOTE-017"
     ],
-    "directionally_withheld_evidence_ids": [
-      "NOTE-016"
-    ],
+    "directionally_withheld_evidence_ids": [],
     "ai_cited_evidence_ids": [
-      "NOTE-015",
       "NOTE-017"
     ],
     "invalid_ai_evidence_ids": [],
@@ -37,9 +33,8 @@
   },
   "pipeline_routing": {
     "not_observable_no_evidence": 2,
-    "reached_ai": 2,
-    "rejected_by_grounding": 1,
-    "withheld_by_directional_guardrail": 1
+    "reached_ai": 1,
+    "rejected_by_grounding": 3
   },
   "security_isolation": {
     "passed": true,
@@ -91,7 +86,7 @@
       "financial_impact_nok": -62128.58,
       "evidence_available": true,
       "evidence_id": "NOTE-015",
-      "pipeline_classification": "reached_ai"
+      "pipeline_classification": "rejected_by_grounding"
     },
     {
       "event_id": "EVT-004",
@@ -106,7 +101,7 @@
       "financial_impact_nok": 130578.23,
       "evidence_available": true,
       "evidence_id": "NOTE-016",
-      "pipeline_classification": "withheld_by_directional_guardrail"
+      "pipeline_classification": "rejected_by_grounding"
     },
     {
       "event_id": "OPEX-001",
