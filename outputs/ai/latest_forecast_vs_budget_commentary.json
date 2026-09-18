@@ -1,0 +1,268 @@
+{
+  "metadata": {
+    "comparison": "latest_forecast_vs_budget",
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "low",
+    "response_id": "resp_0a0cdd1c31cad108016aad12d739b487d2ae645eecc440c163",
+    "response_status": "completed",
+    "store_response": false,
+    "usage": {
+      "input_tokens": 3736,
+      "input_tokens_details": {
+        "cache_write_tokens": 3733,
+        "cached_tokens": 0
+      },
+      "output_tokens": 1538,
+      "output_tokens_details": {
+        "reasoning_tokens": 54
+      },
+      "total_tokens": 5274
+    },
+    "validated_against_grounding": true,
+    "directional_guardrail_applied": true,
+    "directional_guardrail_summary": {
+      "assessment_count": 5,
+      "directionally_consistent_count": 4,
+      "offsetting_count": 1,
+      "direction_unknown_count": 0,
+      "withheld_evidence_ids": [
+        "NOTE-016"
+      ]
+    },
+    "ground_truth_access": false,
+    "source_headline_fact_ids": [
+      "summary::revenue",
+      "summary::gross_profit",
+      "summary::opex",
+      "summary::ebitda",
+      "summary::ebitda_margin"
+    ],
+    "source_material_finding_ids": [
+      "country::Germany",
+      "country::Norway",
+      "country::United Kingdom",
+      "country::Sweden",
+      "product::EdgeHub Core",
+      "product::EdgeHub Pro",
+      "product::Sensor X",
+      "product::Sensor X Pro",
+      "product::Service Kit",
+      "opex_account::Payroll",
+      "opex_account::Contractors",
+      "opex_account::Marketing",
+      "cost_centre::Product & R&D",
+      "cost_centre::Sales"
+    ],
+    "source_usable_evidence_ids": [
+      "NOTE-015",
+      "NOTE-017"
+    ]
+  },
+  "commentary": {
+    "executive_summary": "Latest forecast is below budget: revenue is NOK 21.16 million lower and gross profit is NOK 16.54 million lower. OPEX is NOK 8.48 million higher, resulting in EBITDA NOK 25.02 million below budget and an EBITDA margin 1.55 percentage points lower. Approved evidence supports a UK Sensor X distributor shipment delay and contractor acceleration within Product & R&D; the underlying causes of the other material variances remain unresolved.",
+    "observations": [
+      {
+        "finding_id": "summary::revenue",
+        "statement": "Forecast revenue is NOK 21.16 million below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "summary::gross_profit",
+        "statement": "Forecast gross profit is NOK 16.54 million below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "summary::opex",
+        "statement": "Forecast OPEX is NOK 8.48 million above budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "summary::ebitda",
+        "statement": "Forecast EBITDA is NOK 25.02 million below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "summary::ebitda_margin",
+        "statement": "Forecast EBITDA margin is 1.55 percentage points below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "country::Germany",
+        "statement": "Germany revenue is NOK 13.35 million below budget and gross profit is NOK 9.26 million below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "country::Norway",
+        "statement": "Norway revenue is NOK 4.42 million below budget and gross profit is NOK 2.87 million below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "country::United Kingdom",
+        "statement": "United Kingdom revenue is NOK 2.75 million below budget and gross profit is NOK 2.42 million below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "opex_account::Contractors",
+        "statement": "Contractor OPEX is NOK 2.95 million above budget, with a corresponding EBITDA impact of NOK 2.95 million below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "cost_centre::Product & R&D",
+        "statement": "Product & R&D OPEX is NOK 4.09 million above budget, with a corresponding EBITDA impact of NOK 4.09 million below budget.",
+        "source_type": "calculated_fact"
+      },
+      {
+        "finding_id": "product::Sensor X",
+        "statement": "Sensor X revenue is NOK 2.40 million below budget and gross profit is NOK 1.80 million below budget.",
+        "source_type": "calculated_fact"
+      }
+    ],
+    "supported_explanations": [
+      {
+        "finding_id": "country::United Kingdom",
+        "explanation": "The approved evidence documents a UK Sensor X distributor shipment delay, which supports the identified volume/mix driver for the United Kingdom variance. This evidence is specific to the United Kingdom, Sensor X, and the Distributor segment.",
+        "evidence_ids": [
+          "NOTE-015"
+        ],
+        "source_type": "evidence_supported"
+      },
+      {
+        "finding_id": "product::Sensor X",
+        "explanation": "The approved evidence documents a UK Sensor X distributor shipment delay, which supports the identified volume/mix driver for the Sensor X variance within the documented UK distributor scope.",
+        "evidence_ids": [
+          "NOTE-015"
+        ],
+        "source_type": "evidence_supported"
+      },
+      {
+        "finding_id": "opex_account::Contractors",
+        "explanation": "The approved evidence documents contractor acceleration in Product & R&D, supporting the non-payroll driver for the contractor OPEX variance within that cost-centre and account scope.",
+        "evidence_ids": [
+          "NOTE-017"
+        ],
+        "source_type": "evidence_supported"
+      },
+      {
+        "finding_id": "cost_centre::Product & R&D",
+        "explanation": "The approved evidence documents contractor acceleration in Product & R&D, supporting the non-payroll explanation for the Product & R&D OPEX variance.",
+        "evidence_ids": [
+          "NOTE-017"
+        ],
+        "source_type": "evidence_supported"
+      }
+    ],
+    "unresolved_findings": [
+      {
+        "finding_id": "country::Germany",
+        "statement": "The underlying cause of Germany's revenue and gross profit shortfall cannot be determined from the available approved evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "country::Norway",
+        "statement": "The underlying cause of Norway's revenue and gross profit shortfall cannot be determined from the available approved evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "country::Sweden",
+        "statement": "The underlying cause of Sweden's revenue and gross profit shortfall cannot be determined from the available approved evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "product::EdgeHub Core",
+        "statement": "The underlying cause of EdgeHub Core's revenue and gross profit shortfall cannot be determined from the available approved evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "product::EdgeHub Pro",
+        "statement": "The underlying cause of EdgeHub Pro's revenue and gross profit shortfall cannot be determined from the available approved evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "product::Sensor X Pro",
+        "statement": "The underlying cause of Sensor X Pro's revenue and gross profit shortfall cannot be determined from the available approved evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "product::Service Kit",
+        "statement": "The underlying cause of Service Kit's revenue and gross profit shortfall cannot be determined from the available approved evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "opex_account::Payroll",
+        "statement": "The underlying cause of the Payroll OPEX variance cannot be determined from the available approved evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "opex_account::Marketing",
+        "statement": "The underlying cause of the Marketing OPEX variance cannot be determined from the available approved evidence.",
+        "reason": "insufficient_evidence"
+      },
+      {
+        "finding_id": "cost_centre::Sales",
+        "statement": "The underlying cause of the Sales cost-centre OPEX variance cannot be determined from the available approved evidence.",
+        "reason": "insufficient_evidence"
+      }
+    ],
+    "management_questions": [
+      {
+        "related_finding_ids": [
+          "country::Germany"
+        ],
+        "question": "What approved evidence explains the Germany revenue and gross profit shortfalls versus budget?"
+      },
+      {
+        "related_finding_ids": [
+          "country::Norway"
+        ],
+        "question": "What approved evidence explains the Norway revenue and gross profit shortfalls versus budget?"
+      },
+      {
+        "related_finding_ids": [
+          "country::Sweden"
+        ],
+        "question": "What approved evidence explains the Sweden revenue and gross profit shortfalls versus budget?"
+      },
+      {
+        "related_finding_ids": [
+          "country::United Kingdom",
+          "product::Sensor X"
+        ],
+        "question": "What is the expected timing and financial recovery of the UK Sensor X distributor shipment delay?"
+      },
+      {
+        "related_finding_ids": [
+          "product::EdgeHub Core",
+          "product::EdgeHub Pro",
+          "product::Sensor X Pro",
+          "product::Service Kit"
+        ],
+        "question": "What approved product-level evidence explains the revenue and gross profit variances for these products?"
+      },
+      {
+        "related_finding_ids": [
+          "opex_account::Payroll"
+        ],
+        "question": "What approved evidence explains the Payroll OPEX variance versus budget?"
+      },
+      {
+        "related_finding_ids": [
+          "opex_account::Marketing"
+        ],
+        "question": "What approved evidence explains the Marketing OPEX variance versus budget?"
+      },
+      {
+        "related_finding_ids": [
+          "cost_centre::Product & R&D",
+          "opex_account::Contractors"
+        ],
+        "question": "What is the expected duration and remaining budget impact of the Product & R&D contractor acceleration?"
+      },
+      {
+        "related_finding_ids": [
+          "cost_centre::Sales"
+        ],
+        "question": "What approved evidence explains the Sales cost-centre OPEX variance versus budget?"
+      }
+    ]
+  }
+}
