@@ -810,7 +810,7 @@ with st.sidebar:
     )
 
     st.markdown(
-        '<span class="status-pass">51 / 51 passing</span>',
+        '<span class="status-pass">62 / 62 passing</span>',
         unsafe_allow_html=True,
     )
 
