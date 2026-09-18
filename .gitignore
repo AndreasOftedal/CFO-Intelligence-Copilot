@@ -10,13 +10,26 @@ __pycache__/
 .env.*
 !.env.example
 
+# Streamlit local secrets
+.streamlit/secrets.toml
+
 # VS Code local settings
 .vscode/
 
 # Testing / coverage
 .pytest_cache/
 .coverage
+.coverage.*
 htmlcov/
+
+# Type checker / linter caches
+.mypy_cache/
+.ruff_cache/
+
+# Packaging / build artifacts
+build/
+dist/
+*.egg-info/
 
 # Logs
 *.log
