@@ -2271,81 +2271,114 @@ with scenario_tab:
         sensitivity_rows
     )
 
-    sensitivity_left, sensitivity_right = st.columns(
-        [1.15, 0.85]
+    st.markdown(
+        "##### Sensitivity Results"
     )
 
-    with sensitivity_left:
-        st.dataframe(
-            sensitivity_frame,
-            width="stretch",
-            hide_index=True,
-            column_config={
-                "Input change (%)": (
-                    st.column_config.NumberColumn(
-                        format="%.1f%%",
-                    )
-                ),
-                "Revenue change (NOK m)": (
-                    st.column_config.NumberColumn(
-                        format="%.2f",
-                    )
-                ),
-                "Gross Profit change (NOK m)": (
-                    st.column_config.NumberColumn(
-                        format="%.2f",
-                    )
-                ),
-                "OPEX change (NOK m)": (
-                    st.column_config.NumberColumn(
-                        format="%.2f",
-                    )
-                ),
-                "EBITDA change (NOK m)": (
-                    st.column_config.NumberColumn(
-                        format="%.2f",
-                    )
-                ),
-                "EBITDA Margin (%)": (
-                    st.column_config.NumberColumn(
-                        format="%.2f%%",
-                    )
-                ),
-                "Margin change (pp)": (
-                    st.column_config.NumberColumn(
-                        format="%+.2f",
-                    )
-                ),
-            },
-        )
+    st.caption(
+        "All key financial outcomes are shown for every sensitivity point. "
+        "EBITDA and EBITDA margin are tested alongside Revenue, Gross Profit "
+        "and OPEX."
+    )
 
-    with sensitivity_right:
-        st.markdown(
-            "##### EBITDA Sensitivity"
-        )
-
-        if not sensitivity_frame.empty:
-            sensitivity_chart = (
-                sensitivity_frame[
-                    [
-                        "Input change (%)",
-                        "EBITDA change (NOK m)",
-                    ]
-                ]
-                .set_index(
-                    "Input change (%)"
+    st.dataframe(
+        sensitivity_frame,
+        width="stretch",
+        hide_index=True,
+        column_config={
+            "Input change (%)": (
+                st.column_config.NumberColumn(
+                    format="%.1f%%",
                 )
-            )
+            ),
+            "Revenue change (NOK m)": (
+                st.column_config.NumberColumn(
+                    format="%.2f",
+                )
+            ),
+            "Gross Profit change (NOK m)": (
+                st.column_config.NumberColumn(
+                    format="%.2f",
+                )
+            ),
+            "OPEX change (NOK m)": (
+                st.column_config.NumberColumn(
+                    format="%.2f",
+                )
+            ),
+            "EBITDA change (NOK m)": (
+                st.column_config.NumberColumn(
+                    format="%.2f",
+                )
+            ),
+            "EBITDA Margin (%)": (
+                st.column_config.NumberColumn(
+                    format="%.2f%%",
+                )
+            ),
+            "Margin change (pp)": (
+                st.column_config.NumberColumn(
+                    format="%+.2f",
+                )
+            ),
+        },
+    )
 
-            st.line_chart(
-                sensitivity_chart,
-                height=320,
+    st.markdown(
+        "##### Sensitivity Curve"
+    )
+
+    sensitivity_metric_options = {
+        "EBITDA change": "EBITDA change (NOK m)",
+        "Revenue change": "Revenue change (NOK m)",
+        "Gross Profit change": "Gross Profit change (NOK m)",
+        "OPEX change": "OPEX change (NOK m)",
+        "EBITDA margin": "EBITDA Margin (%)",
+        "Margin change": "Margin change (pp)",
+    }
+
+    sensitivity_metric_label = st.selectbox(
+        "Output metric",
+        options=list(
+            sensitivity_metric_options.keys()
+        ),
+        index=0,
+        key="scenario_sensitivity_output_metric",
+        help=(
+            "Choose which financial outcome to plot while keeping the same "
+            "one-way driver sensitivity."
+        ),
+    )
+
+    sensitivity_metric_column = (
+        sensitivity_metric_options[
+            sensitivity_metric_label
+        ]
+    )
+
+    if not sensitivity_frame.empty:
+        sensitivity_chart = (
+            sensitivity_frame[
+                [
+                    "Input change (%)",
+                    sensitivity_metric_column,
+                ]
+            ]
+            .set_index(
+                "Input change (%)"
             )
+        )
+
+        st.line_chart(
+            sensitivity_chart,
+            height=360,
+        )
 
     st.caption(
         "Sensitivity results are deterministic what-if calculations, not "
         "forecasts or probability estimates. They show the mechanical "
-        "financial impact of the selected assumptions."
+        "financial impact of the selected assumptions while the other "
+        "scenario assumptions remain fixed."
     )
 
 
