@@ -1,0 +1,1884 @@
+{
+  "metadata": {
+    "benchmark_name": "Guarded vs Naive LLM Evidence Benchmark",
+    "benchmark_version": "1.0",
+    "run_at_utc": "2026-09-18T20:11:04.805199+00:00",
+    "model": "gpt-5.6-luna",
+    "reasoning_effort": "low",
+    "max_output_tokens": 3000,
+    "batch_size": 8,
+    "case_count": 32,
+    "finding_count": 38,
+    "same_model_prompt_schema": true,
+    "treatment_difference": "Guarded mode receives only evidence approved by deterministic entity, driver, scope, and directional checks; naive mode receives all raw evidence available in each benchmark case.",
+    "benchmark_expectations_sent_to_model": false,
+    "ground_truth_sent_to_model": false,
+    "store_responses": false
+  },
+  "guarded_run": {
+    "responses": [
+      {
+        "batch_number": 1,
+        "task_count": 8,
+        "response_id": "resp_0fb19f4de5d36b88016aad9aaff68087d28a078ec4c1577146",
+        "status": "completed"
+      },
+      {
+        "batch_number": 2,
+        "task_count": 8,
+        "response_id": "resp_08b5dd4d6610b357016aad9ab4a8d487d2aa3c44ff2d95c529",
+        "status": "completed"
+      },
+      {
+        "batch_number": 3,
+        "task_count": 8,
+        "response_id": "resp_06322e59a43fad62016aad9ab7a64087d2bc271193f4da4e3b",
+        "status": "completed"
+      },
+      {
+        "batch_number": 4,
+        "task_count": 8,
+        "response_id": "resp_0f81355e403b4ed6016aad9aba87e487d2b57a6b42bb38d6e6",
+        "status": "completed"
+      },
+      {
+        "batch_number": 5,
+        "task_count": 6,
+        "response_id": "resp_0bfb40907d0a1ee2016aad9abe1b6487d2a3ac50be22148f7f",
+        "status": "completed"
+      }
+    ],
+    "summary": {
+      "finding_count": 38,
+      "routing_accuracy": 1.0,
+      "evidence_authorization_accuracy": 1.0,
+      "correct_abstention_rate": 1.0,
+      "unsupported_explanation_rate": 0.0,
+      "supported_explanation_recall": 1.0,
+      "citation_precision": 1.0,
+      "forbidden_evidence_use_count": 0,
+      "invalid_evidence_use_count": 0,
+      "category_summary": {
+        "ambiguous_evidence": {
+          "finding_count": 3,
+          "routing_correct": 3,
+          "routing_accuracy": 1.0
+        },
+        "directional_conflict": {
+          "finding_count": 4,
+          "routing_correct": 4,
+          "routing_accuracy": 1.0
+        },
+        "multi_event": {
+          "finding_count": 9,
+          "routing_correct": 9,
+          "routing_accuracy": 1.0
+        },
+        "no_evidence": {
+          "finding_count": 6,
+          "routing_correct": 6,
+          "routing_accuracy": 1.0
+        },
+        "valid_supported": {
+          "finding_count": 6,
+          "routing_correct": 6,
+          "routing_accuracy": 1.0
+        },
+        "wrong_driver": {
+          "finding_count": 5,
+          "routing_correct": 5,
+          "routing_accuracy": 1.0
+        },
+        "wrong_entity": {
+          "finding_count": 5,
+          "routing_correct": 5,
+          "routing_accuracy": 1.0
+        }
+      }
+    },
+    "decisions": [
+      {
+        "case_id": "B001",
+        "finding_id": "country::UK",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-001"
+        ],
+        "explanation": "Lower UK distributor shipments, caused by a delayed implementation, directly explain the negative UK volume/mix impact.",
+        "case_type": "valid_supported",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-001"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-001"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B002",
+        "finding_id": "product::Sensor X",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-002"
+        ],
+        "explanation": "Delayed customer demand reduced Sensor X shipments, directly explaining the negative volume/mix impact.",
+        "case_type": "valid_supported",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-002"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-002"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B003",
+        "finding_id": "country::Germany",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-003"
+        ],
+        "explanation": "The Germany supplier surcharge increased unit purchase costs, explaining the negative unit-cost impact.",
+        "case_type": "valid_supported",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-003"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-003"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B004",
+        "finding_id": "product::EdgeHub Pro",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-004"
+        ],
+        "explanation": "The supplier surcharge increased EdgeHub Pro unit purchase costs, explaining the negative unit-cost impact.",
+        "case_type": "valid_supported",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-004"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-004"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B005",
+        "finding_id": "opex_account::Contractors",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-005"
+        ],
+        "explanation": "Contractor spend was NOK 1.8m above normal, directly explaining the negative non-payroll EBITDA impact.",
+        "case_type": "valid_supported",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-005"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-005"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B006",
+        "finding_id": "cost_centre::Product & R&D",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-006"
+        ],
+        "explanation": "Increased external engineering resources and contractor spend explain higher Product & R&D costs.",
+        "case_type": "valid_supported",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-006"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-006"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B007",
+        "finding_id": "country::Denmark",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the negative Denmark volume/mix impact.",
+        "case_type": "no_evidence",
+        "expected_routing": "insufficient_evidence",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B008",
+        "finding_id": "country::Netherlands",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the negative Netherlands unit-cost impact.",
+        "case_type": "no_evidence",
+        "expected_routing": "insufficient_evidence",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B009",
+        "finding_id": "product::Control Mini",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the volume/mix decline for Control Mini.",
+        "case_type": "no_evidence",
+        "expected_routing": "insufficient_evidence",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B010",
+        "finding_id": "product::Connectivity Pack",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the discount-related impact for Connectivity Pack.",
+        "case_type": "no_evidence",
+        "expected_routing": "insufficient_evidence",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B011",
+        "finding_id": "opex_account::Marketing",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the non-payroll EBITDA impact in Marketing.",
+        "case_type": "no_evidence",
+        "expected_routing": "insufficient_evidence",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B012",
+        "finding_id": "cost_centre::Technology",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the EBITDA decline in Technology.",
+        "case_type": "no_evidence",
+        "expected_routing": "insufficient_evidence",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B013",
+        "finding_id": "country::Germany",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the volume/mix impact in Germany.",
+        "case_type": "wrong_entity",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B014",
+        "finding_id": "product::Sensor X",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the volume/mix decline for Sensor X.",
+        "case_type": "wrong_entity",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B015",
+        "finding_id": "opex_account::Contractors",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the non-payroll EBITDA impact in Contractors.",
+        "case_type": "wrong_entity",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B016",
+        "finding_id": "country::Norway",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the volume/mix impact in Norway.",
+        "case_type": "wrong_entity",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B017",
+        "finding_id": "cost_centre::Sales",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the Sales EBITDA impact.",
+        "case_type": "wrong_entity",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B018",
+        "finding_id": "country::Germany",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain Germany’s volume-mix impact.",
+        "case_type": "wrong_driver",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B019",
+        "finding_id": "country::UK",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the UK unit-cost impact.",
+        "case_type": "wrong_driver",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B020",
+        "finding_id": "opex_account::Contractors",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the Contractors non-payroll impact.",
+        "case_type": "wrong_driver",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B021",
+        "finding_id": "product::Sensor X",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain Sensor X’s discount impact.",
+        "case_type": "wrong_driver",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B022",
+        "finding_id": "country::Denmark",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain Denmark’s list-price impact.",
+        "case_type": "wrong_driver",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B023",
+        "finding_id": "country::Norway",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain Norway’s volume-mix impact.",
+        "case_type": "directional_conflict",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B024",
+        "finding_id": "country::UK",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the UK volume-mix impact.",
+        "case_type": "directional_conflict",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B025",
+        "finding_id": "country::Germany",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain Germany’s unit-cost impact.",
+        "case_type": "directional_conflict",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B026",
+        "finding_id": "opex_account::Contractors",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the Contractors non-payroll impact.",
+        "case_type": "directional_conflict",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B027",
+        "finding_id": "country::UK",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the UK volume-mix impact.",
+        "case_type": "ambiguous_evidence",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B028",
+        "finding_id": "country::Germany",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain Germany’s unit-cost impact.",
+        "case_type": "ambiguous_evidence",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B029",
+        "finding_id": "opex_account::Contractors",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the Contractors non-payroll impact.",
+        "case_type": "ambiguous_evidence",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B030",
+        "finding_id": "country::UK",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-030A"
+        ],
+        "explanation": "Delayed demand reduced UK shipments, directly explaining the negative UK volume-mix impact.",
+        "case_type": "multi_event",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-030A"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-030A"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B030",
+        "finding_id": "opex_account::Contractors",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-030B"
+        ],
+        "explanation": "Contractor spend exceeded the normal run-rate, explaining the negative Contractors non-payroll EBITDA impact.",
+        "case_type": "multi_event",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-030B"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-030B"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B030",
+        "finding_id": "country::Germany",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain Germany’s negative volume-mix impact.",
+        "case_type": "multi_event",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B031",
+        "finding_id": "country::Germany",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-031A"
+        ],
+        "explanation": "A Germany-specific supplier surcharge increased unit purchase costs, directly explaining the negative unit-cost impact.",
+        "case_type": "multi_event",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-031A"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-031A"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B031",
+        "finding_id": "country::Norway",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain Norway’s negative volume-mix impact.",
+        "case_type": "multi_event",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B031",
+        "finding_id": "country::Sweden",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain Sweden’s negative volume-mix impact.",
+        "case_type": "multi_event",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B032",
+        "finding_id": "product::EdgeHub Pro",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-032A"
+        ],
+        "explanation": "A supplier surcharge increased EdgeHub Pro’s unit purchase cost, directly explaining the negative unit-cost impact.",
+        "case_type": "multi_event",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-032A"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-032A"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B032",
+        "finding_id": "product::Sensor X",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain Sensor X’s negative volume-mix impact.",
+        "case_type": "multi_event",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B032",
+        "finding_id": "cost_centre::Product & R&D",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-032C"
+        ],
+        "explanation": "Additional contractor spend above the normal run-rate directly explains the negative Product & R&D EBITDA impact.",
+        "case_type": "multi_event",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-032C"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-032C"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      }
+    ]
+  },
+  "naive_run": {
+    "responses": [
+      {
+        "batch_number": 1,
+        "task_count": 8,
+        "response_id": "resp_074085ac6e90af98016aad9ac19cfc87d2a50200c71195437a",
+        "status": "completed"
+      },
+      {
+        "batch_number": 2,
+        "task_count": 8,
+        "response_id": "resp_07df5171f229e0aa016aad9ac5ceb887d2a387990c686a55e4",
+        "status": "completed"
+      },
+      {
+        "batch_number": 3,
+        "task_count": 8,
+        "response_id": "resp_08514145626a6d34016aad9ac956ec87d28373395ad2608372",
+        "status": "completed"
+      },
+      {
+        "batch_number": 4,
+        "task_count": 8,
+        "response_id": "resp_096bfbc01e1fb11a016aad9ace576c87d2b056de7edc1f9bba",
+        "status": "completed"
+      },
+      {
+        "batch_number": 5,
+        "task_count": 6,
+        "response_id": "resp_06930277223b7e19016aad9ad3c68087d29699b9a297939c03",
+        "status": "completed"
+      }
+    ],
+    "summary": {
+      "finding_count": 38,
+      "routing_accuracy": 0.8947368421052632,
+      "evidence_authorization_accuracy": 0.8947368421052632,
+      "correct_abstention_rate": 0.8518518518518519,
+      "unsupported_explanation_rate": 0.14814814814814814,
+      "supported_explanation_recall": 1.0,
+      "citation_precision": 0.7333333333333333,
+      "forbidden_evidence_use_count": 4,
+      "invalid_evidence_use_count": 0,
+      "category_summary": {
+        "ambiguous_evidence": {
+          "finding_count": 3,
+          "routing_correct": 3,
+          "routing_accuracy": 1.0
+        },
+        "directional_conflict": {
+          "finding_count": 4,
+          "routing_correct": 2,
+          "routing_accuracy": 0.5
+        },
+        "multi_event": {
+          "finding_count": 9,
+          "routing_correct": 8,
+          "routing_accuracy": 0.8888888888888888
+        },
+        "no_evidence": {
+          "finding_count": 6,
+          "routing_correct": 6,
+          "routing_accuracy": 1.0
+        },
+        "valid_supported": {
+          "finding_count": 6,
+          "routing_correct": 6,
+          "routing_accuracy": 1.0
+        },
+        "wrong_driver": {
+          "finding_count": 5,
+          "routing_correct": 4,
+          "routing_accuracy": 0.8
+        },
+        "wrong_entity": {
+          "finding_count": 5,
+          "routing_correct": 5,
+          "routing_accuracy": 1.0
+        }
+      }
+    },
+    "decisions": [
+      {
+        "case_id": "B001",
+        "finding_id": "country::UK",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-001"
+        ],
+        "explanation": "UK distributor shipments were lower due to delayed implementation demand, directly explaining the negative UK volume/mix impact.",
+        "case_type": "valid_supported",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-001"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-001"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B002",
+        "finding_id": "product::Sensor X",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-002"
+        ],
+        "explanation": "Delayed customer demand reduced Sensor X shipments, directly explaining the negative product volume/mix impact.",
+        "case_type": "valid_supported",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-002"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-002"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B003",
+        "finding_id": "country::Germany",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-003"
+        ],
+        "explanation": "A supplier surcharge increased unit purchase costs in Germany, explaining the negative Germany unit-cost impact.",
+        "case_type": "valid_supported",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-003"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-003"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B004",
+        "finding_id": "product::EdgeHub Pro",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-004"
+        ],
+        "explanation": "A supplier surcharge increased EdgeHub Pro unit purchase costs, explaining the negative product unit-cost impact.",
+        "case_type": "valid_supported",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-004"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-004"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B005",
+        "finding_id": "opex_account::Contractors",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-005"
+        ],
+        "explanation": "Contractor spend was NOK 1.8m above normal, directly explaining the negative non-payroll EBITDA impact.",
+        "case_type": "valid_supported",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-005"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-005"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B006",
+        "finding_id": "cost_centre::Product & R&D",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-006"
+        ],
+        "explanation": "Increased external engineering resources drove additional contractor spend in Product & R&D, explaining the negative EBITDA impact.",
+        "case_type": "valid_supported",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-006"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-006"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B007",
+        "finding_id": "country::Denmark",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The cause of the negative Denmark volume/mix impact remains unresolved because no management evidence was supplied.",
+        "case_type": "no_evidence",
+        "expected_routing": "insufficient_evidence",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B008",
+        "finding_id": "country::Netherlands",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The cause of the negative Netherlands unit-cost impact remains unresolved because no management evidence was supplied.",
+        "case_type": "no_evidence",
+        "expected_routing": "insufficient_evidence",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B009",
+        "finding_id": "product::Control Mini",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the Control Mini volume-mix impact.",
+        "case_type": "no_evidence",
+        "expected_routing": "insufficient_evidence",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B010",
+        "finding_id": "product::Connectivity Pack",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the Connectivity Pack discount impact.",
+        "case_type": "no_evidence",
+        "expected_routing": "insufficient_evidence",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B011",
+        "finding_id": "opex_account::Marketing",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the Marketing non-payroll impact.",
+        "case_type": "no_evidence",
+        "expected_routing": "insufficient_evidence",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B012",
+        "finding_id": "cost_centre::Technology",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "No management evidence was supplied to explain the Technology EBITDA impact.",
+        "case_type": "no_evidence",
+        "expected_routing": "insufficient_evidence",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B013",
+        "finding_id": "country::Germany",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The evidence concerns Netherlands, not Germany, so it does not explain the Germany volume-mix impact.",
+        "case_type": "wrong_entity",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B014",
+        "finding_id": "product::Sensor X",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The evidence concerns Sensor X Pro and shipment acceleration, not a negative Sensor X volume-mix impact.",
+        "case_type": "wrong_entity",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B015",
+        "finding_id": "opex_account::Contractors",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The evidence describes marketing spend, not the Contractors non-payroll impact.",
+        "case_type": "wrong_entity",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B016",
+        "finding_id": "country::Norway",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The evidence concerns Sweden, not Norway, so it does not explain the Norway volume-mix impact.",
+        "case_type": "wrong_entity",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B017",
+        "finding_id": "cost_centre::Sales",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The evidence indicates higher travel spend but does not directly link it to Sales or establish the finding’s specific driver.",
+        "case_type": "wrong_entity",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B018",
+        "finding_id": "country::Germany",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The surcharge indicates higher unit cost, while the finding identifies negative volume mix as the primary driver.",
+        "case_type": "wrong_driver",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B019",
+        "finding_id": "country::UK",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The evidence explains lower shipments from delayed demand, not the identified negative unit-cost driver.",
+        "case_type": "wrong_driver",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B020",
+        "finding_id": "opex_account::Contractors",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The evidence concerns average employee cost, not non-payroll contractor costs.",
+        "case_type": "wrong_driver",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B021",
+        "finding_id": "product::Sensor X",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The evidence indicates delayed demand and lower shipments, not the identified discount driver.",
+        "case_type": "wrong_driver",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B022",
+        "finding_id": "country::Denmark",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-022"
+        ],
+        "explanation": "Increased discounting in Denmark directly supports the negative list-price impact.",
+        "case_type": "wrong_driver",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": false,
+        "correct_abstention": false,
+        "unsupported_explanation": true,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [
+          "BENCH-022"
+        ],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": false
+      },
+      {
+        "case_id": "B023",
+        "finding_id": "country::Norway",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "Accelerated shipments would support a positive volume effect, opposite to the finding’s negative volume-mix impact.",
+        "case_type": "directional_conflict",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B024",
+        "finding_id": "country::UK",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "Delayed implementation and lower shipments indicate a negative volume effect, opposite to the finding’s positive impact.",
+        "case_type": "directional_conflict",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B025",
+        "finding_id": "country::Germany",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-025"
+        ],
+        "explanation": "The Germany supplier surcharge directly explains the increased unit-cost impact.",
+        "case_type": "directional_conflict",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": false,
+        "correct_abstention": false,
+        "unsupported_explanation": true,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [
+          "BENCH-025"
+        ],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": false
+      },
+      {
+        "case_id": "B026",
+        "finding_id": "opex_account::Contractors",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-026"
+        ],
+        "explanation": "Additional contractor spend above the normal run-rate explains the non-payroll expense impact.",
+        "case_type": "directional_conflict",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": false,
+        "correct_abstention": false,
+        "unsupported_explanation": true,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [
+          "BENCH-026"
+        ],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": false
+      },
+      {
+        "case_id": "B027",
+        "finding_id": "country::UK",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The evidence describes a review but does not identify a causal volume or mix change.",
+        "case_type": "ambiguous_evidence",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B028",
+        "finding_id": "country::Germany",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The evidence describes a supplier review but does not establish a unit-cost cause or direction.",
+        "case_type": "ambiguous_evidence",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B029",
+        "finding_id": "opex_account::Contractors",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The evidence describes a review without identifying a causal change in contractor spending.",
+        "case_type": "ambiguous_evidence",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B030",
+        "finding_id": "country::UK",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-030A"
+        ],
+        "explanation": "Delayed planned demand caused lower UK shipments, directly explaining the negative volume-mix impact.",
+        "case_type": "multi_event",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-030A"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-030A"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B030",
+        "finding_id": "opex_account::Contractors",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-030B"
+        ],
+        "explanation": "Contractor spend above the normal run-rate directly explains the negative non-payroll EBITDA impact.",
+        "case_type": "multi_event",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-030B"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-030B"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B030",
+        "finding_id": "country::Germany",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The Germany evidence explains unit cost, not the reported negative volume-mix impact.",
+        "case_type": "multi_event",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B031",
+        "finding_id": "country::Germany",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-031A"
+        ],
+        "explanation": "The Germany supplier surcharge directly increased unit purchase cost, matching the Germany unit-cost impact.",
+        "case_type": "multi_event",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-031A"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-031A"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B031",
+        "finding_id": "country::Norway",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-031B"
+        ],
+        "explanation": "Norway shipment acceleration after early customer acceptance explains the adverse volume/mix impact.",
+        "case_type": "multi_event",
+        "expected_routing": "withheld_by_directional_guardrail",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": false,
+        "correct_abstention": false,
+        "unsupported_explanation": true,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [
+          "BENCH-031B"
+        ],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": false
+      },
+      {
+        "case_id": "B031",
+        "finding_id": "country::Sweden",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The supplied evidence concerns Germany and Norway, not Sweden.",
+        "case_type": "multi_event",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B032",
+        "finding_id": "product::EdgeHub Pro",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-032A"
+        ],
+        "explanation": "The EdgeHub Pro supplier surcharge directly increased unit purchase cost, matching the finding.",
+        "case_type": "multi_event",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-032A"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-032A"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B032",
+        "finding_id": "product::Sensor X",
+        "decision": "unresolved",
+        "evidence_ids": [],
+        "explanation": "The shipment evidence refers to Sensor X Pro, not the identified Sensor X entity.",
+        "case_type": "multi_event",
+        "expected_routing": "rejected_by_grounding",
+        "expected_decision": "unresolved",
+        "expected_allowed_evidence_ids": [],
+        "routing_correct": true,
+        "correct_abstention": true,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": false,
+        "allowed_evidence_used": [],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      },
+      {
+        "case_id": "B032",
+        "finding_id": "cost_centre::Product & R&D",
+        "decision": "explained",
+        "evidence_ids": [
+          "BENCH-032C"
+        ],
+        "explanation": "Above-normal contractor spend in Product & R&D directly explains the adverse EBITDA impact.",
+        "case_type": "multi_event",
+        "expected_routing": "reached_ai",
+        "expected_decision": "explained",
+        "expected_allowed_evidence_ids": [
+          "BENCH-032C"
+        ],
+        "routing_correct": true,
+        "correct_abstention": false,
+        "unsupported_explanation": false,
+        "supported_explanation_recalled": true,
+        "allowed_evidence_used": [
+          "BENCH-032C"
+        ],
+        "forbidden_evidence_used": [],
+        "invalid_evidence_ids": [],
+        "evidence_authorized": true
+      }
+    ]
+  },
+  "comparison": {
+    "guarded": {
+      "finding_count": 38,
+      "routing_accuracy": 1.0,
+      "evidence_authorization_accuracy": 1.0,
+      "correct_abstention_rate": 1.0,
+      "unsupported_explanation_rate": 0.0,
+      "supported_explanation_recall": 1.0,
+      "citation_precision": 1.0,
+      "forbidden_evidence_use_count": 0,
+      "invalid_evidence_use_count": 0,
+      "category_summary": {
+        "ambiguous_evidence": {
+          "finding_count": 3,
+          "routing_correct": 3,
+          "routing_accuracy": 1.0
+        },
+        "directional_conflict": {
+          "finding_count": 4,
+          "routing_correct": 4,
+          "routing_accuracy": 1.0
+        },
+        "multi_event": {
+          "finding_count": 9,
+          "routing_correct": 9,
+          "routing_accuracy": 1.0
+        },
+        "no_evidence": {
+          "finding_count": 6,
+          "routing_correct": 6,
+          "routing_accuracy": 1.0
+        },
+        "valid_supported": {
+          "finding_count": 6,
+          "routing_correct": 6,
+          "routing_accuracy": 1.0
+        },
+        "wrong_driver": {
+          "finding_count": 5,
+          "routing_correct": 5,
+          "routing_accuracy": 1.0
+        },
+        "wrong_entity": {
+          "finding_count": 5,
+          "routing_correct": 5,
+          "routing_accuracy": 1.0
+        }
+      }
+    },
+    "naive": {
+      "finding_count": 38,
+      "routing_accuracy": 0.8947368421052632,
+      "evidence_authorization_accuracy": 0.8947368421052632,
+      "correct_abstention_rate": 0.8518518518518519,
+      "unsupported_explanation_rate": 0.14814814814814814,
+      "supported_explanation_recall": 1.0,
+      "citation_precision": 0.7333333333333333,
+      "forbidden_evidence_use_count": 4,
+      "invalid_evidence_use_count": 0,
+      "category_summary": {
+        "ambiguous_evidence": {
+          "finding_count": 3,
+          "routing_correct": 3,
+          "routing_accuracy": 1.0
+        },
+        "directional_conflict": {
+          "finding_count": 4,
+          "routing_correct": 2,
+          "routing_accuracy": 0.5
+        },
+        "multi_event": {
+          "finding_count": 9,
+          "routing_correct": 8,
+          "routing_accuracy": 0.8888888888888888
+        },
+        "no_evidence": {
+          "finding_count": 6,
+          "routing_correct": 6,
+          "routing_accuracy": 1.0
+        },
+        "valid_supported": {
+          "finding_count": 6,
+          "routing_correct": 6,
+          "routing_accuracy": 1.0
+        },
+        "wrong_driver": {
+          "finding_count": 5,
+          "routing_correct": 4,
+          "routing_accuracy": 0.8
+        },
+        "wrong_entity": {
+          "finding_count": 5,
+          "routing_correct": 5,
+          "routing_accuracy": 1.0
+        }
+      }
+    },
+    "deltas": {
+      "guarded_minus_naive_routing_accuracy": 0.10526315789473684,
+      "guarded_minus_naive_evidence_authorization_accuracy": 0.10526315789473684,
+      "guarded_minus_naive_correct_abstention_rate": 0.14814814814814814,
+      "guarded_minus_naive_unsupported_explanation_rate": -0.14814814814814814,
+      "guarded_minus_naive_supported_explanation_recall": 0.0,
+      "guarded_minus_naive_citation_precision": 0.2666666666666667
+    }
+  }
+}
