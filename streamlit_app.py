@@ -76,6 +76,20 @@ EVALUATION_SUITE_PATH = (
     / "evaluation_suite.json"
 )
 
+ADVERSARIAL_BENCHMARK_PATH = (
+    PROJECT_ROOT
+    / "outputs"
+    / "evaluation"
+    / "adversarial_benchmark.json"
+)
+
+LLM_GUARDRAIL_COMPARISON_PATH = (
+    PROJECT_ROOT
+    / "outputs"
+    / "evaluation"
+    / "llm_guardrail_comparison.json"
+)
+
 SALES_DATASETS = {
     "Actual": (
         PROJECT_ROOT
@@ -437,6 +451,18 @@ def pct(
     return f"{float(value) * 100:.2f}%"
 
 
+def benchmark_pct(
+    value: float | int | None,
+    decimals: int = 1,
+) -> str:
+    if value is None:
+        return "N/A"
+
+    return (
+        f"{float(value) * 100:.{decimals}f}%"
+    )
+
+
 def percentage_point_delta(
     value: float | int | None,
 ) -> str:
@@ -793,6 +819,14 @@ evaluation_suite = load_json(
     EVALUATION_SUITE_PATH
 )
 
+adversarial_benchmark = load_json(
+    ADVERSARIAL_BENCHMARK_PATH
+)
+
+llm_guardrail_comparison = load_json(
+    LLM_GUARDRAIL_COMPARISON_PATH
+)
+
 finance = grounded[
     "finance_summary"
 ]
@@ -820,6 +854,48 @@ suite_summary = evaluation_suite[
 suite_cases = evaluation_suite.get(
     "cases",
     {},
+)
+
+adversarial_summary = (
+    adversarial_benchmark.get(
+        "summary",
+        {},
+    )
+)
+
+llm_benchmark_metadata = (
+    llm_guardrail_comparison.get(
+        "metadata",
+        {},
+    )
+)
+
+guarded_benchmark = (
+    llm_guardrail_comparison.get(
+        "guarded_run",
+        {},
+    )
+)
+
+naive_benchmark = (
+    llm_guardrail_comparison.get(
+        "naive_run",
+        {},
+    )
+)
+
+guarded_benchmark_summary = (
+    guarded_benchmark.get(
+        "summary",
+        {},
+    )
+)
+
+naive_benchmark_summary = (
+    naive_benchmark.get(
+        "summary",
+        {},
+    )
 )
 
 expected_comparison = period_config[
@@ -907,7 +983,7 @@ with st.sidebar:
     )
 
     st.markdown(
-        '<span class="status-pass">75 / 75 passing</span>',
+        '<span class="status-pass">106 / 106 passing</span>',
         unsafe_allow_html=True,
     )
 
@@ -1881,6 +1957,455 @@ with evidence_tab:
 
 with evaluation_tab:
     st.subheader(
+        "Adversarial Safety Benchmark"
+    )
+
+    st.caption(
+        "A controlled 32-case synthetic benchmark stress-tests the "
+        "evidence-control pipeline across supported evidence, no-evidence "
+        "cases, wrong entities, wrong drivers, directional conflicts, "
+        "ambiguous evidence and multi-event situations."
+    )
+
+    if adversarial_summary.get(
+        "overall_passed"
+    ):
+        st.markdown(
+            '<span class="status-pass">'
+            "Adversarial benchmark PASSED"
+            "</span>",
+            unsafe_allow_html=True,
+        )
+    else:
+        st.error(
+            "Adversarial benchmark failed."
+        )
+
+    st.write("")
+
+    a1, a2, a3, a4 = st.columns(
+        4
+    )
+
+    adversarial_case_count = (
+        adversarial_summary.get(
+            "case_count",
+            0,
+        )
+    )
+
+    adversarial_cases_passed = (
+        adversarial_summary.get(
+            "cases_passed",
+            0,
+        )
+    )
+
+    a1.metric(
+        "Cases Passed",
+        (
+            f"{adversarial_cases_passed}/"
+            f"{adversarial_case_count}"
+        ),
+    )
+
+    a2.metric(
+        "Routing Accuracy",
+        benchmark_pct(
+            adversarial_summary.get(
+                "routing_accuracy"
+            )
+        ),
+    )
+
+    a3.metric(
+        "Correct Abstention",
+        benchmark_pct(
+            adversarial_summary.get(
+                "correct_abstention_rate"
+            )
+        ),
+    )
+
+    with a4:
+        st.metric(
+            "Unsupported Explanations",
+            benchmark_pct(
+                adversarial_summary.get(
+                    "unsupported_explanation_rate"
+                )
+            ),
+        )
+        st.caption(
+            "Lower is safer"
+        )
+
+    category_summary = (
+        adversarial_summary.get(
+            "category_summary",
+            {},
+        )
+    )
+
+    category_labels = {
+        "valid_supported": "Valid supported evidence",
+        "no_evidence": "No evidence",
+        "wrong_entity": "Wrong entity",
+        "wrong_driver": "Wrong driver",
+        "directional_conflict": "Directional conflict",
+        "ambiguous_evidence": "Ambiguous evidence",
+        "multi_event": "Multi-event",
+    }
+
+    category_rows = []
+
+    for category, metrics in (
+        category_summary.items()
+    ):
+        category_rows.append(
+            {
+                "Case type": (
+                    category_labels.get(
+                        category,
+                        category.replace(
+                            "_",
+                            " ",
+                        ).title(),
+                    )
+                ),
+                "Passed": (
+                    f"{metrics.get('passed', 0)}/"
+                    f"{metrics.get('cases', 0)}"
+                ),
+                "Pass rate": benchmark_pct(
+                    metrics.get(
+                        "pass_rate"
+                    ),
+                    decimals=0,
+                ),
+            }
+        )
+
+    if category_rows:
+        st.dataframe(
+            category_rows,
+            width="stretch",
+            hide_index=True,
+        )
+
+    st.caption(
+        "This deterministic benchmark evaluates routing and evidence "
+        "authorization before model generation. It does not make API calls."
+    )
+
+    st.divider()
+
+    st.subheader(
+        "Guarded vs Prompt-Only LLM"
+    )
+
+    st.caption(
+        "The same model, prompt structure, structured-output schema and "
+        "financial findings are evaluated under two evidence conditions. "
+        "The guarded condition receives only evidence approved by the "
+        "deterministic controls; the prompt-only baseline receives all raw "
+        "management evidence available in each benchmark case and must rely "
+    )
+
+    model_name = llm_benchmark_metadata.get(
+        "model",
+        "N/A",
+    )
+
+    benchmark_case_count = (
+        llm_benchmark_metadata.get(
+            "case_count",
+            0,
+        )
+    )
+
+    benchmark_finding_count = (
+        llm_benchmark_metadata.get(
+            "finding_count",
+            0,
+        )
+    )
+
+    st.markdown(
+        '<span class="status-info">'
+        f"Model: {clean_text(model_name)}"
+        "</span>",
+        unsafe_allow_html=True,
+    )
+
+    st.caption(
+        f"{benchmark_case_count} controlled cases · "
+        f"{benchmark_finding_count} financial findings · "
+        "the prompt-only baseline relies on model instructions alone to "
+        "reject unsupported explanations. Benchmark expectations and ground "
+        "truth were not sent to the model."
+    )
+
+    st.write("")
+
+    comparison_metric_rows = [
+        {
+            "Metric": "Routing accuracy",
+            "Guarded": benchmark_pct(
+                guarded_benchmark_summary.get(
+                    "routing_accuracy"
+                )
+            ),
+            "Prompt-only baseline": benchmark_pct(
+                naive_benchmark_summary.get(
+                    "routing_accuracy"
+                )
+            ),
+        },
+        {
+            "Metric": "Evidence authorization accuracy",
+            "Guarded": benchmark_pct(
+                guarded_benchmark_summary.get(
+                    "evidence_authorization_accuracy"
+                )
+            ),
+            "Prompt-only baseline": benchmark_pct(
+                naive_benchmark_summary.get(
+                    "evidence_authorization_accuracy"
+                )
+            ),
+        },
+        {
+            "Metric": "Correct abstention rate",
+            "Guarded": benchmark_pct(
+                guarded_benchmark_summary.get(
+                    "correct_abstention_rate"
+                )
+            ),
+            "Prompt-only baseline": benchmark_pct(
+                naive_benchmark_summary.get(
+                    "correct_abstention_rate"
+                )
+            ),
+        },
+        {
+            "Metric": "Unsupported explanation rate",
+            "Guarded": benchmark_pct(
+                guarded_benchmark_summary.get(
+                    "unsupported_explanation_rate"
+                )
+            ),
+            "Prompt-only baseline": benchmark_pct(
+                naive_benchmark_summary.get(
+                    "unsupported_explanation_rate"
+                )
+            ),
+        },
+        {
+            "Metric": "Supported explanation recall",
+            "Guarded": benchmark_pct(
+                guarded_benchmark_summary.get(
+                    "supported_explanation_recall"
+                )
+            ),
+            "Prompt-only baseline": benchmark_pct(
+                naive_benchmark_summary.get(
+                    "supported_explanation_recall"
+                )
+            ),
+        },
+        {
+            "Metric": "Citation precision",
+            "Guarded": benchmark_pct(
+                guarded_benchmark_summary.get(
+                    "citation_precision"
+                )
+            ),
+            "Prompt-only baseline": benchmark_pct(
+                naive_benchmark_summary.get(
+                    "citation_precision"
+                )
+            ),
+        },
+    ]
+
+    st.dataframe(
+        comparison_metric_rows,
+        width="stretch",
+        hide_index=True,
+    )
+
+    b1, b2, b3, b4 = st.columns(
+        4
+    )
+
+    with b1:
+        st.metric(
+            "Unsupported Explanations",
+            benchmark_pct(
+                guarded_benchmark_summary.get(
+                    "unsupported_explanation_rate"
+                )
+            ),
+        )
+        st.caption(
+            "Prompt-only baseline: "
+            + benchmark_pct(
+                naive_benchmark_summary.get(
+                    "unsupported_explanation_rate"
+                )
+            )
+        )
+
+    with b2:
+        st.metric(
+            "Citation Precision",
+            benchmark_pct(
+                guarded_benchmark_summary.get(
+                    "citation_precision"
+                )
+            ),
+        )
+        st.caption(
+            "Prompt-only baseline: "
+            + benchmark_pct(
+                naive_benchmark_summary.get(
+                    "citation_precision"
+                )
+            )
+        )
+
+    with b3:
+        st.metric(
+            "Supported Recall",
+            benchmark_pct(
+                guarded_benchmark_summary.get(
+                    "supported_explanation_recall"
+                )
+            ),
+        )
+        st.caption(
+            "Prompt-only baseline: "
+            + benchmark_pct(
+                naive_benchmark_summary.get(
+                    "supported_explanation_recall"
+                )
+            )
+        )
+
+    with b4:
+        st.metric(
+            "Forbidden Evidence Uses",
+            guarded_benchmark_summary.get(
+                "forbidden_evidence_use_count",
+                0,
+            ),
+        )
+        st.caption(
+            "Prompt-only baseline: "
+            + str(
+                naive_benchmark_summary.get(
+                    "forbidden_evidence_use_count",
+                    0,
+                )
+            )
+        )
+
+    st.success(
+        "In this controlled benchmark run, deterministic evidence guardrails reduced "
+        "unsupported explanations while preserving all supported "
+        "explanations identified by the prompt-only baseline."
+    )
+
+    naive_failures = [
+        decision
+        for decision
+        in naive_benchmark.get(
+            "decisions",
+            [],
+        )
+        if decision.get(
+            "unsupported_explanation"
+        )
+    ]
+
+    if naive_failures:
+        st.markdown(
+            "#### Prompt-Only Baseline Failure Cases"
+        )
+
+        st.caption(
+            "These are the findings where the prompt-only baseline used "
+            "evidence that sounded relevant but failed the benchmark's "
+            "driver or directional requirements."
+        )
+
+        failure_rows = []
+
+        for decision in naive_failures:
+            failure_rows.append(
+                {
+                    "Case": decision.get(
+                        "case_id",
+                        "",
+                    ),
+                    "Type": category_labels.get(
+                        decision.get(
+                            "case_type",
+                            "",
+                        ),
+                        str(
+                            decision.get(
+                                "case_type",
+                                "",
+                            )
+                        ).replace(
+                            "_",
+                            " ",
+                        ).title(),
+                    ),
+                    "Finding": short_finding_id(
+                        str(
+                            decision.get(
+                                "finding_id",
+                                "",
+                            )
+                        )
+                    ),
+                    "Forbidden evidence used": (
+                        ", ".join(
+                            decision.get(
+                                "forbidden_evidence_used",
+                                [],
+                            )
+                        )
+                        or "None"
+                    ),
+                    "Prompt-only explanation": (
+                        decision.get(
+                            "explanation",
+                            "",
+                        )
+                    ),
+                }
+            )
+
+        st.dataframe(
+            failure_rows,
+            width="stretch",
+            hide_index=True,
+        )
+
+    st.caption(
+        "Results describe one controlled synthetic 32-case benchmark run "
+        "with the configured model. They demonstrate this pipeline's "
+        "behavior and should not be interpreted as universal model-performance "
+        "statistics."
+    )
+
+    st.divider()
+
+    st.subheader(
         "Cross-Period Evaluation Suite"
     )
 
@@ -2320,10 +2845,9 @@ with evaluation_tab:
     )
 
     st.caption(
-        "Evaluation results are based on a controlled synthetic "
-        "six-event environment across two analysis periods. "
-        "They demonstrate the behavior of this pipeline and should "
-        "not be interpreted as general model-performance metrics."
+        "The selected-period event evaluation is based on a controlled "
+        "synthetic six-event environment. The broader adversarial benchmark "
+        "above contains 32 controlled cases and 38 evaluated findings."
     )
 
 
@@ -2797,5 +3321,5 @@ st.caption(
     "CFO Intelligence Copilot · Synthetic portfolio project · "
     "Deterministic finance calculations · Evidence grounding · "
     "Directional guardrails · Structured AI commentary · "
-    "Offline hidden-ground-truth evaluation"
+    "Adversarial safety benchmarking · Hidden-ground-truth evaluation"
 )
