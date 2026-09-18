@@ -465,3 +465,158 @@ def test_integer_opex_dtypes_support_fractional_scenario_changes():
         "amount"
     ].dtype.kind == "f"
 
+
+
+def test_discount_increase_reduces_revenue_gp_and_ebitda():
+    result = run_scenario(
+        make_sales(),
+        make_opex(),
+        ScenarioInputs(
+            discount_rate_delta=0.02
+        ),
+    )
+
+    summary = result["summary"]
+
+    assert summary[
+        "revenue_change_nok"
+    ] < 0
+
+    assert summary[
+        "gross_profit_change_nok"
+    ] < 0
+
+    assert summary[
+        "opex_change_nok"
+    ] == pytest.approx(0.0)
+
+    assert summary[
+        "ebitda_change_nok"
+    ] == pytest.approx(
+        summary[
+            "gross_profit_change_nok"
+        ]
+    )
+
+
+def test_discount_delta_is_applied_in_percentage_points():
+    baseline = make_sales()
+
+    scenario = build_sales_scenario(
+        baseline,
+        ScenarioInputs(
+            discount_rate_delta=0.02
+        ),
+    )
+
+    assert scenario[
+        "discount_rate"
+    ].tolist() == pytest.approx(
+        [
+            0.12,
+            0.07,
+        ]
+    )
+
+    assert baseline[
+        "discount_rate"
+    ].tolist() == pytest.approx(
+        [
+            0.10,
+            0.05,
+        ]
+    )
+
+
+def test_discount_sensitivity_uses_percentage_point_unit():
+    records = run_sensitivity(
+        make_sales(),
+        make_opex(),
+        driver="discount",
+        values=[
+            -0.01,
+            0.0,
+            0.01,
+        ],
+    )
+
+    assert len(records) == 3
+
+    assert [
+        row["input_change_pct"]
+        for row in records
+    ] == pytest.approx(
+        [
+            -1.0,
+            0.0,
+            1.0,
+        ]
+    )
+
+    assert all(
+        row["input_change_unit"] == "pp"
+        for row in records
+    )
+
+    assert records[0][
+        "revenue_change_nok"
+    ] > 0
+
+    assert records[1][
+        "revenue_change_nok"
+    ] == pytest.approx(0.0)
+
+    assert records[2][
+        "revenue_change_nok"
+    ] < 0
+
+
+@pytest.mark.parametrize(
+    "discount_rate_delta",
+    [
+        -0.06,
+        0.96,
+    ],
+)
+def test_discount_scenario_rejects_invalid_resulting_rates(
+    discount_rate_delta,
+):
+    with pytest.raises(
+        ValueError,
+        match=(
+            "Scenario discount rates must remain between "
+            "0% and less than 100%"
+        ),
+    ):
+        build_sales_scenario(
+            make_sales(),
+            ScenarioInputs(
+                discount_rate_delta=(
+                    discount_rate_delta
+                )
+            ),
+        )
+
+
+@pytest.mark.parametrize(
+    "discount_rate_delta",
+    [
+        -1.0,
+        1.0,
+    ],
+)
+def test_discount_input_rejects_extreme_percentage_point_changes(
+    discount_rate_delta,
+):
+    with pytest.raises(
+        ValueError,
+        match=(
+            "discount_rate_delta must be between "
+            "-100 and \\+100 percentage points"
+        ),
+    ):
+        ScenarioInputs(
+            discount_rate_delta=(
+                discount_rate_delta
+            )
+        ).validate()

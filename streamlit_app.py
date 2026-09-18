@@ -14,6 +14,10 @@ from src.ai.cfo_qa import (
     ask_cfo,
     build_approved_context,
 )
+from src.ai.scenario_brief import (
+    ScenarioBriefError,
+    generate_scenario_brief,
+)
 from src.scenario.scenario_engine import (
     SCENARIO_DRIVER_LABELS,
     ScenarioInputs,
@@ -120,6 +124,7 @@ SALES_DATASETS = {
 
 QA_SESSION_LIMIT = 5
 QA_MAX_QUESTION_CHARS = 400
+SCENARIO_BRIEF_SESSION_LIMIT = 3
 
 QA_SUGGESTED_QUESTIONS = [
     "Why is EBITDA below budget?",
@@ -415,6 +420,7 @@ def load_sales_data(
 def calculate_scenario_result(
     volume_pct: float,
     price_pct: float,
+    discount_rate_delta: float,
     unit_cost_pct: float,
     headcount_pct: float,
     non_payroll_opex_pct: float,
@@ -424,6 +430,7 @@ def calculate_scenario_result(
     inputs = ScenarioInputs(
         volume_pct=volume_pct,
         price_pct=price_pct,
+        discount_rate_delta=discount_rate_delta,
         unit_cost_pct=unit_cost_pct,
         headcount_pct=headcount_pct,
         non_payroll_opex_pct=non_payroll_opex_pct,
@@ -441,6 +448,7 @@ def calculate_sensitivity_result(
     values: tuple[float, ...],
     volume_pct: float,
     price_pct: float,
+    discount_rate_delta: float,
     unit_cost_pct: float,
     headcount_pct: float,
     non_payroll_opex_pct: float,
@@ -450,6 +458,7 @@ def calculate_sensitivity_result(
     base_inputs = ScenarioInputs(
         volume_pct=volume_pct,
         price_pct=price_pct,
+        discount_rate_delta=discount_rate_delta,
         unit_cost_pct=unit_cost_pct,
         headcount_pct=headcount_pct,
         non_payroll_opex_pct=non_payroll_opex_pct,
@@ -1040,7 +1049,7 @@ with st.sidebar:
     )
 
     st.markdown(
-        '<span class="status-pass">118 / 118 passing</span>',
+        '<span class="status-pass">135 / 135 passing</span>',
         unsafe_allow_html=True,
     )
 
@@ -1754,6 +1763,54 @@ with scenario_tab:
         "#### Scenario Assumptions"
     )
 
+    latest_forecast_sales = load_sales_data(
+        SALES_DATASETS[
+            "Latest Forecast"
+        ]
+    )
+
+    forecast_discount_rates = pd.to_numeric(
+        latest_forecast_sales[
+            "discount_rate"
+        ],
+        errors="coerce",
+    ).dropna()
+
+    if forecast_discount_rates.empty:
+        st.error(
+            "Latest Forecast contains no usable discount rates "
+            "for scenario modelling."
+        )
+        st.stop()
+
+    minimum_forecast_discount = float(
+        forecast_discount_rates.min()
+    )
+    maximum_forecast_discount = float(
+        forecast_discount_rates.max()
+    )
+
+    discount_delta_min_pp = (
+        int(
+            max(
+                -10.0,
+                -minimum_forecast_discount * 100,
+            )
+            * 2
+        )
+        / 2
+    )
+    discount_delta_max_pp = (
+        int(
+            min(
+                10.0,
+                (0.999999 - maximum_forecast_discount) * 100,
+            )
+            * 2
+        )
+        / 2
+    )
+
     assumption_row_1 = st.columns(
         3
     )
@@ -1783,12 +1840,36 @@ with scenario_tab:
             format="%.1f%%",
             key="scenario_price_pct",
             help=(
-                "Changes list price before the existing forecast "
-                "discount rate is applied."
+                "Changes list price before the scenario discount "
+                "rate is applied."
             ),
         )
 
     with assumption_row_1[2]:
+        scenario_discount_delta_pp = st.slider(
+            "Discount",
+            min_value=float(
+                discount_delta_min_pp
+            ),
+            max_value=float(
+                discount_delta_max_pp
+            ),
+            value=0.0,
+            step=0.5,
+            format="%+.1f pp",
+            key="scenario_discount_delta_pp",
+            help=(
+                "Changes each Latest Forecast discount rate by an "
+                "absolute number of percentage points. Slider limits "
+                "prevent any row from moving below 0% or to 100%."
+            ),
+        )
+
+    assumption_row_2 = st.columns(
+        3
+    )
+
+    with assumption_row_2[0]:
         scenario_unit_cost_pct = st.slider(
             "Unit cost",
             min_value=-15.0,
@@ -1803,11 +1884,7 @@ with scenario_tab:
             ),
         )
 
-    assumption_row_2 = st.columns(
-        2
-    )
-
-    with assumption_row_2[0]:
+    with assumption_row_2[1]:
         scenario_headcount_pct = st.slider(
             "Headcount",
             min_value=-20.0,
@@ -1822,7 +1899,7 @@ with scenario_tab:
             ),
         )
 
-    with assumption_row_2[1]:
+    with assumption_row_2[2]:
         scenario_non_payroll_pct = st.slider(
             "Non-payroll OPEX",
             min_value=-20.0,
@@ -1839,6 +1916,7 @@ with scenario_tab:
     scenario_inputs_decimal = {
         "volume_pct": scenario_volume_pct / 100,
         "price_pct": scenario_price_pct / 100,
+        "discount_rate_delta": scenario_discount_delta_pp / 100,
         "unit_cost_pct": scenario_unit_cost_pct / 100,
         "headcount_pct": scenario_headcount_pct / 100,
         "non_payroll_opex_pct": scenario_non_payroll_pct / 100,
@@ -1847,6 +1925,9 @@ with scenario_tab:
     scenario_result = calculate_scenario_result(
         volume_pct=scenario_inputs_decimal["volume_pct"],
         price_pct=scenario_inputs_decimal["price_pct"],
+        discount_rate_delta=scenario_inputs_decimal[
+            "discount_rate_delta"
+        ],
         unit_cost_pct=scenario_inputs_decimal["unit_cost_pct"],
         headcount_pct=scenario_inputs_decimal["headcount_pct"],
         non_payroll_opex_pct=scenario_inputs_decimal["non_payroll_opex_pct"],
@@ -2110,12 +2191,323 @@ with scenario_tab:
     st.divider()
 
     st.markdown(
+        "#### AI Scenario Brief"
+    )
+
+    st.caption(
+        "Generate a concise management interpretation of the deterministic "
+        "scenario result. The AI receives only calculated scenario assumptions, "
+        "financial outcomes and the reconciled EBITDA bridge. It cannot access "
+        "management evidence or hidden ground truth, and it is not allowed to "
+        "calculate new financial values or invent business causes."
+    )
+
+    scenario_brief_signature = tuple(
+        round(
+            float(
+                scenario_inputs_decimal[
+                    field_name
+                ]
+            ),
+            8,
+        )
+        for field_name in (
+            "volume_pct",
+            "price_pct",
+            "discount_rate_delta",
+            "unit_cost_pct",
+            "headcount_pct",
+            "non_payroll_opex_pct",
+        )
+    )
+
+    if (
+        st.session_state.get(
+            "scenario_brief_signature"
+        )
+        != scenario_brief_signature
+    ):
+        st.session_state[
+            "scenario_brief_signature"
+        ] = scenario_brief_signature
+        st.session_state[
+            "scenario_brief_result"
+        ] = None
+
+    if (
+        "scenario_brief_result"
+        not in st.session_state
+    ):
+        st.session_state[
+            "scenario_brief_result"
+        ] = None
+
+    if (
+        "scenario_brief_request_count"
+        not in st.session_state
+    ):
+        st.session_state[
+            "scenario_brief_request_count"
+        ] = 0
+
+    scenario_brief_api_key = (
+        resolve_openai_api_key()
+    )
+
+    scenario_brief_remaining = max(
+        0,
+        SCENARIO_BRIEF_SESSION_LIMIT
+        - int(
+            st.session_state[
+                "scenario_brief_request_count"
+            ]
+        ),
+    )
+
+    brief_control_left, brief_control_right = (
+        st.columns(
+            [1.2, 0.8]
+        )
+    )
+
+    with brief_control_left:
+        generate_brief = st.button(
+            "Generate AI Scenario Brief",
+            key="scenario_brief_generate",
+            type="primary",
+            width="content",
+            disabled=(
+                not scenario_brief_api_key
+                or scenario_brief_remaining <= 0
+            ),
+        )
+
+    with brief_control_right:
+        st.caption(
+            f"Live demo limit: "
+            f"{SCENARIO_BRIEF_SESSION_LIMIT} successful briefs per session · "
+            f"{scenario_brief_remaining} remaining"
+        )
+
+    if not scenario_brief_api_key:
+        st.warning(
+            "AI Scenario Brief is not configured in this environment yet. "
+            "Add OPENAI_API_KEY as a local environment variable or "
+            "Streamlit secret to enable it."
+        )
+
+    if generate_brief:
+        with st.spinner(
+            "Interpreting deterministic scenario results..."
+        ):
+            try:
+                scenario_brief_result = (
+                    generate_scenario_brief(
+                        scenario_result=scenario_result,
+                        api_key=scenario_brief_api_key,
+                        model=str(
+                            ai_metadata.get(
+                                "model",
+                                "gpt-5.6-luna",
+                            )
+                        ),
+                    )
+                )
+            except ScenarioBriefError as exc:
+                st.error(
+                    "Scenario Brief control blocked the response: "
+                    f"{exc}"
+                )
+            except Exception as exc:
+                st.error(
+                    "The live Scenario Brief request failed. "
+                    f"Technical detail: {exc}"
+                )
+            else:
+                st.session_state[
+                    "scenario_brief_result"
+                ] = scenario_brief_result
+                st.session_state[
+                    "scenario_brief_request_count"
+                ] += 1
+                st.rerun()
+
+    scenario_brief_result = (
+        st.session_state.get(
+            "scenario_brief_result"
+        )
+    )
+
+    if scenario_brief_result:
+        scenario_brief = (
+            scenario_brief_result.get(
+                "brief",
+                {},
+            )
+        )
+
+        st.markdown(
+            '<span class="status-info">'
+            "AI interpretation · deterministic numbers only"
+            "</span>",
+            unsafe_allow_html=True,
+        )
+
+        st.write("")
+
+        st.markdown(
+            f"##### {clean_text(scenario_brief.get('headline', 'Scenario Brief'))}"
+        )
+
+        st.markdown(
+            f"""
+            <div class="summary-card">
+                {clean_text(
+                    scenario_brief.get(
+                        "executive_summary",
+                        "No scenario summary available.",
+                    )
+                )}
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+        brief_driver_ids = (
+            scenario_brief.get(
+                "driver_ids",
+                [],
+            )
+        )
+
+        brief_takeaways = (
+            scenario_brief.get(
+                "management_takeaways",
+                [],
+            )
+        )
+
+        brief_left, brief_right = (
+            st.columns(
+                [0.8, 1.2]
+            )
+        )
+
+        with brief_left:
+            st.markdown(
+                "**Deterministic drivers referenced**"
+            )
+
+            if brief_driver_ids:
+                for driver_id in brief_driver_ids:
+                    driver_label = (
+                        bridge_labels.get(
+                            driver_id,
+                            str(
+                                driver_id
+                            ).replace(
+                                "_",
+                                " ",
+                            ).title(),
+                        )
+                    )
+
+                    st.write(
+                        f"• {driver_label}"
+                    )
+            else:
+                st.caption(
+                    "No active EBITDA driver was required."
+                )
+
+        with brief_right:
+            st.markdown(
+                "**Management takeaways**"
+            )
+
+            if brief_takeaways:
+                for takeaway in brief_takeaways:
+                    st.write(
+                        "• "
+                        + str(
+                            takeaway
+                        )
+                    )
+            else:
+                st.caption(
+                    "No additional takeaways were returned."
+                )
+
+        brief_limitations = (
+            scenario_brief.get(
+                "limitations",
+                [],
+            )
+        )
+
+        with st.expander(
+            "Scenario Brief controls & limitations",
+            expanded=False,
+        ):
+            st.caption(
+                "Ground truth access: blocked · "
+                "Management evidence access: blocked · "
+                "Financial calculations: deterministic finance engine"
+            )
+
+            if brief_limitations:
+                st.markdown(
+                    "**Model-stated limitations**"
+                )
+
+                for limitation in brief_limitations:
+                    st.write(
+                        "• "
+                        + str(
+                            limitation
+                        )
+                    )
+
+            diagnostics = (
+                scenario_brief_result.get(
+                    "diagnostics",
+                    {},
+                )
+            )
+
+            active_driver_ids = (
+                diagnostics.get(
+                    "active_driver_ids",
+                    [],
+                )
+            )
+
+            st.caption(
+                "Validated active EBITDA drivers: "
+                + (
+                    ", ".join(
+                        active_driver_ids
+                    )
+                    if active_driver_ids
+                    else "none"
+                )
+            )
+    else:
+        st.info(
+            "No AI Scenario Brief has been generated for the current "
+            "assumptions yet. The deterministic scenario calculations above "
+            "are available independently of the AI layer."
+        )
+
+    st.divider()
+
+    st.markdown(
         "#### One-Way Sensitivity"
     )
 
     st.caption(
         "Stress one driver around the current scenario assumption while "
-        "holding the other four assumptions constant."
+        "holding the other five assumptions constant."
     )
 
     sensitivity_controls = st.columns(
@@ -2138,27 +2530,15 @@ with scenario_tab:
             key="scenario_sensitivity_driver",
         )
 
-    with sensitivity_controls[1]:
-        sensitivity_span_pp = st.slider(
-            "Sensitivity span",
-            min_value=2.0,
-            max_value=20.0,
-            value=10.0,
-            step=1.0,
-            format="± %.1f pp",
-            key="scenario_sensitivity_span",
-            help=(
-                "Creates five sensitivity points centered on the "
-                "current assumption for the selected driver."
-            ),
-        )
-
     driver_current_values = {
         "volume": scenario_inputs_decimal[
             "volume_pct"
         ],
         "price": scenario_inputs_decimal[
             "price_pct"
+        ],
+        "discount": scenario_inputs_decimal[
+            "discount_rate_delta"
         ],
         "unit_cost": scenario_inputs_decimal[
             "unit_cost_pct"
@@ -2177,6 +2557,68 @@ with scenario_tab:
         ]
         * 100
     )
+
+    with sensitivity_controls[1]:
+        if sensitivity_driver == "discount":
+            discount_span_limit = min(
+                sensitivity_center_pp
+                - discount_delta_min_pp,
+                discount_delta_max_pp
+                - sensitivity_center_pp,
+                10.0,
+            )
+
+            discount_span_limit = (
+                int(
+                    max(
+                        0.0,
+                        float(
+                            discount_span_limit
+                        ),
+                    )
+                    * 10
+                )
+                / 10
+            )
+
+            if discount_span_limit >= 0.1:
+                sensitivity_span_pp = st.slider(
+                    "Sensitivity span",
+                    min_value=0.1,
+                    max_value=discount_span_limit,
+                    value=min(
+                        2.0,
+                        discount_span_limit,
+                    ),
+                    step=0.1,
+                    format="± %.1f pp",
+                    key="scenario_discount_sensitivity_span",
+                    help=(
+                        "Creates five discount sensitivity points centered "
+                        "on the current scenario assumption while keeping "
+                        "all resulting discount rates valid."
+                    ),
+                )
+            else:
+                sensitivity_span_pp = 0.0
+                st.info(
+                    "Move the discount assumption away from its valid "
+                    "boundary to run a wider discount sensitivity."
+                )
+        else:
+            sensitivity_span_pp = st.slider(
+                "Sensitivity span",
+                min_value=2.0,
+                max_value=20.0,
+                value=10.0,
+                step=1.0,
+                format="± %.1f%%",
+                key="scenario_percent_sensitivity_span",
+                help=(
+                    "Creates five sensitivity points centered on the "
+                    "current assumption for the selected driver."
+                ),
+            )
 
     sensitivity_points_pp = (
         sensitivity_center_pp
@@ -2204,9 +2646,18 @@ with scenario_tab:
         values=sensitivity_values,
         volume_pct=scenario_inputs_decimal["volume_pct"],
         price_pct=scenario_inputs_decimal["price_pct"],
+        discount_rate_delta=scenario_inputs_decimal[
+            "discount_rate_delta"
+        ],
         unit_cost_pct=scenario_inputs_decimal["unit_cost_pct"],
         headcount_pct=scenario_inputs_decimal["headcount_pct"],
         non_payroll_opex_pct=scenario_inputs_decimal["non_payroll_opex_pct"],
+    )
+
+    sensitivity_input_column = (
+        "Input change (pp)"
+        if sensitivity_driver == "discount"
+        else "Input change (%)"
     )
 
     sensitivity_rows = []
@@ -2214,7 +2665,7 @@ with scenario_tab:
     for record in sensitivity_records:
         sensitivity_rows.append(
             {
-                "Input change (%)": float(
+                sensitivity_input_column: float(
                     record[
                         "input_change_pct"
                     ]
@@ -2286,9 +2737,13 @@ with scenario_tab:
         width="stretch",
         hide_index=True,
         column_config={
-            "Input change (%)": (
+            sensitivity_input_column: (
                 st.column_config.NumberColumn(
-                    format="%.1f%%",
+                    format=(
+                        "%.1f pp"
+                        if sensitivity_driver == "discount"
+                        else "%.1f%%"
+                    ),
                 )
             ),
             "Revenue change (NOK m)": (
@@ -2360,12 +2815,12 @@ with scenario_tab:
         sensitivity_chart = (
             sensitivity_frame[
                 [
-                    "Input change (%)",
+                    sensitivity_input_column,
                     sensitivity_metric_column,
                 ]
             ]
             .set_index(
-                "Input change (%)"
+                sensitivity_input_column
             )
         )
 
