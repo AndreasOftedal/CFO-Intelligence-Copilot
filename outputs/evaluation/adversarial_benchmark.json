@@ -1,0 +1,1500 @@
+{
+  "metadata": {
+    "benchmark_name": "Northstar Adversarial Evidence Benchmark",
+    "version": "1.0",
+    "case_count": 32,
+    "purpose": "Deterministically test entity matching, driver matching, scope handling, directional guardrails, evidence authorization and correct abstention before model generation.",
+    "production_data_isolation": true,
+    "benchmark_type": "deterministic_adversarial_routing",
+    "api_request_sent": false,
+    "ground_truth_used_by_model": false
+  },
+  "summary": {
+    "overall_passed": true,
+    "case_count": 32,
+    "cases_passed": 32,
+    "case_pass_rate": 1.0,
+    "finding_evaluation_count": 38,
+    "routing_accuracy": 1.0,
+    "evidence_authorization_accuracy": 1.0,
+    "correct_abstention_rate": 1.0,
+    "unsupported_explanation_rate": 0.0,
+    "forbidden_evidence_use_count": 0,
+    "category_summary": {
+      "ambiguous_evidence": {
+        "cases": 3,
+        "passed": 3,
+        "pass_rate": 1.0
+      },
+      "directional_conflict": {
+        "cases": 4,
+        "passed": 4,
+        "pass_rate": 1.0
+      },
+      "multi_event": {
+        "cases": 3,
+        "passed": 3,
+        "pass_rate": 1.0
+      },
+      "no_evidence": {
+        "cases": 6,
+        "passed": 6,
+        "pass_rate": 1.0
+      },
+      "valid_supported": {
+        "cases": 6,
+        "passed": 6,
+        "pass_rate": 1.0
+      },
+      "wrong_driver": {
+        "cases": 5,
+        "passed": 5,
+        "pass_rate": 1.0
+      },
+      "wrong_entity": {
+        "cases": 5,
+        "passed": 5,
+        "pass_rate": 1.0
+      }
+    }
+  },
+  "cases": [
+    {
+      "case_id": "B001",
+      "case_type": "valid_supported",
+      "description": "UK country shortfall with narrower UK Sensor X distributor delay evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::UK",
+          "routing": "reached_ai",
+          "accepted_evidence_ids": [
+            "BENCH-001"
+          ],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-001",
+              "support_status": "partial_support"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "country::UK",
+              "evidence_id": "BENCH-001",
+              "finding_driver": "volume_mix",
+              "impact_field": "primary_driver_impact_nok",
+              "finding_driver_impact_nok": -4000000.0,
+              "evidence_direction": "negative_ebitda",
+              "status": "directionally_consistent",
+              "reason": "Evidence direction is consistent with the sign of the calculated EBITDA-directional impact. Driver source: finding."
+            }
+          ],
+          "abstained": false,
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-001"
+          ],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": false,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B002",
+      "case_type": "valid_supported",
+      "description": "Sensor X product shortfall with narrower UK distributor evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "product::Sensor X",
+          "routing": "reached_ai",
+          "accepted_evidence_ids": [
+            "BENCH-002"
+          ],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-002",
+              "support_status": "partial_support"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "product::Sensor X",
+              "evidence_id": "BENCH-002",
+              "finding_driver": "volume_mix",
+              "impact_field": "primary_driver_impact_nok",
+              "finding_driver_impact_nok": -3000000.0,
+              "evidence_direction": "negative_ebitda",
+              "status": "directionally_consistent",
+              "reason": "Evidence direction is consistent with the sign of the calculated EBITDA-directional impact. Driver source: finding."
+            }
+          ],
+          "abstained": false,
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-002"
+          ],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": false,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B003",
+      "case_type": "valid_supported",
+      "description": "Germany unit-cost deterioration with Germany EdgeHub Pro surcharge evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::Germany",
+          "routing": "reached_ai",
+          "accepted_evidence_ids": [
+            "BENCH-003"
+          ],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-003",
+              "support_status": "partial_support"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "country::Germany",
+              "evidence_id": "BENCH-003",
+              "finding_driver": "unit_cost",
+              "impact_field": "primary_driver_impact_nok",
+              "finding_driver_impact_nok": -2500000.0,
+              "evidence_direction": "negative_ebitda",
+              "status": "directionally_consistent",
+              "reason": "Evidence direction is consistent with the sign of the calculated EBITDA-directional impact. Driver source: finding."
+            }
+          ],
+          "abstained": false,
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-003"
+          ],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": false,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B004",
+      "case_type": "valid_supported",
+      "description": "EdgeHub Pro unit-cost deterioration with exact-product surcharge evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "product::EdgeHub Pro",
+          "routing": "reached_ai",
+          "accepted_evidence_ids": [
+            "BENCH-004"
+          ],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-004",
+              "support_status": "partial_support"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "product::EdgeHub Pro",
+              "evidence_id": "BENCH-004",
+              "finding_driver": "unit_cost",
+              "impact_field": "primary_driver_impact_nok",
+              "finding_driver_impact_nok": -2000000.0,
+              "evidence_direction": "negative_ebitda",
+              "status": "directionally_consistent",
+              "reason": "Evidence direction is consistent with the sign of the calculated EBITDA-directional impact. Driver source: finding."
+            }
+          ],
+          "abstained": false,
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-004"
+          ],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": false,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B005",
+      "case_type": "valid_supported",
+      "description": "Contractor OPEX overrun with contractor-spend evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "opex_account::Contractors",
+          "routing": "reached_ai",
+          "accepted_evidence_ids": [
+            "BENCH-005"
+          ],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-005",
+              "support_status": "partial_support"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "opex_account::Contractors",
+              "evidence_id": "BENCH-005",
+              "finding_driver": "non_payroll",
+              "impact_field": "ebitda_impact_nok",
+              "finding_driver_impact_nok": -1800000.0,
+              "evidence_direction": "negative_ebitda",
+              "status": "directionally_consistent",
+              "reason": "Evidence direction is consistent with the sign of the calculated EBITDA-directional impact. Driver source: finding."
+            }
+          ],
+          "abstained": false,
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-005"
+          ],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": false,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B006",
+      "case_type": "valid_supported",
+      "description": "Product & R&D cost-centre overrun with narrower contractor evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "cost_centre::Product & R&D",
+          "routing": "reached_ai",
+          "accepted_evidence_ids": [
+            "BENCH-006"
+          ],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-006",
+              "support_status": "partial_support"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "cost_centre::Product & R&D",
+              "evidence_id": "BENCH-006",
+              "finding_driver": "non_payroll",
+              "impact_field": "ebitda_impact_nok",
+              "finding_driver_impact_nok": -1800000.0,
+              "evidence_direction": "negative_ebitda",
+              "status": "directionally_consistent",
+              "reason": "Evidence direction is consistent with the sign of the calculated EBITDA-directional impact. Driver source: approved_evidence."
+            }
+          ],
+          "abstained": false,
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-006"
+          ],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": false,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B007",
+      "case_type": "no_evidence",
+      "description": "Material finding with no analyst-visible causal evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::Denmark",
+          "routing": "insufficient_evidence",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "insufficient_evidence",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B008",
+      "case_type": "no_evidence",
+      "description": "Material finding with no analyst-visible causal evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::Netherlands",
+          "routing": "insufficient_evidence",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "insufficient_evidence",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B009",
+      "case_type": "no_evidence",
+      "description": "Material finding with no analyst-visible causal evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "product::Control Mini",
+          "routing": "insufficient_evidence",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "insufficient_evidence",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B010",
+      "case_type": "no_evidence",
+      "description": "Material finding with no analyst-visible causal evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "product::Connectivity Pack",
+          "routing": "insufficient_evidence",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "insufficient_evidence",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B011",
+      "case_type": "no_evidence",
+      "description": "Material finding with no analyst-visible causal evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "opex_account::Marketing",
+          "routing": "insufficient_evidence",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "insufficient_evidence",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B012",
+      "case_type": "no_evidence",
+      "description": "Material finding with no analyst-visible causal evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "cost_centre::Technology",
+          "routing": "insufficient_evidence",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "insufficient_evidence",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B013",
+      "case_type": "wrong_entity",
+      "description": "Germany volume finding with Netherlands volume evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::Germany",
+          "routing": "rejected_by_grounding",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-013",
+              "support_status": "not_relevant"
+            }
+          ],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-013"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B014",
+      "case_type": "wrong_entity",
+      "description": "Sensor X finding with Sensor X Pro evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "product::Sensor X",
+          "routing": "rejected_by_grounding",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-014",
+              "support_status": "not_relevant"
+            }
+          ],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-014"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B015",
+      "case_type": "wrong_entity",
+      "description": "Contractors finding with Marketing account evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "opex_account::Contractors",
+          "routing": "rejected_by_grounding",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-015",
+              "support_status": "not_relevant"
+            }
+          ],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-015"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B016",
+      "case_type": "wrong_entity",
+      "description": "Norway finding with Sweden evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::Norway",
+          "routing": "rejected_by_grounding",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-016",
+              "support_status": "not_relevant"
+            }
+          ],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-016"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B017",
+      "case_type": "wrong_entity",
+      "description": "Sales cost-centre finding with Operations evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "cost_centre::Sales",
+          "routing": "rejected_by_grounding",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-017",
+              "support_status": "not_relevant"
+            }
+          ],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-017"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B018",
+      "case_type": "wrong_driver",
+      "description": "Germany volume finding with Germany unit-cost evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::Germany",
+          "routing": "rejected_by_grounding",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-018",
+              "support_status": "related_not_explanatory"
+            }
+          ],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-018"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B019",
+      "case_type": "wrong_driver",
+      "description": "UK unit-cost finding with UK volume evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::UK",
+          "routing": "rejected_by_grounding",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-019",
+              "support_status": "related_not_explanatory"
+            }
+          ],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-019"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B020",
+      "case_type": "wrong_driver",
+      "description": "Contractor non-payroll finding with employee-cost evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "opex_account::Contractors",
+          "routing": "rejected_by_grounding",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-020",
+              "support_status": "related_not_explanatory"
+            }
+          ],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-020"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B021",
+      "case_type": "wrong_driver",
+      "description": "Sensor X discount finding with volume evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "product::Sensor X",
+          "routing": "rejected_by_grounding",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-021",
+              "support_status": "related_not_explanatory"
+            }
+          ],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-021"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B022",
+      "case_type": "wrong_driver",
+      "description": "Denmark list-price finding with discount evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::Denmark",
+          "routing": "rejected_by_grounding",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-022",
+              "support_status": "related_not_explanatory"
+            }
+          ],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-022"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B023",
+      "case_type": "directional_conflict",
+      "description": "Negative Norway volume variance with positive shipment acceleration evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::Norway",
+          "routing": "withheld_by_directional_guardrail",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-023",
+              "support_status": "partial_support"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "country::Norway",
+              "evidence_id": "BENCH-023",
+              "finding_driver": "volume_mix",
+              "impact_field": "primary_driver_impact_nok",
+              "finding_driver_impact_nok": -1500000.0,
+              "evidence_direction": "positive_ebitda",
+              "status": "offsetting",
+              "reason": "Evidence direction is opposite to the sign of the calculated EBITDA-directional impact and therefore represents an offsetting or countervailing factor rather than an explanation of the variance. Driver source: finding."
+            }
+          ],
+          "abstained": true,
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-023"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B024",
+      "case_type": "directional_conflict",
+      "description": "Positive UK volume contribution with shipment-delay evidence.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::UK",
+          "routing": "withheld_by_directional_guardrail",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-024",
+              "support_status": "partial_support"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "country::UK",
+              "evidence_id": "BENCH-024",
+              "finding_driver": "volume_mix",
+              "impact_field": "primary_driver_impact_nok",
+              "finding_driver_impact_nok": 1500000.0,
+              "evidence_direction": "negative_ebitda",
+              "status": "offsetting",
+              "reason": "Evidence direction is opposite to the sign of the calculated EBITDA-directional impact and therefore represents an offsetting or countervailing factor rather than an explanation of the variance. Driver source: finding."
+            }
+          ],
+          "abstained": true,
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-024"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B025",
+      "case_type": "directional_conflict",
+      "description": "Positive unit-cost contribution with evidence of increased unit purchase cost.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::Germany",
+          "routing": "withheld_by_directional_guardrail",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-025",
+              "support_status": "partial_support"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "country::Germany",
+              "evidence_id": "BENCH-025",
+              "finding_driver": "unit_cost",
+              "impact_field": "primary_driver_impact_nok",
+              "finding_driver_impact_nok": 1200000.0,
+              "evidence_direction": "negative_ebitda",
+              "status": "offsetting",
+              "reason": "Evidence direction is opposite to the sign of the calculated EBITDA-directional impact and therefore represents an offsetting or countervailing factor rather than an explanation of the variance. Driver source: finding."
+            }
+          ],
+          "abstained": true,
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-025"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B026",
+      "case_type": "directional_conflict",
+      "description": "Positive contractor OPEX contribution with evidence of additional contractor spend.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "opex_account::Contractors",
+          "routing": "withheld_by_directional_guardrail",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-026",
+              "support_status": "partial_support"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "opex_account::Contractors",
+              "evidence_id": "BENCH-026",
+              "finding_driver": "non_payroll",
+              "impact_field": "ebitda_impact_nok",
+              "finding_driver_impact_nok": 1000000.0,
+              "evidence_direction": "negative_ebitda",
+              "status": "offsetting",
+              "reason": "Evidence direction is opposite to the sign of the calculated EBITDA-directional impact and therefore represents an offsetting or countervailing factor rather than an explanation of the variance. Driver source: finding."
+            }
+          ],
+          "abstained": true,
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-026"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B027",
+      "case_type": "ambiguous_evidence",
+      "description": "Matching UK volume evidence with no safely inferable direction.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::UK",
+          "routing": "withheld_by_directional_guardrail",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-027",
+              "support_status": "partial_support"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "country::UK",
+              "evidence_id": "BENCH-027",
+              "finding_driver": "volume_mix",
+              "impact_field": "primary_driver_impact_nok",
+              "finding_driver_impact_nok": -1100000.0,
+              "evidence_direction": "unknown",
+              "status": "direction_unknown",
+              "reason": "Approved evidence is relevant, but its directional financial implication cannot be determined conservatively."
+            }
+          ],
+          "abstained": true,
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-027"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B028",
+      "case_type": "ambiguous_evidence",
+      "description": "Matching Germany unit-cost evidence with no safely inferable direction.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::Germany",
+          "routing": "withheld_by_directional_guardrail",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-028",
+              "support_status": "partial_support"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "country::Germany",
+              "evidence_id": "BENCH-028",
+              "finding_driver": "unit_cost",
+              "impact_field": "primary_driver_impact_nok",
+              "finding_driver_impact_nok": -1100000.0,
+              "evidence_direction": "unknown",
+              "status": "direction_unknown",
+              "reason": "Approved evidence is relevant, but its directional financial implication cannot be determined conservatively."
+            }
+          ],
+          "abstained": true,
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-028"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B029",
+      "case_type": "ambiguous_evidence",
+      "description": "Matching contractor evidence with no safely inferable spend direction.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "opex_account::Contractors",
+          "routing": "withheld_by_directional_guardrail",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-029",
+              "support_status": "partial_support"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "opex_account::Contractors",
+              "evidence_id": "BENCH-029",
+              "finding_driver": "non_payroll",
+              "impact_field": "ebitda_impact_nok",
+              "finding_driver_impact_nok": -1100000.0,
+              "evidence_direction": "unknown",
+              "status": "direction_unknown",
+              "reason": "Approved evidence is relevant, but its directional financial implication cannot be determined conservatively."
+            }
+          ],
+          "abstained": true,
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-029"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B030",
+      "case_type": "multi_event",
+      "description": "Two supported drivers plus one same-entity wrong-driver trap.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::UK",
+          "routing": "reached_ai",
+          "accepted_evidence_ids": [
+            "BENCH-030A"
+          ],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-030A",
+              "support_status": "partial_support"
+            },
+            {
+              "evidence_id": "BENCH-030B",
+              "support_status": "not_relevant"
+            },
+            {
+              "evidence_id": "BENCH-030C",
+              "support_status": "not_relevant"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "country::UK",
+              "evidence_id": "BENCH-030A",
+              "finding_driver": "volume_mix",
+              "impact_field": "primary_driver_impact_nok",
+              "finding_driver_impact_nok": -3000000.0,
+              "evidence_direction": "negative_ebitda",
+              "status": "directionally_consistent",
+              "reason": "Evidence direction is consistent with the sign of the calculated EBITDA-directional impact. Driver source: finding."
+            }
+          ],
+          "abstained": false,
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-030A"
+          ],
+          "forbidden_evidence_ids": [
+            "BENCH-030B",
+            "BENCH-030C"
+          ],
+          "expected_abstention": false,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        },
+        {
+          "finding_id": "opex_account::Contractors",
+          "routing": "reached_ai",
+          "accepted_evidence_ids": [
+            "BENCH-030B"
+          ],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-030A",
+              "support_status": "not_relevant"
+            },
+            {
+              "evidence_id": "BENCH-030B",
+              "support_status": "partial_support"
+            },
+            {
+              "evidence_id": "BENCH-030C",
+              "support_status": "not_relevant"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "opex_account::Contractors",
+              "evidence_id": "BENCH-030B",
+              "finding_driver": "non_payroll",
+              "impact_field": "ebitda_impact_nok",
+              "finding_driver_impact_nok": -1800000.0,
+              "evidence_direction": "negative_ebitda",
+              "status": "directionally_consistent",
+              "reason": "Evidence direction is consistent with the sign of the calculated EBITDA-directional impact. Driver source: finding."
+            }
+          ],
+          "abstained": false,
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-030B"
+          ],
+          "forbidden_evidence_ids": [
+            "BENCH-030A",
+            "BENCH-030C"
+          ],
+          "expected_abstention": false,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        },
+        {
+          "finding_id": "country::Germany",
+          "routing": "rejected_by_grounding",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-030A",
+              "support_status": "not_relevant"
+            },
+            {
+              "evidence_id": "BENCH-030B",
+              "support_status": "not_relevant"
+            },
+            {
+              "evidence_id": "BENCH-030C",
+              "support_status": "related_not_explanatory"
+            }
+          ],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-030A",
+            "BENCH-030B",
+            "BENCH-030C"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B031",
+      "case_type": "multi_event",
+      "description": "One supported finding, one directional conflict and one unrelated-evidence rejection.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "country::Germany",
+          "routing": "reached_ai",
+          "accepted_evidence_ids": [
+            "BENCH-031A"
+          ],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-031A",
+              "support_status": "partial_support"
+            },
+            {
+              "evidence_id": "BENCH-031B",
+              "support_status": "not_relevant"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "country::Germany",
+              "evidence_id": "BENCH-031A",
+              "finding_driver": "unit_cost",
+              "impact_field": "primary_driver_impact_nok",
+              "finding_driver_impact_nok": -1900000.0,
+              "evidence_direction": "negative_ebitda",
+              "status": "directionally_consistent",
+              "reason": "Evidence direction is consistent with the sign of the calculated EBITDA-directional impact. Driver source: finding."
+            }
+          ],
+          "abstained": false,
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-031A"
+          ],
+          "forbidden_evidence_ids": [
+            "BENCH-031B"
+          ],
+          "expected_abstention": false,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        },
+        {
+          "finding_id": "country::Norway",
+          "routing": "withheld_by_directional_guardrail",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-031A",
+              "support_status": "not_relevant"
+            },
+            {
+              "evidence_id": "BENCH-031B",
+              "support_status": "partial_support"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "country::Norway",
+              "evidence_id": "BENCH-031B",
+              "finding_driver": "volume_mix",
+              "impact_field": "primary_driver_impact_nok",
+              "finding_driver_impact_nok": -1400000.0,
+              "evidence_direction": "positive_ebitda",
+              "status": "offsetting",
+              "reason": "Evidence direction is opposite to the sign of the calculated EBITDA-directional impact and therefore represents an offsetting or countervailing factor rather than an explanation of the variance. Driver source: finding."
+            }
+          ],
+          "abstained": true,
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-031A",
+            "BENCH-031B"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        },
+        {
+          "finding_id": "country::Sweden",
+          "routing": "rejected_by_grounding",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-031A",
+              "support_status": "not_relevant"
+            },
+            {
+              "evidence_id": "BENCH-031B",
+              "support_status": "not_relevant"
+            }
+          ],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-031A",
+            "BENCH-031B"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "case_id": "B032",
+      "case_type": "multi_event",
+      "description": "Two supported findings with a product-entity trap for Sensor X versus Sensor X Pro.",
+      "passed": true,
+      "findings": [
+        {
+          "finding_id": "product::EdgeHub Pro",
+          "routing": "reached_ai",
+          "accepted_evidence_ids": [
+            "BENCH-032A"
+          ],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-032A",
+              "support_status": "partial_support"
+            },
+            {
+              "evidence_id": "BENCH-032B",
+              "support_status": "not_relevant"
+            },
+            {
+              "evidence_id": "BENCH-032C",
+              "support_status": "not_relevant"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "product::EdgeHub Pro",
+              "evidence_id": "BENCH-032A",
+              "finding_driver": "unit_cost",
+              "impact_field": "primary_driver_impact_nok",
+              "finding_driver_impact_nok": -1700000.0,
+              "evidence_direction": "negative_ebitda",
+              "status": "directionally_consistent",
+              "reason": "Evidence direction is consistent with the sign of the calculated EBITDA-directional impact. Driver source: finding."
+            }
+          ],
+          "abstained": false,
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-032A"
+          ],
+          "forbidden_evidence_ids": [
+            "BENCH-032B",
+            "BENCH-032C"
+          ],
+          "expected_abstention": false,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        },
+        {
+          "finding_id": "product::Sensor X",
+          "routing": "rejected_by_grounding",
+          "accepted_evidence_ids": [],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-032A",
+              "support_status": "not_relevant"
+            },
+            {
+              "evidence_id": "BENCH-032B",
+              "support_status": "not_relevant"
+            },
+            {
+              "evidence_id": "BENCH-032C",
+              "support_status": "not_relevant"
+            }
+          ],
+          "direction_assessments": [],
+          "abstained": true,
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-032A",
+            "BENCH-032B",
+            "BENCH-032C"
+          ],
+          "expected_abstention": true,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        },
+        {
+          "finding_id": "cost_centre::Product & R&D",
+          "routing": "reached_ai",
+          "accepted_evidence_ids": [
+            "BENCH-032C"
+          ],
+          "grounding_assessments": [
+            {
+              "evidence_id": "BENCH-032A",
+              "support_status": "not_relevant"
+            },
+            {
+              "evidence_id": "BENCH-032B",
+              "support_status": "not_relevant"
+            },
+            {
+              "evidence_id": "BENCH-032C",
+              "support_status": "partial_support"
+            }
+          ],
+          "direction_assessments": [
+            {
+              "finding_id": "cost_centre::Product & R&D",
+              "evidence_id": "BENCH-032C",
+              "finding_driver": "non_payroll",
+              "impact_field": "ebitda_impact_nok",
+              "finding_driver_impact_nok": -1600000.0,
+              "evidence_direction": "negative_ebitda",
+              "status": "directionally_consistent",
+              "reason": "Evidence direction is consistent with the sign of the calculated EBITDA-directional impact. Driver source: approved_evidence."
+            }
+          ],
+          "abstained": false,
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-032C"
+          ],
+          "forbidden_evidence_ids": [
+            "BENCH-032A",
+            "BENCH-032B"
+          ],
+          "expected_abstention": false,
+          "routing_correct": true,
+          "authorization_correct": true,
+          "forbidden_evidence_used": [],
+          "abstention_correct": true,
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1609 @@
+{
+  "metadata": {
+    "benchmark_name": "Northstar Adversarial Evidence Benchmark",
+    "version": "1.0",
+    "case_count": 32,
+    "purpose": "Deterministically test entity matching, driver matching, scope handling, directional guardrails, evidence authorization and correct abstention before model generation.",
+    "production_data_isolation": true
+  },
+  "cases": [
+    {
+      "case_id": "B001",
+      "case_type": "valid_supported",
+      "description": "UK country shortfall with narrower UK Sensor X distributor delay evidence.",
+      "findings": [
+        {
+          "finding_id": "country::UK",
+          "finding_type": "country",
+          "entity": "UK",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": -4000000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-001",
+          "title": "UK Sensor X distributor shipment delay",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "volume_mix",
+          "entities": {
+            "countries": [
+              "UK"
+            ],
+            "products": [
+              "Sensor X"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": [
+              "Distributor"
+            ]
+          },
+          "evidence_text": "Sensor X shipments through the UK distributor channel were lower than expected in August. A major implementation moved into September, delaying planned distributor demand."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "country::UK",
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-001"
+          ],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": false
+        }
+      ]
+    },
+    {
+      "case_id": "B002",
+      "case_type": "valid_supported",
+      "description": "Sensor X product shortfall with narrower UK distributor evidence.",
+      "findings": [
+        {
+          "finding_id": "product::Sensor X",
+          "finding_type": "product",
+          "entity": "Sensor X",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": -3000000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-002",
+          "title": "Sensor X distributor shipment delay",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "volume_mix",
+          "entities": {
+            "countries": [
+              "UK"
+            ],
+            "products": [
+              "Sensor X"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": [
+              "Distributor"
+            ]
+          },
+          "evidence_text": "Sensor X shipments were lower than expected in August because customer demand was delayed into September."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "product::Sensor X",
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-002"
+          ],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": false
+        }
+      ]
+    },
+    {
+      "case_id": "B003",
+      "case_type": "valid_supported",
+      "description": "Germany unit-cost deterioration with Germany EdgeHub Pro surcharge evidence.",
+      "findings": [
+        {
+          "finding_id": "country::Germany",
+          "finding_type": "country",
+          "entity": "Germany",
+          "calculated_fact": {
+            "primary_driver": "unit_cost",
+            "primary_driver_impact_nok": -2500000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-003",
+          "title": "Germany EdgeHub Pro procurement surcharge",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "unit_cost",
+          "entities": {
+            "countries": [
+              "Germany"
+            ],
+            "products": [
+              "EdgeHub Pro"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "A temporary supplier surcharge remained in effect. The surcharge increased unit purchase cost by approximately 8%."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "country::Germany",
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-003"
+          ],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": false
+        }
+      ]
+    },
+    {
+      "case_id": "B004",
+      "case_type": "valid_supported",
+      "description": "EdgeHub Pro unit-cost deterioration with exact-product surcharge evidence.",
+      "findings": [
+        {
+          "finding_id": "product::EdgeHub Pro",
+          "finding_type": "product",
+          "entity": "EdgeHub Pro",
+          "calculated_fact": {
+            "primary_driver": "unit_cost",
+            "primary_driver_impact_nok": -2000000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-004",
+          "title": "EdgeHub Pro procurement surcharge",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "unit_cost",
+          "entities": {
+            "countries": [
+              "Germany"
+            ],
+            "products": [
+              "EdgeHub Pro"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "A supplier surcharge increased unit purchase cost for EdgeHub Pro units during August."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "product::EdgeHub Pro",
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-004"
+          ],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": false
+        }
+      ]
+    },
+    {
+      "case_id": "B005",
+      "case_type": "valid_supported",
+      "description": "Contractor OPEX overrun with contractor-spend evidence.",
+      "findings": [
+        {
+          "finding_id": "opex_account::Contractors",
+          "finding_type": "opex_account",
+          "entity": "Contractors",
+          "calculated_fact": {
+            "primary_driver": "non_payroll",
+            "ebitda_impact_nok": -1800000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-005",
+          "title": "Product & R&D contractor acceleration",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "non_payroll",
+          "entities": {
+            "countries": [],
+            "products": [],
+            "cost_centres": [
+              "Product & R&D"
+            ],
+            "accounts": [
+              "Contractors"
+            ],
+            "segments": []
+          },
+          "evidence_text": "Additional contractor spend was approximately NOK 1.8m above the normal monthly run-rate."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "opex_account::Contractors",
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-005"
+          ],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": false
+        }
+      ]
+    },
+    {
+      "case_id": "B006",
+      "case_type": "valid_supported",
+      "description": "Product & R&D cost-centre overrun with narrower contractor evidence.",
+      "findings": [
+        {
+          "finding_id": "cost_centre::Product & R&D",
+          "finding_type": "cost_centre",
+          "entity": "Product & R&D",
+          "calculated_fact": {
+            "primary_driver": null,
+            "ebitda_impact_nok": -1800000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-006",
+          "title": "Product & R&D contractor acceleration",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "non_payroll",
+          "entities": {
+            "countries": [],
+            "products": [],
+            "cost_centres": [
+              "Product & R&D"
+            ],
+            "accounts": [
+              "Contractors"
+            ],
+            "segments": []
+          },
+          "evidence_text": "External engineering resources were increased. Additional contractor spend was above the normal monthly run-rate."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "cost_centre::Product & R&D",
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-006"
+          ],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": false
+        }
+      ]
+    },
+    {
+      "case_id": "B007",
+      "case_type": "no_evidence",
+      "description": "Material finding with no analyst-visible causal evidence.",
+      "findings": [
+        {
+          "finding_id": "country::Denmark",
+          "finding_type": "country",
+          "entity": "Denmark",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": -2000000
+          }
+        }
+      ],
+      "evidence": [],
+      "expected": [
+        {
+          "finding_id": "country::Denmark",
+          "expected_routing": "insufficient_evidence",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B008",
+      "case_type": "no_evidence",
+      "description": "Material finding with no analyst-visible causal evidence.",
+      "findings": [
+        {
+          "finding_id": "country::Netherlands",
+          "finding_type": "country",
+          "entity": "Netherlands",
+          "calculated_fact": {
+            "primary_driver": "unit_cost",
+            "primary_driver_impact_nok": -1500000
+          }
+        }
+      ],
+      "evidence": [],
+      "expected": [
+        {
+          "finding_id": "country::Netherlands",
+          "expected_routing": "insufficient_evidence",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B009",
+      "case_type": "no_evidence",
+      "description": "Material finding with no analyst-visible causal evidence.",
+      "findings": [
+        {
+          "finding_id": "product::Control Mini",
+          "finding_type": "product",
+          "entity": "Control Mini",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": -1200000
+          }
+        }
+      ],
+      "evidence": [],
+      "expected": [
+        {
+          "finding_id": "product::Control Mini",
+          "expected_routing": "insufficient_evidence",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B010",
+      "case_type": "no_evidence",
+      "description": "Material finding with no analyst-visible causal evidence.",
+      "findings": [
+        {
+          "finding_id": "product::Connectivity Pack",
+          "finding_type": "product",
+          "entity": "Connectivity Pack",
+          "calculated_fact": {
+            "primary_driver": "discount",
+            "primary_driver_impact_nok": -900000
+          }
+        }
+      ],
+      "evidence": [],
+      "expected": [
+        {
+          "finding_id": "product::Connectivity Pack",
+          "expected_routing": "insufficient_evidence",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B011",
+      "case_type": "no_evidence",
+      "description": "Material finding with no analyst-visible causal evidence.",
+      "findings": [
+        {
+          "finding_id": "opex_account::Marketing",
+          "finding_type": "opex_account",
+          "entity": "Marketing",
+          "calculated_fact": {
+            "primary_driver": "non_payroll",
+            "ebitda_impact_nok": -1100000
+          }
+        }
+      ],
+      "evidence": [],
+      "expected": [
+        {
+          "finding_id": "opex_account::Marketing",
+          "expected_routing": "insufficient_evidence",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B012",
+      "case_type": "no_evidence",
+      "description": "Material finding with no analyst-visible causal evidence.",
+      "findings": [
+        {
+          "finding_id": "cost_centre::Technology",
+          "finding_type": "cost_centre",
+          "entity": "Technology",
+          "calculated_fact": {
+            "primary_driver": null,
+            "ebitda_impact_nok": -850000
+          }
+        }
+      ],
+      "evidence": [],
+      "expected": [
+        {
+          "finding_id": "cost_centre::Technology",
+          "expected_routing": "insufficient_evidence",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B013",
+      "case_type": "wrong_entity",
+      "description": "Germany volume finding with Netherlands volume evidence.",
+      "findings": [
+        {
+          "finding_id": "country::Germany",
+          "finding_type": "country",
+          "entity": "Germany",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": -2000000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-013",
+          "title": "Netherlands distributor delay",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "volume_mix",
+          "entities": {
+            "countries": [
+              "Netherlands"
+            ],
+            "products": [
+              "EdgeHub Core"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "Shipments in the Netherlands were lower than expected because demand was delayed."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "country::Germany",
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-013"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B014",
+      "case_type": "wrong_entity",
+      "description": "Sensor X finding with Sensor X Pro evidence.",
+      "findings": [
+        {
+          "finding_id": "product::Sensor X",
+          "finding_type": "product",
+          "entity": "Sensor X",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": -1600000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-014",
+          "title": "Sensor X Pro shipment acceleration",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "volume_mix",
+          "entities": {
+            "countries": [
+              "Norway"
+            ],
+            "products": [
+              "Sensor X Pro"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "Enterprise shipments of Sensor X Pro were accelerated into August after earlier customer acceptance."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "product::Sensor X",
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-014"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B015",
+      "case_type": "wrong_entity",
+      "description": "Contractors finding with Marketing account evidence.",
+      "findings": [
+        {
+          "finding_id": "opex_account::Contractors",
+          "finding_type": "opex_account",
+          "entity": "Contractors",
+          "calculated_fact": {
+            "primary_driver": "non_payroll",
+            "ebitda_impact_nok": -1300000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-015",
+          "title": "Marketing campaign overspend",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "non_payroll",
+          "entities": {
+            "countries": [],
+            "products": [],
+            "cost_centres": [
+              "Sales"
+            ],
+            "accounts": [
+              "Marketing"
+            ],
+            "segments": []
+          },
+          "evidence_text": "Additional marketing spend was above the normal monthly run-rate."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "opex_account::Contractors",
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-015"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B016",
+      "case_type": "wrong_entity",
+      "description": "Norway finding with Sweden evidence.",
+      "findings": [
+        {
+          "finding_id": "country::Norway",
+          "finding_type": "country",
+          "entity": "Norway",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": -1900000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-016",
+          "title": "Sweden shipment delay",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "volume_mix",
+          "entities": {
+            "countries": [
+              "Sweden"
+            ],
+            "products": [
+              "Sensor X"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "Shipments in Sweden were lower than expected and customer demand was delayed."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "country::Norway",
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-016"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B017",
+      "case_type": "wrong_entity",
+      "description": "Sales cost-centre finding with Operations evidence.",
+      "findings": [
+        {
+          "finding_id": "cost_centre::Sales",
+          "finding_type": "cost_centre",
+          "entity": "Sales",
+          "calculated_fact": {
+            "primary_driver": null,
+            "ebitda_impact_nok": -1000000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-017",
+          "title": "Operations travel increase",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "non_payroll",
+          "entities": {
+            "countries": [],
+            "products": [],
+            "cost_centres": [
+              "Operations"
+            ],
+            "accounts": [
+              "Travel"
+            ],
+            "segments": []
+          },
+          "evidence_text": "Additional travel spend was above the normal monthly run-rate."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "cost_centre::Sales",
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-017"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B018",
+      "case_type": "wrong_driver",
+      "description": "Germany volume finding with Germany unit-cost evidence.",
+      "findings": [
+        {
+          "finding_id": "country::Germany",
+          "finding_type": "country",
+          "entity": "Germany",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": -2300000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-018",
+          "title": "Germany procurement surcharge",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "unit_cost",
+          "entities": {
+            "countries": [
+              "Germany"
+            ],
+            "products": [
+              "EdgeHub Pro"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "A supplier surcharge increased unit purchase cost in Germany."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "country::Germany",
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-018"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B019",
+      "case_type": "wrong_driver",
+      "description": "UK unit-cost finding with UK volume evidence.",
+      "findings": [
+        {
+          "finding_id": "country::UK",
+          "finding_type": "country",
+          "entity": "UK",
+          "calculated_fact": {
+            "primary_driver": "unit_cost",
+            "primary_driver_impact_nok": -1400000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-019",
+          "title": "UK shipment delay",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "volume_mix",
+          "entities": {
+            "countries": [
+              "UK"
+            ],
+            "products": [
+              "Sensor X"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "Shipments were lower than expected because demand was delayed."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "country::UK",
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-019"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B020",
+      "case_type": "wrong_driver",
+      "description": "Contractor non-payroll finding with employee-cost evidence.",
+      "findings": [
+        {
+          "finding_id": "opex_account::Contractors",
+          "finding_type": "opex_account",
+          "entity": "Contractors",
+          "calculated_fact": {
+            "primary_driver": "non_payroll",
+            "ebitda_impact_nok": -1000000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-020",
+          "title": "Contractor compensation review",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "employee_cost",
+          "entities": {
+            "countries": [],
+            "products": [],
+            "cost_centres": [],
+            "accounts": [
+              "Contractors"
+            ],
+            "segments": []
+          },
+          "evidence_text": "Average employee cost increased during August."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "opex_account::Contractors",
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-020"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B021",
+      "case_type": "wrong_driver",
+      "description": "Sensor X discount finding with volume evidence.",
+      "findings": [
+        {
+          "finding_id": "product::Sensor X",
+          "finding_type": "product",
+          "entity": "Sensor X",
+          "calculated_fact": {
+            "primary_driver": "discount",
+            "primary_driver_impact_nok": -900000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-021",
+          "title": "Sensor X shipment delay",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "volume_mix",
+          "entities": {
+            "countries": [],
+            "products": [
+              "Sensor X"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": [
+              "Distributor"
+            ]
+          },
+          "evidence_text": "Sensor X shipments were lower than expected because demand was delayed."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "product::Sensor X",
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-021"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B022",
+      "case_type": "wrong_driver",
+      "description": "Denmark list-price finding with discount evidence.",
+      "findings": [
+        {
+          "finding_id": "country::Denmark",
+          "finding_type": "country",
+          "entity": "Denmark",
+          "calculated_fact": {
+            "primary_driver": "list_price",
+            "primary_driver_impact_nok": -800000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-022",
+          "title": "Denmark discounting",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "discount",
+          "entities": {
+            "countries": [
+              "Denmark"
+            ],
+            "products": [
+              "Control Mini"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "Discounting increased during August."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "country::Denmark",
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-022"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B023",
+      "case_type": "directional_conflict",
+      "description": "Negative Norway volume variance with positive shipment acceleration evidence.",
+      "findings": [
+        {
+          "finding_id": "country::Norway",
+          "finding_type": "country",
+          "entity": "Norway",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": -1500000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-023",
+          "title": "Norway shipment acceleration",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "volume_mix",
+          "entities": {
+            "countries": [
+              "Norway"
+            ],
+            "products": [
+              "Sensor X Pro"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "Enterprise shipments were accelerated into August after customer acceptance occurred earlier than planned."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "country::Norway",
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-023"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B024",
+      "case_type": "directional_conflict",
+      "description": "Positive UK volume contribution with shipment-delay evidence.",
+      "findings": [
+        {
+          "finding_id": "country::UK",
+          "finding_type": "country",
+          "entity": "UK",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": 1500000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-024",
+          "title": "UK shipment delay",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "volume_mix",
+          "entities": {
+            "countries": [
+              "UK"
+            ],
+            "products": [
+              "Sensor X"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "Shipments were lower than expected because a major implementation was moved into September, delaying demand."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "country::UK",
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-024"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B025",
+      "case_type": "directional_conflict",
+      "description": "Positive unit-cost contribution with evidence of increased unit purchase cost.",
+      "findings": [
+        {
+          "finding_id": "country::Germany",
+          "finding_type": "country",
+          "entity": "Germany",
+          "calculated_fact": {
+            "primary_driver": "unit_cost",
+            "primary_driver_impact_nok": 1200000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-025",
+          "title": "Germany procurement surcharge",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "unit_cost",
+          "entities": {
+            "countries": [
+              "Germany"
+            ],
+            "products": [
+              "EdgeHub Pro"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "A temporary supplier surcharge increased unit purchase cost by approximately 8%."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "country::Germany",
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-025"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B026",
+      "case_type": "directional_conflict",
+      "description": "Positive contractor OPEX contribution with evidence of additional contractor spend.",
+      "findings": [
+        {
+          "finding_id": "opex_account::Contractors",
+          "finding_type": "opex_account",
+          "entity": "Contractors",
+          "calculated_fact": {
+            "primary_driver": "non_payroll",
+            "ebitda_impact_nok": 1000000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-026",
+          "title": "Contractor acceleration",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "non_payroll",
+          "entities": {
+            "countries": [],
+            "products": [],
+            "cost_centres": [
+              "Product & R&D"
+            ],
+            "accounts": [
+              "Contractors"
+            ],
+            "segments": []
+          },
+          "evidence_text": "Additional contractor spend was above the normal monthly run-rate."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "opex_account::Contractors",
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-026"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B027",
+      "case_type": "ambiguous_evidence",
+      "description": "Matching UK volume evidence with no safely inferable direction.",
+      "findings": [
+        {
+          "finding_id": "country::UK",
+          "finding_type": "country",
+          "entity": "UK",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": -1100000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-027",
+          "title": "UK demand review",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "volume_mix",
+          "entities": {
+            "countries": [
+              "UK"
+            ],
+            "products": [
+              "Sensor X"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "Management reviewed the August demand profile and shipment timing for the UK channel."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "country::UK",
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-027"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B028",
+      "case_type": "ambiguous_evidence",
+      "description": "Matching Germany unit-cost evidence with no safely inferable direction.",
+      "findings": [
+        {
+          "finding_id": "country::Germany",
+          "finding_type": "country",
+          "entity": "Germany",
+          "calculated_fact": {
+            "primary_driver": "unit_cost",
+            "primary_driver_impact_nok": -1100000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-028",
+          "title": "Germany supplier review",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "unit_cost",
+          "entities": {
+            "countries": [
+              "Germany"
+            ],
+            "products": [
+              "EdgeHub Pro"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "Procurement reviewed supplier terms and sourcing conditions for EdgeHub Pro during August."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "country::Germany",
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-028"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B029",
+      "case_type": "ambiguous_evidence",
+      "description": "Matching contractor evidence with no safely inferable spend direction.",
+      "findings": [
+        {
+          "finding_id": "opex_account::Contractors",
+          "finding_type": "opex_account",
+          "entity": "Contractors",
+          "calculated_fact": {
+            "primary_driver": "non_payroll",
+            "ebitda_impact_nok": -1100000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-029",
+          "title": "Contractor activity review",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "non_payroll",
+          "entities": {
+            "countries": [],
+            "products": [],
+            "cost_centres": [
+              "Product & R&D"
+            ],
+            "accounts": [
+              "Contractors"
+            ],
+            "segments": []
+          },
+          "evidence_text": "Management reviewed contractor activity and resource planning during August."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "opex_account::Contractors",
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-029"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B030",
+      "case_type": "multi_event",
+      "description": "Two supported drivers plus one same-entity wrong-driver trap.",
+      "findings": [
+        {
+          "finding_id": "country::UK",
+          "finding_type": "country",
+          "entity": "UK",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": -3000000
+          }
+        },
+        {
+          "finding_id": "opex_account::Contractors",
+          "finding_type": "opex_account",
+          "entity": "Contractors",
+          "calculated_fact": {
+            "primary_driver": "non_payroll",
+            "ebitda_impact_nok": -1800000
+          }
+        },
+        {
+          "finding_id": "country::Germany",
+          "finding_type": "country",
+          "entity": "Germany",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": -2000000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-030A",
+          "title": "UK shipment delay",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "volume_mix",
+          "entities": {
+            "countries": [
+              "UK"
+            ],
+            "products": [
+              "Sensor X"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "Shipments were lower than expected because planned demand was delayed into September."
+        },
+        {
+          "evidence_id": "BENCH-030B",
+          "title": "Product & R&D contractor acceleration",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "non_payroll",
+          "entities": {
+            "countries": [],
+            "products": [],
+            "cost_centres": [
+              "Product & R&D"
+            ],
+            "accounts": [
+              "Contractors"
+            ],
+            "segments": []
+          },
+          "evidence_text": "Additional contractor spend was above the normal monthly run-rate."
+        },
+        {
+          "evidence_id": "BENCH-030C",
+          "title": "Germany procurement surcharge",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "unit_cost",
+          "entities": {
+            "countries": [
+              "Germany"
+            ],
+            "products": [
+              "EdgeHub Pro"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "A supplier surcharge increased unit purchase cost in Germany."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "country::UK",
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-030A"
+          ],
+          "forbidden_evidence_ids": [
+            "BENCH-030B",
+            "BENCH-030C"
+          ],
+          "expected_abstention": false
+        },
+        {
+          "finding_id": "opex_account::Contractors",
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-030B"
+          ],
+          "forbidden_evidence_ids": [
+            "BENCH-030A",
+            "BENCH-030C"
+          ],
+          "expected_abstention": false
+        },
+        {
+          "finding_id": "country::Germany",
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-030A",
+            "BENCH-030B",
+            "BENCH-030C"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B031",
+      "case_type": "multi_event",
+      "description": "One supported finding, one directional conflict and one unrelated-evidence rejection.",
+      "findings": [
+        {
+          "finding_id": "country::Germany",
+          "finding_type": "country",
+          "entity": "Germany",
+          "calculated_fact": {
+            "primary_driver": "unit_cost",
+            "primary_driver_impact_nok": -1900000
+          }
+        },
+        {
+          "finding_id": "country::Norway",
+          "finding_type": "country",
+          "entity": "Norway",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": -1400000
+          }
+        },
+        {
+          "finding_id": "country::Sweden",
+          "finding_type": "country",
+          "entity": "Sweden",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": -1200000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-031A",
+          "title": "Germany procurement surcharge",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "unit_cost",
+          "entities": {
+            "countries": [
+              "Germany"
+            ],
+            "products": [
+              "EdgeHub Pro"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "A supplier surcharge increased unit purchase cost in Germany."
+        },
+        {
+          "evidence_id": "BENCH-031B",
+          "title": "Norway shipment acceleration",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "volume_mix",
+          "entities": {
+            "countries": [
+              "Norway"
+            ],
+            "products": [
+              "Sensor X Pro"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "Shipments were accelerated into August after customer acceptance occurred earlier than planned."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "country::Germany",
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-031A"
+          ],
+          "forbidden_evidence_ids": [
+            "BENCH-031B"
+          ],
+          "expected_abstention": false
+        },
+        {
+          "finding_id": "country::Norway",
+          "expected_routing": "withheld_by_directional_guardrail",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-031A",
+            "BENCH-031B"
+          ],
+          "expected_abstention": true
+        },
+        {
+          "finding_id": "country::Sweden",
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-031A",
+            "BENCH-031B"
+          ],
+          "expected_abstention": true
+        }
+      ]
+    },
+    {
+      "case_id": "B032",
+      "case_type": "multi_event",
+      "description": "Two supported findings with a product-entity trap for Sensor X versus Sensor X Pro.",
+      "findings": [
+        {
+          "finding_id": "product::EdgeHub Pro",
+          "finding_type": "product",
+          "entity": "EdgeHub Pro",
+          "calculated_fact": {
+            "primary_driver": "unit_cost",
+            "primary_driver_impact_nok": -1700000
+          }
+        },
+        {
+          "finding_id": "product::Sensor X",
+          "finding_type": "product",
+          "entity": "Sensor X",
+          "calculated_fact": {
+            "primary_driver": "volume_mix",
+            "primary_driver_impact_nok": -1300000
+          }
+        },
+        {
+          "finding_id": "cost_centre::Product & R&D",
+          "finding_type": "cost_centre",
+          "entity": "Product & R&D",
+          "calculated_fact": {
+            "primary_driver": null,
+            "ebitda_impact_nok": -1600000
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "BENCH-032A",
+          "title": "EdgeHub Pro procurement surcharge",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "unit_cost",
+          "entities": {
+            "countries": [
+              "Germany"
+            ],
+            "products": [
+              "EdgeHub Pro"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "A supplier surcharge increased unit purchase cost for EdgeHub Pro."
+        },
+        {
+          "evidence_id": "BENCH-032B",
+          "title": "Sensor X Pro shipment acceleration",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "volume_mix",
+          "entities": {
+            "countries": [
+              "Norway"
+            ],
+            "products": [
+              "Sensor X Pro"
+            ],
+            "cost_centres": [],
+            "accounts": [],
+            "segments": []
+          },
+          "evidence_text": "Sensor X Pro shipments were accelerated into August."
+        },
+        {
+          "evidence_id": "BENCH-032C",
+          "title": "Product & R&D contractor acceleration",
+          "source_file": "benchmark_fixture.md",
+          "primary_evidence_driver": "non_payroll",
+          "entities": {
+            "countries": [],
+            "products": [],
+            "cost_centres": [
+              "Product & R&D"
+            ],
+            "accounts": [
+              "Contractors"
+            ],
+            "segments": []
+          },
+          "evidence_text": "Additional contractor spend was above the normal monthly run-rate."
+        }
+      ],
+      "expected": [
+        {
+          "finding_id": "product::EdgeHub Pro",
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-032A"
+          ],
+          "forbidden_evidence_ids": [
+            "BENCH-032B",
+            "BENCH-032C"
+          ],
+          "expected_abstention": false
+        },
+        {
+          "finding_id": "product::Sensor X",
+          "expected_routing": "rejected_by_grounding",
+          "expected_allowed_evidence_ids": [],
+          "forbidden_evidence_ids": [
+            "BENCH-032A",
+            "BENCH-032B",
+            "BENCH-032C"
+          ],
+          "expected_abstention": true
+        },
+        {
+          "finding_id": "cost_centre::Product & R&D",
+          "expected_routing": "reached_ai",
+          "expected_allowed_evidence_ids": [
+            "BENCH-032C"
+          ],
+          "forbidden_evidence_ids": [
+            "BENCH-032A",
+            "BENCH-032B"
+          ],
+          "expected_abstention": false
+        }
+      ]
+    }
+  ]
+}
