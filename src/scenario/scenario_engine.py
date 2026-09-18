@@ -36,6 +36,7 @@ SCENARIO_COMPARISON_NAME = "scenario_vs_baseline"
 SCENARIO_DRIVER_FIELDS = {
     "volume": "volume_pct",
     "price": "price_pct",
+    "discount": "discount_rate_delta",
     "unit_cost": "unit_cost_pct",
     "headcount": "headcount_pct",
     "non_payroll_opex": "non_payroll_opex_pct",
@@ -44,6 +45,7 @@ SCENARIO_DRIVER_FIELDS = {
 SCENARIO_DRIVER_LABELS = {
     "volume": "Volume",
     "price": "List price",
+    "discount": "Discount",
     "unit_cost": "Unit cost",
     "headcount": "Headcount",
     "non_payroll_opex": "Non-payroll OPEX",
@@ -53,19 +55,20 @@ SCENARIO_DRIVER_LABELS = {
 @dataclass(frozen=True)
 class ScenarioInputs:
     """
-    Relative scenario assumptions expressed as decimal changes.
+    Scenario assumptions expressed as decimal changes.
 
-    Examples:
+    Relative-change examples:
         0.05  = +5%
         -0.10 = -10%
 
-    The scenario engine intentionally changes only explicit operational
-    drivers. Discount rate and average employee cost remain unchanged in
-    this first version of the Scenario & Sensitivity Lab.
+    discount_rate_delta is different: it is an absolute change to the
+    discount rate. For example, 0.02 means +2 percentage points and
+    -0.01 means -1 percentage point.
     """
 
     volume_pct: float = 0.0
     price_pct: float = 0.0
+    discount_rate_delta: float = 0.0
     unit_cost_pct: float = 0.0
     headcount_pct: float = 0.0
     non_payroll_opex_pct: float = 0.0
@@ -81,6 +84,14 @@ class ScenarioInputs:
                 raise TypeError(
                     f"{field_name} must be numeric."
                 )
+
+            if field_name == "discount_rate_delta":
+                if value <= -1.0 or value >= 1.0:
+                    raise ValueError(
+                        "discount_rate_delta must be between "
+                        "-100 and +100 percentage points."
+                    )
+                continue
 
             if value <= -1.0:
                 raise ValueError(
@@ -178,6 +189,30 @@ def build_sales_scenario(
         scenario["list_price"].astype(float)
         * (1.0 + inputs.price_pct)
     ).round(6)
+
+    scenario["discount_rate"] = (
+        pd.to_numeric(
+            scenario["discount_rate"],
+            errors="raise",
+        ).astype(float)
+        + inputs.discount_rate_delta
+    )
+
+    invalid_discount = (
+        (scenario["discount_rate"] < 0.0)
+        | (scenario["discount_rate"] >= 1.0)
+    )
+
+    if invalid_discount.any():
+        raise ValueError(
+            "Scenario discount rates must remain between "
+            "0% and less than 100% for every sales row."
+        )
+
+    scenario["discount_rate"] = (
+        scenario["discount_rate"]
+        .round(6)
+    )
 
     scenario["unit_cost"] = (
         scenario["unit_cost"].astype(float)
@@ -554,7 +589,12 @@ def run_sensitivity(
             ),
             scenario_label=(
                 f"{SCENARIO_DRIVER_LABELS[driver]} "
-                f"{float(value) * 100:+.1f}%"
+                f"{float(value) * 100:+.1f}"
+                + (
+                    "pp"
+                    if driver == "discount"
+                    else "%"
+                )
             ),
         )
 
@@ -571,6 +611,11 @@ def run_sensitivity(
                 "input_change_pct": (
                     float(value)
                     * 100
+                ),
+                "input_change_unit": (
+                    "pp"
+                    if driver == "discount"
+                    else "%"
                 ),
                 "revenue_change_nok": (
                     summary[

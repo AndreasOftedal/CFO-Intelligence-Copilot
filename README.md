@@ -28,6 +28,7 @@ It demonstrates how a finance workflow can combine:
 - Structured AI-generated management commentary
 - Interactive evidence-grounded CFO Q&A
 - Scenario and sensitivity modelling
+- Controlled AI interpretation of deterministic scenario outputs
 - Hidden-ground-truth offline evaluation
 - Adversarial evidence-control testing
 - Guarded-vs-prompt-only LLM benchmarking
@@ -83,17 +84,18 @@ A live-session question limit is used in the public demo to control API usage.
 
 ### 3. Scenario & Sensitivity Lab
 
-A deterministic what-if environment using **Latest Forecast** as the baseline.
+A controlled what-if environment using **Latest Forecast** as the baseline.
 
 Management assumptions can be changed for:
 
 - Volume
 - List price
+- Discount, expressed as an absolute percentage-point change
 - Unit cost
 - Headcount
 - Non-payroll OPEX
 
-The scenario engine recalculates:
+The scenario engine deterministically recalculates:
 
 - Revenue
 - Gross Profit
@@ -108,7 +110,11 @@ It also produces:
 - One-way sensitivity tables
 - Selectable sensitivity curves for Revenue, Gross Profit, OPEX, EBITDA and margin
 
-This layer does **not** use an LLM. It reuses the same deterministic finance logic as the core analysis engine.
+All scenario calculations reuse the same deterministic finance logic as the core analysis engine.
+
+An optional **AI Scenario Brief** can then interpret the calculated scenario. The AI receives only deterministic scenario assumptions, calculated financial outcomes and the reconciled EBITDA bridge. It cannot access management evidence or hidden ground truth, cannot calculate new financial values, and is validated before its narrative is displayed.
+
+The Scenario Brief is reset automatically when scenario assumptions change so commentary generated for an earlier scenario cannot remain visible against a new set of inputs.
 
 ---
 
@@ -216,7 +222,8 @@ flowchart LR
     B --> C[Variance & Driver Analysis]
 
     B --> S[Scenario & Sensitivity Engine]
-    S --> T[What-if Management Output]
+    S --> T[Deterministic What-if Output]
+    T --> R[Controlled AI Scenario Brief]
 
     C --> D[Evidence Grounding]
     D --> E[Directional Guardrails]
@@ -226,6 +233,7 @@ flowchart LR
 
     F --> G[Management Output]
     Q --> G
+    R --> G
 
     H[Hidden Synthetic Ground Truth] --> I[Offline Evaluation]
     G --> I
@@ -235,6 +243,7 @@ flowchart LR
 
     H -. Never model-visible in production .-> F
     H -. Never model-visible in production .-> Q
+    H -. Never model-visible in production .-> R
 ```
 
 The architecture deliberately separates deterministic calculation from probabilistic language-model interpretation.
@@ -266,7 +275,7 @@ The engine reconciles:
 - EBITDA
 - EBITDA Margin
 
-Scenario modelling reuses the same deterministic calculation logic instead of maintaining a separate finance calculator.
+Scenario modelling reuses the same deterministic calculation logic instead of maintaining a separate finance calculator. The Scenario Brief sits downstream of those calculations and is restricted to interpreting already-calculated outputs.
 
 ---
 
@@ -290,6 +299,8 @@ Possible outcomes include:
 - Directionally conflicting / withheld
 
 Only approved evidence is model-visible for causal explanations.
+
+The **AI Scenario Brief** is intentionally separate from this evidence flow. It interprets user-selected what-if assumptions and deterministic scenario results only; management evidence is not exposed to that feature.
 
 ---
 
@@ -396,15 +407,17 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-### 4. Optional: configure live AI Q&A
+### 4. Optional: configure live AI features
 
-The deterministic finance engine, scenario analysis, evaluation outputs and most of the Streamlit application can be inspected without an API key.
+The deterministic finance engine, scenario calculations, sensitivity analysis, evaluation outputs and most of the Streamlit application can be inspected without an API key.
 
-To enable live **Ask the CFO** requests, set:
+To enable live **Ask the CFO** requests and the **AI Scenario Brief**, set:
 
 ```text
 OPENAI_API_KEY=your_key_here
 ```
+
+Both live AI features sit downstream of deterministic calculations and have separate controls that restrict what context the model can use.
 
 For local development you can copy `.env.example` to `.env`, but do **not** commit API keys or local secret files.
 
@@ -427,7 +440,7 @@ python -m pytest -q
 Current expected result:
 
 ```text
-118 passed
+135 passed
 ```
 
 ### 6. Launch Streamlit
@@ -484,6 +497,8 @@ No API key is required in the repository.
 - CI uses the same Python major/minor version used for development.
 - Core finance calculations are deterministic.
 - Scenario calculations reuse the production finance engine.
+- AI Scenario Briefs are generated only from deterministic scenario assumptions, outcomes and reconciled driver data.
+- Scenario Brief output is invalidated when scenario assumptions change.
 - Evaluation benchmarks are reproducible from version-controlled synthetic data.
 - Hidden ground truth is isolated from production model inputs.
 - Live LLM outputs can vary across model/runtime updates, so deterministic and offline controls are tested separately from generation quality.
