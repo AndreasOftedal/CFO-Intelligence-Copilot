@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+import pandas as pd
 import streamlit as st
 
 
@@ -34,6 +35,27 @@ EVALUATION_PATH = (
     / "evaluation"
     / "latest_forecast_vs_budget_evaluation.json"
 )
+
+SALES_DATASETS = {
+    "Actual": (
+        PROJECT_ROOT
+        / "data"
+        / "processed"
+        / "actual_sales.csv"
+    ),
+    "Budget": (
+        PROJECT_ROOT
+        / "data"
+        / "processed"
+        / "budget_sales.csv"
+    ),
+    "Latest Forecast": (
+        PROJECT_ROOT
+        / "data"
+        / "processed"
+        / "latest_forecast_sales.csv"
+    ),
+}
 
 
 # ---------------------------------------------------------------------
@@ -261,6 +283,33 @@ def load_json(
             f"Invalid JSON in {path.name}: {exc}"
         )
         st.stop()
+
+
+@st.cache_data(show_spinner=False)
+def load_sales_data(
+    path: Path,
+) -> pd.DataFrame:
+    if not path.exists():
+        st.error(
+            f"Required sales dataset not found: {path}"
+        )
+        st.stop()
+
+    try:
+        frame = pd.read_csv(path)
+    except Exception as exc:
+        st.error(
+            f"Could not read {path.name}: {exc}"
+        )
+        st.stop()
+
+    if "date" in frame.columns:
+        frame["date"] = pd.to_datetime(
+            frame["date"],
+            errors="coerce",
+        )
+
+    return frame
 
 
 def money_value(
@@ -585,12 +634,13 @@ st.markdown(
 )
 
 
-overview_tab, evidence_tab, evaluation_tab = (
+overview_tab, evidence_tab, evaluation_tab, data_tab = (
     st.tabs(
         [
             "Executive Overview",
             "Evidence & Guardrails",
             "Evaluation & Safety",
+            "Data Explorer",
         ]
     )
 )
@@ -1473,6 +1523,466 @@ with evaluation_tab:
         "synthetic six-event environment. They demonstrate "
         "the behavior of this pipeline and should not be "
         "interpreted as general model-performance metrics."
+    )
+
+
+# ---------------------------------------------------------------------
+# Data Explorer
+# ---------------------------------------------------------------------
+
+with data_tab:
+    st.subheader(
+        "Underlying Sales Data"
+    )
+
+    st.caption(
+        "Inspect the processed sales datasets that feed the finance analysis. "
+        "The current executive analysis compares Latest Forecast with Budget; "
+        "Actual is included for additional transparency and reference."
+    )
+
+    st.info(
+        "This explorer loads only processed analyst-visible sales data. "
+        "Hidden ground-truth files are never loaded by this tab."
+    )
+
+    selector_col, date_col = st.columns(
+        [1, 2]
+    )
+
+    with selector_col:
+        selected_dataset = st.selectbox(
+            "Dataset",
+            options=list(
+                SALES_DATASETS.keys()
+            ),
+            index=2,
+            help=(
+                "Choose between Actual, Budget and Latest Forecast sales data."
+            ),
+        )
+
+    sales_data = load_sales_data(
+        SALES_DATASETS[selected_dataset]
+    ).copy()
+
+    if "date" not in sales_data.columns:
+        st.error(
+            "The selected dataset does not contain a date column."
+        )
+        st.stop()
+
+    valid_dates = sales_data[
+        "date"
+    ].dropna()
+
+    if valid_dates.empty:
+        st.error(
+            "The selected dataset contains no valid dates."
+        )
+        st.stop()
+
+    min_date = valid_dates.min().date()
+    max_date = valid_dates.max().date()
+
+    with date_col:
+        selected_dates = st.date_input(
+            "Date range",
+            value=(
+                min_date,
+                max_date,
+            ),
+            min_value=min_date,
+            max_value=max_date,
+            key=f"date_range_{selected_dataset}",
+        )
+
+    filtered = sales_data.copy()
+
+    if (
+        isinstance(selected_dates, (tuple, list))
+        and len(selected_dates) == 2
+    ):
+        start_date, end_date = selected_dates
+        filtered = filtered[
+            filtered["date"].dt.date.between(
+                start_date,
+                end_date,
+            )
+        ]
+
+    filter_country, filter_family, filter_product, filter_segment = (
+        st.columns(4)
+    )
+
+    with filter_country:
+        country_options = sorted(
+            filtered["country"].dropna().astype(str).unique().tolist()
+        )
+        selected_countries = st.multiselect(
+            "Country",
+            options=country_options,
+            placeholder="All countries",
+        )
+
+    if selected_countries:
+        filtered = filtered[
+            filtered["country"].astype(str).isin(
+                selected_countries
+            )
+        ]
+
+    with filter_family:
+        family_options = sorted(
+            filtered["product_family"].dropna().astype(str).unique().tolist()
+        )
+        selected_families = st.multiselect(
+            "Product family",
+            options=family_options,
+            placeholder="All families",
+        )
+
+    if selected_families:
+        filtered = filtered[
+            filtered["product_family"].astype(str).isin(
+                selected_families
+            )
+        ]
+
+    with filter_product:
+        product_options = sorted(
+            filtered["product"].dropna().astype(str).unique().tolist()
+        )
+        selected_products = st.multiselect(
+            "Product",
+            options=product_options,
+            placeholder="All products",
+        )
+
+    if selected_products:
+        filtered = filtered[
+            filtered["product"].astype(str).isin(
+                selected_products
+            )
+        ]
+
+    with filter_segment:
+        segment_options = sorted(
+            filtered["segment"].dropna().astype(str).unique().tolist()
+        )
+        selected_segments = st.multiselect(
+            "Customer segment",
+            options=segment_options,
+            placeholder="All segments",
+        )
+
+    if selected_segments:
+        filtered = filtered[
+            filtered["segment"].astype(str).isin(
+                selected_segments
+            )
+        ]
+
+    st.divider()
+
+    row_count = len(filtered)
+    total_units = (
+        filtered["units"].sum()
+        if "units" in filtered.columns
+        else 0
+    )
+    total_revenue = (
+        filtered["net_revenue"].sum()
+        if "net_revenue" in filtered.columns
+        else 0
+    )
+    total_gross_profit = (
+        filtered["gross_profit"].sum()
+        if "gross_profit" in filtered.columns
+        else 0
+    )
+    weighted_margin = (
+        total_gross_profit / total_revenue
+        if total_revenue
+        else None
+    )
+
+    kpi1, kpi2, kpi3, kpi4, kpi5 = st.columns(5)
+
+    kpi1.metric(
+        "Rows",
+        f"{row_count:,}",
+    )
+    kpi2.metric(
+        "Units",
+        f"{float(total_units):,.0f}",
+    )
+    kpi3.metric(
+        "Net Revenue",
+        money_value(total_revenue),
+    )
+    kpi4.metric(
+        "Gross Profit",
+        money_value(total_gross_profit),
+    )
+    kpi5.metric(
+        "Gross Margin",
+        pct(weighted_margin),
+    )
+
+    st.divider()
+
+    st.subheader(
+        "Quick Breakdown"
+    )
+
+    st.caption(
+        "Summarize the currently filtered data by a business dimension. "
+        "Financial values are displayed in compact NOK format for readability."
+    )
+
+    breakdown_labels = {
+        "country": "Country",
+        "product_family": "Product Family",
+        "product": "Product",
+        "segment": "Customer Segment",
+    }
+
+    breakdown_dimension = st.selectbox(
+        "Break down filtered data by",
+        options=list(
+            breakdown_labels.keys()
+        ),
+        format_func=lambda value: breakdown_labels[value],
+    )
+
+    if filtered.empty:
+        st.warning(
+            "No rows match the selected filters."
+        )
+    else:
+        breakdown = (
+            filtered.groupby(
+                breakdown_dimension,
+                dropna=False,
+            )
+            .agg(
+                units=("units", "sum"),
+                net_revenue=("net_revenue", "sum"),
+                gross_profit=("gross_profit", "sum"),
+            )
+            .reset_index()
+        )
+
+        breakdown["gross_margin_pct"] = (
+            breakdown["gross_profit"]
+            / breakdown["net_revenue"]
+        )
+
+        breakdown = breakdown.sort_values(
+            "net_revenue",
+            ascending=False,
+        )
+
+        breakdown_display = breakdown.rename(
+            columns={
+                breakdown_dimension: breakdown_labels[breakdown_dimension],
+                "units": "Units",
+                "net_revenue": "Net Revenue",
+                "gross_profit": "Gross Profit",
+                "gross_margin_pct": "Gross Margin",
+            }
+        ).copy()
+
+        breakdown_display["Units"] = breakdown_display[
+            "Units"
+        ].map(
+            lambda value: f"{float(value):,.0f}"
+        )
+        breakdown_display["Net Revenue"] = breakdown_display[
+            "Net Revenue"
+        ].map(
+            money_value
+        )
+        breakdown_display["Gross Profit"] = breakdown_display[
+            "Gross Profit"
+        ].map(
+            money_value
+        )
+        breakdown_display["Gross Margin"] = breakdown_display[
+            "Gross Margin"
+        ].map(
+            pct
+        )
+
+        st.dataframe(
+            breakdown_display,
+            use_container_width=True,
+            hide_index=True,
+        )
+
+    st.divider()
+
+    st.subheader(
+        "Filtered Sales Records"
+    )
+
+    display_columns = [
+        "date",
+        "scenario",
+        "country",
+        "product_family",
+        "product",
+        "segment",
+        "units",
+        "list_price",
+        "discount_rate",
+        "gross_sales",
+        "discount_value",
+        "net_revenue",
+        "unit_cost",
+        "cogs",
+        "gross_profit",
+        "gross_margin_pct",
+    ]
+
+    available_display_columns = [
+        column
+        for column in display_columns
+        if column in filtered.columns
+    ]
+
+    sort_columns = [
+        column
+        for column in [
+            "date",
+            "country",
+            "product",
+            "segment",
+        ]
+        if column in available_display_columns
+    ]
+
+    table_data = filtered[
+        available_display_columns
+    ].sort_values(
+        sort_columns,
+        ascending=True,
+    )
+
+    preview_limit = 150
+    preview_rows = min(
+        len(table_data),
+        preview_limit,
+    )
+
+    if row_count == 0:
+        st.caption(
+            f"No rows from {selected_dataset} match the selected filters."
+        )
+    elif row_count <= preview_limit:
+        st.caption(
+            f"Showing all {row_count:,} filtered rows from {selected_dataset}. "
+            "The CSV download below contains the same filtered dataset."
+        )
+    else:
+        st.caption(
+            f"Showing the first {preview_rows:,} of {row_count:,} filtered rows "
+            f"from {selected_dataset}. The preview is limited for readability; "
+            f"the CSV download contains all {row_count:,} filtered rows."
+        )
+
+    preview_data = table_data.head(
+        preview_limit
+    ).copy()
+
+    if not preview_data.empty:
+        if "date" in preview_data.columns:
+            preview_data["date"] = preview_data[
+                "date"
+            ].dt.strftime(
+                "%Y-%m-%d"
+            )
+
+        if "units" in preview_data.columns:
+            preview_data["units"] = preview_data[
+                "units"
+            ].map(
+                lambda value: f"{float(value):,.0f}"
+            )
+
+        for money_column in [
+            "list_price",
+            "gross_sales",
+            "discount_value",
+            "net_revenue",
+            "unit_cost",
+            "cogs",
+            "gross_profit",
+        ]:
+            if money_column in preview_data.columns:
+                preview_data[money_column] = preview_data[
+                    money_column
+                ].map(
+                    lambda value: (
+                        ""
+                        if pd.isna(value)
+                        else f"NOK {float(value):,.2f}"
+                    )
+                )
+
+        if "discount_rate" in preview_data.columns:
+            preview_data["discount_rate"] = preview_data[
+                "discount_rate"
+            ].map(
+                lambda value: (
+                    ""
+                    if pd.isna(value)
+                    else f"{float(value) * 100:.2f}%"
+                )
+            )
+
+        if "gross_margin_pct" in preview_data.columns:
+            preview_data["gross_margin_pct"] = preview_data[
+                "gross_margin_pct"
+            ].map(
+                lambda value: (
+                    ""
+                    if pd.isna(value)
+                    else (
+                        f"{float(value) * 100:.2f}%"
+                        if abs(float(value)) <= 1.5
+                        else f"{float(value):.2f}%"
+                    )
+                )
+            )
+
+    st.dataframe(
+        preview_data,
+        use_container_width=True,
+        hide_index=True,
+        height=460,
+    )
+
+    csv_bytes = table_data.to_csv(
+        index=False
+    ).encode(
+        "utf-8"
+    )
+
+    safe_dataset_name = selected_dataset.lower().replace(
+        " ",
+        "_",
+    )
+
+    st.download_button(
+        "Download all filtered rows as CSV",
+        data=csv_bytes,
+        file_name=(
+            f"{safe_dataset_name}_filtered_sales.csv"
+        ),
+        mime="text/csv",
+        use_container_width=False,
     )
 
 
